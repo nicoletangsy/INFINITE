@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">INFINITE</string>
+    <string name="exerciseButton">Exercise</string>
+    <string name="readingButton">Sight Reading</string>
+    <string name="settingButton">Setting</string>
+    <string name="homeButton">Home</string>
+    <string name="restartButton">Restart</string>
+    <string name="endButton">End game</string>
+</resources>

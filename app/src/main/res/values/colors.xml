@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#FFb805</color>
+    <color name="colorPrimaryDark">#FFA505</color>
+    <color name="buttonborder">#724517</color>
+    <color name="buttoncolor">#FFb805</color>
+    <color name="menuColor">#FFE505</color>
+    <color name="backgroundColor">#22FED532</color>
+
+    <color name="colorAccent">#FF4081</color>
+</resources>
