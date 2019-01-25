@@ -20,14 +20,17 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".PracticeActivity"
+            android:label="INFINITE"
+            android:screenOrientation="landscape" />
+        <activity
             android:name=".RightHandPractice"
             android:label="INFINITE"
             android:screenOrientation="landscape" />
         <activity
-            android:name=".SightReadingMenu"
+            android:name=".SightReadingMenuActivity"
             android:label="INFINITE"
             android:screenOrientation="landscape" />
-        <activity android:name=".SightReadingMenuActivity" />
         <activity android:name=".SettingActivity"></activity>
     </application>
 

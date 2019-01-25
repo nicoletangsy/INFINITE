@@ -16,8 +16,8 @@ public class SightReadingMenuActivity extends AppCompatActivity {
         setContentView(R.layout.activity_sight_reading_menu);
         Toolbar toolbar = (Toolbar)findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//        getSupportActionBar().setDisplayShowHomeEnabled(true);
     }
 
     @Override

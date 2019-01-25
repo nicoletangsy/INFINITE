@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".exercise"
+    tools:context=".PracticeActivity"
     tools:layout_editor_absoluteY="25dp">
 
     <include
@@ -166,13 +166,14 @@
 
     <TextView
         android:id="@+id/question"
-        android:layout_width="116dp"
+        android:layout_width="130dp"
         android:layout_height="21dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="4dp"
         android:text="Which note is it?"
         android:textSize="16dp"
         app:layout_constraintBottom_toTopOf="@+id/Fkey"
         app:layout_constraintEnd_toEndOf="@+id/imageView"
+        app:layout_constraintHorizontal_bias="0.519"
         app:layout_constraintStart_toStartOf="@+id/imageView" />
 
     <TextView
@@ -182,7 +183,7 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="55dp"
         android:layout_marginBottom="290dp"
-        android:text="Correct:1/10"
+        android:text="Correct: 1/15"
         android:textSize="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
