@@ -10,8 +10,8 @@
     <include
         android:id="@+id/app_bar"
         layout="@layout/app_bar"
-        android:layout_width="592dp"
-        android:layout_height="42dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="5dp"
         app:layout_constraintBottom_toTopOf="@+id/correctCount"
         app:layout_constraintEnd_toEndOf="parent"
@@ -44,6 +44,7 @@
         android:background="@drawable/whitekey"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/Akey" />
 
     <Button
@@ -152,7 +153,7 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="347dp"
+        android:layout_width="320dp"
         android:layout_height="103dp"
         android:layout_marginStart="10dp"
         android:layout_marginTop="50dp"
@@ -180,14 +181,15 @@
         android:id="@+id/correctCount"
         android:layout_width="100dp"
         android:layout_height="21dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="55dp"
-        android:layout_marginBottom="290dp"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginBottom="180dp"
         android:text="Correct: 1/15"
         android:textSize="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imageView"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
 </android.support.constraint.ConstraintLayout>

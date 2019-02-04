@@ -9,6 +9,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
+import java.util.Random;
 
 import org.w3c.dom.Text;
 
@@ -17,8 +18,21 @@ public class PracticeActivity extends AppCompatActivity {
     TextView correctCount;
     ImageView questionImg;
 
+    Random r;
+
+    Integer[] questions = {
+            R.drawable.q1,
+            R.drawable.q2,
+            R.drawable.q3,
+    };
+
+    int answer;
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        r = new Random();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.practice_layout);
 
@@ -29,7 +43,7 @@ public class PracticeActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         ImageView questionImg= (ImageView) findViewById(R.id.imageView);
-        questionImg.setImageResource(R.drawable.image);
+        questionImg.setImageResource(questions[r.nextInt(questions.length)]);
 
         question= (TextView) findViewById(R.id.question);
         question.setText("Which note is it?");
