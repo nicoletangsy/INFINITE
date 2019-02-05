@@ -7,9 +7,12 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import java.util.Random;
+import android.graphics.Color;
 
 import org.w3c.dom.Text;
 
@@ -27,6 +30,9 @@ public class PracticeActivity extends AppCompatActivity {
     };
 
     int answer;
+    int currentQuestionNumber;
+    Button C;
+    Button D;
 
 
 
@@ -43,7 +49,9 @@ public class PracticeActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         ImageView questionImg= (ImageView) findViewById(R.id.imageView);
-        questionImg.setImageResource(questions[r.nextInt(questions.length)]);
+        currentQuestionNumber=r.nextInt(questions.length);
+        questionImg.setImageResource(questions[currentQuestionNumber]);
+
 
         question= (TextView) findViewById(R.id.question);
         question.setText("Which note is it?");
@@ -51,6 +59,20 @@ public class PracticeActivity extends AppCompatActivity {
         correctCount= (TextView) findViewById(R.id.correctCount);
         //need to be change to count the correct answer
         correctCount.setText("Correct:1/15");
+
+        C=(Button)findViewById(R.id.Ckey);
+        C.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                answer=0;
+                if(answer==currentQuestionNumber){
+                    C.setBackgroundColor(Color.GREEN);
+                } else C.setBackgroundColor(Color.RED);
+            }
+        });
+
+
+
     }
 
     //To Do
