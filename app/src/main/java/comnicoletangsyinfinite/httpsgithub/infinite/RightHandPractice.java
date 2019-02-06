@@ -1,6 +1,7 @@
 package comnicoletangsyinfinite.httpsgithub.infinite;
 
 import android.support.v7.app.AppCompatActivity;
+import android.widget.Button;
 import android.os.Bundle;
 import android.Manifest;
 import android.content.Context;
@@ -24,10 +25,8 @@ import android.widget.TextView;
 import java.io.IOException;
 
 public class RightHandPractice extends AppCompatActivity {
-
-    private Button recordButton = (Button)findViewById(R.id.recordButton);
-    private Button playRecordButton = (Button)findViewById(R.id.playRecordButton);
-
+    private boolean mStartRecording = true;
+    private boolean mStartPlaying = true;
     private static final String LOG_TAG = "AudioRecordTest";
     private static final int REQUEST_RECORD_AUDIO_PERMISSION = 200;
     private static String mFileName = null;
@@ -108,54 +107,15 @@ public class RightHandPractice extends AppCompatActivity {
         mRecorder = null;
     }
 
-    /*class RecordButton extends Button {
-        boolean mStartRecording = true;
-
-        OnClickListener clicker = new OnClickListener() {
-            public void onClick(View v) {
-                onRecord(mStartRecording);
-                if (mStartRecording) {
-                    setText("Stop recording");
-                } else {
-                    setText("Start recording");
-                }
-                mStartRecording = !mStartRecording;
-            }
-        };
-
-        public RecordButton(Context ctx) {
-            super(ctx);
-            setText("Start recording");
-            setOnClickListener(clicker);
-        }
-    }
-
-    class PlayButton extends Button {
-        boolean mStartPlaying = true;
-
-        OnClickListener clicker = new OnClickListener() {
-            public void onClick(View v) {
-                onPlay(mStartPlaying);
-                if (mStartPlaying) {
-                    setText("Stop playing");
-                } else {
-                    setText("Start playing");
-                }
-                mStartPlaying = !mStartPlaying;
-            }
-        };
-
-        public PlayButton(Context ctx) {
-            super(ctx);
-            setText("Start playing");
-            setOnClickListener(clicker);
-        }
-    }*/
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_right_hand_practice);
+
+        final Button recordButton = (Button)findViewById(R.id.recordButton);
+        recordButton.setText("Start Recording");
+        final Button playRecordButton = (Button)findViewById(R.id.playRecordButton);
+        recordButton.setText("Play Record");
 
         Toolbar toolbar = (Toolbar)findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);
@@ -178,6 +138,34 @@ public class RightHandPractice extends AppCompatActivity {
                         ViewGroup.LayoutParams.WRAP_CONTENT,
                         0));
         //setContentView(ll);*/
+
+        mStartRecording = true;
+        recordButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                onRecord(mStartRecording);
+                if (mStartRecording) {
+                    recordButton.setText("Stop recording");
+                } else {
+                    recordButton.setText("Start recording");
+                }
+                mStartRecording = !mStartRecording;
+            }
+        });
+
+        mStartPlaying = true;
+        playRecordButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                onPlay(mStartPlaying);
+                if (mStartPlaying) {
+                    playRecordButton.setText("Stop playing");
+                } else {
+                    playRecordButton.setText("Start playing");
+                }
+                mStartPlaying = !mStartPlaying;
+            }
+        });
     }
 
     @Override
@@ -199,27 +187,5 @@ public class RightHandPractice extends AppCompatActivity {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu, menu);
         return true;
-    }
-
-    public void recordAudio(View v) {
-        boolean mStartRecording = true;
-        onRecord(mStartRecording);
-        if (mStartRecording) {
-            recordButton.setText("Stop recording");
-        } else {
-            recordButton.setText("Start recording");
-        }
-        mStartRecording = !mStartRecording;
-    }
-
-    public void playAudio(View v) {
-        boolean mStartPlaying = true;
-        onPlay(mStartPlaying);
-        if (mStartPlaying) {
-            playRecordButton.setText("Stop playing");
-        } else {
-            playRecordButton.setText("Start playing");
-        }
-        mStartPlaying = !mStartPlaying;
     }
 }
