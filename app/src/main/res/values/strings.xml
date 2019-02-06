@@ -6,4 +6,9 @@
     <string name="homeButton">Home</string>
     <string name="restartButton">Restart</string>
     <string name="endButton">End game</string>
+    <string name="recordButton">Start Recording</string>
+    <string name="playRecordButton">Start Playing Record</string>
+    <string name="leftHandPracticeButton">Left Hand Practice</string>
+    <string name="rightHandPracticeButton">Right Hand Practice</string>
+    <string name="bothHandsPracticeButton">Both Hands Practice</string>
 </resources>
