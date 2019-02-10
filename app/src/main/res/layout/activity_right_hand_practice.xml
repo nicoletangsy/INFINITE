@@ -5,49 +5,47 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/backgroundColor"
-    tools:context=".RightHandPractice">
+    tools:context=".RightHandPractice"
+    tools:layout_editor_absoluteY="25dp">
 
     <include
         android:id="@+id/app_bar"
         layout="@layout/app_bar"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="64dp"
-        app:layout_constraintBottom_toTopOf="@+id/imageView3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"></include>
+        android:layout_width="592dp"
+        android:layout_height="wrap_content"></include>
 
     <Button
         android:id="@+id/testButton"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="28dp"
         android:background="@drawable/button"
-        app:layout_constraintBottom_toTopOf="@+id/playRecordButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        tools:layout_editor_absoluteX="221dp"
+        tools:layout_editor_absoluteY="207dp" />
 
     <Button
         android:id="@+id/recordButton"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="28dp"
         android:background="@drawable/button"
         android:text="@string/recordButton"
-        app:layout_constraintBottom_toTopOf="@+id/playRecordButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        tools:layout_editor_absoluteX="82dp"
+        tools:layout_editor_absoluteY="281dp" />
 
     <Button
         android:id="@+id/playRecordButton"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="28dp"
         android:background="@drawable/button"
         android:text="@string/playRecordButton"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        tools:layout_editor_absoluteX="340dp"
+        tools:layout_editor_absoluteY="281dp" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="553dp"
+        android:layout_height="160dp"
+        android:text="TextView"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="63dp" />
 
 </android.support.constraint.ConstraintLayout>
