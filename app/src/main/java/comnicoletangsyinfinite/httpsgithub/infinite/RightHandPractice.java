@@ -53,11 +53,12 @@ public class RightHandPractice extends AppCompatActivity {
 
     }
 
-    private void onRecord(boolean start) {
+    private void onRecord(boolean start, Button playRecordButton) {
         if (start) {
             startRecording();
         } else {
             stopRecording();
+            playRecordButton.setVisibility(View.VISIBLE);
         }
     }
 
@@ -113,12 +114,11 @@ public class RightHandPractice extends AppCompatActivity {
         setContentView(R.layout.activity_right_hand_practice);
 
         final Button recordButton = (Button)findViewById(R.id.recordButton);
-        recordButton.setText("Start Recording");
         final Button playRecordButton = (Button)findViewById(R.id.playRecordButton);
-        recordButton.setText("Play Record");
-
         Toolbar toolbar = (Toolbar)findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);
+
+        playRecordButton.setVisibility(View.GONE);
 
         // Record to the external cache directory for visibility
         mFileName = getExternalCacheDir().getAbsolutePath();
@@ -143,11 +143,11 @@ public class RightHandPractice extends AppCompatActivity {
         recordButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                onRecord(mStartRecording);
+                onRecord(mStartRecording,playRecordButton);
                 if (mStartRecording) {
-                    recordButton.setText("Stop recording");
+                    recordButton.setBackgroundResource(R.drawable.stopbutton);
                 } else {
-                    recordButton.setText("Start recording");
+                    recordButton.setBackgroundResource(R.drawable.recordbutton);
                 }
                 mStartRecording = !mStartRecording;
             }
@@ -159,9 +159,9 @@ public class RightHandPractice extends AppCompatActivity {
             public void onClick(View v){
                 onPlay(mStartPlaying);
                 if (mStartPlaying) {
-                    playRecordButton.setText("Stop playing");
+                    playRecordButton.setBackgroundResource(R.drawable.stopbutton);
                 } else {
-                    playRecordButton.setText("Start playing");
+                    playRecordButton.setBackgroundResource(R.drawable.playbutton);
                 }
                 mStartPlaying = !mStartPlaying;
             }

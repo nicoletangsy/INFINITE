@@ -8,44 +8,71 @@
     tools:context=".RightHandPractice"
     tools:layout_editor_absoluteY="25dp">
 
-    <include
-        android:id="@+id/app_bar"
-        layout="@layout/app_bar"
-        android:layout_width="592dp"
-        android:layout_height="wrap_content"></include>
 
-    <Button
-        android:id="@+id/testButton"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/button"
-        tools:layout_editor_absoluteX="221dp"
-        tools:layout_editor_absoluteY="207dp" />
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:weightSum="6"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-    <Button
-        android:id="@+id/recordButton"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/button"
-        android:text="@string/recordButton"
-        tools:layout_editor_absoluteX="82dp"
-        tools:layout_editor_absoluteY="281dp" />
+        <include
+            android:id="@+id/app_bar"
+            layout="@layout/app_bar"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1.5"></include>
 
-    <Button
-        android:id="@+id/playRecordButton"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/button"
-        android:text="@string/playRecordButton"
-        tools:layout_editor_absoluteX="340dp"
-        tools:layout_editor_absoluteY="281dp" />
+        <android.support.v4.widget.Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.5" />
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="553dp"
-        android:layout_height="160dp"
-        android:text="TextView"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="63dp" />
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginStart="22dp"
+            android:layout_marginEnd="22dp"
+            android:layout_marginBottom="85dp"
+            android:layout_weight="2"
+            android:text="TextView" />
+
+        <android.support.v4.widget.Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.5" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1.5"
+            android:layoutDirection="rtl"
+            android:orientation="horizontal"
+            android:padding="10dp">
+
+            <Button
+                android:id="@+id/recordButton"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="end"
+                android:background="@drawable/recordbutton"
+                android:text="" />
+
+            <Button
+                android:id="@+id/playRecordButton"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/playbutton"
+                android:text="" />
+
+
+        </LinearLayout>
+    </LinearLayout>
+
 
 </android.support.constraint.ConstraintLayout>
