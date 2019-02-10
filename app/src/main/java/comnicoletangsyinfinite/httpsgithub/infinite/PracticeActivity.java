@@ -26,21 +26,55 @@ public class PracticeActivity extends AppCompatActivity {
 
     Integer[] questions = {
             R.drawable.q1,
-            R.drawable.q2,
-            R.drawable.q3,
-            R.drawable.q4,
-            R.drawable.q5,
-            R.drawable.q6,
-            R.drawable.q7,
             R.drawable.q9,
+            R.drawable.q16,
+            R.drawable.q23,
+            R.drawable.q30,
+            R.drawable.q17,
+            R.drawable.q24,
+            R.drawable.q33,
+            R.drawable.q40,
+            R.drawable.q2,
             R.drawable.q10,
+            R.drawable.q18,
+            R.drawable.q25,
+            R.drawable.q41,
+            R.drawable.q99,
+            R.drawable.q3,
             R.drawable.q11,
+            R.drawable.q35,
+            R.drawable.q42,
+            R.drawable.q4,
             R.drawable.q12,
-            R.drawable.q13,
-            R.drawable.q14,
-            R.drawable.q15,
-            R.drawable.q8
+            R.drawable.q19,
+            R.drawable.q26,
+            R.drawable.q20,
+            R.drawable.q27,
+            R.drawable.q36,
+            R.drawable.q43,
 
+            R.drawable.q5,
+            R.drawable.q13,
+
+            R.drawable.q21,
+            R.drawable.q28,
+            R.drawable.q37,
+            R.drawable.q44,
+
+            R.drawable.q6,
+            R.drawable.q14,
+
+            R.drawable.q22,
+            R.drawable.q29,
+            R.drawable.q31,
+            R.drawable.q38,
+            R.drawable.q45,
+
+            R.drawable.q7,
+            R.drawable.q8,
+            R.drawable.q15,
+            R.drawable.q32,
+            R.drawable.q39,
     };
 
     int answer;
@@ -53,6 +87,11 @@ public class PracticeActivity extends AppCompatActivity {
     Button G;
     Button A;
     Button B;
+    Button Cc;
+    Button Dd;
+    Button Ff;
+    Button Gg;
+    Button Aa;
 
 
 
@@ -85,7 +124,7 @@ public class PracticeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 answer=0;
-                if(answer==currentQuestionNumber||answer+7==currentQuestionNumber){
+                if(answer==currentQuestionNumber||answer+1==currentQuestionNumber||answer+2==currentQuestionNumber||answer+3==currentQuestionNumber||answer+4==currentQuestionNumber){
 
                     C.setBackgroundColor(Color.GREEN);
                     correctQ++;
@@ -110,8 +149,8 @@ public class PracticeActivity extends AppCompatActivity {
         D.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                answer=1;
-                if(answer==currentQuestionNumber||answer+7==currentQuestionNumber){
+                answer=9;
+                if(answer==currentQuestionNumber||answer+1==currentQuestionNumber){
                     D.setBackgroundColor(Color.GREEN);
                     correctQ++;
                     correctCount.setText("Correct: "+correctQ+"/15");
@@ -130,8 +169,8 @@ public class PracticeActivity extends AppCompatActivity {
         E.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                answer=2;
-                if(answer==currentQuestionNumber||answer+7==currentQuestionNumber){
+                answer=15;
+                if(answer==currentQuestionNumber||answer+1==currentQuestionNumber||answer+2==currentQuestionNumber||answer+3==currentQuestionNumber){
                     E.setBackgroundColor(Color.GREEN);
                     correctQ++;
                     correctCount.setText("Correct: "+correctQ+"/15");
@@ -150,8 +189,8 @@ public class PracticeActivity extends AppCompatActivity {
         F.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                answer=3;
-                if(answer==currentQuestionNumber||answer+7==currentQuestionNumber){
+                answer=19;
+                if(answer==currentQuestionNumber||answer+1==currentQuestionNumber||answer+2==currentQuestionNumber||answer+3==currentQuestionNumber){
                     F.setBackgroundColor(Color.GREEN);
                     correctQ++;
                     correctCount.setText("Correct: "+correctQ+"/15");
@@ -170,8 +209,8 @@ public class PracticeActivity extends AppCompatActivity {
         G.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                answer=4;
-                if(answer==currentQuestionNumber||answer+7==currentQuestionNumber){
+                answer=27;
+                if(answer==currentQuestionNumber||answer+1==currentQuestionNumber){
                     G.setBackgroundColor(Color.GREEN);
                     correctQ++;
                     correctCount.setText("Correct: "+correctQ+"/15");
@@ -190,8 +229,8 @@ public class PracticeActivity extends AppCompatActivity {
         A.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                answer=5;
-                if(answer==currentQuestionNumber||answer+7==currentQuestionNumber){
+                answer=33;
+                if(answer==currentQuestionNumber||answer+1==currentQuestionNumber){
                     A.setBackgroundColor(Color.GREEN);
                     correctQ++;
                     correctCount.setText("Correct: "+correctQ+"/15");
@@ -210,8 +249,8 @@ public class PracticeActivity extends AppCompatActivity {
         B.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                answer=6;
-                if(answer==currentQuestionNumber||answer+7==currentQuestionNumber){
+                answer=40;
+                if(answer==currentQuestionNumber||answer+1==currentQuestionNumber||answer+2==currentQuestionNumber||answer+3==currentQuestionNumber||answer+4==currentQuestionNumber){
                     B.setBackgroundColor(Color.GREEN);
                     correctQ++;
                     correctCount.setText("Correct: "+correctQ+"/15");
@@ -226,7 +265,107 @@ public class PracticeActivity extends AppCompatActivity {
                 }, 2000);
             }
         });
+        Cc=(Button)findViewById(R.id.Cckey);
+        Cc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                answer=5;
+                if(answer==currentQuestionNumber||answer+1==currentQuestionNumber||answer+2==currentQuestionNumber||answer+3==currentQuestionNumber){
+                    Cc.setBackgroundColor(Color.GREEN);
+                    correctQ++;
+                    correctCount.setText("Correct: "+correctQ+"/15");
+                } else Cc.setBackgroundColor(Color.RED);
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        currentQuestionNumber=r.nextInt(questions.length);
+                        questionImg.setImageResource(questions[currentQuestionNumber]);
+                        Cc.setBackgroundResource(R.drawable.blackkey);
+                    }
+                }, 2000);
+            }
+        });
+        Dd=(Button)findViewById(R.id.Ddkey);
+        Dd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                answer=11;
+                if(answer==currentQuestionNumber||answer+1==currentQuestionNumber||answer+2==currentQuestionNumber||answer+3==currentQuestionNumber){
+                    Dd.setBackgroundColor(Color.GREEN);
+                    correctQ++;
+                    correctCount.setText("Correct: "+correctQ+"/15");
+                } else Dd.setBackgroundColor(Color.RED);
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        currentQuestionNumber=r.nextInt(questions.length);
+                        questionImg.setImageResource(questions[currentQuestionNumber]);
+                        Dd.setBackgroundResource(R.drawable.blackkey);
+                    }
+                }, 2000);
+            }
+        });
 
+        Ff=(Button)findViewById(R.id.Ffkey);
+        Ff.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                answer=23;
+                if(answer==currentQuestionNumber||answer+1==currentQuestionNumber||answer+2==currentQuestionNumber||answer+3==currentQuestionNumber){
+                    Ff.setBackgroundColor(Color.GREEN);
+                    correctQ++;
+                    correctCount.setText("Correct: "+correctQ+"/15");
+                } else Ff.setBackgroundColor(Color.RED);
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        currentQuestionNumber=r.nextInt(questions.length);
+                        questionImg.setImageResource(questions[currentQuestionNumber]);
+                        Ff.setBackgroundResource(R.drawable.blackkey);
+                    }
+                }, 2000);
+            }
+        });
+        Gg=(Button)findViewById(R.id.Ggkey);
+        Gg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                answer=29;
+                if(answer==currentQuestionNumber||answer+1==currentQuestionNumber||answer+2==currentQuestionNumber||answer+3==currentQuestionNumber){
+                    Gg.setBackgroundColor(Color.GREEN);
+                    correctQ++;
+                    correctCount.setText("Correct: "+correctQ+"/15");
+                } else Gg.setBackgroundColor(Color.RED);
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        currentQuestionNumber=r.nextInt(questions.length);
+                        questionImg.setImageResource(questions[currentQuestionNumber]);
+                        Gg.setBackgroundResource(R.drawable.blackkey);
+                    }
+                }, 2000);
+            }
+        });
+        Aa=(Button)findViewById(R.id.Aakey);
+        Aa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                answer=35;
+                if(answer==currentQuestionNumber||answer+1==currentQuestionNumber||answer+2==currentQuestionNumber||answer+3==currentQuestionNumber||answer+4==currentQuestionNumber){
+                    Aa.setBackgroundColor(Color.GREEN);
+                    correctQ++;
+                    correctCount.setText("Correct: "+correctQ+"/15");
+                } else Aa.setBackgroundColor(Color.RED);
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        currentQuestionNumber=r.nextInt(questions.length);
+                        questionImg.setImageResource(questions[currentQuestionNumber]);
+                        Aa.setBackgroundResource(R.drawable.blackkey);
+                    }
+                }, 2000);
+            }
+        });
 
     }
 
