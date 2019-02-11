@@ -1,6 +1,8 @@
 package comnicoletangsyinfinite.httpsgithub.infinite;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MenuItem;
 import android.widget.Button;
 import android.os.Bundle;
 import android.Manifest;
@@ -115,8 +117,12 @@ public class RightHandPractice extends AppCompatActivity {
 
         final Button recordButton = (Button)findViewById(R.id.recordButton);
         final Button playRecordButton = (Button)findViewById(R.id.playRecordButton);
+        Button analyzeButton = (Button)findViewById(R.id.analyzeButton);
+        
         Toolbar toolbar = (Toolbar)findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         playRecordButton.setVisibility(View.GONE);
 
@@ -152,7 +158,20 @@ public class RightHandPractice extends AppCompatActivity {
                 mStartPlaying = !mStartPlaying;
             }
         });
+
+        analyzeButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                startAnalyze();
+            }
+        });
     }
+
+    public void startAnalyze(){
+        Intent intent = new Intent(this, RightHandFeedback.class);
+        startActivity(intent);
+    }
+
 
     @Override
     public void onStop() {
@@ -173,5 +192,15 @@ public class RightHandPractice extends AppCompatActivity {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu, menu);
         return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem menuItem) {
+        if (menuItem.getItemId() == android.R.id.home) {
+            Intent intent = new Intent(RightHandPractice.this, RightHandReading.class);
+            startActivity(intent);
+            finish();
+        }
+        return super.onOptionsItemSelected(menuItem);
     }
 }

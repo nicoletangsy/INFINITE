@@ -23,8 +23,8 @@ public class SightReadingMenuActivity extends AppCompatActivity {
 
         Toolbar toolbar = (Toolbar)findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);
-
-
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         lButton.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -53,7 +53,7 @@ public class SightReadingMenuActivity extends AppCompatActivity {
     }
 
     public void openrightHandPracticePage() {
-        Intent intent = new Intent(this, RightHandPractice.class);
+        Intent intent = new Intent(this, RightHandReading.class);
         startActivity(intent);
     }
 
@@ -69,5 +69,14 @@ public class SightReadingMenuActivity extends AppCompatActivity {
         return true;
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem menuItem) {
+        if (menuItem.getItemId() == android.R.id.home) {
+            Intent intent = new Intent(SightReadingMenuActivity.this, MainActivity.class);
+            startActivity(intent);
+            finish();
+        }
+        return super.onOptionsItemSelected(menuItem);
+    }
 
 }
