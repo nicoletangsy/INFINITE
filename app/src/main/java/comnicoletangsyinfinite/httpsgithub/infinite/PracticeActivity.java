@@ -96,34 +96,9 @@ public class PracticeActivity extends AppCompatActivity {
     Button Ff;
     Button Gg;
     Button Aa;
-    public void checkEnd2(){
-        if(total==2){
-            int wrong=(int)total-correctQ;
-            AlertDialog alertDialog = new AlertDialog.Builder(PracticeActivity.this).create();
-            alertDialog.setTitle("Finished!");
-            alertDialog.setMessage("Correct : "+correctQ+"\nWrong : "+wrong+"\nYour accuracy : "+Math.round((correctQ/total)*100)+"%");
-            alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "Back to Main Menu",
-                    new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            Intent intent = new Intent(PracticeActivity.this, MainActivity.class);
-                            startActivity(intent);
-                            finish();
-                        }
-                    });
-            alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "GGGGGGGGGGGGGGGGG",
-                    new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            Intent intent = new Intent(PracticeActivity.this, MainActivity.class);
-                            startActivity(intent);
-                            finish();
-                        }
-                    });
-            alertDialog.show();
-        }
-    }
 
     public void checkEnd(){
-        if(total==2) {
+        if(total==15) {
             int wrong=(int)total-correctQ;
             // setup the alert builder
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
