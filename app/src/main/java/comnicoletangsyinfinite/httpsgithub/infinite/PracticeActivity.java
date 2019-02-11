@@ -14,6 +14,9 @@ import android.widget.TextView;
 import java.util.Random;
 import android.graphics.Color;
 import android.os.Handler;
+import 	android.app.AlertDialog;
+import android.content.DialogInterface;
+
 import org.w3c.dom.Text;
 
 public class PracticeActivity extends AppCompatActivity {
@@ -80,6 +83,7 @@ public class PracticeActivity extends AppCompatActivity {
     int answer;
     int currentQuestionNumber;
     int correctQ=0;
+    double total=0;
     Button C;
     Button D;
     Button E;
@@ -92,7 +96,64 @@ public class PracticeActivity extends AppCompatActivity {
     Button Ff;
     Button Gg;
     Button Aa;
+    public void checkEnd2(){
+        if(total==2){
+            int wrong=(int)total-correctQ;
+            AlertDialog alertDialog = new AlertDialog.Builder(PracticeActivity.this).create();
+            alertDialog.setTitle("Finished!");
+            alertDialog.setMessage("Correct : "+correctQ+"\nWrong : "+wrong+"\nYour accuracy : "+Math.round((correctQ/total)*100)+"%");
+            alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "Back to Main Menu",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            Intent intent = new Intent(PracticeActivity.this, MainActivity.class);
+                            startActivity(intent);
+                            finish();
+                        }
+                    });
+            alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "GGGGGGGGGGGGGGGGG",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            Intent intent = new Intent(PracticeActivity.this, MainActivity.class);
+                            startActivity(intent);
+                            finish();
+                        }
+                    });
+            alertDialog.show();
+        }
+    }
 
+    public void checkEnd(){
+        if(total==2) {
+            int wrong=(int)total-correctQ;
+            // setup the alert builder
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("Finished !");
+            builder.setMessage("Correct : "+correctQ+"\nWrong : "+wrong+"\nYour accuracy : "+Math.round((correctQ/total)*100)+"%");
+
+            // add a button
+            builder.setPositiveButton("Back to Main Menu", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    Intent intent = new Intent(PracticeActivity.this, MainActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
+            });
+            builder.setNegativeButton("Try again", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    Intent intent = new Intent(PracticeActivity.this, PracticeActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
+            });
+
+            // create and show the alert dialog
+            AlertDialog dialog = builder.create();
+            dialog.show();
+        }
+
+    }
 
 
     @Override
@@ -119,19 +180,19 @@ public class PracticeActivity extends AppCompatActivity {
         //need to be change to count the correct answer
         correctCount.setText("Correct:0/15");
 
+
         C=(Button)findViewById(R.id.Ckey);
         C.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                total++;
                 answer=0;
                 if(answer==currentQuestionNumber||answer+1==currentQuestionNumber||answer+2==currentQuestionNumber||answer+3==currentQuestionNumber||answer+4==currentQuestionNumber){
-
                     C.setBackgroundColor(Color.GREEN);
                     correctQ++;
                     correctCount.setText("Correct: "+correctQ+"/15");
                 } else C.setBackgroundColor(Color.RED);
-
-
+                checkEnd();
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
@@ -149,12 +210,14 @@ public class PracticeActivity extends AppCompatActivity {
         D.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                total++;
                 answer=9;
                 if(answer==currentQuestionNumber||answer+1==currentQuestionNumber){
                     D.setBackgroundColor(Color.GREEN);
                     correctQ++;
                     correctCount.setText("Correct: "+correctQ+"/15");
                 } else D.setBackgroundColor(Color.RED);
+                checkEnd();
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
@@ -169,12 +232,14 @@ public class PracticeActivity extends AppCompatActivity {
         E.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                total++;
                 answer=15;
                 if(answer==currentQuestionNumber||answer+1==currentQuestionNumber||answer+2==currentQuestionNumber||answer+3==currentQuestionNumber){
                     E.setBackgroundColor(Color.GREEN);
                     correctQ++;
                     correctCount.setText("Correct: "+correctQ+"/15");
                 } else E.setBackgroundColor(Color.RED);
+                checkEnd();
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
@@ -189,12 +254,14 @@ public class PracticeActivity extends AppCompatActivity {
         F.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                total++;
                 answer=19;
                 if(answer==currentQuestionNumber||answer+1==currentQuestionNumber||answer+2==currentQuestionNumber||answer+3==currentQuestionNumber){
                     F.setBackgroundColor(Color.GREEN);
                     correctQ++;
                     correctCount.setText("Correct: "+correctQ+"/15");
                 } else F.setBackgroundColor(Color.RED);
+                checkEnd();
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
@@ -209,12 +276,14 @@ public class PracticeActivity extends AppCompatActivity {
         G.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                total++;
                 answer=27;
                 if(answer==currentQuestionNumber||answer+1==currentQuestionNumber){
                     G.setBackgroundColor(Color.GREEN);
                     correctQ++;
                     correctCount.setText("Correct: "+correctQ+"/15");
                 } else G.setBackgroundColor(Color.RED);
+                checkEnd();
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
@@ -229,12 +298,14 @@ public class PracticeActivity extends AppCompatActivity {
         A.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                total++;
                 answer=33;
                 if(answer==currentQuestionNumber||answer+1==currentQuestionNumber){
                     A.setBackgroundColor(Color.GREEN);
                     correctQ++;
                     correctCount.setText("Correct: "+correctQ+"/15");
                 } else A.setBackgroundColor(Color.RED);
+                checkEnd();
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
@@ -249,12 +320,14 @@ public class PracticeActivity extends AppCompatActivity {
         B.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                total++;
                 answer=40;
                 if(answer==currentQuestionNumber||answer+1==currentQuestionNumber||answer+2==currentQuestionNumber||answer+3==currentQuestionNumber||answer+4==currentQuestionNumber){
                     B.setBackgroundColor(Color.GREEN);
                     correctQ++;
                     correctCount.setText("Correct: "+correctQ+"/15");
                 } else B.setBackgroundColor(Color.RED);
+                checkEnd();
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
@@ -269,12 +342,14 @@ public class PracticeActivity extends AppCompatActivity {
         Cc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                total++;
                 answer=5;
                 if(answer==currentQuestionNumber||answer+1==currentQuestionNumber||answer+2==currentQuestionNumber||answer+3==currentQuestionNumber){
                     Cc.setBackgroundColor(Color.GREEN);
                     correctQ++;
                     correctCount.setText("Correct: "+correctQ+"/15");
                 } else Cc.setBackgroundColor(Color.RED);
+                checkEnd();
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
@@ -289,12 +364,14 @@ public class PracticeActivity extends AppCompatActivity {
         Dd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                total++;
                 answer=11;
                 if(answer==currentQuestionNumber||answer+1==currentQuestionNumber||answer+2==currentQuestionNumber||answer+3==currentQuestionNumber){
                     Dd.setBackgroundColor(Color.GREEN);
                     correctQ++;
                     correctCount.setText("Correct: "+correctQ+"/15");
                 } else Dd.setBackgroundColor(Color.RED);
+                checkEnd();
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
@@ -310,12 +387,14 @@ public class PracticeActivity extends AppCompatActivity {
         Ff.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                total++;
                 answer=23;
                 if(answer==currentQuestionNumber||answer+1==currentQuestionNumber||answer+2==currentQuestionNumber||answer+3==currentQuestionNumber){
                     Ff.setBackgroundColor(Color.GREEN);
                     correctQ++;
                     correctCount.setText("Correct: "+correctQ+"/15");
                 } else Ff.setBackgroundColor(Color.RED);
+                checkEnd();
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
@@ -330,12 +409,14 @@ public class PracticeActivity extends AppCompatActivity {
         Gg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                total++;
                 answer=29;
                 if(answer==currentQuestionNumber||answer+1==currentQuestionNumber||answer+2==currentQuestionNumber||answer+3==currentQuestionNumber){
                     Gg.setBackgroundColor(Color.GREEN);
                     correctQ++;
                     correctCount.setText("Correct: "+correctQ+"/15");
                 } else Gg.setBackgroundColor(Color.RED);
+                checkEnd();
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
@@ -350,12 +431,14 @@ public class PracticeActivity extends AppCompatActivity {
         Aa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                total++;
                 answer=35;
                 if(answer==currentQuestionNumber||answer+1==currentQuestionNumber||answer+2==currentQuestionNumber||answer+3==currentQuestionNumber||answer+4==currentQuestionNumber){
                     Aa.setBackgroundColor(Color.GREEN);
                     correctQ++;
                     correctCount.setText("Correct: "+correctQ+"/15");
                 } else Aa.setBackgroundColor(Color.RED);
+                checkEnd();
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
