@@ -41,7 +41,8 @@
         <activity
             android:name=".RightHandFeedback"
             android:label="INFINITE"
-            android:screenOrientation="landscape"></activity>
+            android:screenOrientation="landscape" />
+        <activity android:name=".testActivity"></activity>
     </application>
 
 </manifest>
