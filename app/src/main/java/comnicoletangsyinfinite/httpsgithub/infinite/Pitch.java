@@ -10,7 +10,7 @@ public class Pitch {
     }
 
     public String getPitch () {
-        return "Pitch: " + pitch;
+        return "|" + pitch;
     }
 
     public void pitchConverted () {

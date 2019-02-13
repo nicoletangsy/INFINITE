@@ -33,6 +33,15 @@ public class RightHandFeedback extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+        TextView feedback = findViewById(R.id.feedback);
+        String str = "";
+        if (aMusicNotes.getList() == oNotes) {
+            str = "Well Done! You play perfect!";
+        } else {
+            str = "Opps... Some notes play wrongly!";
+        }
+        feedback.setText(str);
     }
 
     @Override
@@ -51,4 +60,5 @@ public class RightHandFeedback extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(menuItem);
     }
+
 }
