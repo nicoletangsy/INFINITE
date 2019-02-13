@@ -1,12 +1,7 @@
 package comnicoletangsyinfinite.httpsgithub.infinite;
 
-import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
-import android.view.MenuItem;
-import android.widget.Button;
-import android.os.Bundle;
 import android.Manifest;
-import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.media.MediaPlayer;
 import android.media.MediaRecorder;
@@ -18,13 +13,20 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.io.IOException;
+
+import be.tarsos.dsp.AudioDispatcher;
+import be.tarsos.dsp.AudioEvent;
+import be.tarsos.dsp.AudioProcessor;
+import be.tarsos.dsp.io.android.AudioDispatcherFactory;
+import be.tarsos.dsp.pitch.PitchDetectionHandler;
+import be.tarsos.dsp.pitch.PitchDetectionResult;
+import be.tarsos.dsp.pitch.PitchProcessor;
 
 public class RightHandPractice extends AppCompatActivity {
     private boolean mStartRecording = true;
@@ -118,6 +120,8 @@ public class RightHandPractice extends AppCompatActivity {
         final Button recordButton = (Button)findViewById(R.id.recordButton);
         final Button playRecordButton = (Button)findViewById(R.id.playRecordButton);
         Button analyzeButton = (Button)findViewById(R.id.analyzeButton);
+        final TextView text2 = (TextView) findViewById(R.id.textView2);
+        text2.setText("Piano sheet animation");
         
         Toolbar toolbar = (Toolbar)findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);
@@ -152,6 +156,25 @@ public class RightHandPractice extends AppCompatActivity {
                 onPlay(mStartPlaying);
                 if (mStartPlaying) {
                     playRecordButton.setBackgroundResource(R.drawable.stopbutton);
+                    AudioDispatcher dispatcher = AudioDispatcherFactory.fromDefaultMicrophone(22050,1024, 0);
+                    PitchDetectionHandler pdh = new PitchDetectionHandler() {
+                        @Override
+                        public void handlePitch(PitchDetectionResult result, AudioEvent e) {
+                            final float pitchInHz = result.getPitch();
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    Pitch pitch = new Pitch(pitchInHz);
+                                    if (pitchInHz > 16 && pitchInHz < 554) {
+                                        text2.setText("" + pitch.getPitch());
+                                    }
+                                }
+                            });
+                        }
+                    };
+                    AudioProcessor p = new PitchProcessor(PitchProcessor.PitchEstimationAlgorithm.FFT_YIN, 22050, 1024, pdh);
+                    dispatcher.addAudioProcessor(p);
+                    new Thread(dispatcher,"Audio Dispatcher").start();
                 } else {
                     playRecordButton.setBackgroundResource(R.drawable.playbutton);
                 }

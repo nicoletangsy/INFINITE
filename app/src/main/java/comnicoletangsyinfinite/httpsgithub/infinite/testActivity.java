@@ -1,7 +1,7 @@
 package comnicoletangsyinfinite.httpsgithub.infinite;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 
 import be.tarsos.dsp.AudioDispatcher;
@@ -19,8 +19,8 @@ public class testActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test);
 
-        AudioDispatcher dispatcher = AudioDispatcherFactory.fromDefaultMicrophone(22050,1024,0);
-
+        String pipe = "";
+        AudioDispatcher dispatcher = AudioDispatcherFactory.fromDefaultMicrophone(22050,1024, 0);
         PitchDetectionHandler pdh = new PitchDetectionHandler() {
             @Override
             public void handlePitch(PitchDetectionResult result, AudioEvent e) {
@@ -30,6 +30,8 @@ public class testActivity extends AppCompatActivity {
                     public void run() {
                         TextView text = (TextView) findViewById(R.id.textView1);
                         text.setText("" + pitchInHz);
+                        TextView text2 = (TextView) findViewById(R.id.textView2);
+                        text2.setText("");
                     }
                 });
             }
