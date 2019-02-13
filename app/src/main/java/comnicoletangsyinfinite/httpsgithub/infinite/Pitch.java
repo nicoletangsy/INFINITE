@@ -15,6 +15,24 @@ public class Pitch {
 
     public void pitchConverted () {
         if (frequencey > 16) {
+            if (frequencey < 294) {
+                pitch = "C4";
+            } else if (frequencey < 330) {
+                pitch = "D4";
+            } else if (frequencey < 349) {
+                pitch = "E4";
+            } else if (frequencey < 370) {
+                pitch = "F4";
+            } else if (frequencey < 415) {
+                pitch = "G4";
+            } else if (frequencey < 466) {
+                pitch = "A4";
+            } else if (frequencey < 523) {
+                pitch = "B4";
+            } else if (frequencey < 554) {
+                pitch = "C5";
+            }
+            /*
             if (frequencey < 278) {
                 pitch = "C4";
             } else if (frequencey < 294) {
@@ -42,6 +60,7 @@ public class Pitch {
             } else if (frequencey < 554) {
                 pitch = "C5";
             }
+            */
         }
     }
 }
