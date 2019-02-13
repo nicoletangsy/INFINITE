@@ -16,12 +16,14 @@ import android.graphics.Color;
 import android.os.Handler;
 import 	android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.os.CountDownTimer;
 
 import org.w3c.dom.Text;
 
 public class PracticeActivity extends AppCompatActivity {
     TextView question;
     TextView correctCount;
+    TextView time;
     ImageView questionImg;
     Handler handler = new Handler();
 
@@ -154,12 +156,28 @@ public class PracticeActivity extends AppCompatActivity {
         correctCount= (TextView) findViewById(R.id.correctCount);
         //need to be change to count the correct answer
         correctCount.setText("Correct:0/15");
+        time= (TextView) findViewById(R.id.time);
 
+        final CountDownTimer myCountDownTimer=new CountDownTimer(5000, 1000) {
 
+            public void onTick(long millisUntilFinished) {
+               time.setText("seconds remaining: " + millisUntilFinished / 1000);
+            }
+
+            public void onFinish() {
+                time.setText("Times up!!");
+                total++;
+                checkEnd();
+                currentQuestionNumber=r.nextInt(questions.length);
+                questionImg.setImageResource(questions[currentQuestionNumber]);
+                this.start();
+            }
+        }.start();
         C=(Button)findViewById(R.id.Ckey);
         C.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                myCountDownTimer.cancel();
                 total++;
                 answer=0;
                 if(answer==currentQuestionNumber||answer+1==currentQuestionNumber||answer+2==currentQuestionNumber||answer+3==currentQuestionNumber||answer+4==currentQuestionNumber){
@@ -174,6 +192,7 @@ public class PracticeActivity extends AppCompatActivity {
                         currentQuestionNumber=r.nextInt(questions.length);
                         questionImg.setImageResource(questions[currentQuestionNumber]);
                         C.setBackgroundResource(R.drawable.whitekey);
+                        myCountDownTimer.start();
                     }
                 }, 2000);
 
@@ -185,6 +204,7 @@ public class PracticeActivity extends AppCompatActivity {
         D.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                myCountDownTimer.cancel();
                 total++;
                 answer=9;
                 if(answer==currentQuestionNumber||answer+1==currentQuestionNumber){
@@ -199,6 +219,7 @@ public class PracticeActivity extends AppCompatActivity {
                         currentQuestionNumber=r.nextInt(questions.length);
                         questionImg.setImageResource(questions[currentQuestionNumber]);
                         D.setBackgroundResource(R.drawable.whitekey);
+                        myCountDownTimer.start();
                     }
                 }, 2000);
             }
@@ -207,6 +228,7 @@ public class PracticeActivity extends AppCompatActivity {
         E.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                myCountDownTimer.cancel();
                 total++;
                 answer=15;
                 if(answer==currentQuestionNumber||answer+1==currentQuestionNumber||answer+2==currentQuestionNumber||answer+3==currentQuestionNumber){
@@ -221,6 +243,7 @@ public class PracticeActivity extends AppCompatActivity {
                         currentQuestionNumber=r.nextInt(questions.length);
                         questionImg.setImageResource(questions[currentQuestionNumber]);
                         E.setBackgroundResource(R.drawable.whitekey);
+                        myCountDownTimer.start();
                     }
                 }, 2000);
             }
@@ -229,6 +252,7 @@ public class PracticeActivity extends AppCompatActivity {
         F.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                myCountDownTimer.cancel();
                 total++;
                 answer=19;
                 if(answer==currentQuestionNumber||answer+1==currentQuestionNumber||answer+2==currentQuestionNumber||answer+3==currentQuestionNumber){
@@ -243,6 +267,7 @@ public class PracticeActivity extends AppCompatActivity {
                         currentQuestionNumber=r.nextInt(questions.length);
                         questionImg.setImageResource(questions[currentQuestionNumber]);
                         F.setBackgroundResource(R.drawable.whitekey);
+                        myCountDownTimer.start();
                     }
                 }, 2000);
             }
@@ -251,6 +276,7 @@ public class PracticeActivity extends AppCompatActivity {
         G.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                myCountDownTimer.cancel();
                 total++;
                 answer=27;
                 if(answer==currentQuestionNumber||answer+1==currentQuestionNumber){
@@ -265,6 +291,7 @@ public class PracticeActivity extends AppCompatActivity {
                         currentQuestionNumber=r.nextInt(questions.length);
                         questionImg.setImageResource(questions[currentQuestionNumber]);
                         G.setBackgroundResource(R.drawable.whitekey);
+                        myCountDownTimer.start();
                     }
                 }, 2000);
             }
@@ -273,6 +300,7 @@ public class PracticeActivity extends AppCompatActivity {
         A.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                myCountDownTimer.cancel();
                 total++;
                 answer=33;
                 if(answer==currentQuestionNumber||answer+1==currentQuestionNumber){
@@ -287,6 +315,7 @@ public class PracticeActivity extends AppCompatActivity {
                         currentQuestionNumber=r.nextInt(questions.length);
                         questionImg.setImageResource(questions[currentQuestionNumber]);
                         A.setBackgroundResource(R.drawable.whitekey);
+                        myCountDownTimer.start();
                     }
                 }, 2000);
             }
@@ -295,6 +324,7 @@ public class PracticeActivity extends AppCompatActivity {
         B.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                myCountDownTimer.cancel();
                 total++;
                 answer=40;
                 if(answer==currentQuestionNumber||answer+1==currentQuestionNumber||answer+2==currentQuestionNumber||answer+3==currentQuestionNumber||answer+4==currentQuestionNumber){
@@ -309,6 +339,7 @@ public class PracticeActivity extends AppCompatActivity {
                         currentQuestionNumber=r.nextInt(questions.length);
                         questionImg.setImageResource(questions[currentQuestionNumber]);
                         B.setBackgroundResource(R.drawable.whitekey);
+                        myCountDownTimer.start();
                     }
                 }, 2000);
             }
@@ -317,6 +348,7 @@ public class PracticeActivity extends AppCompatActivity {
         Cc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                myCountDownTimer.cancel();
                 total++;
                 answer=5;
                 if(answer==currentQuestionNumber||answer+1==currentQuestionNumber||answer+2==currentQuestionNumber||answer+3==currentQuestionNumber){
@@ -331,6 +363,7 @@ public class PracticeActivity extends AppCompatActivity {
                         currentQuestionNumber=r.nextInt(questions.length);
                         questionImg.setImageResource(questions[currentQuestionNumber]);
                         Cc.setBackgroundResource(R.drawable.blackkey);
+                        myCountDownTimer.start();
                     }
                 }, 2000);
             }
@@ -339,6 +372,7 @@ public class PracticeActivity extends AppCompatActivity {
         Dd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                myCountDownTimer.cancel();
                 total++;
                 answer=11;
                 if(answer==currentQuestionNumber||answer+1==currentQuestionNumber||answer+2==currentQuestionNumber||answer+3==currentQuestionNumber){
@@ -353,6 +387,7 @@ public class PracticeActivity extends AppCompatActivity {
                         currentQuestionNumber=r.nextInt(questions.length);
                         questionImg.setImageResource(questions[currentQuestionNumber]);
                         Dd.setBackgroundResource(R.drawable.blackkey);
+                        myCountDownTimer.start();
                     }
                 }, 2000);
             }
@@ -362,6 +397,7 @@ public class PracticeActivity extends AppCompatActivity {
         Ff.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                myCountDownTimer.cancel();
                 total++;
                 answer=23;
                 if(answer==currentQuestionNumber||answer+1==currentQuestionNumber||answer+2==currentQuestionNumber||answer+3==currentQuestionNumber){
@@ -376,6 +412,7 @@ public class PracticeActivity extends AppCompatActivity {
                         currentQuestionNumber=r.nextInt(questions.length);
                         questionImg.setImageResource(questions[currentQuestionNumber]);
                         Ff.setBackgroundResource(R.drawable.blackkey);
+                        myCountDownTimer.start();
                     }
                 }, 2000);
             }
@@ -384,6 +421,7 @@ public class PracticeActivity extends AppCompatActivity {
         Gg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                myCountDownTimer.cancel();
                 total++;
                 answer=29;
                 if(answer==currentQuestionNumber||answer+1==currentQuestionNumber||answer+2==currentQuestionNumber||answer+3==currentQuestionNumber){
@@ -398,6 +436,7 @@ public class PracticeActivity extends AppCompatActivity {
                         currentQuestionNumber=r.nextInt(questions.length);
                         questionImg.setImageResource(questions[currentQuestionNumber]);
                         Gg.setBackgroundResource(R.drawable.blackkey);
+                        myCountDownTimer.start();
                     }
                 }, 2000);
             }
@@ -406,6 +445,7 @@ public class PracticeActivity extends AppCompatActivity {
         Aa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                myCountDownTimer.cancel();
                 total++;
                 answer=35;
                 if(answer==currentQuestionNumber||answer+1==currentQuestionNumber||answer+2==currentQuestionNumber||answer+3==currentQuestionNumber||answer+4==currentQuestionNumber){
@@ -420,6 +460,7 @@ public class PracticeActivity extends AppCompatActivity {
                         currentQuestionNumber=r.nextInt(questions.length);
                         questionImg.setImageResource(questions[currentQuestionNumber]);
                         Aa.setBackgroundResource(R.drawable.blackkey);
+                        myCountDownTimer.start();
                     }
                 }, 2000);
             }
