@@ -160,7 +160,7 @@ public class RightHandPractice extends AppCompatActivity {
                 if (mStartPlaying) {
                     playRecordButton.setBackgroundResource(R.drawable.stopbutton);
 
-                    AudioDispatcher dispatcher = AudioDispatcherFactory.fromDefaultMicrophone(22050,1024, 0);
+                    AudioDispatcher dispatcher = AudioDispatcherFactory.fromDefaultMicrophone(22050,1024, 512);
                     PitchDetectionHandler pdh = new PitchDetectionHandler() {
                         @Override
                         public void handlePitch(PitchDetectionResult result, AudioEvent e) {
@@ -175,7 +175,7 @@ public class RightHandPractice extends AppCompatActivity {
                             }
                         }
                     };
-                    AudioProcessor p = new PitchProcessor(PitchProcessor.PitchEstimationAlgorithm.FFT_YIN, 22050, 1024, pdh);
+                    AudioProcessor p = new PitchProcessor(PitchProcessor.PitchEstimationAlgorithm.YIN, 22050, 1024, pdh);
                     dispatcher.addAudioProcessor(p);
                     new Thread(dispatcher,"Audio Dispatcher").start();
                 } else {

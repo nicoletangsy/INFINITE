@@ -24,10 +24,10 @@ public class RightHandFeedback extends AppCompatActivity {
         Button nextPageButton = findViewById(R.id.nextPageButton);
         TextView pageNubmer = findViewById(R.id.pageNumber);
         TextView original = findViewById(R.id.original2);
-        String oNotes = "E4 D4 C4 D4 E4 G4 A4 F4 C5 B4 A4 G4 F4 E4 B4 C4 ";
+        String oNotes = "E4 D4 C4 D4 E4 G4 A4 F4 C5 B4 A4 G4 F4 E4 D4 C4 ";
         original.setText("" + oNotes);
         TextView result = findViewById(R.id.result2);
-        result.setText("result: " + aMusicNotes.getList());
+        result.setText(aMusicNotes.getList());
 
         Toolbar toolbar = (Toolbar)findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);
