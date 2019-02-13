@@ -2,18 +2,17 @@ package comnicoletangsyinfinite.httpsgithub.infinite;
 
 public class Pitch {
     String pitch = "";
-    float frequencey;
 
-    public Pitch(float pitchInHz) {
+    /*public Pitch(float pitchInHz) {
         frequencey = pitchInHz;
         pitchConverted();
-    }
+    }*/
 
     public String getPitch () {
         return "" + pitch;
     }
 
-    public void pitchConverted () {
+    public void pitchConverted (float frequencey) {
         if (frequencey > 16) {
             if (frequencey < 294) {
                 pitch = "C4";

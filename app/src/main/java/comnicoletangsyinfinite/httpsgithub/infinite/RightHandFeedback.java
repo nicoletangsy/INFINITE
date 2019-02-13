@@ -36,7 +36,7 @@ public class RightHandFeedback extends AppCompatActivity {
 
         TextView feedback = findViewById(R.id.feedback);
         String str = "";
-        if (aMusicNotes.getList() == oNotes) {
+        if (oNotes.equals(aMusicNotes.getList())) {
             str = "Well Done! You play perfect!";
         } else {
             str = "Opps... Some notes play wrongly!";
