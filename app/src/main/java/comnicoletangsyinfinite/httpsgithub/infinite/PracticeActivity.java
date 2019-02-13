@@ -132,6 +132,10 @@ public class PracticeActivity extends AppCompatActivity {
 
     }
 
+    public void updateQ(){
+        correctCount.setText("Question:"+(int)(total+1)+"/15");
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -155,7 +159,7 @@ public class PracticeActivity extends AppCompatActivity {
 
         correctCount= (TextView) findViewById(R.id.correctCount);
         //need to be change to count the correct answer
-        correctCount.setText("Correct:0/15");
+        correctCount.setText("Question:1/15");
         time= (TextView) findViewById(R.id.time);
 
         final CountDownTimer myCountDownTimer=new CountDownTimer(5000, 1000) {
@@ -167,6 +171,7 @@ public class PracticeActivity extends AppCompatActivity {
             public void onFinish() {
                 time.setText("Times up!!");
                 total++;
+                updateQ();
                 checkEnd();
                 currentQuestionNumber=r.nextInt(questions.length);
                 questionImg.setImageResource(questions[currentQuestionNumber]);
@@ -183,12 +188,12 @@ public class PracticeActivity extends AppCompatActivity {
                 if(answer==currentQuestionNumber||answer+1==currentQuestionNumber||answer+2==currentQuestionNumber||answer+3==currentQuestionNumber||answer+4==currentQuestionNumber){
                     C.setBackgroundColor(Color.GREEN);
                     correctQ++;
-                    correctCount.setText("Correct: "+correctQ+"/15");
                 } else C.setBackgroundColor(Color.RED);
                 checkEnd();
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
+                        updateQ();
                         currentQuestionNumber=r.nextInt(questions.length);
                         questionImg.setImageResource(questions[currentQuestionNumber]);
                         C.setBackgroundResource(R.drawable.whitekey);
@@ -210,12 +215,12 @@ public class PracticeActivity extends AppCompatActivity {
                 if(answer==currentQuestionNumber||answer+1==currentQuestionNumber){
                     D.setBackgroundColor(Color.GREEN);
                     correctQ++;
-                    correctCount.setText("Correct: "+correctQ+"/15");
                 } else D.setBackgroundColor(Color.RED);
                 checkEnd();
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
+                        updateQ();
                         currentQuestionNumber=r.nextInt(questions.length);
                         questionImg.setImageResource(questions[currentQuestionNumber]);
                         D.setBackgroundResource(R.drawable.whitekey);
@@ -234,12 +239,12 @@ public class PracticeActivity extends AppCompatActivity {
                 if(answer==currentQuestionNumber||answer+1==currentQuestionNumber||answer+2==currentQuestionNumber||answer+3==currentQuestionNumber){
                     E.setBackgroundColor(Color.GREEN);
                     correctQ++;
-                    correctCount.setText("Correct: "+correctQ+"/15");
                 } else E.setBackgroundColor(Color.RED);
                 checkEnd();
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
+                        updateQ();
                         currentQuestionNumber=r.nextInt(questions.length);
                         questionImg.setImageResource(questions[currentQuestionNumber]);
                         E.setBackgroundResource(R.drawable.whitekey);
@@ -258,12 +263,12 @@ public class PracticeActivity extends AppCompatActivity {
                 if(answer==currentQuestionNumber||answer+1==currentQuestionNumber||answer+2==currentQuestionNumber||answer+3==currentQuestionNumber){
                     F.setBackgroundColor(Color.GREEN);
                     correctQ++;
-                    correctCount.setText("Correct: "+correctQ+"/15");
                 } else F.setBackgroundColor(Color.RED);
                 checkEnd();
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
+                        updateQ();
                         currentQuestionNumber=r.nextInt(questions.length);
                         questionImg.setImageResource(questions[currentQuestionNumber]);
                         F.setBackgroundResource(R.drawable.whitekey);
@@ -282,12 +287,12 @@ public class PracticeActivity extends AppCompatActivity {
                 if(answer==currentQuestionNumber||answer+1==currentQuestionNumber){
                     G.setBackgroundColor(Color.GREEN);
                     correctQ++;
-                    correctCount.setText("Correct: "+correctQ+"/15");
                 } else G.setBackgroundColor(Color.RED);
                 checkEnd();
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
+                        updateQ();
                         currentQuestionNumber=r.nextInt(questions.length);
                         questionImg.setImageResource(questions[currentQuestionNumber]);
                         G.setBackgroundResource(R.drawable.whitekey);
@@ -306,12 +311,12 @@ public class PracticeActivity extends AppCompatActivity {
                 if(answer==currentQuestionNumber||answer+1==currentQuestionNumber){
                     A.setBackgroundColor(Color.GREEN);
                     correctQ++;
-                    correctCount.setText("Correct: "+correctQ+"/15");
                 } else A.setBackgroundColor(Color.RED);
                 checkEnd();
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
+                        updateQ();
                         currentQuestionNumber=r.nextInt(questions.length);
                         questionImg.setImageResource(questions[currentQuestionNumber]);
                         A.setBackgroundResource(R.drawable.whitekey);
@@ -330,12 +335,12 @@ public class PracticeActivity extends AppCompatActivity {
                 if(answer==currentQuestionNumber||answer+1==currentQuestionNumber||answer+2==currentQuestionNumber||answer+3==currentQuestionNumber||answer+4==currentQuestionNumber){
                     B.setBackgroundColor(Color.GREEN);
                     correctQ++;
-                    correctCount.setText("Correct: "+correctQ+"/15");
                 } else B.setBackgroundColor(Color.RED);
                 checkEnd();
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
+                        updateQ();
                         currentQuestionNumber=r.nextInt(questions.length);
                         questionImg.setImageResource(questions[currentQuestionNumber]);
                         B.setBackgroundResource(R.drawable.whitekey);
@@ -354,12 +359,12 @@ public class PracticeActivity extends AppCompatActivity {
                 if(answer==currentQuestionNumber||answer+1==currentQuestionNumber||answer+2==currentQuestionNumber||answer+3==currentQuestionNumber){
                     Cc.setBackgroundColor(Color.GREEN);
                     correctQ++;
-                    correctCount.setText("Correct: "+correctQ+"/15");
                 } else Cc.setBackgroundColor(Color.RED);
                 checkEnd();
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
+                        updateQ();
                         currentQuestionNumber=r.nextInt(questions.length);
                         questionImg.setImageResource(questions[currentQuestionNumber]);
                         Cc.setBackgroundResource(R.drawable.blackkey);
@@ -378,12 +383,12 @@ public class PracticeActivity extends AppCompatActivity {
                 if(answer==currentQuestionNumber||answer+1==currentQuestionNumber||answer+2==currentQuestionNumber||answer+3==currentQuestionNumber){
                     Dd.setBackgroundColor(Color.GREEN);
                     correctQ++;
-                    correctCount.setText("Correct: "+correctQ+"/15");
                 } else Dd.setBackgroundColor(Color.RED);
                 checkEnd();
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
+                        updateQ();
                         currentQuestionNumber=r.nextInt(questions.length);
                         questionImg.setImageResource(questions[currentQuestionNumber]);
                         Dd.setBackgroundResource(R.drawable.blackkey);
@@ -403,12 +408,12 @@ public class PracticeActivity extends AppCompatActivity {
                 if(answer==currentQuestionNumber||answer+1==currentQuestionNumber||answer+2==currentQuestionNumber||answer+3==currentQuestionNumber){
                     Ff.setBackgroundColor(Color.GREEN);
                     correctQ++;
-                    correctCount.setText("Correct: "+correctQ+"/15");
                 } else Ff.setBackgroundColor(Color.RED);
                 checkEnd();
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
+                        updateQ();
                         currentQuestionNumber=r.nextInt(questions.length);
                         questionImg.setImageResource(questions[currentQuestionNumber]);
                         Ff.setBackgroundResource(R.drawable.blackkey);
@@ -427,12 +432,12 @@ public class PracticeActivity extends AppCompatActivity {
                 if(answer==currentQuestionNumber||answer+1==currentQuestionNumber||answer+2==currentQuestionNumber||answer+3==currentQuestionNumber){
                     Gg.setBackgroundColor(Color.GREEN);
                     correctQ++;
-                    correctCount.setText("Correct: "+correctQ+"/15");
                 } else Gg.setBackgroundColor(Color.RED);
                 checkEnd();
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
+                        updateQ();
                         currentQuestionNumber=r.nextInt(questions.length);
                         questionImg.setImageResource(questions[currentQuestionNumber]);
                         Gg.setBackgroundResource(R.drawable.blackkey);
@@ -451,12 +456,12 @@ public class PracticeActivity extends AppCompatActivity {
                 if(answer==currentQuestionNumber||answer+1==currentQuestionNumber||answer+2==currentQuestionNumber||answer+3==currentQuestionNumber||answer+4==currentQuestionNumber){
                     Aa.setBackgroundColor(Color.GREEN);
                     correctQ++;
-                    correctCount.setText("Correct: "+correctQ+"/15");
                 } else Aa.setBackgroundColor(Color.RED);
                 checkEnd();
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
+                        updateQ();
                         currentQuestionNumber=r.nextInt(questions.length);
                         questionImg.setImageResource(questions[currentQuestionNumber]);
                         Aa.setBackgroundResource(R.drawable.blackkey);
