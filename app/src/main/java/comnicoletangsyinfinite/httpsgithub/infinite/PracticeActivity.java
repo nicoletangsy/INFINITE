@@ -427,12 +427,6 @@ public class PracticeActivity extends AppCompatActivity {
 
     }
 
-    //To Do
-    //random ask 15 question
-    //change piano key to green if correct
-    //change piano key to red and show the correct answer on green
-    //endButton end game even not answering 15 questions
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
         MenuInflater inflater = getMenuInflater();
