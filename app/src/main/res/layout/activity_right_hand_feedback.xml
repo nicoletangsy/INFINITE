@@ -30,25 +30,25 @@
             android:id="@+id/original"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="3.25"
+            android:layout_weight="0.75"
+            android:gravity="center_horizontal"
             android:text="Original Music Sheet: "
-            android:textSize="20dp"
-            android:gravity="center"/>
+            android:textSize="20dp" />
 
         <TextView
             android:id="@+id/original2"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="3.25"
-            android:text=""
-            android:textSize="20dp"
-            android:gravity="center"/>
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="original2"
+            android:textSize="20dp" />
 
         <TextView
             android:id="@+id/result"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="3.25"
+            android:layout_weight="0.5"
             android:text="Your Result: "
             android:textSize="20dp"
             android:gravity="center"/>
@@ -57,22 +57,19 @@
             android:id="@+id/result2"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="3.25"
+            android:layout_weight="1.25"
             android:text=""
             android:textSize="20dp"
             android:gravity="center"/>
 
-        <android.support.v4.widget.Space
+        <TextView
+            android:id="@+id/feedback"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="0.5" />
-
-
-        <android.support.v4.widget.Space
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.5" />
-
+            android:layout_weight="1"
+            android:text=""
+            android:textSize="20dp"
+            android:gravity="center"/>
 
 
         <LinearLayout
