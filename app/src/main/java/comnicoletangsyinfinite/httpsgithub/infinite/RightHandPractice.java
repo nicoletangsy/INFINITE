@@ -16,7 +16,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 
 import java.io.IOException;
 
@@ -29,6 +28,7 @@ import be.tarsos.dsp.pitch.PitchDetectionResult;
 import be.tarsos.dsp.pitch.PitchProcessor;
 
 public class RightHandPractice extends AppCompatActivity {
+    public static final MusicNotes aMusicNotes = new MusicNotes();
     private boolean mStartRecording = true;
     private boolean mStartPlaying = true;
     private static final String LOG_TAG = "AudioRecordTest";
@@ -120,8 +120,8 @@ public class RightHandPractice extends AppCompatActivity {
         final Button recordButton = (Button)findViewById(R.id.recordButton);
         final Button playRecordButton = (Button)findViewById(R.id.playRecordButton);
         Button analyzeButton = (Button)findViewById(R.id.analyzeButton);
-        final TextView text2 = (TextView) findViewById(R.id.textView2);
-        text2.setText("Piano sheet animation");
+        //final TextView text2 = (TextView) findViewById(R.id.textView2);
+        //text2.setText("Piano sheet animation");
         
         Toolbar toolbar = (Toolbar)findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);
@@ -165,8 +165,15 @@ public class RightHandPractice extends AppCompatActivity {
                                 @Override
                                 public void run() {
                                     Pitch pitch = new Pitch(pitchInHz);
-                                    if (pitchInHz > 16 && pitchInHz < 554) {
-                                        text2.setText("" + pitch.getPitch());
+                                    String prevPitch = "";
+                                    String curPitch = "";
+                                    if (pitchInHz > 247 && pitchInHz < 554) {
+                                        //text2.setText("" + pitch.getPitch());
+                                        curPitch = pitch.getPitch();
+                                        if (prevPitch == null || prevPitch != curPitch) {
+                                            aMusicNotes.addNotes(curPitch);
+                                            prevPitch = curPitch;
+                                        }
                                     }
                                 }
                             });

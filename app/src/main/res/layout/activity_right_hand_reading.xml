@@ -34,13 +34,20 @@
             android:layout_height="0dp"
             android:layout_weight="0.5" />
 
+        <ImageView
+            android:id="@+id/musicsheet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:src="@drawable/musicsheet1"/>
+
         <TextView
             android:id="@+id/textView2"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="3.25"
-            android:text="Piano sheet"
-            android:textSize="100dp"
+            android:text="Preview"
+            android:textSize="60dp"
             android:gravity="center"/>
 
         <android.support.v4.widget.Space

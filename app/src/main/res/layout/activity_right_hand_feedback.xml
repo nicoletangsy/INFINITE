@@ -26,19 +26,47 @@
             android:layout_height="0dp"
             android:layout_weight="0.75"></include>
 
+        <TextView
+            android:id="@+id/original"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="3.25"
+            android:text="Original Music Sheet: "
+            android:textSize="20dp"
+            android:gravity="center"/>
+
+        <TextView
+            android:id="@+id/original2"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="3.25"
+            android:text=""
+            android:textSize="20dp"
+            android:gravity="center"/>
+
+        <TextView
+            android:id="@+id/result"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="3.25"
+            android:text="Your Result: "
+            android:textSize="20dp"
+            android:gravity="center"/>
+
+        <TextView
+            android:id="@+id/result2"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="3.25"
+            android:text=""
+            android:textSize="20dp"
+            android:gravity="center"/>
+
         <android.support.v4.widget.Space
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="0.5" />
 
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="3.25"
-            android:text="Piano sheet"
-            android:textSize="100dp"
-            android:gravity="center"/>
 
         <android.support.v4.widget.Space
             android:layout_width="match_parent"

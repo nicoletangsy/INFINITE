@@ -10,6 +10,8 @@ import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.TextView;
 
+import static comnicoletangsyinfinite.httpsgithub.infinite.RightHandPractice.aMusicNotes;
+
 public class RightHandFeedback extends AppCompatActivity {
 
     @Override
@@ -21,6 +23,11 @@ public class RightHandFeedback extends AppCompatActivity {
         Button previousPageButton = findViewById(R.id.previousPageButton);
         Button nextPageButton = findViewById(R.id.nextPageButton);
         TextView pageNubmer = findViewById(R.id.pageNumber);
+        TextView original = findViewById(R.id.original2);
+        String oNotes = "E4 D4 C4 D4 E4 E4 E4 E4 D4 D4 D4 D4 E4 G4 G4 G4 ";
+        original.setText("" + oNotes);
+        TextView result = findViewById(R.id.result2);
+        result.setText("result: " + aMusicNotes.getList());
 
         Toolbar toolbar = (Toolbar)findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);
