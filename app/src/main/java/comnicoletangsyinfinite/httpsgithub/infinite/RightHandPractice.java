@@ -16,6 +16,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import java.io.IOException;
 
@@ -34,6 +35,8 @@ public class RightHandPractice extends AppCompatActivity {
     private static final String LOG_TAG = "AudioRecordTest";
     private static final int REQUEST_RECORD_AUDIO_PERMISSION = 200;
     private static String mFileName = null;
+    public String prevPitch = "";
+    public String curPitch = "";
 
     //private RecordButton mRecordButton = null;
     private MediaRecorder mRecorder = null;
@@ -156,30 +159,23 @@ public class RightHandPractice extends AppCompatActivity {
                 onPlay(mStartPlaying);
                 if (mStartPlaying) {
                     playRecordButton.setBackgroundResource(R.drawable.stopbutton);
-                    AudioDispatcher dispatcher = AudioDispatcherFactory.fromDefaultMicrophone(22050,1024, 0);
+
+                    AudioDispatcher dispatcher = AudioDispatcherFactory.fromDefaultMicrophone(22050,2048, 0);
                     PitchDetectionHandler pdh = new PitchDetectionHandler() {
                         @Override
                         public void handlePitch(PitchDetectionResult result, AudioEvent e) {
                             final float pitchInHz = result.getPitch();
-                            runOnUiThread(new Runnable() {
-                                @Override
-                                public void run() {
-                                    Pitch pitch = new Pitch(pitchInHz);
-                                    String prevPitch = "";
-                                    String curPitch = "";
-                                    if (pitchInHz > 247 && pitchInHz < 554) {
-                                        //text2.setText("" + pitch.getPitch());
-                                        curPitch = pitch.getPitch();
-                                        if (prevPitch == null || prevPitch != curPitch) {
-                                            aMusicNotes.addNotes(curPitch);
-                                            prevPitch = curPitch;
-                                        }
-                                    }
-                                }
-                            });
+                            final Pitch pitch = new Pitch();
+                            pitch.pitchConverted(pitchInHz);
+                            curPitch = pitch.getPitch();
+                            if ((prevPitch.equals("") || !curPitch.equals(prevPitch)) && !curPitch.equals("")) {
+                                aMusicNotes.addNotes(curPitch);
+                                prevPitch = curPitch;
+                                //text2.setText("added: curPitch: " + curPitch + ", prevPitch: " + prevPitch);
+                            }
                         }
                     };
-                    AudioProcessor p = new PitchProcessor(PitchProcessor.PitchEstimationAlgorithm.FFT_YIN, 22050, 1024, pdh);
+                    AudioProcessor p = new PitchProcessor(PitchProcessor.PitchEstimationAlgorithm.AMDF, 22050, 2048, pdh);
                     dispatcher.addAudioProcessor(p);
                     new Thread(dispatcher,"Audio Dispatcher").start();
                 } else {

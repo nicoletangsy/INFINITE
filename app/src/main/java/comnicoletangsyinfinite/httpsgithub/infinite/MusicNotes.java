@@ -8,7 +8,7 @@ public class MusicNotes {
     public String getList() {
         String list = "";
         for (int i=0; i<Notes.size(); i++) {
-            list = list + Notes.get(i);
+            list = list + Notes.get(i) + " ";
         }
         return list;
     }

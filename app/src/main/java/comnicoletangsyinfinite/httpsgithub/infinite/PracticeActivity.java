@@ -16,12 +16,14 @@ import android.graphics.Color;
 import android.os.Handler;
 import 	android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.os.CountDownTimer;
 
 import org.w3c.dom.Text;
 
 public class PracticeActivity extends AppCompatActivity {
     TextView question;
     TextView correctCount;
+    TextView time;
     ImageView questionImg;
     Handler handler = new Handler();
 
@@ -130,6 +132,10 @@ public class PracticeActivity extends AppCompatActivity {
 
     }
 
+    public void updateQ(){
+        correctCount.setText("Question:"+(int)(total+1)+"/15");
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -153,27 +159,45 @@ public class PracticeActivity extends AppCompatActivity {
 
         correctCount= (TextView) findViewById(R.id.correctCount);
         //need to be change to count the correct answer
-        correctCount.setText("Correct:0/15");
+        correctCount.setText("Question:1/15");
+        time= (TextView) findViewById(R.id.time);
 
+        final CountDownTimer myCountDownTimer=new CountDownTimer(5000, 1000) {
 
+            public void onTick(long millisUntilFinished) {
+               time.setText("seconds remaining: " + millisUntilFinished / 1000);
+            }
+
+            public void onFinish() {
+                time.setText("Times up!!");
+                total++;
+                updateQ();
+                checkEnd();
+                currentQuestionNumber=r.nextInt(questions.length);
+                questionImg.setImageResource(questions[currentQuestionNumber]);
+                this.start();
+            }
+        }.start();
         C=(Button)findViewById(R.id.Ckey);
         C.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                myCountDownTimer.cancel();
                 total++;
                 answer=0;
                 if(answer==currentQuestionNumber||answer+1==currentQuestionNumber||answer+2==currentQuestionNumber||answer+3==currentQuestionNumber||answer+4==currentQuestionNumber){
                     C.setBackgroundColor(Color.GREEN);
                     correctQ++;
-                    correctCount.setText("Correct: "+correctQ+"/15");
                 } else C.setBackgroundColor(Color.RED);
                 checkEnd();
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
+                        updateQ();
                         currentQuestionNumber=r.nextInt(questions.length);
                         questionImg.setImageResource(questions[currentQuestionNumber]);
                         C.setBackgroundResource(R.drawable.whitekey);
+                        myCountDownTimer.start();
                     }
                 }, 2000);
 
@@ -185,20 +209,22 @@ public class PracticeActivity extends AppCompatActivity {
         D.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                myCountDownTimer.cancel();
                 total++;
                 answer=9;
                 if(answer==currentQuestionNumber||answer+1==currentQuestionNumber){
                     D.setBackgroundColor(Color.GREEN);
                     correctQ++;
-                    correctCount.setText("Correct: "+correctQ+"/15");
                 } else D.setBackgroundColor(Color.RED);
                 checkEnd();
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
+                        updateQ();
                         currentQuestionNumber=r.nextInt(questions.length);
                         questionImg.setImageResource(questions[currentQuestionNumber]);
                         D.setBackgroundResource(R.drawable.whitekey);
+                        myCountDownTimer.start();
                     }
                 }, 2000);
             }
@@ -207,20 +233,22 @@ public class PracticeActivity extends AppCompatActivity {
         E.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                myCountDownTimer.cancel();
                 total++;
                 answer=15;
                 if(answer==currentQuestionNumber||answer+1==currentQuestionNumber||answer+2==currentQuestionNumber||answer+3==currentQuestionNumber){
                     E.setBackgroundColor(Color.GREEN);
                     correctQ++;
-                    correctCount.setText("Correct: "+correctQ+"/15");
                 } else E.setBackgroundColor(Color.RED);
                 checkEnd();
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
+                        updateQ();
                         currentQuestionNumber=r.nextInt(questions.length);
                         questionImg.setImageResource(questions[currentQuestionNumber]);
                         E.setBackgroundResource(R.drawable.whitekey);
+                        myCountDownTimer.start();
                     }
                 }, 2000);
             }
@@ -229,20 +257,22 @@ public class PracticeActivity extends AppCompatActivity {
         F.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                myCountDownTimer.cancel();
                 total++;
                 answer=19;
                 if(answer==currentQuestionNumber||answer+1==currentQuestionNumber||answer+2==currentQuestionNumber||answer+3==currentQuestionNumber){
                     F.setBackgroundColor(Color.GREEN);
                     correctQ++;
-                    correctCount.setText("Correct: "+correctQ+"/15");
                 } else F.setBackgroundColor(Color.RED);
                 checkEnd();
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
+                        updateQ();
                         currentQuestionNumber=r.nextInt(questions.length);
                         questionImg.setImageResource(questions[currentQuestionNumber]);
                         F.setBackgroundResource(R.drawable.whitekey);
+                        myCountDownTimer.start();
                     }
                 }, 2000);
             }
@@ -251,20 +281,22 @@ public class PracticeActivity extends AppCompatActivity {
         G.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                myCountDownTimer.cancel();
                 total++;
                 answer=27;
                 if(answer==currentQuestionNumber||answer+1==currentQuestionNumber){
                     G.setBackgroundColor(Color.GREEN);
                     correctQ++;
-                    correctCount.setText("Correct: "+correctQ+"/15");
                 } else G.setBackgroundColor(Color.RED);
                 checkEnd();
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
+                        updateQ();
                         currentQuestionNumber=r.nextInt(questions.length);
                         questionImg.setImageResource(questions[currentQuestionNumber]);
                         G.setBackgroundResource(R.drawable.whitekey);
+                        myCountDownTimer.start();
                     }
                 }, 2000);
             }
@@ -273,20 +305,22 @@ public class PracticeActivity extends AppCompatActivity {
         A.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                myCountDownTimer.cancel();
                 total++;
                 answer=33;
                 if(answer==currentQuestionNumber||answer+1==currentQuestionNumber){
                     A.setBackgroundColor(Color.GREEN);
                     correctQ++;
-                    correctCount.setText("Correct: "+correctQ+"/15");
                 } else A.setBackgroundColor(Color.RED);
                 checkEnd();
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
+                        updateQ();
                         currentQuestionNumber=r.nextInt(questions.length);
                         questionImg.setImageResource(questions[currentQuestionNumber]);
                         A.setBackgroundResource(R.drawable.whitekey);
+                        myCountDownTimer.start();
                     }
                 }, 2000);
             }
@@ -295,20 +329,22 @@ public class PracticeActivity extends AppCompatActivity {
         B.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                myCountDownTimer.cancel();
                 total++;
                 answer=40;
                 if(answer==currentQuestionNumber||answer+1==currentQuestionNumber||answer+2==currentQuestionNumber||answer+3==currentQuestionNumber||answer+4==currentQuestionNumber){
                     B.setBackgroundColor(Color.GREEN);
                     correctQ++;
-                    correctCount.setText("Correct: "+correctQ+"/15");
                 } else B.setBackgroundColor(Color.RED);
                 checkEnd();
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
+                        updateQ();
                         currentQuestionNumber=r.nextInt(questions.length);
                         questionImg.setImageResource(questions[currentQuestionNumber]);
                         B.setBackgroundResource(R.drawable.whitekey);
+                        myCountDownTimer.start();
                     }
                 }, 2000);
             }
@@ -317,20 +353,22 @@ public class PracticeActivity extends AppCompatActivity {
         Cc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                myCountDownTimer.cancel();
                 total++;
                 answer=5;
                 if(answer==currentQuestionNumber||answer+1==currentQuestionNumber||answer+2==currentQuestionNumber||answer+3==currentQuestionNumber){
                     Cc.setBackgroundColor(Color.GREEN);
                     correctQ++;
-                    correctCount.setText("Correct: "+correctQ+"/15");
                 } else Cc.setBackgroundColor(Color.RED);
                 checkEnd();
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
+                        updateQ();
                         currentQuestionNumber=r.nextInt(questions.length);
                         questionImg.setImageResource(questions[currentQuestionNumber]);
                         Cc.setBackgroundResource(R.drawable.blackkey);
+                        myCountDownTimer.start();
                     }
                 }, 2000);
             }
@@ -339,20 +377,22 @@ public class PracticeActivity extends AppCompatActivity {
         Dd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                myCountDownTimer.cancel();
                 total++;
                 answer=11;
                 if(answer==currentQuestionNumber||answer+1==currentQuestionNumber||answer+2==currentQuestionNumber||answer+3==currentQuestionNumber){
                     Dd.setBackgroundColor(Color.GREEN);
                     correctQ++;
-                    correctCount.setText("Correct: "+correctQ+"/15");
                 } else Dd.setBackgroundColor(Color.RED);
                 checkEnd();
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
+                        updateQ();
                         currentQuestionNumber=r.nextInt(questions.length);
                         questionImg.setImageResource(questions[currentQuestionNumber]);
                         Dd.setBackgroundResource(R.drawable.blackkey);
+                        myCountDownTimer.start();
                     }
                 }, 2000);
             }
@@ -362,20 +402,22 @@ public class PracticeActivity extends AppCompatActivity {
         Ff.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                myCountDownTimer.cancel();
                 total++;
                 answer=23;
                 if(answer==currentQuestionNumber||answer+1==currentQuestionNumber||answer+2==currentQuestionNumber||answer+3==currentQuestionNumber){
                     Ff.setBackgroundColor(Color.GREEN);
                     correctQ++;
-                    correctCount.setText("Correct: "+correctQ+"/15");
                 } else Ff.setBackgroundColor(Color.RED);
                 checkEnd();
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
+                        updateQ();
                         currentQuestionNumber=r.nextInt(questions.length);
                         questionImg.setImageResource(questions[currentQuestionNumber]);
                         Ff.setBackgroundResource(R.drawable.blackkey);
+                        myCountDownTimer.start();
                     }
                 }, 2000);
             }
@@ -384,20 +426,22 @@ public class PracticeActivity extends AppCompatActivity {
         Gg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                myCountDownTimer.cancel();
                 total++;
                 answer=29;
                 if(answer==currentQuestionNumber||answer+1==currentQuestionNumber||answer+2==currentQuestionNumber||answer+3==currentQuestionNumber){
                     Gg.setBackgroundColor(Color.GREEN);
                     correctQ++;
-                    correctCount.setText("Correct: "+correctQ+"/15");
                 } else Gg.setBackgroundColor(Color.RED);
                 checkEnd();
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
+                        updateQ();
                         currentQuestionNumber=r.nextInt(questions.length);
                         questionImg.setImageResource(questions[currentQuestionNumber]);
                         Gg.setBackgroundResource(R.drawable.blackkey);
+                        myCountDownTimer.start();
                     }
                 }, 2000);
             }
@@ -406,20 +450,22 @@ public class PracticeActivity extends AppCompatActivity {
         Aa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                myCountDownTimer.cancel();
                 total++;
                 answer=35;
                 if(answer==currentQuestionNumber||answer+1==currentQuestionNumber||answer+2==currentQuestionNumber||answer+3==currentQuestionNumber||answer+4==currentQuestionNumber){
                     Aa.setBackgroundColor(Color.GREEN);
                     correctQ++;
-                    correctCount.setText("Correct: "+correctQ+"/15");
                 } else Aa.setBackgroundColor(Color.RED);
                 checkEnd();
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
+                        updateQ();
                         currentQuestionNumber=r.nextInt(questions.length);
                         questionImg.setImageResource(questions[currentQuestionNumber]);
                         Aa.setBackgroundResource(R.drawable.blackkey);
+                        myCountDownTimer.start();
                     }
                 }, 2000);
             }
