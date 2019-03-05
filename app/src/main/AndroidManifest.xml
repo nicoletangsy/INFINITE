@@ -23,39 +23,35 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".PracticeActivity"
             android:label="INFINITE"
             android:screenOrientation="landscape" />
-
         <activity
             android:name=".RightHandPractice"
             android:label="INFINITE"
             android:screenOrientation="landscape" />
-
         <activity
             android:name=".SightReadingMenuActivity"
             android:label="INFINITE"
             android:screenOrientation="landscape" />
-
         <activity
             android:name=".RightHandReading"
             android:label="INFINITE"
             android:screenOrientation="landscape" />
-
         <activity android:name=".SettingActivity" />
-
         <activity
             android:name=".RightHandFeedback"
             android:label="INFINITE"
             android:screenOrientation="landscape" />
-
         <activity android:name=".testActivity" />
-        <activity android:name=".PianoActivity"
+        <activity
+            android:name=".PianoActivity"
+            android:label="INFINITE"
+            android:screenOrientation="landscape" />
+        <activity android:name=".PianoSheet"
             android:label="INFINITE"
             android:screenOrientation="landscape" ></activity>
-
     </application>
 
 </manifest>
