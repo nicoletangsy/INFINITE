@@ -31,25 +31,6 @@ public class PianoSheetView extends View {
     private int allNotes[][]={{48,4},{60,4}};
     private static final String TAG = "Staff";
 
-    private static final int OCTAVE = 12;
-
-    private static final String sharps[] =
-            {
-                    "",
-                    "\u266F",
-                    "",
-                    "\u266D",
-                    "",
-                    "",
-                    "\u266F",
-                    "",
-                    "\u266D",
-                    "",
-                    "\u266D",
-                    ""
-
-            };
-
     // Treble clef
     private static final float tc[][]=
             {
@@ -173,21 +154,6 @@ public class PianoSheetView extends View {
                     {14.9f,13.5f+xy},
                     {14.9f,15+xy}
             };
-
-    // Note head
-    private static final float hd[][] =
-            {
-                    {8.0f, 0.0f},
-                    {8.0f, 8.0f}, {-8.0f, 8.0f}, {-8.0f, 0.0f},
-                    {-8.0f, -8.0f}, {8.0f, -8.0f}, {8.0f, 0.0f}
-            };
-
-    // Scale offsets
-    private static final int offset[] =
-            {
-                    0, 0, 1, 2, 2, 3,
-                    3, 4, 5, 5, 6, 6};
-
     private Path tclef;
     private Path bclef;
     private Path hnote;
@@ -261,16 +227,6 @@ public class PianoSheetView extends View {
                     bc[i + 1][0], bc[i + 1][1],
                     bc[i + 2][0], bc[i + 2][1]);
         }
-
-        // Note head
-        hnote = new Path();
-        hnote.moveTo(hd[0][0], hd[0][1]);
-
-        for (int i = 1; i < hd.length; i += 3)
-            hnote.cubicTo(hd[i][0], hd[i][1],
-                    hd[i + 1][0], hd[i + 1][1],
-                    hd[i + 2][0], hd[i + 2][1]);
-
         RectF bounds = new RectF();
 
         // Scale treble clef
@@ -288,13 +244,6 @@ public class PianoSheetView extends View {
         matrix.setScale(-scale, scale);
         matrix.postTranslate(margin + lineHeight, lineHeight * 5.4f);
         bclef.transform(matrix);
-
-        // Scale note head
-        hnote.computeBounds(bounds, false);
-        scale = (lineHeight * 1.5f) / (bounds.top - bounds.bottom);
-        matrix.reset();
-        matrix.setScale(-scale, scale);
-        hnote.transform(matrix);
     }
 
     // On draw
@@ -317,20 +266,6 @@ public class PianoSheetView extends View {
             canvas.drawLine(margin, i * -lineHeight,
                     width - margin, i * -lineHeight, paint);
         }
-
-        // Draw leger lines
-//       canvas.drawLine((width / 2) - (lineWidth * 0.5f), 0,
-////                    (width / 2) + (lineWidth * 0.5f), 0, paint);
-////
-////            canvas.drawLine((width / 2) + (lineWidth * 5.5f),
-////                    -lineHeight * 6,
-////                    (width / 2) + (lineWidth * 6.5f),
-////                    -lineHeight * 6, paint);
-////
-////            canvas.drawLine((width / 2) - (lineWidth * 5.5f),
-////                    lineHeight * 6,
-////                    (width / 2) - (lineWidth * 6.5f),
-////                    lineHeight * 6, paint);
 
         // Draw treble and bass clef
         canvas.drawPath(tclef, paint);

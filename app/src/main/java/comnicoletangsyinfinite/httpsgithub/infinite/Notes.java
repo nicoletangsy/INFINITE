@@ -22,7 +22,7 @@ public class Notes extends View {
     private Path notepath;
     private Canvas canvas;
     private Paint paintTail;
-    // Note head
+    //One Note head
     private static final float hd[][] =
             {
                     {8.0f, 0.0f},
@@ -33,9 +33,9 @@ public class Notes extends View {
                     {8.0f, -8.0f},
                     {8.0f, 0.0f}
             };
-
+    //the number of keys in one 八度
     private static final int OCTAVE = 12;
-
+    //save one 8度's sharp & flat
     private static final String sharps[] =
             {
                     "",
@@ -57,21 +57,17 @@ public class Notes extends View {
     private static final int offset[] =
             {
                     0, 0, 1, 2, 2, 3,
-                    3, 4, 5, 5, 6, 6};
-
+                    3, 4, 5, 5, 6, 6
+            };
 
     public Notes(Context context){
         super(context);
-         resources = getResources();
-         textColour = context.getResources().getColor(R.color.colorPrimary);
+        resources = getResources();
+        textColour = context.getResources().getColor(R.color.colorPrimary);
         paint = new Paint();
-
-
     }
 
-
-
-    public Canvas createNote(float lineWidth, float lineHeight,int margin, int note, int speed,Canvas canvas, Paint paint) {
+    public Canvas createNote(float lineWidth, float lineHeight, int margin, int note, int speed, Canvas canvas, Paint paint) {
         this.note = note;
         this.canvas = canvas;
         this.paint = paint;
@@ -86,7 +82,8 @@ public class Notes extends View {
                     hd[i + 2][0], hd[i + 2][1]);
             Log.v("heyhey",""+hd[i][0]+"," +hd[i][1]+",,"+
                     hd[i + 1][0]+","+ hd[i + 1][1]+",,"+
-                    hd[i + 2][0]+","+ hd[i + 2][1]);}
+                    hd[i + 2][0]+","+ hd[i + 2][1]);
+        }
 
         RectF bounds = new RectF();
 
@@ -104,8 +101,6 @@ public class Notes extends View {
         paintTail.setStyle(Paint.Style.FILL);
         paintTail.setTextSize(lineHeight * 4);
         paintTail.setTextAlign(Paint.Align.LEFT);
-//
-
 
         // Calculate transform for note
         float xBase = lineWidth * 14;
@@ -121,10 +116,11 @@ public class Notes extends View {
         // Translate canvas
         canvas.translate(0, yBase - dy);
 
+        //middle C's line
         if(note == 48){
             drawLeger();}
 
-        // Draw note and accidental
+        // Draw note and accidental(sharp/flat)
         canvas.drawPath(notepath, paint);
         canvas.drawText(sharps[index], -lineWidth,
                 lineHeight / 2, paint);
@@ -146,8 +142,6 @@ public class Notes extends View {
     }
 
     protected void drawUptail(){
-
-
         canvas.drawLine(32, 0,
                 32, -145, paintTail);
     }
@@ -161,7 +155,6 @@ public class Notes extends View {
     protected void onDraw(Canvas canvas)
     {
         super.onDraw(canvas);
-
     }
 }
 
