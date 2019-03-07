@@ -29,7 +29,7 @@ import be.tarsos.dsp.pitch.PitchDetectionResult;
 import be.tarsos.dsp.pitch.PitchProcessor;
 
 public class RightHandPractice extends AppCompatActivity {
-    public static final MusicNotes aMusicNotes = new MusicNotes();
+    public static final RecordedMusicNotes A_RECORDED_MUSIC_NOTES = new RecordedMusicNotes();
     private boolean mStartRecording = true;
     private boolean mStartPlaying = true;
     private static final String LOG_TAG = "AudioRecordTest";
@@ -42,7 +42,7 @@ public class RightHandPractice extends AppCompatActivity {
     private MediaRecorder mRecorder = null;
 
     //private PlayButton mPlayButton = null;
-    private MediaPlayer   mPlayer = null;
+    private MediaPlayer mPlayer = null;
 
     // Requesting permission to RECORD_AUDIO
     private boolean permissionToRecordAccepted = false;
@@ -152,7 +152,7 @@ public class RightHandPractice extends AppCompatActivity {
                         pitch.pitchConverted(pitchInHz);
                         curPitch = pitch.getPitch();
                         if ((prevPitch.equals("") || !curPitch.equals(prevPitch)) && !curPitch.equals("")) {
-                            aMusicNotes.addNotes(curPitch);
+                            A_RECORDED_MUSIC_NOTES.addNotes(curPitch);
                             Log.e(LOG_TAG, "Pitchadded = " + curPitch);
                             prevPitch = curPitch;
                         }

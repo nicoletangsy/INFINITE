@@ -28,7 +28,8 @@ public class PianoSheetView extends View {
         private int width;
         private int height;
 
-    private double allNotes[][]={{48.5,4},{60,4}};
+    //private double allNotes[][]={{48.5,4},{60,4}};
+    private GeneratedMusicNotes allNotes = new GeneratedMusicNotes();
     private static final String TAG = "Staff";
 
     // Treble clef
@@ -274,10 +275,9 @@ public class PianoSheetView extends View {
         canvas.translate(400, 0);
 
         ArrayList<Notes> notesArrayList = new ArrayList<>();
-        for (int i = 0; i <allNotes.length; i++) {
+        for (int i = 0; i <allNotes.getTotal(); i++) {
             notesArrayList.add(new Notes(this.getContext()));
-            canvas = notesArrayList.get(i).createNote(lineWidth, lineHeight, margin, allNotes[i][0], 4, canvas, paint);
-
+            canvas = notesArrayList.get(i).createNote(lineWidth, lineHeight, margin, allNotes.getNote(i).getNote(), 4, canvas, paint);
         }
         float translationX = notesArrayList.get(0).getTranslationX();
         Log.v("translationx",""+translationX);
