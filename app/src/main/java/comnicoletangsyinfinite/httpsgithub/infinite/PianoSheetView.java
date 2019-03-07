@@ -28,7 +28,9 @@ public class PianoSheetView extends View {
         private int width;
         private int height;
 
-    private int allNotes[][]={{120,4},{48,4},{49,4},{50,4},{51,4},{52,4},{53,4},{54,4},{60,4}};
+
+    private double allNotes[][]={{48.5,4},{60,4}};
+
     private static final String TAG = "Staff";
 
     // Treble clef
@@ -156,7 +158,6 @@ public class PianoSheetView extends View {
             };
     private Path tclef;
     private Path bclef;
-    private Path hnote;
 
     private Matrix matrix;
 

@@ -9,9 +9,10 @@ import android.graphics.Path;
 import android.graphics.RectF;
 import android.util.Log;
 import android.view.View;
+import java.lang.Math;
 
 public class Notes extends View {
-    private int note;
+    private double note;
     private int speed;
     private Resources resources;
     private int textColour;
@@ -40,7 +41,6 @@ public class Notes extends View {
             {
                     "",
                     "\u266F",
-                    "",
                     "\u266D",
                     "",
                     "",
@@ -67,7 +67,7 @@ public class Notes extends View {
         paint = new Paint();
     }
 
-    public Canvas createNote(float lineWidth, float lineHeight, int margin, int note, int speed, Canvas canvas, Paint paint) {
+    public Canvas createNote(float lineWidth, float lineHeight, int margin, double note, int speed, Canvas canvas, Paint paint) {
         this.note = note;
         this.canvas = canvas;
         this.paint = paint;
@@ -105,8 +105,9 @@ public class Notes extends View {
         // Calculate transform for note
         float xBase = lineWidth * 14;
         float yBase = lineHeight * 14;
-        int index = (note + OCTAVE) % OCTAVE;
-        int octave = note / OCTAVE;
+        int intNote = (int)Math.floor(this.note);
+        int index = (intNote + OCTAVE) % OCTAVE;
+        int octave = intNote / OCTAVE;
 
         float dx = (octave * lineWidth * 3.5f) +
                 (offset[index] * (lineWidth / 2));
@@ -118,7 +119,9 @@ public class Notes extends View {
 
         //middle C's line
         if(note == 48){
-            drawLeger();}
+            drawLeger();
+        }
+
 
         // Draw note and accidental(sharp/flat)
         canvas.drawPath(notepath, paint);
