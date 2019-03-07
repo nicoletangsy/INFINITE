@@ -150,6 +150,7 @@ public class Notes extends View {
         canvas.drawLine(-32, 0,
                 -32, 145, paintTail);
     }
+
     // On draw
     @Override
     protected void onDraw(Canvas canvas)

@@ -28,7 +28,7 @@ public class PianoSheetView extends View {
         private int width;
         private int height;
 
-    private int allNotes[][]={{48,4},{60,4}};
+    private int allNotes[][]={{120,4},{48,4},{49,4},{50,4},{51,4},{52,4},{53,4},{54,4},{60,4}};
     private static final String TAG = "Staff";
 
     // Treble clef
@@ -267,6 +267,10 @@ public class PianoSheetView extends View {
                     width - margin, i * -lineHeight, paint);
         }
 
+        canvas.drawLine(margin,241,margin,-241,paint);
+        canvas.drawLine(width -margin,241,width -margin,-241,paint);
+
+
         // Draw treble and bass clef
         canvas.drawPath(tclef, paint);
         canvas.drawPath(bclef, paint);
@@ -275,18 +279,10 @@ public class PianoSheetView extends View {
         canvas.translate(400, 0);
 
         ArrayList<Notes> notesArrayList = new ArrayList<>();
-        for (int i = 0; i <allNotes.length; i++) {
+        for (int i = 1; i <allNotes.length; i++) {
             notesArrayList.add(new Notes(this.getContext()));
-            canvas = notesArrayList.get(i).createNote(lineWidth, lineHeight, margin, allNotes[i][0], 4, canvas, paint);
+            canvas = notesArrayList.get(i-1).createNote(lineWidth, lineHeight, margin, allNotes[i][0], 4, canvas, paint);
 
         }
-        float translationX = notesArrayList.get(0).getTranslationX();
-        Log.v("translationx",""+translationX);
-        ObjectAnimator valueAnimator = ObjectAnimator.ofFloat(notesArrayList.get(0), "translationX", 200);
-        Log.v("did you have something",""+valueAnimator.toString());
-        valueAnimator.setDuration(2000);
-        valueAnimator.start();
-        translationX = notesArrayList.get(0).getTranslationX();
-        Log.v("translationx",""+translationX);
     }
 }
