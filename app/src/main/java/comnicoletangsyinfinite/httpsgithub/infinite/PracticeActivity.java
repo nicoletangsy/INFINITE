@@ -98,6 +98,8 @@ public class PracticeActivity extends AppCompatActivity {
     Button Ff;
     Button Gg;
     Button Aa;
+    Button C1;
+
 
     public void checkEnd(){
         if(total==15) {
@@ -178,6 +180,7 @@ public class PracticeActivity extends AppCompatActivity {
                 this.start();
             }
         }.start();
+
         C=(Button)findViewById(R.id.Ckey);
         C.setOnClickListener(new View.OnClickListener() {
             @Override
