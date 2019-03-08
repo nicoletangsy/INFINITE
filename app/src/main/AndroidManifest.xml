@@ -44,7 +44,14 @@
             android:name=".RightHandFeedback"
             android:label="INFINITE"
             android:screenOrientation="landscape" />
-        <activity android:name=".testActivity"></activity>
+        <activity android:name=".testActivity" />
+        <activity
+            android:name=".PianoActivity"
+            android:label="INFINITE"
+            android:screenOrientation="landscape" />
+        <activity android:name=".PianoSheet"
+            android:label="INFINITE"
+            android:screenOrientation="landscape" ></activity>
     </application>
 
 </manifest>

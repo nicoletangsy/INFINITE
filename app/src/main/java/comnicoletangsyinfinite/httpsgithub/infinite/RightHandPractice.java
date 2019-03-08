@@ -29,7 +29,7 @@ import be.tarsos.dsp.pitch.PitchDetectionResult;
 import be.tarsos.dsp.pitch.PitchProcessor;
 
 public class RightHandPractice extends AppCompatActivity {
-    public static final MusicNotes aMusicNotes = new MusicNotes();
+    public static final RecordedMusicNotes A_RECORDED_MUSIC_NOTES = new RecordedMusicNotes();
     private boolean mStartRecording = true;
     private boolean mStartPlaying = true;
     private static final String LOG_TAG = "AudioRecordTest";
@@ -42,7 +42,7 @@ public class RightHandPractice extends AppCompatActivity {
     private MediaRecorder mRecorder = null;
 
     //private PlayButton mPlayButton = null;
-    private MediaPlayer   mPlayer = null;
+    private MediaPlayer mPlayer = null;
 
     // Requesting permission to RECORD_AUDIO
     private boolean permissionToRecordAccepted = false;
@@ -123,9 +123,9 @@ public class RightHandPractice extends AppCompatActivity {
         final Button recordButton = (Button)findViewById(R.id.recordButton);
         final Button playRecordButton = (Button)findViewById(R.id.playRecordButton);
         Button analyzeButton = (Button)findViewById(R.id.analyzeButton);
-        //final TextView text2 = (TextView) findViewById(R.id.textView2);
+        final TextView text2 = (TextView) findViewById(R.id.textView2);
         //text2.setText("Piano sheet animation");
-        
+
         Toolbar toolbar = (Toolbar)findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -143,6 +143,24 @@ public class RightHandPractice extends AppCompatActivity {
             @Override
             public void onClick(View v){
                 onRecord(mStartRecording,playRecordButton);
+                AudioDispatcher dispatcher = AudioDispatcherFactory.fromDefaultMicrophone(22050,2048, 0);
+                PitchDetectionHandler pdh = new PitchDetectionHandler() {
+                    @Override
+                    public void handlePitch(PitchDetectionResult result, AudioEvent e) {
+                        final float pitchInHz = result.getPitch();
+                        final Pitch pitch = new Pitch();
+                        pitch.pitchConverted(pitchInHz);
+                        curPitch = pitch.getPitch();
+                        if ((prevPitch.equals("") || !curPitch.equals(prevPitch)) && !curPitch.equals("")) {
+                            A_RECORDED_MUSIC_NOTES.addNotes(curPitch);
+                            Log.e(LOG_TAG, "Pitchadded = " + curPitch);
+                            prevPitch = curPitch;
+                        }
+                    }
+                };
+                AudioProcessor p = new PitchProcessor(PitchProcessor.PitchEstimationAlgorithm.AMDF, 22050, 2048, pdh);
+                dispatcher.addAudioProcessor(p);
+                new Thread(dispatcher,"Audio Dispatcher").start();
                 if (mStartRecording) {
                     recordButton.setBackgroundResource(R.drawable.stopbutton);
                 } else {
@@ -159,25 +177,6 @@ public class RightHandPractice extends AppCompatActivity {
                 onPlay(mStartPlaying);
                 if (mStartPlaying) {
                     playRecordButton.setBackgroundResource(R.drawable.stopbutton);
-
-                    AudioDispatcher dispatcher = AudioDispatcherFactory.fromDefaultMicrophone(22050,2048, 0);
-                    PitchDetectionHandler pdh = new PitchDetectionHandler() {
-                        @Override
-                        public void handlePitch(PitchDetectionResult result, AudioEvent e) {
-                            final float pitchInHz = result.getPitch();
-                            final Pitch pitch = new Pitch();
-                            pitch.pitchConverted(pitchInHz);
-                            curPitch = pitch.getPitch();
-                            if ((prevPitch.equals("") || !curPitch.equals(prevPitch)) && !curPitch.equals("")) {
-                                aMusicNotes.addNotes(curPitch);
-                                prevPitch = curPitch;
-                                //text2.setText("added: curPitch: " + curPitch + ", prevPitch: " + prevPitch);
-                            }
-                        }
-                    };
-                    AudioProcessor p = new PitchProcessor(PitchProcessor.PitchEstimationAlgorithm.AMDF, 22050, 2048, pdh);
-                    dispatcher.addAudioProcessor(p);
-                    new Thread(dispatcher,"Audio Dispatcher").start();
                 } else {
                     playRecordButton.setBackgroundResource(R.drawable.playbutton);
                 }

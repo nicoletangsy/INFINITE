@@ -1,8 +1,9 @@
 package comnicoletangsyinfinite.httpsgithub.infinite;
+//On Process: Store aNote instead of String
 
 import java.util.ArrayList;
 
-public class MusicNotes {
+public class RecordedMusicNotes {
     ArrayList<String> Notes = new ArrayList<String>();
 
     public String getList() {
