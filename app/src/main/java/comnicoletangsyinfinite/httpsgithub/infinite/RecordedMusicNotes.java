@@ -4,17 +4,17 @@ package comnicoletangsyinfinite.httpsgithub.infinite;
 import java.util.ArrayList;
 
 public class RecordedMusicNotes {
-    ArrayList<String> Notes = new ArrayList<String>();
+    ArrayList<aNote> Notes = new ArrayList<aNote>();
 
-    public String getList() {
+    public String getAllNotes() {
         String list = "";
         for (int i=0; i<Notes.size(); i++) {
-            list = list + Notes.get(i) + " ";
+            list = list + Notes.get(i).getNote() + " ";
         }
         return list;
     }
 
-    public void addNotes (String aNote) {
+    public void addNotes (aNote aNote) {
         Notes.add(aNote);
     }
 }
