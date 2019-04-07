@@ -29,7 +29,12 @@ public class PianoSheetView extends View {
         private int height;
 
 
+
     private double allNotes[][]={{48.5,4},{60,4}};
+
+
+    //private double allNotes[][]={{48.5,4},{60,4}};
+    //private GeneratedMusicNotes allNotes = new GeneratedMusicNotes();
 
     private static final String TAG = "Staff";
 
@@ -280,10 +285,11 @@ public class PianoSheetView extends View {
         canvas.translate(400, 0);
 
         ArrayList<Notes> notesArrayList = new ArrayList<>();
+
         for (int i = 1; i <allNotes.length; i++) {
             notesArrayList.add(new Notes(this.getContext()));
-            canvas = notesArrayList.get(i-1).createNote(lineWidth, lineHeight, margin, allNotes[i][0], 4, canvas, paint);
+            canvas = notesArrayList.get(i - 1).createNote(lineWidth, lineHeight, margin, allNotes[i][0], 4, canvas, paint);
 
-        }
-    }
+
+        }}
 }

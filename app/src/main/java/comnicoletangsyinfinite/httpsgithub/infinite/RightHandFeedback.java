@@ -10,7 +10,7 @@ import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.TextView;
 
-import static comnicoletangsyinfinite.httpsgithub.infinite.RightHandPractice.aMusicNotes;
+import static comnicoletangsyinfinite.httpsgithub.infinite.RightHandPractice.A_RECORDED_MUSIC_NOTES;
 
 public class RightHandFeedback extends AppCompatActivity {
 
@@ -27,7 +27,7 @@ public class RightHandFeedback extends AppCompatActivity {
         String oNotes = "E4 D4 C4 D4 E4 G4 A4 F4 C5 B4 A4 G4 F4 E4 D4 C4 ";
         original.setText("" + oNotes);
         TextView result = findViewById(R.id.result2);
-        result.setText(aMusicNotes.getList());
+        result.setText(A_RECORDED_MUSIC_NOTES.getAllNotes());
 
         Toolbar toolbar = (Toolbar)findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);
@@ -36,7 +36,7 @@ public class RightHandFeedback extends AppCompatActivity {
 
         TextView feedback = findViewById(R.id.feedback);
         String str = "";
-        if (oNotes.equals(aMusicNotes.getList())) {
+        if (oNotes.equals(A_RECORDED_MUSIC_NOTES.getAllNotes())) {
             str = "Well Done! You're perfectly right!";
         } else {
             str = "Opps... Some notes play wrongly!";

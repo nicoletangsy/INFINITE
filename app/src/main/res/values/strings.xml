@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">INFINITE</string>
+    <string name="app_name">KeySight</string>
     <string name="exerciseButton">Exercise</string>
     <string name="readingButton">Sight Reading</string>
     <string name="settingButton">Setting</string>

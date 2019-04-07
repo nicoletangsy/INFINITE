@@ -29,7 +29,7 @@ import be.tarsos.dsp.pitch.PitchDetectionResult;
 import be.tarsos.dsp.pitch.PitchProcessor;
 
 public class RightHandPractice extends AppCompatActivity {
-    public static final MusicNotes aMusicNotes = new MusicNotes();
+    public static final RecordedMusicNotes A_RECORDED_MUSIC_NOTES = new RecordedMusicNotes();
     private boolean mStartRecording = true;
     private boolean mStartPlaying = true;
     private static final String LOG_TAG = "AudioRecordTest";
@@ -42,7 +42,7 @@ public class RightHandPractice extends AppCompatActivity {
     private MediaRecorder mRecorder = null;
 
     //private PlayButton mPlayButton = null;
-    private MediaPlayer   mPlayer = null;
+    private MediaPlayer mPlayer = null;
 
     // Requesting permission to RECORD_AUDIO
     private boolean permissionToRecordAccepted = false;
@@ -64,7 +64,7 @@ public class RightHandPractice extends AppCompatActivity {
         if (start) {
             startRecording();
         } else {
-            stopRecording();
+            //stopRecording();
             playRecordButton.setVisibility(View.VISIBLE);
         }
     }
@@ -94,7 +94,7 @@ public class RightHandPractice extends AppCompatActivity {
     }
 
     private void startRecording() {
-        mRecorder = new MediaRecorder();
+        /*mRecorder = new MediaRecorder();
         mRecorder.setAudioSource(MediaRecorder.AudioSource.MIC);
         mRecorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
         mRecorder.setOutputFile(mFileName);
@@ -104,9 +104,31 @@ public class RightHandPractice extends AppCompatActivity {
             mRecorder.prepare();
         } catch (IOException e) {
             Log.e(LOG_TAG, "prepare() failed");
-        }
+        }*/
 
-        mRecorder.start();
+        AudioDispatcher dispatcher = AudioDispatcherFactory.fromDefaultMicrophone(22050,2048, 0);
+        PitchDetectionHandler pdh = new PitchDetectionHandler() {
+            @Override
+            public void handlePitch(PitchDetectionResult result, AudioEvent e) {
+                final float pitchInHz = result.getPitch();
+                final Pitch pitch = new Pitch(pitchInHz);
+
+                aNote newNote = new aNote(pitch.getNote(), 4); //Assume noteDuration  = 4
+                A_RECORDED_MUSIC_NOTES.addNotes(newNote);
+
+                /*curPitch = pitch.getPitch();
+                if ((prevPitch.equals("") || !curPitch.equals(prevPitch)) && !curPitch.equals("")) {
+                    A_RECORDED_MUSIC_NOTES.addNotes(newNote);
+                    Log.e(LOG_TAG, "Pitchadded = " + curPitch);
+                    prevPitch = curPitch;
+                }*/
+            }
+        };
+        AudioProcessor p = new PitchProcessor(PitchProcessor.PitchEstimationAlgorithm.FFT_PITCH, 22050, 2048, pdh);
+        dispatcher.addAudioProcessor(p);
+        new Thread(dispatcher,"Audio Dispatcher").start();
+
+        //mRecorder.start();
     }
 
     private void stopRecording() {
@@ -143,24 +165,7 @@ public class RightHandPractice extends AppCompatActivity {
             @Override
             public void onClick(View v){
                 onRecord(mStartRecording,playRecordButton);
-                AudioDispatcher dispatcher = AudioDispatcherFactory.fromDefaultMicrophone(22050,2048, 0);
-                PitchDetectionHandler pdh = new PitchDetectionHandler() {
-                    @Override
-                    public void handlePitch(PitchDetectionResult result, AudioEvent e) {
-                        final float pitchInHz = result.getPitch();
-                        final Pitch pitch = new Pitch();
-                        pitch.pitchConverted(pitchInHz);
-                        curPitch = pitch.getPitch();
-                        if ((prevPitch.equals("") || !curPitch.equals(prevPitch)) && !curPitch.equals("")) {
-                            aMusicNotes.addNotes(curPitch);
-                            Log.e(LOG_TAG, "Pitchadded = " + curPitch);
-                            prevPitch = curPitch;
-                        }
-                    }
-                };
-                AudioProcessor p = new PitchProcessor(PitchProcessor.PitchEstimationAlgorithm.AMDF, 22050, 2048, pdh);
-                dispatcher.addAudioProcessor(p);
-                new Thread(dispatcher,"Audio Dispatcher").start();
+
                 if (mStartRecording) {
                     recordButton.setBackgroundResource(R.drawable.stopbutton);
                 } else {
