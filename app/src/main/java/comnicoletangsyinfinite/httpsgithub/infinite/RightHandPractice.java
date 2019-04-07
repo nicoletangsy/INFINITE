@@ -111,13 +111,10 @@ public class RightHandPractice extends AppCompatActivity {
             @Override
             public void handlePitch(PitchDetectionResult result, AudioEvent e) {
                 final float pitchInHz = result.getPitch();
+                final Pitch pitch = new Pitch(pitchInHz);
 
-                final Pitch pitch = new Pitch();
-                pitch.pitchConverted(pitchInHz);
                 aNote newNote = new aNote(pitch.getNote(), 4); //Assume noteDuration  = 4
-                if (newNote.getNote()!=0.0) {
-                    A_RECORDED_MUSIC_NOTES.addNotes(newNote);
-                }
+                A_RECORDED_MUSIC_NOTES.addNotes(newNote);
 
                 /*curPitch = pitch.getPitch();
                 if ((prevPitch.equals("") || !curPitch.equals(prevPitch)) && !curPitch.equals("")) {

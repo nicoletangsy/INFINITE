@@ -11,7 +11,15 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 public class MainActivity extends AppCompatActivity {
-
+//homepage
+    /* 
+        @inproceedings{six2014tarsosdsp,
+            author      = {Joren Six and Olmo Cornelis and Marc Leman},
+            title       = {{TarsosDSP, a Real-Time Audio Processing Framework in Java}},
+            booktitle   = {{Proceedings of the 53rd AES Conference (AES 53rd)}},
+            year        =  2014
+        }
+        */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

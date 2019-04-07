@@ -58,10 +58,10 @@
         android:layout_height="0dp"
         android:layout_marginBottom="281dp"
         android:contentDescription="@string/app_name"
+        android:src="@drawable/appicon"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/app_bar"
-        app:srcCompat="@android:drawable/sym_def_app_icon" />
+        app:layout_constraintTop_toBottomOf="@+id/app_bar" />
 
 </android.support.constraint.ConstraintLayout>

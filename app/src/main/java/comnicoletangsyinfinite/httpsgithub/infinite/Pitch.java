@@ -5,10 +5,9 @@ public class Pitch {
     double note;        //value: 0~107
     int noteDuration;   //value:[1, 2, 4, 8, 16, 32, 64]
 
-    /*public Pitch(float pitchInHz) {
-        frequencey = pitchInHz;
-        pitchConverted();
-    }*/
+    public Pitch(float pitchInHz) {
+        pitchConverted(pitchInHz);
+    }
 
     public String getPitch () {
         return "" + pitch;
