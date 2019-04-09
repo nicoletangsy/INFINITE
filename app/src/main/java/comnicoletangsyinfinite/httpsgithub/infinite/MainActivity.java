@@ -62,7 +62,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void openSettingPage(){
-        Intent intent = new Intent(this, SettingActivity.class);
+        //edit to test page
+        Intent intent = new Intent(this, PianoSheet.class);
         startActivity(intent);
     }
 

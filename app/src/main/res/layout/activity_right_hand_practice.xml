@@ -4,6 +4,83 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RightHandPractice">
+    android:background="@color/backgroundColor"
+    tools:context=".RightHandPractice"
+    tools:layout_editor_absoluteY="25dp">
+
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:weightSum="6"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <include
+            android:id="@+id/app_bar"
+            layout="@layout/app_bar"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.75"></include>
+
+        <android.support.v4.widget.Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.5" />
+
+        <ImageView
+            android:id="@+id/musicsheet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:src="@drawable/musicsheet1"/>
+
+        <android.support.v4.widget.Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layoutDirection="rtl"
+            android:orientation="horizontal"
+            android:layout_marginRight="20dp">
+
+            <Button
+                android:id="@+id/recordButton"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="end"
+                android:background="@drawable/recordbutton"
+                android:text="" />
+
+            <Button
+                android:id="@+id/playRecordButton"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/playbutton"
+                android:text="" />
+
+            <Button
+                android:id="@+id/analyzeButton"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:text="Analyze"
+                android:background="@drawable/button"/>
+
+        </LinearLayout>
+    </LinearLayout>
+
 
 </android.support.constraint.ConstraintLayout>

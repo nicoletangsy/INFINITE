@@ -30,8 +30,57 @@ public class PracticeActivity extends AppCompatActivity {
     Random r;
 
     Integer[] questions = {
+<<<<<<< HEAD
             R.drawable.c11,
             R.drawable.c12,
+=======
+            R.drawable.q1,
+            R.drawable.q9,
+            R.drawable.q16,
+            R.drawable.q23,
+            R.drawable.q30,
+            R.drawable.q17,
+            R.drawable.q24,
+            R.drawable.q33,
+            R.drawable.q40,
+            R.drawable.q2,
+            R.drawable.q10,
+            R.drawable.q18,
+            R.drawable.q25,
+            R.drawable.q41,
+            R.drawable.q99,
+            R.drawable.q3,
+            R.drawable.q11,
+            R.drawable.q35,
+            R.drawable.q42,
+            R.drawable.q4,
+            R.drawable.q12,
+            R.drawable.q19,
+            R.drawable.q26,
+            R.drawable.q20,
+            R.drawable.q27,
+            R.drawable.q36,
+            R.drawable.q43,
+            R.drawable.q5,
+            R.drawable.q13,
+            R.drawable.q21,
+            R.drawable.q28,
+            R.drawable.q37,
+            R.drawable.q44,
+            R.drawable.q6,
+            R.drawable.q14,
+            R.drawable.q22,
+            R.drawable.q29,
+            R.drawable.q31,
+            R.drawable.q38,
+            R.drawable.q45,
+
+            R.drawable.q7,
+            R.drawable.q8,
+            R.drawable.q15,
+            R.drawable.q32,
+            R.drawable.q39,
+>>>>>>> master
 
     };
 
@@ -51,6 +100,19 @@ public class PracticeActivity extends AppCompatActivity {
     Button Ff;
     Button Gg;
     Button Aa;
+    Button C1;
+    Button D1;
+    Button E1;
+    Button F1;
+    Button G1;
+    Button A1;
+    Button B1;
+    Button Cc1;
+    Button Dd1;
+    Button Ff1;
+    Button Gg1;
+    Button Aa1;
+
 
     public void checkEnd(){
         if(total==15) {
@@ -131,6 +193,301 @@ public class PracticeActivity extends AppCompatActivity {
                 this.start();
             }
         }.start();
+
+        C1=(Button)findViewById(R.id.Ckey1);
+        C1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                myCountDownTimer.cancel();
+                total++;
+                answer=0;
+                if(answer==currentQuestionNumber||answer+3==currentQuestionNumber||answer+4==currentQuestionNumber){
+                    C1.setBackgroundColor(Color.GREEN);
+                    correctQ++;
+                } else C1.setBackgroundColor(Color.RED);
+                checkEnd();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        updateQ();
+                        currentQuestionNumber=r.nextInt(questions.length);
+                        questionImg.setImageResource(questions[currentQuestionNumber]);
+                        C1.setBackgroundResource(R.drawable.whitekey);
+                        myCountDownTimer.start();
+                    }
+                }, 2000);
+
+
+            }
+        });
+        D1=(Button)findViewById(R.id.Dkey1);
+        D1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                myCountDownTimer.cancel();
+                total++;
+                answer=9;
+                if(answer==currentQuestionNumber){
+                    D1.setBackgroundColor(Color.GREEN);
+                    correctQ++;
+                } else D1.setBackgroundColor(Color.RED);
+                checkEnd();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        updateQ();
+                        currentQuestionNumber=r.nextInt(questions.length);
+                        questionImg.setImageResource(questions[currentQuestionNumber]);
+                        D1.setBackgroundResource(R.drawable.whitekey);
+                        myCountDownTimer.start();
+                    }
+                }, 2000);
+            }
+        });
+        E1=(Button)findViewById(R.id.Ekey1);
+        E1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                myCountDownTimer.cancel();
+                total++;
+                answer=15;
+                if(answer==currentQuestionNumber||answer+3==currentQuestionNumber){
+                    E1.setBackgroundColor(Color.GREEN);
+                    correctQ++;
+                } else E1.setBackgroundColor(Color.RED);
+                checkEnd();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        updateQ();
+                        currentQuestionNumber=r.nextInt(questions.length);
+                        questionImg.setImageResource(questions[currentQuestionNumber]);
+                        E1.setBackgroundResource(R.drawable.whitekey);
+                        myCountDownTimer.start();
+                    }
+                }, 2000);
+            }
+        });
+        F1=(Button)findViewById(R.id.Fkey1);
+        F1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                myCountDownTimer.cancel();
+                total++;
+                answer=19;
+                if(answer==currentQuestionNumber||answer+3==currentQuestionNumber){
+                    F1.setBackgroundColor(Color.GREEN);
+                    correctQ++;
+                } else F1.setBackgroundColor(Color.RED);
+                checkEnd();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        updateQ();
+                        currentQuestionNumber=r.nextInt(questions.length);
+                        questionImg.setImageResource(questions[currentQuestionNumber]);
+                        F1.setBackgroundResource(R.drawable.whitekey);
+                        myCountDownTimer.start();
+                    }
+                }, 2000);
+            }
+        });
+        G1=(Button)findViewById(R.id.Gkey1);
+        G1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                myCountDownTimer.cancel();
+                total++;
+                answer=27;
+                if(answer==currentQuestionNumber){
+                    G1.setBackgroundColor(Color.GREEN);
+                    correctQ++;
+                } else G1.setBackgroundColor(Color.RED);
+                checkEnd();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        updateQ();
+                        currentQuestionNumber=r.nextInt(questions.length);
+                        questionImg.setImageResource(questions[currentQuestionNumber]);
+                        G1.setBackgroundResource(R.drawable.whitekey);
+                        myCountDownTimer.start();
+                    }
+                }, 2000);
+            }
+        });
+        A1=(Button)findViewById(R.id.Akey1);
+        A1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                myCountDownTimer.cancel();
+                total++;
+                answer=33;
+                if(answer==currentQuestionNumber){
+                    A1.setBackgroundColor(Color.GREEN);
+                    correctQ++;
+                } else A1.setBackgroundColor(Color.RED);
+                checkEnd();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        updateQ();
+                        currentQuestionNumber=r.nextInt(questions.length);
+                        questionImg.setImageResource(questions[currentQuestionNumber]);
+                        A1.setBackgroundResource(R.drawable.whitekey);
+                        myCountDownTimer.start();
+                    }
+                }, 2000);
+            }
+        });
+        B1=(Button)findViewById(R.id.Bkey1);
+        B1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                myCountDownTimer.cancel();
+                total++;
+                answer=40;
+                if(answer==currentQuestionNumber||answer+1==currentQuestionNumber||answer+2==currentQuestionNumber||answer+3==currentQuestionNumber||answer+4==currentQuestionNumber){
+                    B1.setBackgroundColor(Color.GREEN);
+                    correctQ++;
+                } else B1.setBackgroundColor(Color.RED);
+                checkEnd();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        updateQ();
+                        currentQuestionNumber=r.nextInt(questions.length);
+                        questionImg.setImageResource(questions[currentQuestionNumber]);
+                        B1.setBackgroundResource(R.drawable.whitekey);
+                        myCountDownTimer.start();
+                    }
+                }, 2000);
+            }
+        });
+
+        Cc1=(Button)findViewById(R.id.Cckey1);
+        Cc1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                myCountDownTimer.cancel();
+                total++;
+                answer=5;
+                if(answer==currentQuestionNumber||answer+1==currentQuestionNumber||answer+2==currentQuestionNumber||answer+3==currentQuestionNumber){
+                    Cc1.setBackgroundColor(Color.GREEN);
+                    correctQ++;
+                } else Cc1.setBackgroundColor(Color.RED);
+                checkEnd();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        updateQ();
+                        currentQuestionNumber=r.nextInt(questions.length);
+                        questionImg.setImageResource(questions[currentQuestionNumber]);
+                        Cc1.setBackgroundResource(R.drawable.blackkey);
+                        myCountDownTimer.start();
+                    }
+                }, 2000);
+            }
+        });
+        Dd1=(Button)findViewById(R.id.Ddkey1);
+        Dd1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                myCountDownTimer.cancel();
+                total++;
+                answer=11;
+                if(answer==currentQuestionNumber||answer+1==currentQuestionNumber||answer+2==currentQuestionNumber||answer+3==currentQuestionNumber){
+                    Dd1.setBackgroundColor(Color.GREEN);
+                    correctQ++;
+                } else Dd1.setBackgroundColor(Color.RED);
+                checkEnd();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        updateQ();
+                        currentQuestionNumber=r.nextInt(questions.length);
+                        questionImg.setImageResource(questions[currentQuestionNumber]);
+                        Dd1.setBackgroundResource(R.drawable.blackkey);
+                        myCountDownTimer.start();
+                    }
+                }, 2000);
+            }
+        });
+
+        Ff1=(Button)findViewById(R.id.Ffkey1);
+        Ff1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                myCountDownTimer.cancel();
+                total++;
+                answer=23;
+                if(answer==currentQuestionNumber||answer+1==currentQuestionNumber||answer+2==currentQuestionNumber||answer+3==currentQuestionNumber){
+                    Ff1.setBackgroundColor(Color.GREEN);
+                    correctQ++;
+                } else Ff1.setBackgroundColor(Color.RED);
+                checkEnd();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        updateQ();
+                        currentQuestionNumber=r.nextInt(questions.length);
+                        questionImg.setImageResource(questions[currentQuestionNumber]);
+                        Ff1.setBackgroundResource(R.drawable.blackkey);
+                        myCountDownTimer.start();
+                    }
+                }, 2000);
+            }
+        });
+        Gg1=(Button)findViewById(R.id.Ggkey1);
+        Gg1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                myCountDownTimer.cancel();
+                total++;
+                answer=29;
+                if(answer==currentQuestionNumber||answer+1==currentQuestionNumber||answer+2==currentQuestionNumber||answer+3==currentQuestionNumber){
+                    Gg1.setBackgroundColor(Color.GREEN);
+                    correctQ++;
+                } else Gg1.setBackgroundColor(Color.RED);
+                checkEnd();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        updateQ();
+                        currentQuestionNumber=r.nextInt(questions.length);
+                        questionImg.setImageResource(questions[currentQuestionNumber]);
+                        Gg1.setBackgroundResource(R.drawable.blackkey);
+                        myCountDownTimer.start();
+                    }
+                }, 2000);
+            }
+        });
+        Aa1=(Button)findViewById(R.id.Aakey1);
+        Aa1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                myCountDownTimer.cancel();
+                total++;
+                answer=35;
+                if(answer==currentQuestionNumber||answer+1==currentQuestionNumber||answer+2==currentQuestionNumber||answer+3==currentQuestionNumber||answer+4==currentQuestionNumber){
+                    Aa1.setBackgroundColor(Color.GREEN);
+                    correctQ++;
+                } else Aa1.setBackgroundColor(Color.RED);
+                checkEnd();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        updateQ();
+                        currentQuestionNumber=r.nextInt(questions.length);
+                        questionImg.setImageResource(questions[currentQuestionNumber]);
+                        Aa1.setBackgroundResource(R.drawable.blackkey);
+                        myCountDownTimer.start();
+                    }
+                }, 2000);
+            }
+        });
+
+
         C=(Button)findViewById(R.id.Ckey);
         C.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -138,7 +495,11 @@ public class PracticeActivity extends AppCompatActivity {
                 myCountDownTimer.cancel();
                 total++;
                 answer=0;
+<<<<<<< HEAD
                 if(answer==currentQuestionNumber||answer+1==currentQuestionNumber){
+=======
+                if(answer+1==currentQuestionNumber||answer+2==currentQuestionNumber){
+>>>>>>> master
                     C.setBackgroundColor(Color.GREEN);
                     correctQ++;
                 } else C.setBackgroundColor(Color.RED);
@@ -165,7 +526,7 @@ public class PracticeActivity extends AppCompatActivity {
                 myCountDownTimer.cancel();
                 total++;
                 answer=9;
-                if(answer==currentQuestionNumber||answer+1==currentQuestionNumber){
+                if(answer+1==currentQuestionNumber){
                     D.setBackgroundColor(Color.GREEN);
                     correctQ++;
                 } else D.setBackgroundColor(Color.RED);
@@ -189,7 +550,7 @@ public class PracticeActivity extends AppCompatActivity {
                 myCountDownTimer.cancel();
                 total++;
                 answer=15;
-                if(answer==currentQuestionNumber||answer+1==currentQuestionNumber||answer+2==currentQuestionNumber||answer+3==currentQuestionNumber){
+                if(answer+1==currentQuestionNumber||answer+2==currentQuestionNumber){
                     E.setBackgroundColor(Color.GREEN);
                     correctQ++;
                 } else E.setBackgroundColor(Color.RED);
@@ -213,7 +574,7 @@ public class PracticeActivity extends AppCompatActivity {
                 myCountDownTimer.cancel();
                 total++;
                 answer=19;
-                if(answer==currentQuestionNumber||answer+1==currentQuestionNumber||answer+2==currentQuestionNumber||answer+3==currentQuestionNumber){
+                if(answer+1==currentQuestionNumber||answer+2==currentQuestionNumber){
                     F.setBackgroundColor(Color.GREEN);
                     correctQ++;
                 } else F.setBackgroundColor(Color.RED);
@@ -237,7 +598,7 @@ public class PracticeActivity extends AppCompatActivity {
                 myCountDownTimer.cancel();
                 total++;
                 answer=27;
-                if(answer==currentQuestionNumber||answer+1==currentQuestionNumber){
+                if(answer+1==currentQuestionNumber){
                     G.setBackgroundColor(Color.GREEN);
                     correctQ++;
                 } else G.setBackgroundColor(Color.RED);
@@ -261,7 +622,7 @@ public class PracticeActivity extends AppCompatActivity {
                 myCountDownTimer.cancel();
                 total++;
                 answer=33;
-                if(answer==currentQuestionNumber||answer+1==currentQuestionNumber){
+                if(answer+1==currentQuestionNumber){
                     A.setBackgroundColor(Color.GREEN);
                     correctQ++;
                 } else A.setBackgroundColor(Color.RED);
@@ -425,12 +786,6 @@ public class PracticeActivity extends AppCompatActivity {
         });
 
     }
-
-    //To Do
-    //random ask 15 question
-    //change piano key to green if correct
-    //change piano key to red and show the correct answer on green
-    //endButton end game even not answering 15 questions
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
