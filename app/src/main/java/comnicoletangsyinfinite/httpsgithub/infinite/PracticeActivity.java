@@ -30,57 +30,8 @@ public class PracticeActivity extends AppCompatActivity {
     Random r;
 
     Integer[] questions = {
-<<<<<<< HEAD
-            R.drawable.c11,
-            R.drawable.c12,
-=======
-            R.drawable.q1,
-            R.drawable.q9,
-            R.drawable.q16,
-            R.drawable.q23,
-            R.drawable.q30,
-            R.drawable.q17,
-            R.drawable.q24,
-            R.drawable.q33,
-            R.drawable.q40,
-            R.drawable.q2,
-            R.drawable.q10,
-            R.drawable.q18,
-            R.drawable.q25,
-            R.drawable.q41,
-            R.drawable.q99,
-            R.drawable.q3,
-            R.drawable.q11,
-            R.drawable.q35,
-            R.drawable.q42,
-            R.drawable.q4,
-            R.drawable.q12,
-            R.drawable.q19,
-            R.drawable.q26,
-            R.drawable.q20,
-            R.drawable.q27,
-            R.drawable.q36,
-            R.drawable.q43,
-            R.drawable.q5,
-            R.drawable.q13,
-            R.drawable.q21,
-            R.drawable.q28,
-            R.drawable.q37,
-            R.drawable.q44,
-            R.drawable.q6,
-            R.drawable.q14,
-            R.drawable.q22,
-            R.drawable.q29,
-            R.drawable.q31,
-            R.drawable.q38,
-            R.drawable.q45,
+            R.drawable.c11
 
-            R.drawable.q7,
-            R.drawable.q8,
-            R.drawable.q15,
-            R.drawable.q32,
-            R.drawable.q39,
->>>>>>> master
 
     };
 
@@ -180,7 +131,7 @@ public class PracticeActivity extends AppCompatActivity {
         final CountDownTimer myCountDownTimer=new CountDownTimer(5000, 1000) {
 
             public void onTick(long millisUntilFinished) {
-               time.setText("seconds remaining: " + millisUntilFinished / 1000);
+                time.setText("seconds remaining: " + millisUntilFinished / 1000);
             }
 
             public void onFinish() {
@@ -495,11 +446,7 @@ public class PracticeActivity extends AppCompatActivity {
                 myCountDownTimer.cancel();
                 total++;
                 answer=0;
-<<<<<<< HEAD
-                if(answer==currentQuestionNumber||answer+1==currentQuestionNumber){
-=======
                 if(answer+1==currentQuestionNumber||answer+2==currentQuestionNumber){
->>>>>>> master
                     C.setBackgroundColor(Color.GREEN);
                     correctQ++;
                 } else C.setBackgroundColor(Color.RED);
