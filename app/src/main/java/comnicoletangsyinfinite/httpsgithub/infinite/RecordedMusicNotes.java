@@ -17,4 +17,14 @@ public class RecordedMusicNotes {
     public void addNotes (aNote aNote) {
         Notes.add(aNote);
     }
+
+    public double[][] getPianoSheetView(){
+        double[][] convertedList = null;
+        for (int i=0; i<Notes.size(); i++) {
+            convertedList[i][0] = Notes.get(i).getNote();
+            convertedList[i][1] = Notes.get(i).getNoteDuration();
+
+        }
+        return convertedList;
+    }
 }
