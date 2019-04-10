@@ -6,6 +6,6 @@
     <color name="buttoncolor">#FFb805</color>
     <color name="menuColor">#FFE505</color>
     <color name="backgroundColor">#22FED532</color>
-
+    <color name="black">#000000</color>
     <color name="colorAccent">#FF4081</color>
 </resources>

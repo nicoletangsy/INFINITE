@@ -23,6 +23,13 @@ public class Notes extends View {
     private Path notepath;
     private Canvas canvas;
     private Paint paintTail;
+    private Paint sharpPiant;
+    private Paint flatPiant;
+    private float dy;
+    private float dx;
+    private float yBase;
+    private float xBase;
+
     //One Note head
     private static final float hd[][] =
             {
@@ -34,59 +41,190 @@ public class Notes extends View {
                     {8.0f, -8.0f},
                     {8.0f, 0.0f}
             };
+
     //the number of keys in one 八度
     private static final int OCTAVE = 12;
+
     //save one 8度's sharp & flat
     private static final String sharps[] =
             {
-                    "",
                     "\u266F",
-                    "\u266D",
-                    "",
-                    "",
-                    "\u266F",
-                    "",
-                    "\u266D",
-                    "",
-                    "\u266D",
-                    ""
-
+                    "\u266D"
             };
 
-    // Scale offsets
+    // Scale offsets (Changed)
     private static final int offset[] =
             {
-                    0, 0, 1, 2, 2, 3,
-                    3, 4, 5, 5, 6, 6
+                    0, 0, 1, 1, 2, 3,
+                    3, 4, 4, 5, 5, 6
             };
 
     public Notes(Context context){
         super(context);
         resources = getResources();
-        textColour = context.getResources().getColor(R.color.colorPrimary);
+        textColour = context.getResources().getColor(R.color.black);
         paint = new Paint();
+
+        paint.setStrokeWidth(4);
+        paint.setColor(textColour);
+        paint.setStyle(Paint.Style.FILL);
+        paint.setTextSize(lineHeight * 4);
+        paint.setTextAlign(Paint.Align.LEFT);
+
+        paintTail = new Paint();
+        paintTail.setStrokeWidth(20);
+        paintTail.setColor(textColour);
+        paintTail.setStyle(Paint.Style.FILL);
+        paintTail.setTextSize(lineHeight * 4);
+        paintTail.setTextAlign(Paint.Align.LEFT);
+
+        sharpPiant = new Paint();
+        sharpPiant.setStrokeWidth(1);
+        sharpPiant.setColor(textColour);
+        sharpPiant.setStyle(Paint.Style.FILL);
+        sharpPiant.setTextSize(lineHeight * 2);
+        sharpPiant.setTextAlign(Paint.Align.LEFT);
+
+        flatPiant = new Paint();
+        flatPiant.setStrokeWidth(1);
+        flatPiant.setColor(textColour);
+        flatPiant.setStyle(Paint.Style.FILL);
+        flatPiant.setTextSize(lineHeight * 3.5f);
+        flatPiant.setTextAlign(Paint.Align.LEFT);
+
     }
 
-    public Canvas createNote(float lineWidth, float lineHeight, int margin, double note, int speed, Canvas canvas, Paint paint) {
+    public Canvas create1Note(float lineWidth, float lineHeight, int margin, double note, Canvas canvas) {return canvas;}
+
+    public Canvas create2Note(float lineWidth, float lineHeight, int margin, double note, Canvas canvas) {return canvas;}
+
+    public Canvas create3Note(float lineWidth, float lineHeight, int margin, double note, Canvas canvas) {return canvas;}
+
+    public Canvas create4Note(float lineWidth, float lineHeight, int margin, double note, Canvas canvas) {
+
         this.note = note;
         this.canvas = canvas;
-        this.paint = paint;
+        this.lineHeight = lineHeight;
+        this.lineWidth = lineWidth;
+        this.margin = margin;
 
-        // Note head
-        notepath = new Path();
-        notepath.moveTo(hd[0][0], hd[0][1]);
 
-        for (int i = 1; i < hd.length; i += 3){
-            notepath.cubicTo(hd[i][0], hd[i][1],
-                    hd[i + 1][0], hd[i + 1][1],
-                    hd[i + 2][0], hd[i + 2][1]);
-            Log.v("heyhey",""+hd[i][0]+"," +hd[i][1]+",,"+
-                    hd[i + 1][0]+","+ hd[i + 1][1]+",,"+
-                    hd[i + 2][0]+","+ hd[i + 2][1]);
+        scaleNoteDrawFlat(8,3.5f);
+
+        // Translate canvas
+        canvas.translate(156, -(yBase - dy));
+
+        return canvas;
+    }
+
+    public Canvas create8Note(float lineWidth, float lineHeight, int margin, double note1,double note2, Canvas canvas) {
+        this.note = note1;
+        this.canvas = canvas;
+        this.lineHeight = lineHeight;
+        this.lineWidth = lineWidth;
+        this.margin = margin;
+        float tailHeight1 = 0;
+        float tailHeight2 = 0;
+        float noteDiff = 0;
+        if(note1-note2==-8){
+            tailHeight1 = 3;
+            tailHeight2 = 2;
+            noteDiff = 1f;
+        }
+        if(note1-note2==-6){
+            tailHeight1 = 3;
+            tailHeight2 = 2.5f;
+            noteDiff = 1f;
+        }
+        if(note1-note2==-4){
+            tailHeight1 = 3 ;
+            tailHeight2 = 3f;
+            noteDiff = 1f;
+        }
+        if(note1-note2==-2){
+            tailHeight1 = 3;
+            tailHeight2 = 3f;
+            noteDiff = 0.5f;
+        }
+        if(note1-note2==0){
+            tailHeight1 = 3f;
+            tailHeight2 = 3f;
+            noteDiff = 0.0f;
+        }
+        if(note1-note2==2){
+            tailHeight1 = 3f;
+            tailHeight2 = 3;
+            noteDiff = -0.5f;
+        }
+        if(note1-note2==4){
+            tailHeight1 = 3f ;
+            tailHeight2 = 3;
+            noteDiff = -1f;
+        }
+        if(note1-note2==6){
+            tailHeight1 = 3f;
+            tailHeight2 = 3;
+            noteDiff = -1f;
+        }
+        if(note1-note2==8){
+            tailHeight1 = 2;
+            tailHeight2 = 3;
+            noteDiff = -1f;
         }
 
-        RectF bounds = new RectF();
 
+
+        scaleNoteDrawFlat(8,tailHeight1);
+
+        canvas.drawLine(lineHeight/1.5f-1, -lineHeight*tailHeight1,
+                100+(lineHeight/1.5f)+1, -lineHeight*(tailHeight1+noteDiff), paintTail);
+
+        // Translate canvas
+        canvas.translate(100, -(yBase - dy));
+
+        this.note = note2;
+        scaleNoteDrawFlat(8,tailHeight2);
+
+
+
+        // Translate canvas
+        canvas.translate(100, -(yBase - dy));
+
+        return canvas;
+    }
+
+    public Canvas create16Note(float lineWidth, float lineHeight, int margin, double note1,double note2, double note3, double note4,Canvas canvas) {return canvas;}
+
+
+
+
+    //Stroke for a bar
+    public Canvas createStroke(float lineWidth, float lineHeight, int margin, Canvas canvas){
+        this.canvas = canvas;
+
+
+        canvas.translate(-40, 0);
+        canvas.drawLine(0,-lineHeight,0,-lineHeight-(lineHeight*4),paint);
+        // Translate canvas
+        canvas.translate(110, 0);
+        return canvas;
+    }
+
+    protected void drawLeger(){
+        canvas.drawLine(-lineHeight, 0,
+                    lineHeight, 0, paint);
+    }
+
+
+
+
+    //scale note head and draw flat sharp
+    public void scaleNoteDrawFlat(int noteType,float tailHeight){
+
+
+        drawNoteHead(noteType);
+
+        RectF bounds = new RectF();
         // Scale note head
         notepath.computeBounds(bounds, false);
         float scale = (lineHeight * 1.4f) / (bounds.top - bounds.bottom);
@@ -94,24 +232,17 @@ public class Notes extends View {
         matrix.setScale(-scale, scale);
         notepath.transform(matrix);
 
-        paintTail = new Paint();
-
-        paintTail.setStrokeWidth(4);
-        paintTail.setColor(textColour);
-        paintTail.setStyle(Paint.Style.FILL);
-        paintTail.setTextSize(lineHeight * 4);
-        paintTail.setTextAlign(Paint.Align.LEFT);
 
         // Calculate transform for note
-        float xBase = lineWidth * 14;
-        float yBase = lineHeight * 14;
-        int intNote = (int)Math.floor(this.note);
+        xBase = lineWidth * 14;
+        yBase = lineHeight * 14;
+        int intNote = (int)Math.ceil(this.note);
         int index = (intNote + OCTAVE) % OCTAVE;
         int octave = intNote / OCTAVE;
 
-        float dx = (octave * lineWidth * 3.5f) +
+        dx = (octave * lineWidth * 3.5f) +
                 (offset[index] * (lineWidth / 2));
-        float dy = (octave * lineHeight * 3.5f) +
+        dy = (octave * lineHeight * 3.5f) +
                 (offset[index] * (lineHeight / 2));
 
         // Translate canvas
@@ -119,37 +250,60 @@ public class Notes extends View {
 
         //middle C's line
         if(note == 48){
-            drawLeger();}
+            drawLeger();
+        }
 
-        // Draw note and accidental(sharp/flat)
+        // Draw note
         canvas.drawPath(notepath, paint);
-        canvas.drawText(sharps[index], -lineWidth,
-                lineHeight / 2, paint);
 
-        if((note>=48&&note<60)||note<36)
-            drawUptail();
+        //////////////////////////
+        //Draw accidental(sharp)//
+        //dont know why not work//
+        //////////////////////////
+        if(note % OCTAVE == 1||note % OCTAVE ==3||note % OCTAVE ==6||note % OCTAVE ==8||note % OCTAVE ==10) {
+            canvas.drawText(sharps[0], -lineHeight,
+                    0, paint);
+        }
+        //Draw accidental(flat)
+        else if ((note - Math.floor(note)) == 0.5) {
+            canvas.drawText(sharps[1], -lineHeight,
+                    0, paint);
+        }
+
+        drawTail(tailHeight);
+
+    }
+
+
+    //draw a note tail
+    public void drawTail(float tailHeight){
+        //Draw tail
+        if((note >= 48 && note < 60)||note < 36)
+            canvas.drawLine(lineHeight/1.5f, 0,
+                    lineHeight/1.5f, -lineHeight*tailHeight, paint);
         else
-            drawDowntail();
+            canvas.drawLine(-lineHeight/1.5f, 0,
+                    -lineHeight/1.5f, lineHeight*tailHeight, paint);
 
-        // Translate canvas
-        canvas.translate(150, -(yBase - dy));
-
-        return canvas;
     }
 
-    protected void drawLeger(){
-        canvas.drawLine(-60, 0,
-                    60, 0, paint);
-    }
+    //draw note head
+    public void drawNoteHead(int noteType){
 
-    protected void drawUptail(){
-        canvas.drawLine(32, 0,
-                32, -145, paintTail);
-    }
+        // Note head
+        notepath = new Path();
 
-    protected void drawDowntail(){
-        canvas.drawLine(-32, 0,
-                -32, 145, paintTail);
+
+        notepath.moveTo(hd[0][0], hd[0][1]);
+
+        if(noteType==4||noteType==8||noteType==16||noteType==32) {
+            for (int i = 1; i < hd.length; i += 3) {
+                notepath.cubicTo(hd[i][0], hd[i][1],
+                        hd[i + 1][0], hd[i + 1][1],
+                        hd[i + 2][0], hd[i + 2][1]);
+            }
+        }
+
     }
     // On draw
     @Override

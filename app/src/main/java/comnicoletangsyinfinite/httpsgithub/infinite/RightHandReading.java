@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 public class RightHandReading extends AppCompatActivity {
+    public static final MusicSheetType A_Music_Sheet_Type = new MusicSheetType();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
