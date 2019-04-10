@@ -30,7 +30,80 @@ public class PracticeActivity extends AppCompatActivity {
     Random r;
 
     Integer[] questions = {
-            R.drawable.c11
+            R.drawable.c1,
+            R.drawable.c1,
+
+            R.drawable.cs1,
+            R.drawable.cs2,
+
+            R.drawable.d1,
+
+            R.drawable.ds1,
+            R.drawable.ds2,
+
+            R.drawable.e1,
+            R.drawable.e2,
+
+            R.drawable.f1,
+            R.drawable.f2,
+
+            R.drawable.fs1,
+            R.drawable.fs2,
+
+            R.drawable.g1,
+
+            R.drawable.gs1,
+            R.drawable.gs2,
+
+            R.drawable.a1,
+
+            R.drawable.as1,
+            R.drawable.as2,
+
+            R.drawable.b1,
+            R.drawable.b2,
+
+
+            R.drawable.c21,
+            R.drawable.c22,
+
+            R.drawable.cs21,
+            R.drawable.cs22,
+
+            R.drawable.d21,
+
+            R.drawable.ds21,
+            R.drawable.ds22,
+
+            R.drawable.e21,
+            R.drawable.e22,
+
+            R.drawable.f21,
+            R.drawable.f22,
+
+            R.drawable.fs21,
+            R.drawable.fs22,
+
+            R.drawable.g21,
+
+            R.drawable.gs21,
+            R.drawable.gs22,
+
+            R.drawable.a21,
+
+            R.drawable.as21,
+            R.drawable.as22,
+
+            R.drawable.b21,
+
+
+
+
+
+
+
+
+
 
 
     };
@@ -151,8 +224,8 @@ public class PracticeActivity extends AppCompatActivity {
             public void onClick(View v) {
                 myCountDownTimer.cancel();
                 total++;
-                answer=0;
-                if(answer==currentQuestionNumber||answer+3==currentQuestionNumber||answer+4==currentQuestionNumber){
+                answer=21;
+                if(answer==currentQuestionNumber||answer+1==currentQuestionNumber){
                     C1.setBackgroundColor(Color.GREEN);
                     correctQ++;
                 } else C1.setBackgroundColor(Color.RED);
@@ -177,7 +250,7 @@ public class PracticeActivity extends AppCompatActivity {
             public void onClick(View v) {
                 myCountDownTimer.cancel();
                 total++;
-                answer=9;
+                answer=25;
                 if(answer==currentQuestionNumber){
                     D1.setBackgroundColor(Color.GREEN);
                     correctQ++;
@@ -201,8 +274,8 @@ public class PracticeActivity extends AppCompatActivity {
             public void onClick(View v) {
                 myCountDownTimer.cancel();
                 total++;
-                answer=15;
-                if(answer==currentQuestionNumber||answer+3==currentQuestionNumber){
+                answer=28;
+                if(answer==currentQuestionNumber||answer+1==currentQuestionNumber){
                     E1.setBackgroundColor(Color.GREEN);
                     correctQ++;
                 } else E1.setBackgroundColor(Color.RED);
@@ -225,8 +298,8 @@ public class PracticeActivity extends AppCompatActivity {
             public void onClick(View v) {
                 myCountDownTimer.cancel();
                 total++;
-                answer=19;
-                if(answer==currentQuestionNumber||answer+3==currentQuestionNumber){
+                answer=30;
+                if(answer==currentQuestionNumber||answer+1==currentQuestionNumber){
                     F1.setBackgroundColor(Color.GREEN);
                     correctQ++;
                 } else F1.setBackgroundColor(Color.RED);
@@ -249,7 +322,7 @@ public class PracticeActivity extends AppCompatActivity {
             public void onClick(View v) {
                 myCountDownTimer.cancel();
                 total++;
-                answer=27;
+                answer=34;
                 if(answer==currentQuestionNumber){
                     G1.setBackgroundColor(Color.GREEN);
                     correctQ++;
@@ -273,7 +346,7 @@ public class PracticeActivity extends AppCompatActivity {
             public void onClick(View v) {
                 myCountDownTimer.cancel();
                 total++;
-                answer=33;
+                answer=37;
                 if(answer==currentQuestionNumber){
                     A1.setBackgroundColor(Color.GREEN);
                     correctQ++;
@@ -298,7 +371,7 @@ public class PracticeActivity extends AppCompatActivity {
                 myCountDownTimer.cancel();
                 total++;
                 answer=40;
-                if(answer==currentQuestionNumber||answer+1==currentQuestionNumber||answer+2==currentQuestionNumber||answer+3==currentQuestionNumber||answer+4==currentQuestionNumber){
+                if(answer==currentQuestionNumber){
                     B1.setBackgroundColor(Color.GREEN);
                     correctQ++;
                 } else B1.setBackgroundColor(Color.RED);
@@ -322,8 +395,8 @@ public class PracticeActivity extends AppCompatActivity {
             public void onClick(View v) {
                 myCountDownTimer.cancel();
                 total++;
-                answer=5;
-                if(answer==currentQuestionNumber||answer+1==currentQuestionNumber||answer+2==currentQuestionNumber||answer+3==currentQuestionNumber){
+                answer=23;
+                if(answer==currentQuestionNumber||answer+1==currentQuestionNumber){
                     Cc1.setBackgroundColor(Color.GREEN);
                     correctQ++;
                 } else Cc1.setBackgroundColor(Color.RED);
@@ -346,8 +419,8 @@ public class PracticeActivity extends AppCompatActivity {
             public void onClick(View v) {
                 myCountDownTimer.cancel();
                 total++;
-                answer=11;
-                if(answer==currentQuestionNumber||answer+1==currentQuestionNumber||answer+2==currentQuestionNumber||answer+3==currentQuestionNumber){
+                answer=26;
+                if(answer==currentQuestionNumber||answer+1==currentQuestionNumber){
                     Dd1.setBackgroundColor(Color.GREEN);
                     correctQ++;
                 } else Dd1.setBackgroundColor(Color.RED);
@@ -371,8 +444,8 @@ public class PracticeActivity extends AppCompatActivity {
             public void onClick(View v) {
                 myCountDownTimer.cancel();
                 total++;
-                answer=23;
-                if(answer==currentQuestionNumber||answer+1==currentQuestionNumber||answer+2==currentQuestionNumber||answer+3==currentQuestionNumber){
+                answer=32;
+                if(answer==currentQuestionNumber||answer+1==currentQuestionNumber){
                     Ff1.setBackgroundColor(Color.GREEN);
                     correctQ++;
                 } else Ff1.setBackgroundColor(Color.RED);
@@ -395,8 +468,8 @@ public class PracticeActivity extends AppCompatActivity {
             public void onClick(View v) {
                 myCountDownTimer.cancel();
                 total++;
-                answer=29;
-                if(answer==currentQuestionNumber||answer+1==currentQuestionNumber||answer+2==currentQuestionNumber||answer+3==currentQuestionNumber){
+                answer=35;
+                if(answer==currentQuestionNumber||answer+1==currentQuestionNumber){
                     Gg1.setBackgroundColor(Color.GREEN);
                     correctQ++;
                 } else Gg1.setBackgroundColor(Color.RED);
@@ -419,8 +492,8 @@ public class PracticeActivity extends AppCompatActivity {
             public void onClick(View v) {
                 myCountDownTimer.cancel();
                 total++;
-                answer=35;
-                if(answer==currentQuestionNumber||answer+1==currentQuestionNumber||answer+2==currentQuestionNumber||answer+3==currentQuestionNumber||answer+4==currentQuestionNumber){
+                answer=38;
+                if(answer==currentQuestionNumber||answer+1==currentQuestionNumber){
                     Aa1.setBackgroundColor(Color.GREEN);
                     correctQ++;
                 } else Aa1.setBackgroundColor(Color.RED);
@@ -446,7 +519,7 @@ public class PracticeActivity extends AppCompatActivity {
                 myCountDownTimer.cancel();
                 total++;
                 answer=0;
-                if(answer+1==currentQuestionNumber||answer+2==currentQuestionNumber){
+                if(answer==currentQuestionNumber||answer+1==currentQuestionNumber){
                     C.setBackgroundColor(Color.GREEN);
                     correctQ++;
                 } else C.setBackgroundColor(Color.RED);
@@ -472,8 +545,8 @@ public class PracticeActivity extends AppCompatActivity {
             public void onClick(View v) {
                 myCountDownTimer.cancel();
                 total++;
-                answer=9;
-                if(answer+1==currentQuestionNumber){
+                answer=4;
+                if(answer==currentQuestionNumber){
                     D.setBackgroundColor(Color.GREEN);
                     correctQ++;
                 } else D.setBackgroundColor(Color.RED);
@@ -496,8 +569,8 @@ public class PracticeActivity extends AppCompatActivity {
             public void onClick(View v) {
                 myCountDownTimer.cancel();
                 total++;
-                answer=15;
-                if(answer+1==currentQuestionNumber||answer+2==currentQuestionNumber){
+                answer=7;
+                if(answer==currentQuestionNumber||answer+1==currentQuestionNumber){
                     E.setBackgroundColor(Color.GREEN);
                     correctQ++;
                 } else E.setBackgroundColor(Color.RED);
@@ -520,8 +593,8 @@ public class PracticeActivity extends AppCompatActivity {
             public void onClick(View v) {
                 myCountDownTimer.cancel();
                 total++;
-                answer=19;
-                if(answer+1==currentQuestionNumber||answer+2==currentQuestionNumber){
+                answer=9;
+                if(answer==currentQuestionNumber||answer+1==currentQuestionNumber){
                     F.setBackgroundColor(Color.GREEN);
                     correctQ++;
                 } else F.setBackgroundColor(Color.RED);
@@ -544,8 +617,8 @@ public class PracticeActivity extends AppCompatActivity {
             public void onClick(View v) {
                 myCountDownTimer.cancel();
                 total++;
-                answer=27;
-                if(answer+1==currentQuestionNumber){
+                answer=13;
+                if(answer==currentQuestionNumber){
                     G.setBackgroundColor(Color.GREEN);
                     correctQ++;
                 } else G.setBackgroundColor(Color.RED);
@@ -568,8 +641,8 @@ public class PracticeActivity extends AppCompatActivity {
             public void onClick(View v) {
                 myCountDownTimer.cancel();
                 total++;
-                answer=33;
-                if(answer+1==currentQuestionNumber){
+                answer=16;
+                if(answer==currentQuestionNumber){
                     A.setBackgroundColor(Color.GREEN);
                     correctQ++;
                 } else A.setBackgroundColor(Color.RED);
@@ -593,7 +666,7 @@ public class PracticeActivity extends AppCompatActivity {
                 myCountDownTimer.cancel();
                 total++;
                 answer=40;
-                if(answer==currentQuestionNumber||answer+1==currentQuestionNumber||answer+2==currentQuestionNumber||answer+3==currentQuestionNumber||answer+4==currentQuestionNumber){
+                if(answer==currentQuestionNumber){
                     B.setBackgroundColor(Color.GREEN);
                     correctQ++;
                 } else B.setBackgroundColor(Color.RED);
@@ -616,8 +689,8 @@ public class PracticeActivity extends AppCompatActivity {
             public void onClick(View v) {
                 myCountDownTimer.cancel();
                 total++;
-                answer=5;
-                if(answer==currentQuestionNumber||answer+1==currentQuestionNumber||answer+2==currentQuestionNumber||answer+3==currentQuestionNumber){
+                answer=2;
+                if(answer==currentQuestionNumber||answer+1==currentQuestionNumber){
                     Cc.setBackgroundColor(Color.GREEN);
                     correctQ++;
                 } else Cc.setBackgroundColor(Color.RED);
@@ -640,8 +713,8 @@ public class PracticeActivity extends AppCompatActivity {
             public void onClick(View v) {
                 myCountDownTimer.cancel();
                 total++;
-                answer=11;
-                if(answer==currentQuestionNumber||answer+1==currentQuestionNumber||answer+2==currentQuestionNumber||answer+3==currentQuestionNumber){
+                answer=5;
+                if(answer==currentQuestionNumber||answer+1==currentQuestionNumber){
                     Dd.setBackgroundColor(Color.GREEN);
                     correctQ++;
                 } else Dd.setBackgroundColor(Color.RED);
@@ -665,8 +738,8 @@ public class PracticeActivity extends AppCompatActivity {
             public void onClick(View v) {
                 myCountDownTimer.cancel();
                 total++;
-                answer=23;
-                if(answer==currentQuestionNumber||answer+1==currentQuestionNumber||answer+2==currentQuestionNumber||answer+3==currentQuestionNumber){
+                answer=10;
+                if(answer==currentQuestionNumber||answer+1==currentQuestionNumber){
                     Ff.setBackgroundColor(Color.GREEN);
                     correctQ++;
                 } else Ff.setBackgroundColor(Color.RED);
@@ -689,8 +762,8 @@ public class PracticeActivity extends AppCompatActivity {
             public void onClick(View v) {
                 myCountDownTimer.cancel();
                 total++;
-                answer=29;
-                if(answer==currentQuestionNumber||answer+1==currentQuestionNumber||answer+2==currentQuestionNumber||answer+3==currentQuestionNumber){
+                answer=14;
+                if(answer==currentQuestionNumber||answer+1==currentQuestionNumber){
                     Gg.setBackgroundColor(Color.GREEN);
                     correctQ++;
                 } else Gg.setBackgroundColor(Color.RED);
@@ -713,8 +786,8 @@ public class PracticeActivity extends AppCompatActivity {
             public void onClick(View v) {
                 myCountDownTimer.cancel();
                 total++;
-                answer=35;
-                if(answer==currentQuestionNumber||answer+1==currentQuestionNumber||answer+2==currentQuestionNumber||answer+3==currentQuestionNumber||answer+4==currentQuestionNumber){
+                answer=17;
+                if(answer==currentQuestionNumber||answer+1==currentQuestionNumber){
                     Aa.setBackgroundColor(Color.GREEN);
                     correctQ++;
                 } else Aa.setBackgroundColor(Color.RED);
