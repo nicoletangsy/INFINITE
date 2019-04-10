@@ -28,6 +28,8 @@ import be.tarsos.dsp.pitch.PitchDetectionHandler;
 import be.tarsos.dsp.pitch.PitchDetectionResult;
 import be.tarsos.dsp.pitch.PitchProcessor;
 
+import static comnicoletangsyinfinite.httpsgithub.infinite.RightHandReading.A_Music_Sheet_Type;
+
 public class RightHandPractice extends AppCompatActivity {
     public static final RecordedMusicNotes A_RECORDED_MUSIC_NOTES = new RecordedMusicNotes();
     private boolean mStartRecording = true;
@@ -66,6 +68,7 @@ public class RightHandPractice extends AppCompatActivity {
         } else {
             //stopRecording();
             playRecordButton.setVisibility(View.VISIBLE);
+            A_Music_Sheet_Type.changedToUserPlay();
         }
     }
 
@@ -230,6 +233,7 @@ public class RightHandPractice extends AppCompatActivity {
             Intent intent = new Intent(RightHandPractice.this, RightHandReading.class);
             startActivity(intent);
             finish();
+            A_Music_Sheet_Type.changedToOriginal();
         }
         return super.onOptionsItemSelected(menuItem);
     }

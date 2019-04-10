@@ -26,57 +26,71 @@
             android:layout_height="0dp"
             android:layout_weight="0.75"></include>
 
-        <TextView
-            android:id="@+id/original"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.75"
-            android:gravity="center_horizontal"
-            android:text="Original Music Sheet: "
-            android:textSize="20dp" />
+        <!--<TextView-->
+        <!--android:id="@+id/original"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="0dp"-->
+        <!--android:layout_weight="0.5"-->
+        <!--android:gravity="center_horizontal"-->
+        <!--android:text="Original Music Sheet: "-->
+        <!--android:textSize="20dp" />-->
+
+
+        <!--<TextView-->
+        <!--android:id="@+id/result"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="0dp"-->
+        <!--android:layout_weight="0.5"-->
+        <!--android:text="Your Result: "-->
+        <!--android:textSize="20dp"-->
+        <!--android:gravity="center"/>-->
 
         <TextView
             android:id="@+id/original2"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
+            android:layout_weight="0.4"
             android:gravity="center"
             android:text="original2"
             android:textSize="20dp" />
 
         <TextView
-            android:id="@+id/result"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.5"
-            android:text="Your Result: "
-            android:textSize="20dp"
-            android:gravity="center"/>
-
-        <TextView
             android:id="@+id/result2"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1.25"
+            android:layout_weight="0.7"
             android:text=""
             android:textSize="20dp"
             android:gravity="center"/>
 
-        <TextView
-            android:id="@+id/feedback"
+        <!--<TextView-->
+        <!--android:id="@+id/feedback"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="0dp"-->
+        <!--android:layout_weight="0.4"-->
+        <!--android:text=""-->
+        <!--android:textSize="20dp"-->
+        <!--android:gravity="center"/>-->
+
+        <comnicoletangsyinfinite.httpsgithub.infinite.PianoSheetView
+            android:id="@+id/staff"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
-            android:text=""
-            android:textSize="20dp"
-            android:gravity="center"/>
+            android:layout_weight="4"/>
+
+
+
+
+
+
+
 
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:weightSum="3"
+            android:weightSum="0.5"
             android:orientation="horizontal">
 
             <LinearLayout

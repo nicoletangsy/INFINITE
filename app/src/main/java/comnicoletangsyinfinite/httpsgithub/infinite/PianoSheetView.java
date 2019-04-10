@@ -14,7 +14,10 @@ import android.util.Log;
 import android.view.View;
 import android.content.res.TypedArray;
 import java.util.ArrayList;
+
 import static comnicoletangsyinfinite.httpsgithub.infinite.RightHandPractice.A_RECORDED_MUSIC_NOTES;
+import static comnicoletangsyinfinite.httpsgithub.infinite.RightHandReading.A_Music_Sheet_Type;
+
 public class PianoSheetView extends View {
 
         private Paint paint;
@@ -26,6 +29,12 @@ public class PianoSheetView extends View {
         private int iheight;
         private int width;
         private int height;
+        private double allNotes[][]={{0,4},{48,4},{50,4},{48,4},{55,4}};
+        private double changeNotes[][]={{0,4},{50,4},{48,4},{55,4}};
+
+
+
+
 
 
 
@@ -36,8 +45,6 @@ public class PianoSheetView extends View {
     //private double allNotes[][]={{48.5,4},{60,4}};
     //private GeneratedMusicNotes allNotes = new GeneratedMusicNotes();
 
-
-    private double allNotes[][]={{0,4},{48,8},{50,8},{48,8},{52,8},{48,8},{54,8},{48,8},{56,8}};
 
 
     private static final String TAG = "Staff";
@@ -260,6 +267,12 @@ public class PianoSheetView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
+
+        String type = A_Music_Sheet_Type.getType();
+        if(type.equals("userPlay")){
+            allNotes = changeNotes;
+
+        }
 
         // Set up paint
         paint.setStrokeWidth(2);

@@ -35,13 +35,8 @@
 
     <Button
         android:id="@+id/Bkey"
-<<<<<<< Updated upstream
         android:layout_width="37dp"
         android:layout_height="100dp"
-=======
-        android:layout_width="45dp"
-        android:layout_height="150dp"
->>>>>>> Stashed changes
         android:layout_marginEnd="111dp"
         android:background="@drawable/whitekey"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -51,80 +46,49 @@
 
     <Button
         android:id="@+id/Akey"
-<<<<<<< Updated upstream
         android:layout_width="37dp"
         android:layout_height="100dp"
-=======
-        android:layout_width="45dp"
-        android:layout_height="150dp"
->>>>>>> Stashed changes
         android:background="@drawable/whitekey"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/Gkey" />
 
     <Button
         android:id="@+id/Gkey"
-<<<<<<< Updated upstream
         android:layout_width="37dp"
         android:layout_height="100dp"
-=======
-        android:layout_width="45dp"
-        android:layout_height="150dp"
->>>>>>> Stashed changes
         android:background="@drawable/whitekey"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/Fkey" />
 
     <Button
         android:id="@+id/Fkey"
-<<<<<<< Updated upstream
         android:layout_width="37dp"
         android:layout_height="100dp"
-=======
-        android:layout_width="45dp"
-        android:layout_height="150dp"
->>>>>>> Stashed changes
         android:background="@drawable/whitekey"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/Ekey" />
 
     <Button
         android:id="@+id/Ekey"
-<<<<<<< Updated upstream
         android:layout_width="37dp"
         android:layout_height="100dp"
-=======
-        android:layout_width="45dp"
-        android:layout_height="150dp"
->>>>>>> Stashed changes
         android:background="@drawable/whitekey"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/Dkey" />
 
     <Button
         android:id="@+id/Dkey"
-<<<<<<< Updated upstream
         android:layout_width="37dp"
         android:layout_height="100dp"
-=======
-        android:layout_width="45dp"
-        android:layout_height="150dp"
->>>>>>> Stashed changes
         android:background="@drawable/whitekey"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/Ckey" />
 
     <Button
         android:id="@+id/Ckey"
-<<<<<<< Updated upstream
         android:layout_width="37dp"
         android:layout_height="100dp"
         android:layout_marginStart="0dp"
-=======
-        android:layout_width="45dp"
-        android:layout_height="150dp"
-        android:layout_marginStart="27dp"
->>>>>>> Stashed changes
         android:background="@drawable/whitekey"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -132,13 +96,8 @@
 
     <Button
         android:id="@+id/Aakey"
-<<<<<<< Updated upstream
         android:layout_width="28dp"
         android:layout_height="52dp"
-=======
-        android:layout_width="36dp"
-        android:layout_height="90dp"
->>>>>>> Stashed changes
         android:layout_marginStart="1dp"
         android:layout_marginEnd="1dp"
         android:layout_marginBottom="60dp"
@@ -149,15 +108,9 @@
 
     <Button
         android:id="@+id/Ggkey"
-<<<<<<< Updated upstream
         android:layout_width="28dp"
         android:layout_height="52dp"
         android:layout_marginBottom="48dp"
-=======
-        android:layout_width="36dp"
-        android:layout_height="90dp"
-        android:layout_marginBottom="60dp"
->>>>>>> Stashed changes
         android:background="@drawable/blackkey"
         app:layout_constraintBottom_toBottomOf="@+id/Gkey"
         app:layout_constraintEnd_toStartOf="@+id/Akey"
@@ -166,15 +119,9 @@
 
     <Button
         android:id="@+id/Ffkey"
-<<<<<<< Updated upstream
         android:layout_width="28dp"
         android:layout_height="52dp"
         android:layout_marginBottom="48dp"
-=======
-        android:layout_width="36dp"
-        android:layout_height="90dp"
-        android:layout_marginBottom="60dp"
->>>>>>> Stashed changes
         android:background="@drawable/blackkey"
         app:layout_constraintBottom_toBottomOf="@+id/Fkey"
         app:layout_constraintEnd_toStartOf="@+id/Gkey"
@@ -183,17 +130,10 @@
 
     <Button
         android:id="@+id/Ddkey"
-<<<<<<< Updated upstream
         android:layout_width="28dp"
         android:layout_height="52dp"
         android:layout_marginStart="12dp"
         android:layout_marginBottom="48dp"
-=======
-        android:layout_width="35dp"
-        android:layout_height="90dp"
-        android:layout_marginStart="25dp"
-        android:layout_marginBottom="60dp"
->>>>>>> Stashed changes
         android:background="@drawable/blackkey"
         app:layout_constraintBottom_toBottomOf="@+id/Dkey"
         app:layout_constraintEnd_toStartOf="@+id/Ekey"
@@ -201,17 +141,10 @@
 
     <Button
         android:id="@+id/Cckey"
-<<<<<<< Updated upstream
         android:layout_width="28dp"
         android:layout_height="52dp"
         android:layout_marginStart="22dp"
         android:layout_marginBottom="48dp"
-=======
-        android:layout_width="36dp"
-        android:layout_height="90dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginBottom="60dp"
->>>>>>> Stashed changes
         android:background="@drawable/blackkey"
         app:layout_constraintBottom_toBottomOf="@+id/Ckey"
         app:layout_constraintStart_toStartOf="@+id/Ckey" />

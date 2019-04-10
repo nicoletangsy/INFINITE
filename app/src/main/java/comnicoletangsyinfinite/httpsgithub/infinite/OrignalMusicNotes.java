@@ -22,9 +22,9 @@ public class OrignalMusicNotes {
     }
 
     public double[][] getArrayList(){
-        double[][] convertedList;
+        double[][] convertedList = null;
         for (int i=0; i<Notes.size(); i++) {
-            convertedList
+            convertedList[i][0] = Double.parseDouble(Notes.get(i));
 
         }
         return convertedList;
