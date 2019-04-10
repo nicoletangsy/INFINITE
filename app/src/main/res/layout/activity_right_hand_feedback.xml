@@ -51,14 +51,13 @@
             android:layout_height="0dp"
             android:layout_weight="0.4"
             android:gravity="center"
-            android:text="original2"
+            android:text=""
             android:textSize="20dp" />
 
         <TextView
             android:id="@+id/result2"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.7"
+            android:layout_height="wrap_content"
             android:text=""
             android:textSize="20dp"
             android:gravity="center"/>
@@ -72,11 +71,6 @@
         <!--android:textSize="20dp"-->
         <!--android:gravity="center"/>-->
 
-        <comnicoletangsyinfinite.httpsgithub.infinite.PianoSheetView
-            android:id="@+id/staff"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="4"/>
 
 
 
@@ -84,76 +78,6 @@
 
 
 
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:weightSum="0.5"
-            android:orientation="horizontal">
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:orientation="horizontal"
-                android:layoutDirection="ltr">
-
-                <TextView
-                    android:id="@+id/pageNumber"
-                    android:layout_width="wrap_content"
-                    android:layout_height="50dp"
-                    android:layout_gravity="left"
-                    android:gravity="center"
-                    android:text="Page:1/5"
-                    android:layout_marginLeft="10dp"/>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center">
-
-                <Button
-                    android:id="@+id/previousPageButton"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_gravity="right"
-                    android:background="@drawable/previouspage"
-                    android:text="" />
-
-                <Button
-                    android:id="@+id/nextPageButton"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_gravity="right"
-                    android:background="@drawable/nextpage"
-                    android:text="" />
-
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:orientation="horizontal"
-                android:layoutDirection="rtl">
-
-                <Button
-                    android:id="@+id/playButton"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_gravity="right"
-                    android:background="@drawable/playbutton"
-                    android:text=""
-                    android:layout_marginRight="10dp"/>
-
-            </LinearLayout>
-        </LinearLayout>
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

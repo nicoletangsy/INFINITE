@@ -9,7 +9,7 @@ public class RecordedMusicNotes {
     public String getAllNotes() {
         String list = "";
         for (int i=0; i<Notes.size(); i++) {
-            list = list + Notes.get(i).getNote() + " ";
+            list = list + Notes.get(i).getNote() + ", " + Notes.get(i).getNoteDuration() + " ";
         }
         return list;
     }

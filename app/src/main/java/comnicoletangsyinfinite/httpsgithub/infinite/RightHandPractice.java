@@ -109,23 +109,24 @@ public class RightHandPractice extends AppCompatActivity {
             Log.e(LOG_TAG, "prepare() failed");
         }*/
 
-        AudioDispatcher dispatcher = AudioDispatcherFactory.fromDefaultMicrophone(22050,1024,0);
-        PitchDetectionHandler pdh = new PitchDetectionHandler() {
+        final AudioDispatcher dispatcher = AudioDispatcherFactory.fromDefaultMicrophone(22050,1024,0);
+        final PitchDetectionHandler pdh = new PitchDetectionHandler() {
             @Override
-            public void handlePitch(PitchDetectionResult result, AudioEvent e) {
-                final float pitchInHz = result.getPitch();
-                final Pitch pitch = new Pitch(pitchInHz);
-                final aNote newNote = new aNote(pitch.getNote(), 4); //Assume noteDuration  = 4
-                if (newNote.getNote()>0.0) {
+            public void handlePitch(final PitchDetectionResult result, AudioEvent e) {
+                if (result.isPitched()) {
+                    final float pitchInHz = result.getPitch();
+                    final Pitch pitch = new Pitch(pitchInHz);
+                    final aNote newNote = new aNote(pitch.getNote(), 4); //Assume noteDuration  = 4
                     A_RECORDED_MUSIC_NOTES.addNotes(newNote);
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            TextView text = (TextView) findViewById(R.id.textView2);
+                            text.setText("getProbability = " + result.getProbability());
+                            //"pitchInHz = " + pitchInHz + ", pitch = " + pitch.getPitch() + ", note = " + newNote.getNote()
+                        }
+                    });
                 }
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        TextView text = (TextView) findViewById(R.id.textView2);
-                        text.setText("pitchInHz = " + pitchInHz + ", pitch = " + pitch.getPitch() + ", note = " + newNote.getNote());
-                    }
-                });
 
                 /*curPitch = pitch.getPitch();
                 if ((prevPitch.equals("") || !curPitch.equals(prevPitch)) && !curPitch.equals("")) {
@@ -138,6 +139,13 @@ public class RightHandPractice extends AppCompatActivity {
         AudioProcessor p = new PitchProcessor(PitchProcessor.PitchEstimationAlgorithm.AMDF, 22050, 2048, pdh);
         dispatcher.addAudioProcessor(p);
         new Thread(dispatcher,"Audio Dispatcher").start();
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                TextView text = (TextView) findViewById(R.id.textView2);
+                text.setText("SecondsProcess: " + dispatcher.secondsProcessed());
+            }
+        });
 
         //mRecorder.start();
     }
