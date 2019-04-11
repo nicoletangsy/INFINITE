@@ -261,7 +261,7 @@
         android:layout_height="120dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:src="@drawable/image"
+        android:src="@drawable/la1"
         app:layout_constraintStart_toEndOf="@+id/endButton"
         app:layout_constraintTop_toBottomOf="@+id/app_bar" />
 

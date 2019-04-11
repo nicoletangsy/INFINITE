@@ -665,8 +665,8 @@ public class PracticeActivity extends AppCompatActivity {
             public void onClick(View v) {
                 myCountDownTimer.cancel();
                 total++;
-                answer=40;
-                if(answer==currentQuestionNumber){
+                answer=19;
+                if(answer==currentQuestionNumber||answer+1==currentQuestionNumber){
                     B.setBackgroundColor(Color.GREEN);
                     correctQ++;
                 } else B.setBackgroundColor(Color.RED);

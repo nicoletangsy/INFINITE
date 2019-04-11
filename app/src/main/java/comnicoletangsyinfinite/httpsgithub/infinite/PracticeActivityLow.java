@@ -100,13 +100,6 @@ public class PracticeActivityLow extends AppCompatActivity {
 
 
 
-
-
-
-
-
-
-
     };
 
     int answer;
@@ -372,7 +365,7 @@ public class PracticeActivityLow extends AppCompatActivity {
                 myCountDownTimer.cancel();
                 total++;
                 answer=40;
-                if(answer==currentQuestionNumber){
+                if(answer==currentQuestionNumber||answer+1==currentQuestionNumber){
                     B1.setBackgroundColor(Color.GREEN);
                     correctQ++;
                 } else B1.setBackgroundColor(Color.RED);
@@ -666,8 +659,8 @@ public class PracticeActivityLow extends AppCompatActivity {
             public void onClick(View v) {
                 myCountDownTimer.cancel();
                 total++;
-                answer=40;
-                if(answer==currentQuestionNumber){
+                answer=19;
+                if(answer==currentQuestionNumber||answer+1==currentQuestionNumber){
                     B.setBackgroundColor(Color.GREEN);
                     correctQ++;
                 } else B.setBackgroundColor(Color.RED);
@@ -739,7 +732,7 @@ public class PracticeActivityLow extends AppCompatActivity {
             public void onClick(View v) {
                 myCountDownTimer.cancel();
                 total++;
-                answer=10;
+                answer=11;
                 if(answer==currentQuestionNumber||answer+1==currentQuestionNumber){
                     Ff.setBackgroundColor(Color.GREEN);
                     correctQ++;
