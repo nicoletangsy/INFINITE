@@ -29,7 +29,7 @@ public class PianoSheetView extends View {
         private int iheight;
         private int width;
         private int height;
-        private double allNotes[][]={{0,4},{48,4},{50,4},{48,4},{55,4}};
+        public double allNotes[][]={{60,4},{48,4},{50,4},{48,4},{55,4}};
         private double changeNotes[][]={{0,4},{50,4},{48,4},{55,4}};
 
 

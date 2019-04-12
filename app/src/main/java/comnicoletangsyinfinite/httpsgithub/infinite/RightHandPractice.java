@@ -32,6 +32,8 @@ import static comnicoletangsyinfinite.httpsgithub.infinite.RightHandReading.A_Mu
 
 public class RightHandPractice extends AppCompatActivity {
     public static final RecordedMusicNotes A_RECORDED_MUSIC_NOTES = new RecordedMusicNotes();
+    public static final GeneratedMusicNotes A_GENERATED_MUSIC_NOTES = new GeneratedMusicNotes(60, 4, 4);
+    public static final int[] allNotesDuration = A_GENERATED_MUSIC_NOTES.getAllNotesDuration();
     private boolean mStartRecording = true;
     private boolean mStartPlaying = true;
     private static final String LOG_TAG = "AudioRecordTest";
@@ -39,6 +41,7 @@ public class RightHandPractice extends AppCompatActivity {
     private static String mFileName = null;
     public String prevPitch = "";
     public String curPitch = "";
+    public final long timerPeriod = 0;
 
     //private RecordButton mRecordButton = null;
     private MediaRecorder mRecorder = null;
@@ -108,7 +111,6 @@ public class RightHandPractice extends AppCompatActivity {
         } catch (IOException e) {
             Log.e(LOG_TAG, "prepare() failed");
         }*/
-
         final AudioDispatcher dispatcher = AudioDispatcherFactory.fromDefaultMicrophone(22050,1024,0);
         final PitchDetectionHandler pdh = new PitchDetectionHandler() {
             @Override

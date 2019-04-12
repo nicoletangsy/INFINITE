@@ -14,7 +14,7 @@ import android.widget.TextView;
 import java.util.Random;
 import android.graphics.Color;
 import android.os.Handler;
-import 	android.app.AlertDialog;
+import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.CountDownTimer;
 
@@ -188,7 +188,7 @@ public class PracticeActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        questionImg= (ImageView) findViewById(R.id.imageView);
+        questionImg= (ImageView)findViewById(R.id.imageView);
         currentQuestionNumber=r.nextInt(questions.length);
         questionImg.setImageResource(questions[currentQuestionNumber]);
 
@@ -196,12 +196,12 @@ public class PracticeActivity extends AppCompatActivity {
         question= (TextView) findViewById(R.id.question);
         question.setText("Which note is it?");
 
-        correctCount= (TextView) findViewById(R.id.correctCount);
+        correctCount = (TextView)findViewById(R.id.correctCount);
         //need to be change to count the correct answer
         correctCount.setText("Question:1/15");
-        time= (TextView) findViewById(R.id.time);
+        time = (TextView)findViewById(R.id.time);
 
-        final CountDownTimer myCountDownTimer=new CountDownTimer(5000, 1000) {
+        final CountDownTimer myCountDownTimer = new CountDownTimer(5000, 1000) {
 
             public void onTick(long millisUntilFinished) {
                 time.setText("seconds remaining: " + millisUntilFinished / 1000);
