@@ -37,8 +37,8 @@ public class RightHandPractice extends AppCompatActivity {
     private static final String LOG_TAG = "AudioRecordTest";
     private static final int REQUEST_RECORD_AUDIO_PERMISSION = 200;
     private static String mFileName = null;
-    public String prevPitch = "";
-    public String curPitch = "";
+    public double prevPitch = 0.0;
+    public double curPitch = 0.0;
 
     //private RecordButton mRecordButton = null;
     private MediaRecorder mRecorder = null;
@@ -116,16 +116,19 @@ public class RightHandPractice extends AppCompatActivity {
                 final float pitchInHz = result.getPitch();
                 final Pitch pitch = new Pitch(pitchInHz);
                 final aNote newNote = new aNote(pitch.getNote(), 4); //Assume noteDuration  = 4
-                if (newNote.getNote()>0.0) {
+                curPitch = newNote.getNote();
+                if (newNote.getNote()>0.0 || curPitch!=prevPitch) {
                     A_RECORDED_MUSIC_NOTES.addNotes(newNote);
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            TextView text = (TextView) findViewById(R.id.textView2);
+                            text.setText("Added: pitchInHz = " + pitchInHz + ", pitch = " + pitch.getPitch() + ", note = " + newNote.getNote());
+                        }
+                    });
+                    prevPitch = curPitch;
                 }
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        TextView text = (TextView) findViewById(R.id.textView2);
-                        text.setText("pitchInHz = " + pitchInHz + ", pitch = " + pitch.getPitch() + ", note = " + newNote.getNote());
-                    }
-                });
+
 
                 /*curPitch = pitch.getPitch();
                 if ((prevPitch.equals("") || !curPitch.equals(prevPitch)) && !curPitch.equals("")) {
