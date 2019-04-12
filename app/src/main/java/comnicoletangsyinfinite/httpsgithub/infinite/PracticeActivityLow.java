@@ -20,7 +20,7 @@ import android.os.CountDownTimer;
 
 import org.w3c.dom.Text;
 
-public class PracticeActivity extends AppCompatActivity {
+public class PracticeActivityLow extends AppCompatActivity {
     TextView question;
     TextView correctCount;
     TextView time;
@@ -30,78 +30,72 @@ public class PracticeActivity extends AppCompatActivity {
     Random r;
 
     Integer[] questions = {
-            R.drawable.c1,
-            R.drawable.c2,
+            R.drawable.lc1,
+            R.drawable.lc2,
 
-            R.drawable.cs1,
-            R.drawable.cs2,
+            R.drawable.lcs1,
+            R.drawable.lcs2,
 
-            R.drawable.d1,
+            R.drawable.ld1,
 
-            R.drawable.ds1,
-            R.drawable.ds2,
+            R.drawable.lds1,
+            R.drawable.lds2,
 
-            R.drawable.e1,
-            R.drawable.e2,
+            R.drawable.le1,
+            R.drawable.le2,
 
-            R.drawable.f1,
-            R.drawable.f2,
+            R.drawable.lf1,
+            R.drawable.lf2,
 
-            R.drawable.fs1,
-            R.drawable.fs2,
+            R.drawable.lfs1,
+            R.drawable.lfs2,
 
-            R.drawable.g1,
+            R.drawable.lg1,
 
-            R.drawable.gs1,
-            R.drawable.gs2,
+            R.drawable.lgs1,
+            R.drawable.lgs2,
 
-            R.drawable.a1,
+            R.drawable.la1,
 
-            R.drawable.as1,
-            R.drawable.as2,
+            R.drawable.las1,
+            R.drawable.las2,
 
-            R.drawable.b1,
-            R.drawable.b2,
-
-
-            R.drawable.c21,
-            R.drawable.c22,
-
-            R.drawable.cs21,
-            R.drawable.cs22,
-
-            R.drawable.d21,
-
-            R.drawable.ds21,
-            R.drawable.ds22,
-
-            R.drawable.e21,
-            R.drawable.e22,
-
-            R.drawable.f21,
-            R.drawable.f22,
-
-            R.drawable.fs21,
-            R.drawable.fs22,
-
-            R.drawable.g21,
-
-            R.drawable.gs21,
-            R.drawable.gs22,
-
-            R.drawable.a21,
-
-            R.drawable.as21,
-            R.drawable.as22,
-
-            R.drawable.b21,
+            R.drawable.lb1,
+            R.drawable.lb2,
 
 
+            R.drawable.lc21,
+            R.drawable.lc22,
 
+            R.drawable.lcs21,
+            R.drawable.lcs22,
 
+            R.drawable.ld21,
 
+            R.drawable.lds21,
+            R.drawable.lds22,
 
+            R.drawable.le21,
+            R.drawable.le22,
 
+            R.drawable.lf21,
+            R.drawable.lf22,
+
+            R.drawable.lfs21,
+            R.drawable.lfs22,
+
+            R.drawable.lg21,
+
+            R.drawable.lgs21,
+            R.drawable.lgs22,
+
+            R.drawable.la21,
+
+            R.drawable.las21,
+            R.drawable.las22,
+
+            R.drawable.lb21,
+            R.drawable.lb22,
 
 
 
@@ -150,7 +144,7 @@ public class PracticeActivity extends AppCompatActivity {
             builder.setPositiveButton("Back to Main Menu", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-                    Intent intent = new Intent(PracticeActivity.this, MainActivity.class);
+                    Intent intent = new Intent(PracticeActivityLow.this, MainActivity.class);
                     startActivity(intent);
                     finish();
                 }
@@ -158,7 +152,7 @@ public class PracticeActivity extends AppCompatActivity {
             builder.setNegativeButton("Try again", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-                    Intent intent = new Intent(PracticeActivity.this, PracticeActivity.class);
+                    Intent intent = new Intent(PracticeActivityLow.this, PracticeActivityLow.class);
                     startActivity(intent);
                     finish();
                 }
@@ -180,7 +174,7 @@ public class PracticeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         r = new Random();
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.practice_layout);
+        setContentView(R.layout.practice_layout_low);
 
         Toolbar toolbar = (Toolbar)findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);
@@ -371,7 +365,7 @@ public class PracticeActivity extends AppCompatActivity {
                 myCountDownTimer.cancel();
                 total++;
                 answer=40;
-                if(answer==currentQuestionNumber){
+                if(answer==currentQuestionNumber||answer+1==currentQuestionNumber){
                     B1.setBackgroundColor(Color.GREEN);
                     correctQ++;
                 } else B1.setBackgroundColor(Color.RED);
@@ -738,7 +732,7 @@ public class PracticeActivity extends AppCompatActivity {
             public void onClick(View v) {
                 myCountDownTimer.cancel();
                 total++;
-                answer=10;
+                answer=11;
                 if(answer==currentQuestionNumber||answer+1==currentQuestionNumber){
                     Ff.setBackgroundColor(Color.GREEN);
                     correctQ++;
@@ -817,7 +811,7 @@ public class PracticeActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem menuItem) {
         if (menuItem.getItemId() == android.R.id.home) {
-            Intent intent = new Intent(PracticeActivity.this, MainActivity.class);
+            Intent intent = new Intent(PracticeActivityLow.this, MainActivity.class);
             startActivity(intent);
             finish();
         }
