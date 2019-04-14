@@ -30,7 +30,7 @@ import be.tarsos.dsp.pitch.PitchProcessor;
 
 import static comnicoletangsyinfinite.httpsgithub.infinite.RightHandReading.A_Music_Sheet_Type;
 
-public class RightHandPractice extends AppCompatActivity {
+public class RightHandPractice extends AppCompatActivity{
     public static final RecordedMusicNotes A_RECORDED_MUSIC_NOTES = new RecordedMusicNotes();
     private boolean mStartRecording = true;
     private boolean mStartPlaying = true;

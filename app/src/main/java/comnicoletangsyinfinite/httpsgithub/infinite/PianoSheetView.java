@@ -21,6 +21,7 @@ import static comnicoletangsyinfinite.httpsgithub.infinite.RightHandReading.A_Mu
 public class PianoSheetView extends View {
 
         private Paint paint;
+        private Paint painttt;
         private Resources resources;
         private int textColour;
         private Rect clipRect;
@@ -30,7 +31,12 @@ public class PianoSheetView extends View {
         private int width;
         private int height;
         private double allNotes[][]={{0,4},{48,4},{50,4},{48,4},{55,4}};
-        private double changeNotes[][]={{0,4},{50,4},{48,4},{55,4}};
+        private double changeNotes[][]={{0,4},{50,8},{52,8},{48,8},{54,8}};
+        private static final String sharps[] =
+            {
+                    "\u266F",
+                    "\u266D"
+            };
 
 
 
@@ -190,6 +196,7 @@ public class PianoSheetView extends View {
         textColour = context.getResources().getColor(R.color.black);;
 
         paint = new Paint();
+        painttt = new Paint();
     }
 
     // On size changed
@@ -281,6 +288,13 @@ public class PianoSheetView extends View {
         paint.setTextSize(lineHeight * 4);
         paint.setTextAlign(Paint.Align.LEFT);
 
+
+        painttt.setStrokeWidth(2);
+        painttt.setColor(textColour);
+        painttt.setStyle(Paint.Style.FILL);
+        painttt.setTextSize(lineHeight * 2.5f);
+        painttt.setTextAlign(Paint.Align.LEFT);
+
         //String aList = A_RECORDED_MUSIC_NOTES.getAllNotes();
 
 
@@ -333,7 +347,22 @@ public class PianoSheetView extends View {
 
 
         // Translate canvas from C4 position
-        canvas.translate(lineWidth*2, -height/3.5f);
+        canvas.translate(lineWidth*1.6f, -height/3.5f);
+
+
+        //draw key and tempo
+        canvas.drawText(sharps[1], 0,-lineHeight*2.5f, paint);
+
+
+        canvas.translate(50, 0);
+
+        canvas.drawText("4", 0,-lineHeight*3, painttt);
+        canvas.drawText("4", 0,-lineHeight, painttt);
+
+        canvas.translate(150, 0);
+
+
+
         int j = 0;
         float totalBeat = 0;
         ArrayList<Notes> notesArrayList = new ArrayList<>();
