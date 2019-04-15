@@ -15,7 +15,10 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.TranslateAnimation;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.io.IOException;
@@ -29,6 +32,7 @@ import be.tarsos.dsp.pitch.PitchDetectionResult;
 import be.tarsos.dsp.pitch.PitchProcessor;
 
 import static comnicoletangsyinfinite.httpsgithub.infinite.RightHandReading.A_Music_Sheet_Type;
+import static comnicoletangsyinfinite.httpsgithub.infinite.PianoSheetView.FIRST_NOTE;
 
 public class RightHandPractice extends AppCompatActivity{
     public static final RecordedMusicNotes A_RECORDED_MUSIC_NOTES = new RecordedMusicNotes();
@@ -37,6 +41,8 @@ public class RightHandPractice extends AppCompatActivity{
     private static final String LOG_TAG = "AudioRecordTest";
     private static final int REQUEST_RECORD_AUDIO_PERMISSION = 200;
     private static String mFileName = null;
+    private ImageView greenLineView;
+    private Animation greenLineAnim;
     public double prevPitch = 0.0;
     public double curPitch = 0.0;
 
@@ -138,6 +144,14 @@ public class RightHandPractice extends AppCompatActivity{
                 }*/
             }
         };
+        float width = ((View) greenLineView.getParent()).getWidth();
+        Log.v("viewWidth",width+"");
+        greenLineAnim = new TranslateAnimation(0,width-width/32-(float)FIRST_NOTE.getX(),0,0);
+        greenLineAnim.setDuration(2000);
+
+        greenLineView.setVisibility(View.VISIBLE);
+        greenLineView.startAnimation(greenLineAnim);
+
         AudioProcessor p = new PitchProcessor(PitchProcessor.PitchEstimationAlgorithm.AMDF, 22050, 2048, pdh);
         dispatcher.addAudioProcessor(p);
         new Thread(dispatcher,"Audio Dispatcher").start();
@@ -160,7 +174,11 @@ public class RightHandPractice extends AppCompatActivity{
         final Button playRecordButton = (Button)findViewById(R.id.playRecordButton);
         Button analyzeButton = (Button)findViewById(R.id.analyzeButton);
         final TextView text2 = (TextView) findViewById(R.id.textView2);
-        //text2.setText("Piano sheet animation");
+        greenLineView = (ImageView)findViewById(R.id.greenLineView) ;
+
+        greenLineView.setX((float)FIRST_NOTE.getX());
+
+         //text2.setText("Piano sheet animation");
 
         Toolbar toolbar = (Toolbar)findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);

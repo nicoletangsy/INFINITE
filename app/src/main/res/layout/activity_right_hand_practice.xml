@@ -91,4 +91,14 @@
         </LinearLayout>
     </LinearLayout>
 
+    <ImageView
+        android:id="@+id/greenLineView"
+        android:layout_width="1dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="83dp"
+        android:background="@drawable/green_line"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 </android.support.constraint.ConstraintLayout>

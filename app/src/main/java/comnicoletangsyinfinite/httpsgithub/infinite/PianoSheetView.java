@@ -1,6 +1,5 @@
 package comnicoletangsyinfinite.httpsgithub.infinite;
 
-import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Canvas;
@@ -10,12 +9,10 @@ import android.graphics.Path;
 import android.graphics.Rect;
 import android.graphics.RectF;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.View;
-import android.content.res.TypedArray;
+
 import java.util.ArrayList;
 
-import static comnicoletangsyinfinite.httpsgithub.infinite.RightHandPractice.A_RECORDED_MUSIC_NOTES;
 import static comnicoletangsyinfinite.httpsgithub.infinite.RightHandReading.A_Music_Sheet_Type;
 
 public class PianoSheetView extends View {
@@ -31,7 +28,10 @@ public class PianoSheetView extends View {
         private int width;
         private int height;
         private double allNotes[][]={{0,4},{48,4},{50,4},{48,4},{55,4}};
-        private double changeNotes[][]={{0,4},{50,8},{52,8},{48,8},{54,8}};
+        private double changeNotes[][]={{0,3},{50,8},{52,8},{48,8},{54,8}};
+        //FIRST_NOTE is for calculate the green line starting position
+        public static final FirstNote FIRST_NOTE = new FirstNote();
+
         private static final String sharps[] =
             {
                     "\u266F",
@@ -300,6 +300,7 @@ public class PianoSheetView extends View {
 
         // Draw staff
         canvas.translate(0, height / 3f);
+        FIRST_NOTE.setXandY(lineHeight/1.5f,height / 3f);
         for (int i = 1; i < 6; i++) {
 
             canvas.drawLine(margin, i * -lineHeight,
@@ -316,6 +317,7 @@ public class PianoSheetView extends View {
 
         // Draw staff
         canvas.translate(0, height /3.5f);
+        FIRST_NOTE.addXandY(0,height /3.5f);
         for (int i = 1; i < 6; i++) {
             canvas.drawLine(margin, i * -lineHeight,
                     width - margin, i * -lineHeight, paint);
@@ -348,6 +350,7 @@ public class PianoSheetView extends View {
 
         // Translate canvas from C4 position
         canvas.translate(lineWidth*1.6f, -height/3.5f);
+        FIRST_NOTE.addXandY(lineWidth*1.6f,-height/3.5f);
 
 
         //draw key and tempo
@@ -355,13 +358,19 @@ public class PianoSheetView extends View {
 
 
         canvas.translate(50, 0);
+        FIRST_NOTE.addXandY(50,0);
 
-        canvas.drawText("4", 0,-lineHeight*3, painttt);
+        //3/4 OR 4/4 of piano sheet
+        if (allNotes[0][1]==3) {
+            canvas.drawText("3", 0,-lineHeight*3, painttt);
+        }
+        else
+            canvas.drawText("4", 0,-lineHeight*3, painttt);
+
         canvas.drawText("4", 0,-lineHeight, painttt);
 
         canvas.translate(150, 0);
-
-
+        FIRST_NOTE.addXandY(150,0);
 
         int j = 0;
         float totalBeat = 0;
