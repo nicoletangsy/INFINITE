@@ -25,6 +25,7 @@ public class Notes extends View {
     private Paint paintTail;
     private Paint sharpPiant;
     private Paint flatPiant;
+    private Paint paint1;
     private float dy;
     private float dx;
     private float yBase;
@@ -60,6 +61,7 @@ public class Notes extends View {
             };
 
     public Notes(Context context){
+
         super(context);
         resources = getResources();
         textColour = context.getResources().getColor(R.color.black);
@@ -92,9 +94,29 @@ public class Notes extends View {
         flatPiant.setTextSize(lineHeight * 3.5f);
         flatPiant.setTextAlign(Paint.Align.LEFT);
 
+        paint1 = new Paint();
+        paint1.setStrokeWidth(1);
+        paint1.setColor(textColour);
+        paint1.setStyle(Paint.Style.FILL);
+        paint1.setTextSize(lineHeight * 4);
+        paint1.setTextAlign(Paint.Align.LEFT);
+
     }
 
-    public Canvas create1Note(float lineWidth, float lineHeight, int margin, double note, Canvas canvas) {return canvas;}
+    public Canvas create1Note(float lineWidth, float lineHeight, int margin, double note, Canvas canvas) {
+        this.note = note;
+        this.canvas = canvas;
+        this.lineHeight = lineHeight;
+        this.lineWidth = lineWidth;
+        this.margin = margin;
+
+
+        scaleNoteDrawFlat(1,0);
+
+        // Translate canvas
+        canvas.translate(300, -(yBase - dy));
+
+        return canvas;}
 
     public Canvas create2Note(float lineWidth, float lineHeight, int margin, double note, Canvas canvas) {return canvas;}
 
@@ -109,7 +131,7 @@ public class Notes extends View {
         this.margin = margin;
 
 
-        scaleNoteDrawFlat(8,3.5f);
+        scaleNoteDrawFlat(4,3.5f);
 
         // Translate canvas
         canvas.translate(156, -(yBase - dy));
@@ -118,14 +140,17 @@ public class Notes extends View {
     }
 
     public Canvas create8Note(float lineWidth, float lineHeight, int margin, double note1,double note2, Canvas canvas) {
+
         this.note = note1;
         this.canvas = canvas;
         this.lineHeight = lineHeight;
         this.lineWidth = lineWidth;
         this.margin = margin;
+
         float tailHeight1 = 0;
         float tailHeight2 = 0;
         float noteDiff = 0;
+
         if(note1-note2==-8){
             tailHeight1 = 3;
             tailHeight2 = 2;
@@ -172,8 +197,6 @@ public class Notes extends View {
             noteDiff = -1f;
         }
 
-
-
         scaleNoteDrawFlat(8,tailHeight1);
 
         canvas.drawLine(lineHeight/1.5f-1, -lineHeight*tailHeight1,
@@ -184,7 +207,6 @@ public class Notes extends View {
 
         this.note = note2;
         scaleNoteDrawFlat(8,tailHeight2);
-
 
 
         // Translate canvas
@@ -200,19 +222,20 @@ public class Notes extends View {
 
     //Stroke for a bar
     public Canvas createStroke(float lineWidth, float lineHeight, int margin, Canvas canvas){
-        this.canvas = canvas;
 
+        this.canvas = canvas;
 
         canvas.translate(-40, 0);
         canvas.drawLine(0,-lineHeight,0,-lineHeight-(lineHeight*4),paint);
+
         // Translate canvas
         canvas.translate(110, 0);
+
         return canvas;
     }
 
     protected void drawLeger(){
-        canvas.drawLine(-lineHeight, 0,
-                    lineHeight, 0, paint);
+        canvas.drawLine(-lineHeight, 0, lineHeight, 0, paint);
     }
 
 
@@ -240,12 +263,10 @@ public class Notes extends View {
         int index = (intNote + OCTAVE) % OCTAVE;
         int octave = intNote / OCTAVE;
 
-        dx = (octave * lineWidth * 3.5f) +
-                (offset[index] * (lineWidth / 2));
-        dy = (octave * lineHeight * 3.5f) +
-                (offset[index] * (lineHeight / 2));
+        dx = (octave * lineWidth * 3.5f) + (offset[index] * (lineWidth / 2));
+        dy = (octave * lineHeight * 3.5f) + (offset[index] * (lineHeight / 2));
 
-        // Translate canvas
+        // Translate canvas y position
         canvas.translate(0, yBase - dy);
 
         //middle C's line
@@ -254,22 +275,24 @@ public class Notes extends View {
         }
 
         // Draw note
-        canvas.drawPath(notepath, paint);
+        if(noteType<3)
+            canvas.drawText("\uD834\uDD5D",0,-100, paint1);
+        else
+            canvas.drawPath(notepath, paint);
 
         //////////////////////////
         //Draw accidental(sharp)//
         //dont know why not work//
         //////////////////////////
         if(note % OCTAVE == 1||note % OCTAVE ==3||note % OCTAVE ==6||note % OCTAVE ==8||note % OCTAVE ==10) {
-            canvas.drawText(sharps[0], -lineHeight,
-                    0, paint);
+            canvas.drawText(sharps[0], -lineHeight, 0, paint);
         }
         //Draw accidental(flat)
         else if ((note - Math.floor(note)) == 0.5) {
-            canvas.drawText(sharps[1], -lineHeight,
-                    0, paint);
+            canvas.drawText(sharps[1], -lineHeight, 0, paint);
         }
 
+        if(tailHeight>0)
         drawTail(tailHeight);
 
     }
@@ -296,7 +319,7 @@ public class Notes extends View {
 
         notepath.moveTo(hd[0][0], hd[0][1]);
 
-        if(noteType==4||noteType==8||noteType==16||noteType==32) {
+        if(noteType == 4||noteType == 8||noteType == 16||noteType == 32) {
             for (int i = 1; i < hd.length; i += 3) {
                 notepath.cubicTo(hd[i][0], hd[i][1],
                         hd[i + 1][0], hd[i + 1][1],

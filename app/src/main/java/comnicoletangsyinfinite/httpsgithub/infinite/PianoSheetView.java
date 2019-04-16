@@ -27,15 +27,19 @@ public class PianoSheetView extends View {
         private int iheight;
         private int width;
         private int height;
-        private double allNotes[][]={{0,4},{48,4},{50,4},{48,4},{55,4}};
-        private double changeNotes[][]={{0,3},{50,8},{52,8},{48,8},{54,8}};
+        private double allNotes[][]={{0,4},{48,1},{50,4},{48,4},{55,4}};
+        private double changeNotes[][]={{0,3},{52,8},{53,8},{48,8},{54,8}};
         //FIRST_NOTE is for calculate the green line starting position
         public static final FirstNote FIRST_NOTE = new FirstNote();
 
         private static final String sharps[] =
             {
                     "\u266F",
-                    "\u266D"
+                    "\u266D",
+                    "\u266A",
+                    "\u266E",
+                    "\uD834\uDD5D"
+
             };
 
 
@@ -289,7 +293,7 @@ public class PianoSheetView extends View {
         paint.setTextAlign(Paint.Align.LEFT);
 
 
-        painttt.setStrokeWidth(2);
+        painttt.setStrokeWidth(1);
         painttt.setColor(textColour);
         painttt.setStyle(Paint.Style.FILL);
         painttt.setTextSize(lineHeight * 2.5f);
@@ -362,7 +366,7 @@ public class PianoSheetView extends View {
 
         //3/4 OR 4/4 of piano sheet
         if (allNotes[0][1]==3) {
-            canvas.drawText("3", 0,-lineHeight*3, painttt);
+            canvas.drawText("3", 0,-lineHeight, painttt);
         }
         else
             canvas.drawText("4", 0,-lineHeight*3, painttt);
