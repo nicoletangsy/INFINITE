@@ -29,6 +29,7 @@ public class RightHandFeedback extends AppCompatActivity {
         String oNotes = "E4 D4 C4 D4 E4 G4 A4 F4 C5 B4 A4 G4 F4 E4 D4 C4 ";
         //original.setText("" + oNotes);
         TextView result = findViewById(R.id.result2);
+        A_RECORDED_MUSIC_NOTES.ProcessNote();
         result.setText(A_RECORDED_MUSIC_NOTES.getAllNotes());
 
         Toolbar toolbar = (Toolbar)findViewById(R.id.app_bar);

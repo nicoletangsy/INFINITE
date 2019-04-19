@@ -23,6 +23,7 @@ import java.io.IOException;
 import be.tarsos.dsp.AudioDispatcher;
 import be.tarsos.dsp.AudioEvent;
 import be.tarsos.dsp.AudioProcessor;
+import be.tarsos.dsp.DetermineDurationProcessor;
 import be.tarsos.dsp.io.android.AudioDispatcherFactory;
 import be.tarsos.dsp.pitch.PitchDetectionHandler;
 import be.tarsos.dsp.pitch.PitchDetectionResult;
@@ -32,16 +33,14 @@ import static comnicoletangsyinfinite.httpsgithub.infinite.RightHandReading.A_Mu
 
 public class RightHandPractice extends AppCompatActivity {
     public static final RecordedMusicNotes A_RECORDED_MUSIC_NOTES = new RecordedMusicNotes();
-    public static final GeneratedMusicNotes A_GENERATED_MUSIC_NOTES = new GeneratedMusicNotes(60, 4, 4);
-    public static final int[] allNotesDuration = A_GENERATED_MUSIC_NOTES.getAllNotesDuration();
+    private AudioDispatcher dispatcher;
     private boolean mStartRecording = true;
     private boolean mStartPlaying = true;
     private static final String LOG_TAG = "AudioRecordTest";
     private static final int REQUEST_RECORD_AUDIO_PERMISSION = 200;
     private static String mFileName = null;
-    public String prevPitch = "";
-    public String curPitch = "";
-    public final long timerPeriod = 0;
+    public double prevPitch = 0.0;
+    public double curPitch = 0.0;
 
     //private RecordButton mRecordButton = null;
     private MediaRecorder mRecorder = null;
@@ -111,24 +110,32 @@ public class RightHandPractice extends AppCompatActivity {
         } catch (IOException e) {
             Log.e(LOG_TAG, "prepare() failed");
         }*/
-        final AudioDispatcher dispatcher = AudioDispatcherFactory.fromDefaultMicrophone(22050,1024,0);
-        final PitchDetectionHandler pdh = new PitchDetectionHandler() {
+
+        startDetecting();
+        //mRecorder.start();
+    }
+
+    private void startDetecting() {
+        dispatcher = AudioDispatcherFactory.fromDefaultMicrophone(22050,1024,0);
+        PitchDetectionHandler pdh = new PitchDetectionHandler() {
             @Override
-            public void handlePitch(final PitchDetectionResult result, AudioEvent e) {
-                if (result.isPitched()) {
-                    final float pitchInHz = result.getPitch();
-                    final Pitch pitch = new Pitch(pitchInHz);
-                    final aNote newNote = new aNote(pitch.getNote(), 4); //Assume noteDuration  = 4
+            public void handlePitch(PitchDetectionResult result, AudioEvent e) {
+                final float pitchInHz = result.getPitch();
+                final Pitch pitch = new Pitch(pitchInHz);
+                final double db = e.getdBSPL();
+                final double timeStamp = e.getTimeStamp();
+                final aNote newNote = new aNote(pitch.getNote(), db, timeStamp);
+                final TextView text = (TextView) findViewById(R.id.textView2);
+                if (newNote.getNote()>11) {
                     A_RECORDED_MUSIC_NOTES.addNotes(newNote);
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            TextView text = (TextView) findViewById(R.id.textView2);
-                            text.setText("getProbability = " + result.getProbability());
-                            //"pitchInHz = " + pitchInHz + ", pitch = " + pitch.getPitch() + ", note = " + newNote.getNote()
+                            text.setText("Added dBSPL: " + db + ", Added: pitchInHz = " + pitchInHz + ", pitch = " + pitch.getPitch() + ", note = " + newNote.getNote());
                         }
                     });
                 }
+
 
                 /*curPitch = pitch.getPitch();
                 if ((prevPitch.equals("") || !curPitch.equals(prevPitch)) && !curPitch.equals("")) {
@@ -141,21 +148,13 @@ public class RightHandPractice extends AppCompatActivity {
         AudioProcessor p = new PitchProcessor(PitchProcessor.PitchEstimationAlgorithm.AMDF, 22050, 2048, pdh);
         dispatcher.addAudioProcessor(p);
         new Thread(dispatcher,"Audio Dispatcher").start();
-        runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                TextView text = (TextView) findViewById(R.id.textView2);
-                text.setText("SecondsProcess: " + dispatcher.secondsProcessed());
-            }
-        });
-
-        //mRecorder.start();
     }
 
     private void stopRecording() {
-        mRecorder.stop();
-        mRecorder.release();
-        mRecorder = null;
+        //  mRecorder.stop();
+        //mRecorder.release();
+        //mRecorder = null;
+        dispatcher.stop();
     }
 
     @Override
