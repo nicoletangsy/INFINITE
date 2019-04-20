@@ -32,13 +32,13 @@ import static comnicoletangsyinfinite.httpsgithub.infinite.RightHandReading.A_Mu
 
 public class RightHandPractice extends AppCompatActivity {
     public static final RecordedMusicNotes A_RECORDED_MUSIC_NOTES = new RecordedMusicNotes();
+    private AudioDispatcher dispatcher;
     private boolean mStartRecording = true;
     private boolean mStartPlaying = true;
     private static final String LOG_TAG = "AudioRecordTest";
     private static final int REQUEST_RECORD_AUDIO_PERMISSION = 200;
     private static String mFileName = null;
-    public double prevPitch = 0.0;
-    public double curPitch = 0.0;
+    String added = "";
 
     //private RecordButton mRecordButton = null;
     private MediaRecorder mRecorder = null;
@@ -109,46 +109,46 @@ public class RightHandPractice extends AppCompatActivity {
             Log.e(LOG_TAG, "prepare() failed");
         }*/
 
-        AudioDispatcher dispatcher = AudioDispatcherFactory.fromDefaultMicrophone(22050,1024,0);
+        startDetecting();
+        //mRecorder.start();
+    }
+
+    private void startDetecting() {
+        A_RECORDED_MUSIC_NOTES.removeAllRecords();
+        dispatcher = AudioDispatcherFactory.fromDefaultMicrophone(22050,1024,0);
         PitchDetectionHandler pdh = new PitchDetectionHandler() {
             @Override
             public void handlePitch(PitchDetectionResult result, AudioEvent e) {
                 final float pitchInHz = result.getPitch();
-                final Pitch pitch = new Pitch(pitchInHz);
-                final aNote newNote = new aNote(pitch.getNote(), 4); //Assume noteDuration  = 4
-                curPitch = newNote.getNote();
-                if (newNote.getNote()>0.0 || curPitch!=prevPitch) {
+                if (pitchInHz>31 && pitchInHz<7900) {
+                    final Pitch pitch = new Pitch(pitchInHz);
+                    final double db = e.getdBSPL();
+                    final double timeStamp = e.getTimeStamp();
+                    final aNote newNote = new aNote(pitch.getNote(), db, timeStamp);
+                    final TextView text = (TextView) findViewById(R.id.textView2);
+                    String dBSPL = String.format("%.1f", db);
+                    String time = String.format("%.2f", timeStamp);
+                    added = added + "[" + dBSPL + ", " + time + ", " + pitchInHz + ", " + pitch.getPitch() + "] ";
                     A_RECORDED_MUSIC_NOTES.addNotes(newNote);
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            TextView text = (TextView) findViewById(R.id.textView2);
-                            text.setText("Added: pitchInHz = " + pitchInHz + ", pitch = " + pitch.getPitch() + ", note = " + newNote.getNote());
+                            text.setText(added);
                         }
                     });
-                    prevPitch = curPitch;
                 }
-
-
-                /*curPitch = pitch.getPitch();
-                if ((prevPitch.equals("") || !curPitch.equals(prevPitch)) && !curPitch.equals("")) {
-                    A_RECORDED_MUSIC_NOTES.addNotes(newNote);
-                    Log.e(LOG_TAG, "Pitchadded = " + curPitch);
-                    prevPitch = curPitch;
-                }*/
             }
         };
         AudioProcessor p = new PitchProcessor(PitchProcessor.PitchEstimationAlgorithm.AMDF, 22050, 2048, pdh);
         dispatcher.addAudioProcessor(p);
         new Thread(dispatcher,"Audio Dispatcher").start();
-
-        //mRecorder.start();
     }
 
     private void stopRecording() {
-        mRecorder.stop();
-        mRecorder.release();
-        mRecorder = null;
+        //  mRecorder.stop();
+        //mRecorder.release();
+        //mRecorder = null;
+        dispatcher.stop();
     }
 
     @Override

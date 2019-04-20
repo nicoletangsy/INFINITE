@@ -11,7 +11,9 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import static comnicoletangsyinfinite.httpsgithub.infinite.RightHandPractice.A_RECORDED_MUSIC_NOTES;
+//import static comnicoletangsyinfinite.httpsgithub.infinite.Analyzer.A_RECORDED_MUSIC_NOTES;
 import static comnicoletangsyinfinite.httpsgithub.infinite.RightHandReading.A_Music_Sheet_Type;
+
 public class RightHandFeedback extends AppCompatActivity {
 
     @Override
@@ -19,14 +21,15 @@ public class RightHandFeedback extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_right_hand_feedback);
 
-        Button playButton = findViewById(R.id.playButton);
+        //Button playButton = findViewById(R.id.playButton);
         Button previousPageButton = findViewById(R.id.previousPageButton);
         Button nextPageButton = findViewById(R.id.nextPageButton);
         TextView pageNubmer = findViewById(R.id.pageNumber);
-        TextView original = findViewById(R.id.original2);
+        //TextView original = findViewById(R.id.original2);
         String oNotes = "E4 D4 C4 D4 E4 G4 A4 F4 C5 B4 A4 G4 F4 E4 D4 C4 ";
-        original.setText("" + oNotes);
+        //original.setText("" + oNotes);
         TextView result = findViewById(R.id.result2);
+        A_RECORDED_MUSIC_NOTES.ProcessNote();
         result.setText(A_RECORDED_MUSIC_NOTES.getAllNotes());
 
         Toolbar toolbar = (Toolbar)findViewById(R.id.app_bar);
