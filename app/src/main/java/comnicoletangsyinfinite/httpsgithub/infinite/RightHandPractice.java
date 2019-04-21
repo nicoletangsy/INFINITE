@@ -43,6 +43,10 @@ public class RightHandPractice extends AppCompatActivity{
     private static String mFileName = null;
     private ImageView greenLineView;
     private Animation greenLineAnim;
+    private ImageView greenLineView2;
+    private Animation greenLineAnim2;
+    private ImageView greenLineView3;
+    private Animation greenLineAnim3;
     public double prevPitch = 0.0;
     public double curPitch = 0.0;
 
@@ -146,11 +150,27 @@ public class RightHandPractice extends AppCompatActivity{
         };
         float width = ((View) greenLineView.getParent()).getWidth();
         greenLineAnim = new TranslateAnimation(0,width-width/32-(float)FIRST_NOTE.getX(),0,0);
-        greenLineAnim.setDuration(2000);
+        greenLineAnim.setDuration((int)FIRST_NOTE.getSpeed());
 
         greenLineView.setVisibility(View.VISIBLE);
         greenLineView.startAnimation(greenLineAnim);
         greenLineView.setVisibility(View.INVISIBLE);
+
+        greenLineAnim2 = new TranslateAnimation(0,width-width/32-(float)FIRST_NOTE.getX(),0,0);
+        greenLineAnim2.setDuration((int)FIRST_NOTE.getSpeed());
+        greenLineAnim2.setStartOffset((int)FIRST_NOTE.getSpeed());
+
+        greenLineView2.setVisibility(View.VISIBLE);
+        greenLineView2.startAnimation(greenLineAnim2);
+        greenLineView2.setVisibility(View.INVISIBLE);
+
+        greenLineAnim3 = new TranslateAnimation(0,width-width/32-(float)FIRST_NOTE.getX(),0,0);
+        greenLineAnim3.setDuration((int)FIRST_NOTE.getSpeed());
+        greenLineAnim3.setStartOffset((int)FIRST_NOTE.getSpeed()*2);
+
+        greenLineView3.setVisibility(View.VISIBLE);
+        greenLineView3.startAnimation(greenLineAnim3);
+        greenLineView3.setVisibility(View.INVISIBLE);
 
         AudioProcessor p = new PitchProcessor(PitchProcessor.PitchEstimationAlgorithm.AMDF, 22050, 2048, pdh);
         dispatcher.addAudioProcessor(p);
@@ -174,8 +194,9 @@ public class RightHandPractice extends AppCompatActivity{
         final Button playRecordButton = (Button)findViewById(R.id.playRecordButton);
         Button analyzeButton = (Button)findViewById(R.id.analyzeButton);
         final TextView text2 = (TextView) findViewById(R.id.textView2);
-        greenLineView = (ImageView)findViewById(R.id.greenLineView) ;
-
+        greenLineView = (ImageView)findViewById(R.id.greenLineView);
+        greenLineView2 = (ImageView)findViewById(R.id.greenLineView2);
+        greenLineView3 = (ImageView)findViewById(R.id.greenLineView3);
 
          //text2.setText("Piano sheet animation");
 
@@ -195,6 +216,13 @@ public class RightHandPractice extends AppCompatActivity{
         greenLineView.setY((float)FIRST_NOTE.getY());
         greenLineView.getLayoutParams().height = (int)FIRST_NOTE.getHeight();
 
+        greenLineView2.setX((float)FIRST_NOTE.getX());
+        greenLineView2.setY((float)FIRST_NOTE.getLine2());
+        greenLineView2.getLayoutParams().height = (int)FIRST_NOTE.getHeight();
+
+        greenLineView3.setX((float)FIRST_NOTE.getX());
+        greenLineView3.setY((float)FIRST_NOTE.getLine3());
+        greenLineView3.getLayoutParams().height = (int)FIRST_NOTE.getHeight();
 
         mStartRecording = true;
         recordButton.setOnClickListener(new View.OnClickListener(){

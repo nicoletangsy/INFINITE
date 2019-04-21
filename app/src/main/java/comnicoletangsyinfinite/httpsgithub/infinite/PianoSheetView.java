@@ -37,7 +37,7 @@ public class PianoSheetView extends View {
     private float lineWidth;
 
     //[0][0]:bpm ; [0][1]:beat ; [1][0]:flat(0)/sharp(1) ; [1][1]:key
-    private double allNotes[][] = {{0, 4}, {0,3}, {54, 3},{52, 4}, {48, 2}, {55, 2}, {50, 1}, {50, 4}, {48, 4}};
+    private double allNotes[][] = {{60, 4}, {0,3}, {54, 4},{52, 4}, {48, 4}, {55, 4}, {54, 4},{52, 4}, {48, 4}, {55, 4}, {54, 4},{52, 4}, {48, 4}, {55, 4}, {54, 4},{52, 4}, {48, 4}, {55, 4}};
     private double changeNotes[][] = {{0, 3}, {0,0}, {52, 1}, {53, 4}, {48, 4}, {54, 4}};
 
     //FIRST_NOTE is for calculate the green line starting position
@@ -253,14 +253,20 @@ public class PianoSheetView extends View {
         else{
             for (int m = 0; m < allNotes[1][1]; m++) {
                 canvas.drawText(sharps[1], 30*m, -lineHeight * sharpKey[m], painttt);
-                canvas.drawText(sharps[1], 30*m, lineHeight *  4.65f, paint);
-                canvas.drawText(sharps[1], 30*m, lineHeight * 11.7f, paint);
+                canvas.drawText(sharps[1], 30*m, lineHeight *  7f-(lineHeight * sharpKey[m]), paint);
+                canvas.drawText(sharps[1], 30*m, lineHeight * 14.25f-(lineHeight * sharpKey[m]), paint);
 
             }
         }
 
         canvas.translate((float)allNotes[1][1]*35, 0);
         FIRST_NOTE.addXandY((float)allNotes[1][1]*35, 0);
+        FIRST_NOTE.setLine2(lineHeight *  6.75f);
+        FIRST_NOTE.setLine3(lineHeight * 13.75f);
+
+        FIRST_NOTE.setHeight(lineHeight*4);
+        FIRST_NOTE.setSpeed(((480/allNotes[0][0])+1)*1000);
+
 
         //3/4 OR 4/4 of piano sheet
         if (allNotes[0][1] == 3) {
@@ -277,7 +283,7 @@ public class PianoSheetView extends View {
             FIRST_NOTE.addXandY(-lineHeight / 2, 0);
         }
 
-        float noteArea = ((width * 31 / 32) - ((float) FIRST_NOTE.getX())-lineWidth/4 );
+        float noteArea = ((width * 31 / 32) - ((float) FIRST_NOTE.getX()));
         float noteWidth = noteArea / 8;
 
         int j = 0;

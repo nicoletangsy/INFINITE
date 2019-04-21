@@ -98,4 +98,18 @@
         android:background="@drawable/green_line"
         app:layout_constraintTop_toTopOf="@+id/linearLayout" />
 
+    <ImageView
+        android:id="@+id/greenLineView2"
+        android:layout_width="1dp"
+        android:layout_height="35dp"
+        android:background="@drawable/green_line"
+        app:layout_constraintTop_toTopOf="@+id/linearLayout" />
+
+    <ImageView
+        android:id="@+id/greenLineView3"
+        android:layout_width="1dp"
+        android:layout_height="35dp"
+        android:background="@drawable/green_line"
+        app:layout_constraintTop_toTopOf="@+id/linearLayout" />
+
 </android.support.constraint.ConstraintLayout>
