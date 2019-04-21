@@ -9,7 +9,9 @@ import android.graphics.Path;
 import android.graphics.Rect;
 import android.graphics.RectF;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
+import android.view.animation.TranslateAnimation;
 
 import java.util.ArrayList;
 
@@ -17,187 +19,96 @@ import static comnicoletangsyinfinite.httpsgithub.infinite.RightHandReading.A_Mu
 
 public class PianoSheetView extends View {
 
-        private Paint paint;
-        private Paint painttt;
-        private Resources resources;
-        private int textColour;
-        private Rect clipRect;
-        private RectF outlineRect;
-        private int iwidth;
-        private int iheight;
-        private int width;
-        private int height;
-        private double allNotes[][]={{0,4},{48,1},{50,4},{48,4},{55,4}};
-        private double changeNotes[][]={{0,3},{52,8},{53,8},{48,8},{54,8}};
-        //FIRST_NOTE is for calculate the green line starting position
-        public static final FirstNote FIRST_NOTE = new FirstNote();
+    private Paint paint;
+    private Paint painttt;
+    private Resources resources;
 
-        private static final String sharps[] =
+    private Rect clipRect;
+    private RectF outlineRect;
+
+    private int textColour;
+    private int margin;
+    private int iwidth;
+    private int iheight;
+    private int width;
+    private int height;
+
+    private float lineHeight;
+    private float lineWidth;
+
+    //[0][0]:bpm ; [0][1]:beat ; [1][0]:flat(0)/sharp(1) ; [1][1]:key
+    private double allNotes[][] = {{0, 4}, {0,3}, {54, 3},{52, 4}, {48, 2}, {55, 2}, {50, 1}, {50, 4}, {48, 4}};
+    private double changeNotes[][] = {{0, 3}, {0,0}, {52, 1}, {53, 4}, {48, 4}, {54, 4}};
+
+    //FIRST_NOTE is for calculate the green line starting position
+    public static final FirstNote FIRST_NOTE = new FirstNote();
+
+    private static final String sharps[] =
             {
-                    "\u266F",
                     "\u266D",
+                    "\u266F",
                     "\u266A",
                     "\u266E",
                     "\uD834\uDD5D"
 
             };
 
+    //key: B E A D G C F
+    private static final float flatKey[]=
+            {
+                    2.5f,4,2,3.5f,5,3,4.5f
+            };
 
-
-
-
-
-
-
-
-
+    //key: F C G D A E B
+    private static final float sharpKey[]=
+            {
+                    4.5f,3,5,3.5f,2,4,2.5f
+            };
 
     //private double allNotes[][]={{48.5,4},{60,4}};
     //private GeneratedMusicNotes allNotes = new GeneratedMusicNotes();
 
 
-
     private static final String TAG = "Staff";
 
     // Treble clef
-    private static final float tc[][]=
+    private static final float tc[][] =
             {
-                    {-6, 16},
-                    {-8, 13},
-                    {-14, 19},
-                    {-10, 35},
-                    {2, 35},
-                    {8, 37},
-                    {21, 30},
-                    {21, 17},
-                    {21, 5},
-                    {10, -1},
-                    {0, -1},
-                    {-12, -1},
-                    {-24, 5},
-                    {-26, 22},
-                    {-25, 29},
-                    {-25, 37},
-                    {-7, 49},
-                    {10, 61},
-                    {10, 68},
-                    {10, 73},
-                    {10, 78},
-                    {9, 82},
-                    {7, 82},
-                    {2, 78},
-                    {-2, 68},
-                    {-2, 62},
-                    {-2, 25},
-                    {10, 18},
-                    {11, -8},
-                    {11, -18},
-                    {5, -23},
-                    {-4, -23},
-                    {-10, -23},
-                    {-15, -18},
-                    {-15, -13},
-                    {-15, -8},
-                    {-12, -4},
-                    {-7, -4},
-                    {3, -4},
-                    {3, -20},
-                    {-6, -17},
-                    {-5, -23},
-                    {9, -20},
-                    {9, -9},
-                    {7, 24},
-                    {-5, 30},
-                    {-5, 67},
-                    {-5, 78},
-                    {-2, 87},
-                    {7, 91},
-                    {13, 87},
-                    {18, 80},
-                    {17, 73},
-                    {17, 62},
-                    {10, 54},
-                    {1, 45},
-                    {-5, 38},
-                    {-18, 33},
-                    {-18, 19},
-                    {-18, 7},
-                    {-8, 1},
-                    {0, 1},
-                    {8, 1},
-                    {15, 6},
-                    {15, 14},
-                    {15, 23},
-                    {7, 26},
-                    {2, 26},
-                    {-5, 26},
-                    {-9, 21},
-                    {-6, 16}
+                    {-6, 16}, {-8, 13}, {-14, 19}, {-10, 35}, {2, 35}, {8, 37}, {21, 30}, {21, 17}, {21, 5}, {10, -1}, {0, -1}, {-12, -1},
+                    {-24, 5}, {-26, 22}, {-25, 29}, {-25, 37}, {-7, 49}, {10, 61}, {10, 68}, {10, 73}, {10, 78}, {9, 82}, {7, 82}, {2, 78},
+                    {-2, 68}, {-2, 62}, {-2, 25}, {10, 18}, {11, -8}, {11, -18}, {5, -23}, {-4, -23}, {-10, -23}, {-15, -18}, {-15, -13},
+                    {-15, -8}, {-12, -4}, {-7, -4}, {3, -4}, {3, -20}, {-6, -17}, {-5, -23}, {9, -20}, {9, -9}, {7, 24}, {-5, 30}, {-5, 67},
+                    {-5, 78}, {-2, 87}, {7, 91}, {13, 87}, {18, 80}, {17, 73}, {17, 62}, {10, 54}, {1, 45}, {-5, 38}, {-18, 33}, {-18, 19},
+                    {-18, 7}, {-8, 1}, {0, 1}, {8, 1}, {15, 6}, {15, 14}, {15, 23}, {7, 26}, {2, 26}, {-5, 26}, {-9, 21}, {-6, 16}
             };
 
     // Bass clef
     private static final float xy = 2.5f;
     private static final float bc[][] =
             {
-                    {-2.3f,3+xy},
-                    {6,7+xy},
-                    {10.5f,12+xy},
-                    {10.5f,16+xy},
-                    {10.5f,20.5f+xy},
-                    {8.5f,23.5f+xy},
-                    {6.2f,23.3f+xy},
-                    {5.2f,23.5f+xy},
-                    {2,23.5f+xy},
-                    {0.5f,19.5f+xy},
-                    {2,20+xy},
-                    {4,19.5f+xy},
-                    {4,18+xy},
-                    {4,17+xy},
-                    {3.5f,16+xy},
-                    {2,16+xy},
-                    {1,16+xy},
-                    {0,16.9f+xy},
-                    {0,18.5f+xy},
-                    {0,21+xy},
-                    {2.1f,24+xy},
-                    {6,24+xy},
-                    {10,24+xy},
-                    {13.5f,21.5f+xy},
-                    {13.5f,16.5f+xy},
-                    {13.5f,11+xy},
-                    {7,5.5f+xy},
-                    {-2.0f,2.8f+xy},
-                    {14.9f,21+xy},
-                    {14.9f,22.5f+xy},
-                    {16.9f,22.5f+xy},
-                    {16.9f,21+xy},
-                    {16.9f,19.5f+xy},
-                    {14.9f,19.5f+xy},
-                    {14.9f,21+xy},
-                    {14.9f,15+xy},
-                    {14.9f,16.5f+xy},
-                    {16.9f,16.5f+xy},
-                    {16.9f,15+xy},
-                    {16.9f,13.5f+xy},
-                    {14.9f,13.5f+xy},
-                    {14.9f,15+xy}
+                    {-2.3f, 3 + xy}, {6, 7 + xy}, {10.5f, 12 + xy}, {10.5f, 16 + xy}, {10.5f, 20.5f + xy}, {8.5f, 23.5f + xy}, {6.2f, 23.3f + xy},
+                    {5.2f, 23.5f + xy}, {2, 23.5f + xy}, {0.5f, 19.5f + xy}, {2, 20 + xy}, {4, 19.5f + xy}, {4, 18 + xy}, {4, 17 + xy}, {3.5f, 16 + xy},
+                    {2, 16 + xy}, {1, 16 + xy}, {0, 16.9f + xy}, {0, 18.5f + xy}, {0, 21 + xy}, {2.1f, 24 + xy}, {6, 24 + xy}, {10, 24 + xy},
+                    {13.5f, 21.5f + xy}, {13.5f, 16.5f + xy}, {13.5f, 11 + xy}, {7, 5.5f + xy}, {-2.0f, 2.8f + xy}, {14.9f, 21 + xy}, {14.9f, 22.5f + xy},
+                    {16.9f, 22.5f + xy}, {16.9f, 21 + xy}, {16.9f, 19.5f + xy}, {14.9f, 19.5f + xy}, {14.9f, 21 + xy}, {14.9f, 15 + xy}, {14.9f, 16.5f + xy},
+                    {16.9f, 16.5f + xy}, {16.9f, 15 + xy}, {16.9f, 13.5f + xy}, {14.9f, 13.5f + xy}, {14.9f, 15 + xy}
             };
+
     private Path tclef;
     private Path bclef;
 
     private Matrix matrix;
 
-    private float lineHeight;
-    private float lineWidth;
-    private int margin;
+
+
 
     // Constructor
-    public PianoSheetView(Context context, AttributeSet attrs)
-    {
+    public PianoSheetView(Context context, AttributeSet attrs) {
 
         super(context, attrs);
         resources = getResources();
-        textColour = context.getResources().getColor(R.color.black);;
+        textColour = context.getResources().getColor(R.color.black);
+        ;
 
         paint = new Paint();
         painttt = new Paint();
@@ -205,8 +116,7 @@ public class PianoSheetView extends View {
 
     // On size changed
     @Override
-    protected void onSizeChanged(int w, int h, int oldw, int oldh)
-    {
+    protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         // Save the new width and height
         iwidth = w;
         iheight = h;
@@ -236,21 +146,21 @@ public class PianoSheetView extends View {
         // Bass clef
         bclef = new Path();
         bclef.moveTo(bc[0][0], bc[0][1]);
-        for (int i = 1; i < 28; i += 3){
+        for (int i = 1; i < 28; i += 3) {
             bclef.cubicTo(bc[i][0], bc[i][1],
                     bc[i + 1][0], bc[i + 1][1],
                     bc[i + 2][0], bc[i + 2][1]);
         }
 
         bclef.moveTo(bc[28][0], bc[28][1]);
-        for (int i = 29; i < 35; i += 3){
+        for (int i = 29; i < 35; i += 3) {
             bclef.cubicTo(bc[i][0], bc[i][1],
                     bc[i + 1][0], bc[i + 1][1],
                     bc[i + 2][0], bc[i + 2][1]);
         }
 
         bclef.moveTo(bc[35][0], bc[35][1]);
-        for (int i = 36; i < bc.length; i += 3){
+        for (int i = 36; i < bc.length; i += 3) {
             bclef.cubicTo(bc[i][0], bc[i][1],
                     bc[i + 1][0], bc[i + 1][1],
                     bc[i + 2][0], bc[i + 2][1]);
@@ -259,10 +169,10 @@ public class PianoSheetView extends View {
 
         // Scale treble clef
         tclef.computeBounds(bounds, false);
-        float scale = (lineHeight*7) / (bounds.top - bounds.bottom);
+        float scale = (lineHeight * 7) / (bounds.top - bounds.bottom);
         matrix = new Matrix();
         matrix.setScale(-scale, scale);
-        matrix.postTranslate(margin + (lineHeight * 2), - lineHeight);
+        matrix.postTranslate(margin + (lineHeight * 2), -lineHeight);
         tclef.transform(matrix);
 
         // Scale bass clef
@@ -280,7 +190,7 @@ public class PianoSheetView extends View {
         super.onDraw(canvas);
 
         String type = A_Music_Sheet_Type.getType();
-        if(type.equals("userPlay")){
+        if (type.equals("userPlay")) {
             allNotes = changeNotes;
 
         }
@@ -301,144 +211,139 @@ public class PianoSheetView extends View {
 
         //String aList = A_RECORDED_MUSIC_NOTES.getAllNotes();
 
+        for (int n = 0; n < 3; n++) {
 
-        // Draw staff
-        canvas.translate(0, height / 3f);
-        FIRST_NOTE.setXandY(lineHeight/1.5f,height / 3f);
-        for (int i = 1; i < 6; i++) {
+            // Draw staff
+            if (n == 0) {
+                canvas.translate(0, height / 3.8f);
+                FIRST_NOTE.setXandY(lineHeight / 1.5f, height / 3.8f+lineHeight/2);
+                FIRST_NOTE.setHeight(lineHeight*4);
+            } else {
+                canvas.translate(0, height / 3.5f);
+                FIRST_NOTE.addXandY(0, height / 3.5f);
+            }
 
-            canvas.drawLine(margin, i * -lineHeight,
-                    width - margin, i * -lineHeight, paint);
+            for (int i = 1; i < 6; i++) {
+
+                canvas.drawLine(margin, i * -lineHeight,
+                        width - margin, i * -lineHeight, paint);
+            }
+
+            //Draw Straight line at end and front
+            canvas.drawLine(margin, -lineHeight, margin, -lineHeight - (lineHeight * 4), paint);
+            canvas.drawLine(width - margin, -lineHeight, width - margin, -lineHeight - (lineHeight * 4), paint);
+
+
+            // Draw treble and bass clef
+            canvas.drawPath(tclef, paint);
         }
-
-        //Draw Straight line at end and front
-        canvas.drawLine(margin,-lineHeight,margin,-lineHeight-(lineHeight*4),paint);
-        canvas.drawLine(width -margin,-lineHeight,width -margin,-lineHeight-(lineHeight*4),paint);
-
-
-        // Draw treble and bass clef
-        canvas.drawPath(tclef, paint);
-
-        // Draw staff
-        canvas.translate(0, height /3.5f);
-        FIRST_NOTE.addXandY(0,height /3.5f);
-        for (int i = 1; i < 6; i++) {
-            canvas.drawLine(margin, i * -lineHeight,
-                    width - margin, i * -lineHeight, paint);
-        }
-
-        //Draw Straight line at end and front
-        canvas.drawLine(margin,-lineHeight,margin,-lineHeight-(lineHeight*4),paint);
-        canvas.drawLine(width -margin,-lineHeight,width -margin,-lineHeight-(lineHeight*4),paint);
-
-
-        // Draw treble and bass clef
-        canvas.drawPath(tclef, paint);
-//        // Draw staff
-//        canvas.translate(0, height / 2f);
-//        for (int i = 1; i < 6; i++) {
-//            canvas.drawLine(margin, i * lineHeight,
-//                    width - margin, i * lineHeight, paint);
-//            canvas.drawLine(margin, i * -lineHeight,
-//                    width - margin, i * -lineHeight, paint);
-//        }
-//
-//        canvas.drawLine(margin,241,margin,-241,paint);
-//        canvas.drawLine(width -margin,241,width -margin,-241,paint);
-//
-//
-//        // Draw treble and bass clef
-//        canvas.drawPath(tclef, paint);
-//        canvas.drawPath(bclef, paint);
-
 
         // Translate canvas from C4 position
-        canvas.translate(lineWidth*1.6f, -height/3.5f);
-        FIRST_NOTE.addXandY(lineWidth*1.6f,-height/3.5f);
-
+        canvas.translate(lineWidth * 1.6f, -height / 1.75f);
+        FIRST_NOTE.addXandY(lineWidth * 1.6f, -height / 1.75f);
 
         //draw key and tempo
-        canvas.drawText(sharps[1], 0,-lineHeight*2.5f, paint);
+        if(allNotes[1][0]==0) {
+            for (int m = 0; m < allNotes[1][1]; m++) {
+                canvas.drawText(sharps[0], 30*m, -lineHeight * flatKey[m], paint);
+                canvas.drawText(sharps[0], 30*m, lineHeight * 7f -(lineHeight * flatKey[m]), paint);
+                canvas.drawText(sharps[0], 30*m, lineHeight * 14.25f-(lineHeight * flatKey[m]), paint);
+            }
+        }
+        else{
+            for (int m = 0; m < allNotes[1][1]; m++) {
+                canvas.drawText(sharps[1], 30*m, -lineHeight * sharpKey[m], painttt);
+                canvas.drawText(sharps[1], 30*m, lineHeight *  4.65f, paint);
+                canvas.drawText(sharps[1], 30*m, lineHeight * 11.7f, paint);
 
+            }
+        }
 
-        canvas.translate(50, 0);
-        FIRST_NOTE.addXandY(50,0);
+        canvas.translate((float)allNotes[1][1]*35, 0);
+        FIRST_NOTE.addXandY((float)allNotes[1][1]*35, 0);
 
         //3/4 OR 4/4 of piano sheet
-        if (allNotes[0][1]==3) {
-            canvas.drawText("3", 0,-lineHeight, painttt);
+        if (allNotes[0][1] == 3) {
+            canvas.drawText("3", 0, -lineHeight, painttt);
+        } else
+            canvas.drawText("4", 0, -lineHeight * 3, painttt);
+
+        canvas.drawText("4", 0, -lineHeight, painttt);
+
+        canvas.translate(100, 0);
+        FIRST_NOTE.addXandY(100, 0);
+
+        if (allNotes[1][1] == 1) {
+            FIRST_NOTE.addXandY(-lineHeight / 2, 0);
         }
-        else
-            canvas.drawText("4", 0,-lineHeight*3, painttt);
 
-        canvas.drawText("4", 0,-lineHeight, painttt);
-
-        canvas.translate(150, 0);
-        FIRST_NOTE.addXandY(150,0);
+        float noteArea = ((width * 31 / 32) - ((float) FIRST_NOTE.getX())-lineWidth/4 );
+        float noteWidth = noteArea / 8;
 
         int j = 0;
         float totalBeat = 0;
         ArrayList<Notes> notesArrayList = new ArrayList<>();
 
-        for (int i = 1; i <allNotes.length; i++) {
+        for (int i = 2; i < allNotes.length; i++) {
 
-
-            //whether is 1 note
-            if(allNotes[i][1]==1){
+            //whether the note is 1 note
+            if (allNotes[i][1] == 1) {
                 notesArrayList.add(new Notes(this.getContext()));
-                canvas = notesArrayList.get(j).create1Note(lineWidth, lineHeight, margin, allNotes[i][0], canvas);
-                totalBeat = totalBeat+ 4f;
+                canvas = notesArrayList.get(j).create1Note(lineWidth, lineHeight, allNotes[i][0], canvas);
+                canvas.drawText("\uD834\uDD5D", -lineHeight, lineHeight / 2, paint);
+                canvas = notesArrayList.get(j).translate1Note(canvas, noteWidth);
+                totalBeat = totalBeat + 4;
             }
 
-            //whether is 2 note
-            else if(allNotes[i][1]==2){
+            //whether the note is 2 note
+            else if (allNotes[i][1] == 2) {
                 notesArrayList.add(new Notes(this.getContext()));
-                canvas = notesArrayList.get(j).create2Note(lineWidth, lineHeight, margin, allNotes[i][0], canvas);
-                totalBeat = totalBeat+ 2f;
+                canvas = notesArrayList.get(j).create2Note(lineWidth, lineHeight, noteWidth, allNotes[i][0], canvas);
+                totalBeat = totalBeat + 2;
             }
 
-            //whether is 3 note
-            else if(allNotes[i][1]==3){
+            //whether the note is 3 note
+            else if (allNotes[i][1] == 3) {
                 notesArrayList.add(new Notes(this.getContext()));
-                canvas = notesArrayList.get(j).create3Note(lineWidth, lineHeight, margin, allNotes[i][0], canvas);
-                totalBeat = totalBeat+ 3f;
+                canvas = notesArrayList.get(j).create3Note(lineWidth, lineHeight, noteWidth, allNotes[i][0], canvas);
+                float pos = notesArrayList.get(j).dot3note(lineWidth, lineHeight,allNotes[i][0]);
+                canvas.drawText(".",-noteWidth*2.85f,pos+lineHeight*0.3f,painttt);
+                totalBeat = totalBeat + 3;
             }
 
-            //whether is 4 note
-            else if(allNotes[i][1]==4){
+            //whether the note is 4 note
+            else if (allNotes[i][1] == 4) {
                 notesArrayList.add(new Notes(this.getContext()));
-                canvas = notesArrayList.get(j).create4Note(lineWidth, lineHeight, margin, allNotes[i][0], canvas);
+                canvas = notesArrayList.get(j).create4Note(lineWidth, lineHeight, noteWidth, allNotes[i][0], canvas);
                 totalBeat++;
             }
 
-            //whether is 8note
-            else if(allNotes[i][1]==8){
+            //whether the note is 8note
+            else if (allNotes[i][1] == 8) {
                 notesArrayList.add(new Notes(this.getContext()));
-                canvas = notesArrayList.get(j).create8Note(lineWidth, lineHeight, margin, allNotes[i][0], allNotes[i+1][0], canvas);
+                canvas = notesArrayList.get(j).create8Note(lineWidth, lineHeight, noteWidth, allNotes[i][0], allNotes[i + 1][0], canvas);
                 i++;
                 totalBeat++;
             }
 
-            //whether is 16 note
-            else if(allNotes[i][1]==16){
+            //whether the note is 16 note
+            else if (allNotes[i][1] == 16) {
                 notesArrayList.add(new Notes(this.getContext()));
-                canvas = notesArrayList.get(j).create16Note(lineWidth, lineHeight, margin, allNotes[i][0], allNotes[i+1][0],allNotes[i+2][0],allNotes[i+3][0],canvas);
+                canvas = notesArrayList.get(j).create16Note(lineWidth, lineHeight, noteWidth, allNotes[i][0], allNotes[i + 1][0], allNotes[i + 2][0], allNotes[i + 3][0], canvas);
                 totalBeat++;
             }
 
-                //One column finished
-                if (totalBeat == 4) {
-                    notesArrayList.add(new Notes(this.getContext()));
-                    canvas = notesArrayList.get(j).createStroke(lineWidth, lineHeight, margin, canvas);
-                }
+            //One column finished
+            if (totalBeat % 4 == 0 && totalBeat % 8 != 0) {
+                notesArrayList.add(new Notes(this.getContext()));
+                canvas = notesArrayList.get(j).createStroke(lineWidth, lineHeight, allNotes[i][1], noteWidth, canvas);
+                Log.v("testing","hi");
+            }
 
-
-
-                    //Not yet done
-                    //To next line
-                    if (i == 12) {
-                        canvas.translate(-2005, height / 2.5f);
-                    }
+            //To next line
+            if (totalBeat % 8 == 0) {
+                canvas.translate(-noteArea, height / 3.5f);
+            }
 
             j++;
         }

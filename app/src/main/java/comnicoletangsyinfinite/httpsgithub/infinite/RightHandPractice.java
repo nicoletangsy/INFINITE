@@ -145,12 +145,12 @@ public class RightHandPractice extends AppCompatActivity{
             }
         };
         float width = ((View) greenLineView.getParent()).getWidth();
-        Log.v("viewWidth",width+"");
         greenLineAnim = new TranslateAnimation(0,width-width/32-(float)FIRST_NOTE.getX(),0,0);
         greenLineAnim.setDuration(2000);
 
         greenLineView.setVisibility(View.VISIBLE);
         greenLineView.startAnimation(greenLineAnim);
+        greenLineView.setVisibility(View.INVISIBLE);
 
         AudioProcessor p = new PitchProcessor(PitchProcessor.PitchEstimationAlgorithm.AMDF, 22050, 2048, pdh);
         dispatcher.addAudioProcessor(p);
@@ -176,7 +176,6 @@ public class RightHandPractice extends AppCompatActivity{
         final TextView text2 = (TextView) findViewById(R.id.textView2);
         greenLineView = (ImageView)findViewById(R.id.greenLineView) ;
 
-        greenLineView.setX((float)FIRST_NOTE.getX());
 
          //text2.setText("Piano sheet animation");
 
@@ -191,6 +190,11 @@ public class RightHandPractice extends AppCompatActivity{
         mFileName = getExternalCacheDir().getAbsolutePath();
         mFileName += "/audiorecordtest.aac";
         ActivityCompat.requestPermissions(this, permissions, REQUEST_RECORD_AUDIO_PERMISSION);
+
+        greenLineView.setX((float)FIRST_NOTE.getX());
+        greenLineView.setY((float)FIRST_NOTE.getY());
+        greenLineView.getLayoutParams().height = (int)FIRST_NOTE.getHeight();
+
 
         mStartRecording = true;
         recordButton.setOnClickListener(new View.OnClickListener(){

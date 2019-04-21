@@ -3,6 +3,7 @@ package comnicoletangsyinfinite.httpsgithub.infinite;
 public class FirstNote {
     private double x;
     private double y;
+    private double height;
 
     public double getX() {
         return x;
@@ -20,7 +21,15 @@ public class FirstNote {
         this.y = y;
     }
 
-    public void setXandY(double x,double y){
+    public double getHeight() {
+        return height;
+    }
+
+    public void setHeight(double height) {
+        this.height = height;
+    }
+
+    public void setXandY(double x, double y){
         this.x = x;
         this.y = y;
     }
