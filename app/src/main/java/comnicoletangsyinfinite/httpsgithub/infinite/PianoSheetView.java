@@ -39,6 +39,7 @@ public class PianoSheetView extends View {
     //[0][0]:bpm ; [0][1]:beat ; [1][0]:flat(0)/sharp(1) ; [1][1]:key ;[2][0]:left hand(0)/right hand(1)
     private double allNotes[][] = {{60, 3}, {0,1},{1,0}, {54, 6},{52, 6}, {48, 6}, {64, 6},{62, 6}, {60, 6}};
     private double changeNotes[][] = {{0, 3}, {0,0}, {52, 1}, {53, 4}, {48, 4}, {54, 4}};
+    public static final GeneratedMusicNotes GENERATED_MUSIC_NOTES = new GeneratedMusicNotes(60, 4, 4);
 
     //FIRST_NOTE is for calculate the green line starting position
     public static final FirstNote FIRST_NOTE = new FirstNote();

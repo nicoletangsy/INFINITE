@@ -32,16 +32,40 @@ public class GeneratedMusicNotes {
         return this.allNotes;
     }
 
-    public GeneratedMusicNotes() {
-        aNote newNote = new aNote(48.5, 4);
-        aNote newNote2 = new aNote(60, 4);
-        addNote(newNote);
-        addNote(newNote2);
+    public GeneratedMusicNotes(int tempo, int timeSignature_count, int timeSignature_note) {
+        this.tempo = tempo;
+        this.timeSignature[0] = timeSignature_count;
+        this.timeSignature[1] = timeSignature_note;
+        addNote(new aNote(52,8));
+        addNote(new aNote(50,8));
+        addNote(new aNote(48,8));
+        addNote(new aNote(50,8));
+        addNote(new aNote(52,8));
+        addNote(new aNote(52,8));
+        addNote(new aNote(52,4));
+        addNote(new aNote(50,8));
+        addNote(new aNote(50,8));
+        addNote(new aNote(50,4));
+        addNote(new aNote(52,8));
+        addNote(new aNote(55,8));
+        addNote(new aNote(55,4));
+        //aNote newNote = new aNote(48.5, 4);
+        //aNote newNote2 = new aNote(60, 4);
+        //addNote(newNote);
+        //addNote(newNote2);
         //randomGenerated();
     }
 
     public void addNote(aNote aNote) {
         allNotes.add(aNote);
+    }
+
+    public int[] getAllNotesDuration () {
+        int list[] = new int[allNotes.size()];
+        for (int i=0; i<allNotes.size(); i++) {
+            list[i] = allNotes.get(i).getNoteDuration();
+        }
+        return list;
     }
 
     private void randomGenerated() {
