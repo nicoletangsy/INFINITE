@@ -36,12 +36,11 @@ public class PianoSheetView extends View {
     private float lineHeight;
     private float lineWidth;
 
-    //[0][0]:bpm ; [0][1]:beat ; [1][0]:flat(0)/sharp(1) ; [1][1]:key ;[2][0]:left hand(0)/right hand(1)
+    //[0][0]:bpm ; [0][1]:beat ; [1][0]:flat(0)/sharp(1) ; [1][1]:key(0-7) ;[2][0]:left hand(0)/right hand(1)
     private double aallNotes[][] = {{60, 3}, {0, 1}, {1, 0}, {54, 6}, {52, 6}, {48, 6}, {64, 6}, {62, 6}, {60, 6}};
     private double changeNotes[][] = {{0, 3}, {0, 0}, {52, 1}, {53, 4}, {48, 4}, {54, 4}};
     private ArrayList<ArrayList<Double>> theSheet = new ArrayList<>();
-    private ArrayList<Double> aNote = new ArrayList<>();
-//    public static final GeneratedMusicNotes GENERATED_MUSIC_NOTES = new GeneratedMusicNotes(60, 4, 4);
+    public static final GeneratedMusicNotes GENERATED_MUSIC_NOTES = new GeneratedMusicNotes(1);
 
     //FIRST_NOTE is for calculate the green line starting position
     public static final FirstNote FIRST_NOTE = new FirstNote();
@@ -196,32 +195,32 @@ public class PianoSheetView extends View {
 //
 //        }
 
-        theSheet.add(new ArrayList<Double>());
-        theSheet.get(0).add((double) 60);
-        theSheet.get(0).add((double) 3);
+//        theSheet.add(new ArrayList<Double>());
+//        theSheet.get(0).add((double) 60);
+//        theSheet.get(0).add((double) 3);
+//
+//        theSheet.add(new ArrayList<Double>());
+//        theSheet.get(1).add((double) 0);
+//        theSheet.get(1).add((double) 1);
+//
+//        theSheet.add(new ArrayList<Double>());
+//        theSheet.get(2).add((double) 1);
+//        theSheet.get(2).add((double) 0);
+//
+//        theSheet.add(new ArrayList<Double>());
+//        theSheet.get(3).add((double) 54);
+//        theSheet.get(3).add((double) 6);
+//
+//        theSheet.add(new ArrayList<Double>());
+//        theSheet.get(4).add((double) 52);
+//        theSheet.get(4).add((double) 6);
+//
+//        theSheet.add(new ArrayList<Double>());
+//        theSheet.get(5).add((double) 48);
+//        theSheet.get(5).add((double) 6);
 
-        theSheet.add(new ArrayList<Double>());
-        theSheet.get(1).add((double) 0);
-        theSheet.get(1).add((double) 1);
 
-        theSheet.add(new ArrayList<Double>());
-        theSheet.get(2).add((double) 1);
-        theSheet.get(2).add((double) 0);
-
-        theSheet.add(new ArrayList<Double>());
-        theSheet.get(3).add((double) 54);
-        theSheet.get(3).add((double) 6);
-
-        theSheet.add(new ArrayList<Double>());
-        theSheet.get(4).add((double) 52);
-        theSheet.get(4).add((double) 6);
-
-        theSheet.add(new ArrayList<Double>());
-        theSheet.get(5).add((double) 48);
-        theSheet.get(5).add((double) 6);
-
-
-        Log.v("hello1:",theSheet.get(0).get(0)+"...");
+        theSheet = GENERATED_MUSIC_NOTES.getPianoSheet();
 
 
 
@@ -283,8 +282,8 @@ public class PianoSheetView extends View {
         } else {
             for (int m = 0; m < theSheet.get(1).get(1) ; m++) {
                 canvas.drawText(sharps[1], 30 * m, -lineHeight * sharpKey[m], painttt);
-                canvas.drawText(sharps[1], 30 * m, lineHeight * 7f - (lineHeight * sharpKey[m]), paint);
-                canvas.drawText(sharps[1], 30 * m, lineHeight * 14.25f - (lineHeight * sharpKey[m]), paint);
+                canvas.drawText(sharps[1], 30 * m, lineHeight * 7f - (lineHeight * sharpKey[m]), painttt);
+                canvas.drawText(sharps[1], 30 * m, lineHeight * 14.25f - (lineHeight * sharpKey[m]), painttt);
 
             }
         }
