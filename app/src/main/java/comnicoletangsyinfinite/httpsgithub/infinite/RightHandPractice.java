@@ -16,7 +16,10 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.TranslateAnimation;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.io.ByteArrayInputStream;
@@ -32,8 +35,9 @@ import be.tarsos.dsp.pitch.PitchDetectionResult;
 import be.tarsos.dsp.pitch.PitchProcessor;
 
 import static comnicoletangsyinfinite.httpsgithub.infinite.RightHandReading.A_Music_Sheet_Type;
+import static comnicoletangsyinfinite.httpsgithub.infinite.PianoSheetView.FIRST_NOTE;
 
-public class RightHandPractice extends AppCompatActivity {
+public class RightHandPractice extends AppCompatActivity{
     public static final RecordedMusicNotes A_RECORDED_MUSIC_NOTES = new RecordedMusicNotes();
     private AudioDispatcher dispatcher;
     private boolean mStartRecording = true;
@@ -42,6 +46,16 @@ public class RightHandPractice extends AppCompatActivity {
     private static String mFileName = null;
     private static final int sampleRate = 22050;
     private static final int byteBuffer = 1024;
+
+    private ImageView greenLineView;
+    private Animation greenLineAnim;
+    private ImageView greenLineView2;
+    private Animation greenLineAnim2;
+    private ImageView greenLineView3;
+    private Animation greenLineAnim3;
+    public double prevPitch = 0.0;
+    public double curPitch = 0.0;
+
     String added = "";
     private MediaRecorder mRecorder = null;
     private MediaPlayer mPlayer = null;
@@ -59,61 +73,6 @@ public class RightHandPractice extends AppCompatActivity {
         }
         if (!permissionToRecordAccepted) finish();
 
-    }
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_right_hand_practice);
-
-        final Button recordButton = (Button)findViewById(R.id.recordButton);
-        final Button playRecordButton = (Button)findViewById(R.id.playRecordButton);
-        playRecordButton.setVisibility(View.GONE);
-        final Button analyzeButton = (Button)findViewById(R.id.analyzeButton);
-        final TextView text2 = (TextView) findViewById(R.id.textView2);
-
-        Toolbar toolbar = (Toolbar)findViewById(R.id.app_bar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-
-        // Record to the external cache directory for visibility
-        mFileName = getExternalCacheDir().getAbsolutePath();
-        mFileName += "/audiorecordtest.aac";
-        ActivityCompat.requestPermissions(this, permissions, REQUEST_RECORD_AUDIO_PERMISSION);
-
-        recordButton.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                onRecord(mStartRecording, playRecordButton);
-                if (mStartRecording) {
-                    recordButton.setBackgroundResource(R.drawable.stopbutton);
-                } else {
-                    recordButton.setBackgroundResource(R.drawable.recordbutton);
-                }
-                mStartRecording = !mStartRecording;
-            }
-        });
-
-        playRecordButton.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                onPlay(mStartPlaying);
-                if (mStartPlaying) {
-                    playRecordButton.setBackgroundResource(R.drawable.stopbutton);
-                } else {
-                    playRecordButton.setBackgroundResource(R.drawable.playbutton);
-                }
-                mStartPlaying = !mStartPlaying;
-            }
-        });
-
-        analyzeButton.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                startAnalyze();
-            }
-        });
     }
 
     private void onRecord(boolean start, Button playRecordButton) {
@@ -189,6 +148,30 @@ public class RightHandPractice extends AppCompatActivity {
                 }
             }
         };
+        float width = ((View) greenLineView.getParent()).getWidth();
+        greenLineAnim = new TranslateAnimation(0,width-width/32-(float)FIRST_NOTE.getX(),0,0);
+        greenLineAnim.setDuration((int)FIRST_NOTE.getSpeed());
+
+        greenLineView.setVisibility(View.VISIBLE);
+        greenLineView.startAnimation(greenLineAnim);
+        greenLineView.setVisibility(View.INVISIBLE);
+
+        greenLineAnim2 = new TranslateAnimation(0,width-width/32-(float)FIRST_NOTE.getX(),0,0);
+        greenLineAnim2.setDuration((int)FIRST_NOTE.getSpeed());
+        greenLineAnim2.setStartOffset((int)FIRST_NOTE.getSpeed());
+
+        greenLineView2.setVisibility(View.VISIBLE);
+        greenLineView2.startAnimation(greenLineAnim2);
+        greenLineView2.setVisibility(View.INVISIBLE);
+
+        greenLineAnim3 = new TranslateAnimation(0,width-width/32-(float)FIRST_NOTE.getX(),0,0);
+        greenLineAnim3.setDuration((int)FIRST_NOTE.getSpeed());
+        greenLineAnim3.setStartOffset((int)FIRST_NOTE.getSpeed()*2);
+
+        greenLineView3.setVisibility(View.VISIBLE);
+        greenLineView3.startAnimation(greenLineAnim3);
+        greenLineView3.setVisibility(View.INVISIBLE);
+
         AudioProcessor p = new PitchProcessor(PitchProcessor.PitchEstimationAlgorithm.AMDF, 22050, 2048, pdh);
         dispatcher.addAudioProcessor(p);
         new Thread(dispatcher,"Audio Dispatcher").start();
@@ -199,6 +182,76 @@ public class RightHandPractice extends AppCompatActivity {
         mRecorder.stop();
         mRecorder.release();
         mRecorder = null;
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_right_hand_practice);
+
+        final Button recordButton = (Button)findViewById(R.id.recordButton);
+        final Button playRecordButton = (Button)findViewById(R.id.playRecordButton);
+        playRecordButton.setVisibility(View.GONE);
+        final Button analyzeButton = (Button)findViewById(R.id.analyzeButton);
+        final TextView text2 = (TextView) findViewById(R.id.textView2);
+        greenLineView = (ImageView)findViewById(R.id.greenLineView);
+        greenLineView2 = (ImageView)findViewById(R.id.greenLineView2);
+        greenLineView3 = (ImageView)findViewById(R.id.greenLineView3);
+
+        Toolbar toolbar = (Toolbar)findViewById(R.id.app_bar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+        // Record to the external cache directory for visibility
+        mFileName = getExternalCacheDir().getAbsolutePath();
+        mFileName += "/audiorecordtest.aac";
+        ActivityCompat.requestPermissions(this, permissions, REQUEST_RECORD_AUDIO_PERMISSION);
+
+        greenLineView.setX((float)FIRST_NOTE.getX());
+        greenLineView.setY((float)FIRST_NOTE.getY());
+        greenLineView.getLayoutParams().height = (int)FIRST_NOTE.getHeight();
+
+        greenLineView2.setX((float)FIRST_NOTE.getX());
+        greenLineView2.setY((float)FIRST_NOTE.getLine2());
+        greenLineView2.getLayoutParams().height = (int)FIRST_NOTE.getHeight();
+
+        greenLineView3.setX((float)FIRST_NOTE.getX());
+        greenLineView3.setY((float)FIRST_NOTE.getLine3());
+        greenLineView3.getLayoutParams().height = (int)FIRST_NOTE.getHeight();
+
+        recordButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                onRecord(mStartRecording, playRecordButton);
+                if (mStartRecording) {
+                    recordButton.setBackgroundResource(R.drawable.stopbutton);
+                } else {
+                    recordButton.setBackgroundResource(R.drawable.recordbutton);
+                }
+                mStartRecording = !mStartRecording;
+            }
+        });
+
+        playRecordButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                onPlay(mStartPlaying);
+                if (mStartPlaying) {
+                    playRecordButton.setBackgroundResource(R.drawable.stopbutton);
+                } else {
+                    playRecordButton.setBackgroundResource(R.drawable.playbutton);
+                }
+                mStartPlaying = !mStartPlaying;
+            }
+        });
+
+        analyzeButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                startAnalyze();
+            }
+        });
     }
 
     public void startAnalyze(){
