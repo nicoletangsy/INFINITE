@@ -7,8 +7,8 @@ import static comnicoletangsyinfinite.httpsgithub.infinite.PianoSheetView.GENERA
 public class RecordedMusicNotes {
     private ArrayList<aNote> Notes = new ArrayList<aNote>();
     private ArrayList<aNote> ProcessedNotes = new ArrayList<aNote>();
-    private int tempo = GENERATED_MUSIC_NOTES.getTempo();
-    private int timeSignature_note = GENERATED_MUSIC_NOTES.getTimeSignature()[1];
+    private int tempo = 60; //GENERATED_MUSIC_NOTES.getTempo();
+    private int timeSignature_note = 4; //GENERATED_MUSIC_NOTES.getTimeSignature()[1];
 
     public RecordedMusicNotes() {}
 

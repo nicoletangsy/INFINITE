@@ -118,10 +118,10 @@ public class RightHandPractice extends AppCompatActivity {
 
     private void onRecord(boolean start, Button playRecordButton) {
         if (start) {
-            startRecording();
+            //startRecording();
             startDetecting();
         } else {
-            stopRecording();
+            //stopRecording();
             playRecordButton.setVisibility(View.VISIBLE);
             A_Music_Sheet_Type.changedToUserPlay();
         }
@@ -183,7 +183,7 @@ public class RightHandPractice extends AppCompatActivity {
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            text.setText(added);
+                            text.setText("");//added
                         }
                     });
                 }
@@ -209,7 +209,6 @@ public class RightHandPractice extends AppCompatActivity {
     @Override
     public void onStop() {
         super.onStop();
-        dispatcher.stop();
         if (mRecorder != null) {
             mRecorder.release();
             mRecorder = null;
