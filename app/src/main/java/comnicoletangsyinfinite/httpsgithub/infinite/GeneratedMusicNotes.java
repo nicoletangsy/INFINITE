@@ -7,24 +7,25 @@ import java.util.ArrayList;
 public class GeneratedMusicNotes {
     private double tempo[] = {60, 80, 120}; //bpm
     private double beat[] = {3, 4}; //拍子記號 44拍 or 34拍
-    private double[] noteIn4 = {1, 2, 3, 4, 8}; //44拍 choic
-    private double[] noteIn3 = {1, 2, 3, 4, 6}; //34拍 choice
+    private double[] noteIn4 = {8, 4, 3, 2, 1}; //44拍 choic
+    private double[] noteIn3 = {6, 4, 3, 2, 1}; //34拍 choice
     private double[] noteIn;
     private ArrayList<Double> note = new ArrayList<>();
     private ArrayList<ArrayList<Double>> pianoSheet = new ArrayList<>();
     private double theBeat;
     private double countBar = 0;
     private double hand;
-    private int[] flat = {11, 6, 2, 5, 1, 4, 0, 3};
-    private int[] sharp = {11, 3, 0, 4, 1, 5, 2, 6};
+    private int[] flat = {6, 2, 5, 1, 4, 0, 3};
+    private int[] sharp = {3, 0, 4, 1, 5, 2, 6};
     private int[] flatOrSharp;
-    private int[] howMany = {4,2,3,1};
-
+    private int[] howMany = {4, 2, 3, 1};
+    private boolean flatSharp = false;
+    private double previousNote = -1;
+    private double[] keys = {48, 50, 52, 53, 55, 57, 59, 60, 62, 64};
 
     public GeneratedMusicNotes(double hand) {
 
         this.hand = hand;
-
 
         theBeat = addBeat();
         setNoteIn(theBeat);
@@ -74,78 +75,72 @@ public class GeneratedMusicNotes {
         double noteTime;
         int column = 0;
         int noteNum = 3;
-        while (column <= 6 * (pianoSheet.get(0).get(1))) {
-            noteTime = noteIn[(int) Math.floor(Math.random() * 5)];
+        double countBeat = 0;
+        while (column < 6 * (pianoSheet.get(0).get(1))) {
+            noteTime = noteIn[(int) Math.floor(Math.random() * (pianoSheet.get(0).get(1) - countBeat))];
             if (noteTime <= 4) {
 
                 getNote(noteNum, noteTime);
-
-
-                column = column + howMany[(int)noteTime-1];
-                Log.v("testestifnoteNum",""+noteNum);
-                Log.v("testestifnoteTime",""+noteTime);
-                Log.v("testestifcolumn",""+column);
+                column = column + howMany[(int) noteTime - 1];
                 noteNum++;
+                countBeat = countBeat + howMany[(int) noteTime - 1];
 
+                if (countBeat == pianoSheet.get(0).get(1))
+                    countBeat = 0;
             } else {
                 if (noteTime == 6) {
                     for (int i = 0; i < 3; i++) {
                         getNote(noteNum, noteTime);
-
-                        Log.v("testestelseifnoteNum",""+noteNum);
-                        Log.v("testestelseifnoteTime",""+noteTime);
                         noteNum++;
                     }
                 } else {
                     for (int i = 0; i < 2; i++) {
                         getNote(noteNum, noteTime);
-
-                        Log.v("testestelselsenoteNum",""+noteNum);
-                        Log.v("testestelselsenoteTime",""+noteTime);
                         noteNum++;
                     }
                 }
                 column++;
-                Log.v("testestelsecolumn",""+column);
+                countBeat++;
+                if (countBeat == pianoSheet.get(0).get(1))
+                    countBeat = 0;
             }
-
         }
-        Log.v("testesthihihi",""+pianoSheet);
     }
 
     //gen a note and insert into piano sheet
     public void getNote(int noteNum, double noteTime) {
         double aNote;
-        aNote = genAnote(pianoSheet.get(noteNum - 1).get(0));
+        aNote = genAnote(previousNote);
         pianoSheet.add(new ArrayList<Double>());
         pianoSheet.get(noteNum).add(aNote);
         pianoSheet.get(noteNum).add(noteTime);
-        Log.v("aiaiaiaiainoteNum",""+noteNum);
-        Log.v("testesthihihi",""+pianoSheet);
     }
 
     //gen a note -3 to +3 of the previous note
     //if the first note, random gen 0-10 (C4-E5)
     public double genAnote(double preNote) {
         double aNote = 0;
-        if (preNote < 20) {
-            aNote = Math.floor(Math.random() * 11);
-            Log.v("aiaiaiaiaiaNote",""+aNote);
+        int random = 0;
+        if (preNote < 0) {
+            aNote = Math.floor(Math.random() * 10);
         } else {
-            int random = (int) Math.floor(Math.random() * 7);
-            aNote = preNote-48 + random - 3;
-            Log.v("aiaiaiaiaiaNote",""+aNote);
+            if (preNote > 6) {
+                random = (int) Math.floor(Math.random() * (13 - preNote));
+            } else if (preNote < 3) {
+                random = (int) ((Math.floor(Math.random() * (4 + preNote))) + (3 - preNote));
+            } else {
+                random = (int) Math.floor(Math.random() * 7);
+            }
+            aNote = preNote + random - 3;
         }
+        previousNote = aNote;
         return convertNote(aNote);
     }
 
-    //////////////////////////////////////////////////flatSharp not yet done/////////////////////////////////////////////
-
-
     public double convertNote(double aNote) {
-//        boolean flatSharp = false;
         double type;
         double convertedNote;
+
         if (pianoSheet.get(1).get(0) == 0) {
             flatOrSharp = flat;
             type = -0.5f;
@@ -154,17 +149,18 @@ public class GeneratedMusicNotes {
             type = 1;
         }
 
-//        for (int i = 0; i <= 100; i++) {
-//            if (aNote == (double) flatOrSharp[i] || aNote - 7 == (double) flatOrSharp[i] || aNote + 7 == (double) flatOrSharp[i]) {
-//                flatSharp = true;
-//            }
-//        }
-//
-//        if (flatSharp = true) {
-//            convertedNote = aNote + 48 + type;
-//        } else
-            convertedNote = aNote + 48;
-        Log.v("aiaiaiaiconvertedNote",""+convertedNote);
+        for (int i = 0; i < pianoSheet.get(1).get(1); i++) {
+            if ((aNote == (double) flatOrSharp[i]) || (aNote - 7 == (double) flatOrSharp[i]) || (aNote + 7 == (double) flatOrSharp[i])) {
+                flatSharp = true;
+            }
+        }
+        if (flatSharp == true) {
+            convertedNote = keys[(int) aNote] + type;
+
+        } else {
+            convertedNote = keys[(int) aNote];
+        }
+        flatSharp = false;
         return convertedNote;
     }
 

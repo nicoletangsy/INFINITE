@@ -389,7 +389,7 @@ public class Notes extends View {
         this.note = note1;
         scaleNoteDrawFlat(6, tailHeight1);
 
-        if ((diff12 > 0 && diff23 > 0 && diff13 <= 2) ) {
+        if ((diff12 > 0 && diff23 > 0 && diff13 <= 2)) {
 
 
             if (upper) {
@@ -400,9 +400,7 @@ public class Notes extends View {
                         (noteWidth / 1.5f + (lineHeight / 1.5f) + 1) - lineHeight * 1.4f, lineHeight * (tailHeight1 - 1), paintTail);
 
             }
-        }
-
-        else if ((diff12 < 0 && diff23 < 0 && diff13 >= -2)){
+        } else if ((diff12 < 0 && diff23 < 0 && diff13 >= -2)) {
             if (upper) {
                 canvas.drawLine(lineHeight / 1.5f - 1, -lineHeight * tailHeight1,
                         noteWidth / 1.5f + (lineHeight / 1.5f) + 1, -lineHeight * (tailHeight1 - 1), paintTail);
@@ -411,9 +409,7 @@ public class Notes extends View {
                         (noteWidth / 1.5f + (lineHeight / 1.5f) + 1) - lineHeight * 1.4f, lineHeight * (tailHeight1 + 1), paintTail);
 
             }
-        }
-
-        else {
+        } else {
 
             if (upper) {
                 canvas.drawLine(lineHeight / 1.5f - 1, -lineHeight * tailHeight1,
@@ -517,7 +513,7 @@ public class Notes extends View {
                         noteWidth / 2 + (lineHeight / 1.5f) + 1, -lineHeight * (tailHeight1 - theLine), paintTail);
             else
                 canvas.drawLine((lineHeight / 1.5f - 1) - lineHeight * 1.4f, lineHeight * tailHeight1,
-                        (noteWidth / 2 + (lineHeight / 1.5f) + 1) - lineHeight * 1.4f, lineHeight * (tailHeight1 - theLine), paintTail);
+                        (noteWidth / 2 + (lineHeight / 1.5f) + 1) - lineHeight * 1.4f, lineHeight * (tailHeight1 + theLine), paintTail);
         }
         // Translate canvas
         canvas.translate(noteWidth / 2, -(yBase - dy));
@@ -570,7 +566,7 @@ public class Notes extends View {
         canvas.translate(0, yBase - dy);
 
         //middle C's line
-        if (note == 48) {
+        if (note <= 49 && note > 47) {
             drawLeger(noteType);
         }
 
@@ -633,7 +629,7 @@ public class Notes extends View {
                     if (note1 <= 36 && note2 <= 36 && note3 <= 36) {
                         upper = true;
                     }
-                } else if (note1 >= 60 && note2 >= 60 && note3 >= 60 ) {
+                } else if (note1 >= 60 && note2 >= 60 && note3 >= 60) {
                     upper = false;
                 }
 
@@ -643,7 +639,7 @@ public class Notes extends View {
                     if (note1 <= 36 && note2 <= 36) {
                         upper = true;
                     }
-                } else if (note1 >= 60 && note2 >= 60) {
+                } else if (note1 >= 59 && note2 >= 59) {
                     upper = false;
                 }
 
@@ -653,7 +649,7 @@ public class Notes extends View {
                     if (note1 <= 36 && note2 <= 36 && note3 <= 36) {
                         upper = true;
                     }
-                } else if (note1 >= 60 && note2 >= 60 && note3 <= 36) {
+                } else if (note1 >= 59 && note2 >= 59 && note3 <= 59) {
                     upper = false;
                 }
 
@@ -663,7 +659,7 @@ public class Notes extends View {
                 if (note > 36)
                     upper = false;
             } else {
-                if (note >= 60) {
+                if (note >= 59) {
                     upper = false;
                 }
             }
