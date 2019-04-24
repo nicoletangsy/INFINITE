@@ -13,14 +13,18 @@ public class RecordedMusicNotes {
 
     public RecordedMusicNotes() {}
 
+    //This getter is used for test & debug
     public String getAllNotes() {
-        String list = "Notes: ";
-        list = list + Notes.size()+ ", ";
-        for (int i=0; i<Notes.size(); i++) {
+        String list = "Test: [" + calculateNoteDuration(0.25) + ", " + calculateNoteDuration(0.5) + ", " + calculateNoteDuration(1) + ", "
+                + calculateNoteDuration(2) + ", " + calculateNoteDuration(4) + ", " + calculateNoteDuration(8) + ", "
+                + calculateNoteDuration(0.26) + ", " + calculateNoteDuration(0.51) + ", " + calculateNoteDuration(1.01) + ", "
+                + calculateNoteDuration(2.01) + ", " + calculateNoteDuration(4.01) + "]" ;
+        list = list + "Notes: " + Notes.size()+ ", ";
+        /*for (int i=0; i<Notes.size(); i++) {
             String dBSPL = String.format("%.1f", Notes.get(i).getDbSPL());
             String time = String.format("%.2f", Notes.get(i).getTimeStamp());
             list = list + "[" + Notes.get(i).getNote() + ", " + dBSPL + ", " + time + "] ";
-        }
+        }*/
         list = list + "\n ProcessedNotes: ";
         for (int i=0; i<ProcessedNotes.size(); i++) {
             String dBSPL = String.format("%.1f", ProcessedNotes.get(i).getDbSPL());
@@ -65,6 +69,7 @@ public class RecordedMusicNotes {
                     int noteDuration = calculateNoteDuration(duration);
                     if (noteDuration>0) {
                         ProcessedNotes.get(count).setNoteDuration(noteDuration);
+                        ProcessedNotes.get(count).setTimeStamp(duration);
                         startTime = Notes.get(i).getTimeStamp();
                         prepNote = curNote;
                         prepdB = curdB;
@@ -72,7 +77,7 @@ public class RecordedMusicNotes {
                         ProcessedNotes.add(newNote);
                         count++;
                     }
-                }
+                } else
                 if (prepNote==curNote && prepdB<curdB) {
                     endTime = Notes.get(i).getTimeStamp();
                     double duration = endTime-startTime;
@@ -86,9 +91,13 @@ public class RecordedMusicNotes {
                         ProcessedNotes.add(newNote);
                         count++;
                     }
+                } else {
+                    prepdB = curdB;
+                    prepNote = curNote;
                 }
             }
         }
+        ProcessedNotes.get(count).setNoteDuration(4);
     }
 
     public int calculateNoteDuration (double duration) {
@@ -99,17 +108,18 @@ public class RecordedMusicNotes {
         NotesDuration[2] = oneNoteDuration / 4.0; //one Quarter note time
         NotesDuration[3] = oneNoteDuration / 8.0; //one Eighth note time
         NotesDuration[4] = oneNoteDuration / 16.0; //one 16th note time
-        if (duration>NotesDuration[4] && duration<=NotesDuration[3]) {
-            return 8;
-        }
-        if (duration>NotesDuration[3] && duration<=NotesDuration[2]) {
-            return 4;
-        }
-        if (duration>NotesDuration[2] && duration<=NotesDuration[1]) {
-            return 2;
-        }
-        if (duration>NotesDuration[1] && duration<=NotesDuration[0]) {
-            return 1;
+        if (duration>NotesDuration[4]) {
+            if (duration<=NotesDuration[3]*1.2) {
+                return 8;
+            } else if (duration<=NotesDuration[2]*1.2) {
+                return 4;
+            } else if (duration<=NotesDuration[1]*1.2) {
+                return 2;
+            } else if (duration<=NotesDuration[1]*1.2) {
+                return 1;
+            } else {
+                return 0;
+            }
         }
         return 0;
     }
