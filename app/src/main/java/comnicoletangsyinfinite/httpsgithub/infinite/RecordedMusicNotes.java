@@ -10,6 +10,8 @@ public class RecordedMusicNotes {
     private int tempo = GENERATED_MUSIC_NOTES.getTempo();
     private int timeSignature_note = GENERATED_MUSIC_NOTES.getTimeSignature()[1];
 
+    public RecordedMusicNotes() {}
+
     public String getAllNotes() {
         String list = "Notes: ";
         for (int i=0; i<Notes.size(); i++) {
