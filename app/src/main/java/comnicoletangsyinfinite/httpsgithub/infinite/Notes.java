@@ -205,7 +205,6 @@ public class Notes extends View {
         return canvas;
     }
 
-    //not yet done
     public Canvas create6Note(float lineWidth, float lineHeight, float noteWidth, double note1, double note2, double note3, double hand, Canvas canvas) {
         this.note1 = note1;
         this.note2 = note2;
@@ -214,13 +213,9 @@ public class Notes extends View {
         this.canvas = canvas;
         this.lineHeight = lineHeight;
         this.lineWidth = lineWidth;
-        float min;
-        float max;
-        float theLine;
         float diff13;
         float diff12;
         float diff23;
-
 
         float tailHeight1 = 3.5f;
         float tailHeight2 = 3.5f;
@@ -231,7 +226,7 @@ public class Notes extends View {
         float sideNote = 1;
 
         boolean upper = tailIsUpper(8);
-
+        Log.v("upper?", upper+"");
 
         diff12 = (noteDiff((float) note1, (float) note2)) / 2;
         diff13 = (noteDiff((float) note1, (float) note3)) / 2;
@@ -345,16 +340,14 @@ public class Notes extends View {
         this.note = note1;
         scaleNoteDrawFlat(6, tailHeight1);
 
+        //Draw the line connect 3 note
         if ((diff12 > 0 && diff23 > 0 && diff13 <= 2)) {
-
-
             if (upper) {
                 canvas.drawLine(lineHeight / 1.5f - 1, -lineHeight * tailHeight1,
                         noteWidth / 1.5f + (lineHeight / 1.5f) + 1, -lineHeight * (tailHeight1 + 1), paintTail);
             } else {
                 canvas.drawLine((lineHeight / 1.5f - 1) - lineHeight * 1.4f, lineHeight * tailHeight1,
                         (noteWidth / 1.5f + (lineHeight / 1.5f) + 1) - lineHeight * 1.4f, lineHeight * (tailHeight1 - 1), paintTail);
-
             }
         } else if ((diff12 < 0 && diff23 < 0 && diff13 >= -2)) {
             if (upper) {
@@ -363,7 +356,6 @@ public class Notes extends View {
             } else {
                 canvas.drawLine((lineHeight / 1.5f - 1) - lineHeight * 1.4f, lineHeight * tailHeight1,
                         (noteWidth / 1.5f + (lineHeight / 1.5f) + 1) - lineHeight * 1.4f, lineHeight * (tailHeight1 + 1), paintTail);
-
             }
         } else {
 
@@ -405,6 +397,8 @@ public class Notes extends View {
         float tailHeight2 = 3.5f;
 
         boolean upper = tailIsUpper(8);
+
+        Log.v("upper???", ""+upper);
 
         if (note1 > note2 || note1 == note2) {
             max = (float) note1;
@@ -523,7 +517,7 @@ public class Notes extends View {
 
         //middle C's line
         if (note <= 49 && note > 47) {
-            drawLeger(noteType);
+            drawLeger(noteType, note);
         }
 
         if (noteType > 3)
@@ -558,13 +552,12 @@ public class Notes extends View {
         int notedimin = noteDiff[minN % 12];
         int maxFloor = (maxN / 12) * 7;
         int minFloor = (minN / 12) * 7;
-        Log.v("theNoteDiff", "" + (notedimax + maxFloor - notedimin - minFloor));
         return notedimax + maxFloor - notedimin - minFloor;
     }
 
     //draw a note tail
     public void drawTail(float tailHeight, int noteType) {
-
+        Log.v("upperdrawTail", ""+tailIsUpper(noteType));
         if (tailIsUpper(noteType))
             canvas.drawLine(lineHeight / 1.5f, 0,
                     lineHeight / 1.5f, -lineHeight * tailHeight, paint);
@@ -585,7 +578,7 @@ public class Notes extends View {
                     if (note1 <= 36 && note2 <= 36 && note3 <= 36) {
                         upper = true;
                     }
-                } else if (note1 >= 59 && note2 >= 59 && note3 >= 59) {
+                } else if ((note1 > 58 && note2 > 58) || (note1 > 58 && note3 > 58) || (note2 > 58 && note3 > 58)) {
                     upper = false;
                 }
 
@@ -595,21 +588,22 @@ public class Notes extends View {
                     if (note1 <= 36 && note2 <= 36) {
                         upper = true;
                     }
-                } else if (note1 >= 59 && note2 >= 59) {
-                    upper = false;
-                }
-
-            } else if (noteType == 16) {
-                if (hand == 0) {
-                    upper = false;
-                    if (note1 <= 36 && note2 <= 36 && note3 <= 36) {
-                        upper = true;
-                    }
-                } else if (note1 >= 59 && note2 >= 59 && note3 <= 59) {
+                } else if (note1 > 58 && note2 > 58) {
                     upper = false;
                 }
 
             }
+//              else if (noteType == 16) {
+//                if (hand == 0) {
+//                    upper = false;
+//                    if (note1 <= 36 && note2 <= 36 && note3 <= 36) {
+//                        upper = true;
+//                    }
+//                } else if (note1 > 58 && note2 > 58 && note3 > 58) {
+//                    upper = false;
+//                }
+//
+//            }
         } else {
             if (hand == 0) {
                 if (note > 36)
@@ -621,6 +615,8 @@ public class Notes extends View {
             }
 
         }
+
+
         return upper;
     }
 
@@ -644,12 +640,6 @@ public class Notes extends View {
 
     }
 
-    protected void drawLeger(int noteType) {
-        if (noteType > 1)
-            canvas.drawLine(-lineHeight, 0, lineHeight, 0, paint);
-        else
-            canvas.drawLine(-lineHeight * 1.3f, 0, lineHeight * 1.3f, 0, paint);
-    }
 
     //Stroke for a bar
     public Canvas createStroke(float lineWidth, float lineHeight, float noteWidth, Canvas canvas) {
@@ -661,6 +651,14 @@ public class Notes extends View {
         canvas.translate(noteWidth / 4, 0);
 
         return canvas;
+    }
+
+    //for C only
+    //miss left hand
+    protected void drawLeger(int noteType, Double note) {
+        if (noteType > 1)
+            canvas.drawLine(-lineHeight, 0, lineHeight, 0, paint);
+
     }
 
     // On draw

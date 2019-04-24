@@ -350,7 +350,7 @@ public class PianoSheetView extends View {
             }
 
             //One column finished
-            if (totalBeat % 4 == 0 && totalBeat % 8 != 0) {
+            if (totalBeat % (theSheet.get(0).get(1)) == 0 && totalBeat % (theSheet.get(0).get(1)*2) != 0) {
                 notesArrayList.add(new Notes(this.getContext()));
                 canvas = notesArrayList.get(j).createStroke(lineWidth, lineHeight, noteWidth, canvas);
             }
