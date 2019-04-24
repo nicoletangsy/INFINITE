@@ -37,6 +37,8 @@ import static comnicoletangsyinfinite.httpsgithub.infinite.RightHandReading.A_GE
 
 public class RightHandPractice extends AppCompatActivity{
     public static final RecordedMusicNotes A_RECORDED_MUSIC_NOTES = new RecordedMusicNotes();
+    public static final CompareMusicSheet A_COMPARE_MUSIC_SHEET = new CompareMusicSheet();
+
     private AudioDispatcher dispatcher;
     private boolean mStartRecording = true;
     private boolean mStartPlaying = true;
@@ -79,14 +81,14 @@ public class RightHandPractice extends AppCompatActivity{
 
     private void onRecord(boolean start, Button playRecordButton) {
         if (start) {
-            startRecording();
+            //startRecording();
+            startDetecting();
         } else {
-            //stopRecording();
+            stopRecording();
             playRecordButton.setVisibility(View.VISIBLE);
             A_Music_Sheet_Type.changedToUserPlay();
         }
     }
-
     private void onPlay(boolean start) {
         if (start) {
             startPlaying();
@@ -184,11 +186,14 @@ public class RightHandPractice extends AppCompatActivity{
     }
 
     private void stopRecording() {
-        //  mRecorder.stop();
-        //mRecorder.release();
-        //mRecorder = null;
+        A_RECORDED_MUSIC_NOTES.ProcessNote();
         dispatcher.stop();
-
+        A_COMPARE_MUSIC_SHEET.setGeneratedMusicSheet(A_GENERATED_MUSIC_NOTES.getPianoSheet());
+        A_COMPARE_MUSIC_SHEET.setRecordedMusicNotes(A_RECORDED_MUSIC_NOTES.getPianoSheet());
+        A_COMPARE_MUSIC_SHEET.compareTwoSheet();
+        /*mRecorder.stop();
+        mRecorder.release();
+        mRecorder = null;*/
     }
 
     @Override

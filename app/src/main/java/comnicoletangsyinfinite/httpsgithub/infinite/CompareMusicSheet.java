@@ -16,12 +16,16 @@ public class CompareMusicSheet {
         this.recordedMusicNotes = recordedMusicNotes;
     }
 
-    public ArrayList<ArrayList<Double>> compareTwoSheet(){
+    public void compareTwoSheet(){
         for(int i = 0;i<recordedMusicNotes.size();i++){
             if(generatedMusicSheet.get(3+i).get(0)!=recordedMusicNotes.get(i).get(0)){
                 generatedMusicSheet.get(3+i).add((double)1);
             }
         }
+
+    }
+
+    public ArrayList<ArrayList<Double>> getSheet(){
         return generatedMusicSheet ;
     }
 }

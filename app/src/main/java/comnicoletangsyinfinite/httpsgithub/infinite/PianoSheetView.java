@@ -17,7 +17,7 @@ import java.util.ArrayList;
 
 import static comnicoletangsyinfinite.httpsgithub.infinite.RightHandReading.A_Music_Sheet_Type;
 import static comnicoletangsyinfinite.httpsgithub.infinite.RightHandReading.A_GENERATED_MUSIC_NOTES;
-
+import static comnicoletangsyinfinite.httpsgithub.infinite.RightHandPractice.A_COMPARE_MUSIC_SHEET;
 public class PianoSheetView extends View {
 
     private Paint paint;
@@ -190,16 +190,19 @@ public class PianoSheetView extends View {
         super.onDraw(canvas);
 
         String type = A_Music_Sheet_Type.getType();
+
         if (type.equals("Reading")) {
             theSheet = A_GENERATED_MUSIC_NOTES.getPianoSheet();
-            Log.v("bbbbbtheSheet",""+theSheet.get(0));
-        } else
-            theSheet = A_GENERATED_MUSIC_NOTES.getPianoSheet();
+            Log.v("sheetsheetsheetReading", "" + theSheet);
+        } else {
+            theSheet = A_COMPARE_MUSIC_SHEET.getSheet();
+            Log.v("sheetsheetsheetFeedBack", "" + theSheet);
+        }
+
 
         if(theSheet.get(2).get(0) == 0){
             leftHand = 1;
         }
-
 
         // Set up paint
         paint.setStrokeWidth(2);
@@ -278,12 +281,8 @@ public class PianoSheetView extends View {
         FIRST_NOTE.setHeight(lineHeight * 4);
         FIRST_NOTE.setSpeed(((480 / theSheet.get(0).get(0)) + 1) * 1000);
 
-
-        //3/4 OR 4/4 of piano sheet
-        if (theSheet.get(0).get(1) == 3) {
-            canvas.drawText("3", 0, -lineHeight * 3, painttt);
-        } else
-            canvas.drawText("4", 0, -lineHeight * 3, painttt);
+        //draw 4/4 on sheet
+        canvas.drawText("4", 0, -lineHeight * 3, painttt);
 
         canvas.drawText("4", 0, -lineHeight, painttt);
 

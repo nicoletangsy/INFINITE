@@ -16,7 +16,7 @@ import static comnicoletangsyinfinite.httpsgithub.infinite.RightHandReading.A_Mu
 import static comnicoletangsyinfinite.httpsgithub.infinite.RightHandReading.A_GENERATED_MUSIC_NOTES;
 
 public class RightHandFeedback extends AppCompatActivity {
-    public static final CompareMusicSheet A_COMPARE_MUSIC_SHEET = new CompareMusicSheet();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,9 +38,7 @@ public class RightHandFeedback extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        A_COMPARE_MUSIC_SHEET.setGeneratedMusicSheet(A_GENERATED_MUSIC_NOTES.getPianoSheet());
-        A_COMPARE_MUSIC_SHEET.setRecordedMusicNotes(A_RECORDED_MUSIC_NOTES.getPianoSheet());
-        A_COMPARE_MUSIC_SHEET.compareTwoSheet();
+
 
 //        TextView feedback = findViewById(R.id.feedback);
 //        String str = "";
