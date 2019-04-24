@@ -8,7 +8,7 @@ public class GeneratedMusicNotes {
     private int bar = 0; //the number of bars
     private int total = 2; //the total number of notes;
     private int totalNotes[] = new int[bar]; //the no of notes in each bar
-    private int[] noteDuration = {1, 2, 4, 8, 16, 32, 64};
+    private int[] noteDuration = {1, 2, 4, 8, 16};
     private float[] maxNotes; //max. of notes added in a bar
     private ArrayList<aNote> allNotes = new ArrayList<aNote>();
     //ArrayList<Notes> notesArrayList = new ArrayList<>();
@@ -30,6 +30,10 @@ public class GeneratedMusicNotes {
 
         }*/
         return this.allNotes;
+    }
+
+    public GeneratedMusicNotes () {
+        randomGenerated();
     }
 
     public GeneratedMusicNotes(int tempo, int timeSignature_count, int timeSignature_note) {
@@ -69,33 +73,23 @@ public class GeneratedMusicNotes {
     }
 
     private void randomGenerated() {
-        tempo = (int)(Math.random() * 110 + 70); // 70~180 bpm
+        tempo = (int)(Math.random() * 120 + 60); // 60~180 bpm
         bar = (int)(Math.random() * 4 + 1); // 1~4 bars
-        for (int i=0; i<bar; i++) {
-            totalNotes[i] = (int) (Math.random() * 10 + 1);
-            total += totalNotes[i];
-        }
-        for (int i=0; i<bar; i++) {
-            for (int j=0; j<noteDuration.length; j++) {
-                int temp = noteDuration[j]/timeSignature[1]*timeSignature[0];
-                maxNotes[j] = temp;
+        double totalNotes = bar * timeSignature[0];
+        do {
+            double newNote = randomNote();
+            int duration = randomNoteDuration();
+            while (duration>totalNotes) {
+                duration = randomNoteDuration();
             }
-            do {
-                int count = 0;
-                for(int j=0; j<maxNotes.length; j++) {
-                    if (maxNotes[j]>0) {
-                        count++;
-                    }
-                }
-                int rand = randomNoteDuration(count);
-                aNote newNote = new aNote(randomNote(), rand);
-            } while (!(maxNotes[0]==0&&maxNotes[1]==0&&maxNotes[2]==0&&maxNotes[3]==0&&maxNotes[4]==0&&maxNotes[5]==0&&maxNotes[6]==0));
-        }
+            addNote(new aNote(newNote, duration));
+            totalNotes -= duration;
+        } while (totalNotes>0);
     }
 
-    private int randomNoteDuration (int count) {
-        int rand = (int)(Math.random() * count + (7 - count));
-        return noteDuration[rand];
+    private int randomNoteDuration () {
+        int duration = (int) Math.random()*5;
+        return noteDuration[duration];
     }
 
     private double randomNote() {
