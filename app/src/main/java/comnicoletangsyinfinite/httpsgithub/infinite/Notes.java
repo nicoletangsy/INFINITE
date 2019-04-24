@@ -136,7 +136,7 @@ public class Notes extends View {
         this.lineHeight = lineHeight;
         this.lineWidth = lineWidth;
 
-        scaleNoteDrawFlat(1, 0);
+        scaleNoteDrawFlat(1, 0, hand);
 
         return canvas;
     }
@@ -154,7 +154,7 @@ public class Notes extends View {
         this.lineWidth = lineWidth;
 
 
-        scaleNoteDrawFlat(2, 3.5f);
+        scaleNoteDrawFlat(2, 3.5f, hand);
 
         // Translate canvas
         canvas.translate(noteWidth * 2, -(yBase - dy));
@@ -171,7 +171,7 @@ public class Notes extends View {
         this.lineWidth = lineWidth;
 
 
-        scaleNoteDrawFlat(3, 3.5f);
+        scaleNoteDrawFlat(3, 3.5f, hand);
 
         // Translate canvas
         canvas.translate(noteWidth * 3, -(yBase - dy));
@@ -196,7 +196,7 @@ public class Notes extends View {
         this.lineWidth = lineWidth;
 
 
-        scaleNoteDrawFlat(4, 3.5f);
+        scaleNoteDrawFlat(4, 3.5f, hand);
 
         Log.v("noteWidth2", noteWidth + "," + dy);
         // Translate canvas
@@ -205,182 +205,184 @@ public class Notes extends View {
         return canvas;
     }
 
-    public Canvas create6Note(float lineWidth, float lineHeight, float noteWidth, double note1, double note2, double note3, double hand, Canvas canvas) {
-        this.note1 = note1;
-        this.note2 = note2;
-        this.note3 = note3;
-        this.hand = hand;
-        this.canvas = canvas;
-        this.lineHeight = lineHeight;
-        this.lineWidth = lineWidth;
-        float diff13;
-        float diff12;
-        float diff23;
-
-        float tailHeight1 = 3.5f;
-        float tailHeight2 = 3.5f;
-        float tailHeight3 = 3.5f;
-        float shortest = 1.5f;
-
-        float middleNote = 0.5f;
-        float sideNote = 1;
-
-        boolean upper = tailIsUpper(8);
-        Log.v("upper?", upper+"");
-
-        diff12 = (noteDiff((float) note1, (float) note2)) / 2;
-        diff13 = (noteDiff((float) note1, (float) note3)) / 2;
-        diff23 = (noteDiff((float) note2, (float) note3)) / 2;
-
-        Log.v("difference1", diff12 + "," + diff13 + "," + diff23);
-
-        if (diff12 == 0) {
-            if (diff23 > 2) {
-                tailHeight1 = diff23 + shortest;
-                tailHeight2 = diff23 + shortest;
-                tailHeight3 = shortest;
-            } else if (diff23 > 0) {
-                tailHeight3 = tailHeight3 - diff23;
-            } else if (diff23 < -2) {
-                tailHeight1 = shortest;
-                tailHeight2 = shortest;
-                tailHeight3 = diff23 + shortest;
-            } else if (diff23 < 0) {
-                tailHeight1 = tailHeight1 + diff23;
-                tailHeight2 = tailHeight2 + diff23;
-            }
-        } else if (diff23 == 0) {
-            if (diff12 > 2) {
-                tailHeight1 = diff12 + shortest;
-                tailHeight2 = shortest;
-                tailHeight3 = shortest;
-            } else if (diff12 > 0) {
-                tailHeight2 = tailHeight2 - diff12;
-                tailHeight3 = tailHeight3 - diff12;
-            } else if (diff12 < -2) {
-                tailHeight1 = shortest;
-                tailHeight2 = diff12 + shortest;
-                tailHeight3 = diff12 + shortest;
-            } else if (diff12 < 0) {
-                tailHeight1 = tailHeight1 + diff12;
-            }
-        } else if (diff12 > 0 && diff23 < 0) {
-            if (diff12 <= 2 && diff23 >= -2) {
-                if (diff13 == 0) {
-                    tailHeight2 = tailHeight2 - diff12;
-                } else if (diff12 > (-diff23)) {
-                    tailHeight2 = tailHeight2 - diff12;
-                    tailHeight3 = tailHeight3 - diff13;
-                } else if (diff12 < (-diff23)) {
-                    tailHeight1 = tailHeight1 - diff13;
-                    tailHeight2 = tailHeight2 + diff23;
-                }
-            } else {
-                if (diff13 == 0) {
-                    tailHeight1 = diff12 + shortest;
-                    tailHeight2 = shortest;
-                    tailHeight3 = diff12 + shortest;
-                } else if (diff12 > (-diff23)) {
-                    tailHeight1 = diff12 + shortest;
-                    tailHeight2 = shortest;
-                    tailHeight3 = -diff23 + shortest;
-                } else if (diff12 < (-diff23)) {
-                    tailHeight1 = diff12 + shortest;
-                    tailHeight2 = shortest;
-                    tailHeight3 = -diff23 + shortest;
-                }
-            }
-
-
-        } else if (diff12 < 0 && diff23 > 0) {
-            if (diff12 <= 2 && diff23 >= -2) {
-                if (diff13 == 0) {
-                    tailHeight1 = tailHeight1 - diff23;
-                    tailHeight3 = tailHeight2 - diff23;
-                } else {
-                    tailHeight1 = tailHeight1 + diff12;
-                    tailHeight3 = tailHeight3 - diff23;
-                }
-            } else {
-                if (diff13 == 0) {
-                    tailHeight1 = shortest;
-                    tailHeight2 = diff23 + shortest;
-                    tailHeight3 = shortest;
-                } else if (-diff12 > diff23) {
-                    tailHeight1 = shortest;
-                    tailHeight2 = -diff12 + shortest;
-                    tailHeight3 = -diff13 + shortest;
-                } else if (-diff12 < diff23) {
-                    tailHeight1 = diff13 + shortest;
-                    tailHeight2 = diff23 + shortest;
-                    tailHeight3 = shortest;
-                }
-            }
-        } else if (diff12 > 0 && diff23 > 0) {
-            if (diff13 > 2) {
-                tailHeight1 = diff13 + shortest - sideNote;
-                tailHeight2 = diff23 + shortest - middleNote;
-                tailHeight3 = shortest;
-            } else {
-                tailHeight2 = tailHeight2 - diff12 + middleNote;
-                tailHeight3 = tailHeight3 - diff13 + sideNote;
-            }
-        } else if (diff12 < 0 && diff23 < 0) {
-            if (diff13 < -2) {
-                tailHeight1 = shortest;
-                tailHeight2 = -diff12 + shortest - middleNote;
-                tailHeight3 = -diff13 + shortest - sideNote;
-            } else {
-                tailHeight1 = tailHeight1 + diff13 + sideNote;
-                tailHeight2 = tailHeight2 + diff23 + middleNote;
-
-            }
-        }
-
-        this.note = note1;
-        scaleNoteDrawFlat(6, tailHeight1);
-
-        //Draw the line connect 3 note
-        if ((diff12 > 0 && diff23 > 0 && diff13 <= 2)) {
-            if (upper) {
-                canvas.drawLine(lineHeight / 1.5f - 1, -lineHeight * tailHeight1,
-                        noteWidth / 1.5f + (lineHeight / 1.5f) + 1, -lineHeight * (tailHeight1 + 1), paintTail);
-            } else {
-                canvas.drawLine((lineHeight / 1.5f - 1) - lineHeight * 1.4f, lineHeight * tailHeight1,
-                        (noteWidth / 1.5f + (lineHeight / 1.5f) + 1) - lineHeight * 1.4f, lineHeight * (tailHeight1 - 1), paintTail);
-            }
-        } else if ((diff12 < 0 && diff23 < 0 && diff13 >= -2)) {
-            if (upper) {
-                canvas.drawLine(lineHeight / 1.5f - 1, -lineHeight * tailHeight1,
-                        noteWidth / 1.5f + (lineHeight / 1.5f) + 1, -lineHeight * (tailHeight1 - 1), paintTail);
-            } else {
-                canvas.drawLine((lineHeight / 1.5f - 1) - lineHeight * 1.4f, lineHeight * tailHeight1,
-                        (noteWidth / 1.5f + (lineHeight / 1.5f) + 1) - lineHeight * 1.4f, lineHeight * (tailHeight1 + 1), paintTail);
-            }
-        } else {
-
-            if (upper) {
-                canvas.drawLine(lineHeight / 1.5f - 1, -lineHeight * tailHeight1,
-                        noteWidth / 1.5f + (lineHeight / 1.5f) + 1, -lineHeight * tailHeight1, paintTail);
-            } else {
-                canvas.drawLine((lineHeight / 1.5f - 1) - lineHeight * 1.4f, lineHeight * tailHeight1,
-                        (noteWidth / 1.5f + (lineHeight / 1.5f) + 1) - lineHeight * 1.4f, lineHeight * tailHeight1, paintTail);
-            }
-        }
-
-
-        canvas.translate(noteWidth / 3, -(yBase - dy));
-
-        this.note = note2;
-        scaleNoteDrawFlat(6, tailHeight2);
-        canvas.translate(noteWidth / 3, -(yBase - dy));
-
-        this.note = note3;
-        scaleNoteDrawFlat(6, tailHeight3);
-        canvas.translate(noteWidth / 3, -(yBase - dy));
-
-        return canvas;
-    }
+//    public Canvas create6Note(float lineWidth, float lineHeight, float noteWidth, double note1, double note2, double note3, double hand, Canvas canvas) {
+//        this.note1 = note1;
+//        this.note2 = note2;
+//        this.note3 = note3;
+//        this.hand = hand;
+//        this.canvas = canvas;
+//        this.lineHeight = lineHeight;
+//        this.lineWidth = lineWidth;
+//        float diff13;
+//        float diff12;
+//        float diff23;
+//
+//        float tailHeight1 = 3.5f;
+//        float tailHeight2 = 3.5f;
+//        float tailHeight3 = 3.5f;
+//        float shortest = 1.5f;
+//
+//        float middleNote = 0.5f;
+//        float sideNote = 1;
+//
+//        boolean upper = tailIsUpper(8);
+//
+//        Log.v("aaaaaupper",upper+"");
+//
+//        diff12 = (noteDiff((float) note1, (float) note2)) / 2;
+//        diff13 = (noteDiff((float) note1, (float) note3)) / 2;
+//        diff23 = (noteDiff((float) note2, (float) note3)) / 2;
+//
+//        Log.v("aaaaadifference", diff12 + "," + diff13 + "," + diff23);
+//
+//        if (diff12 == 0) {
+//            if (diff23 > 2) {
+//                tailHeight1 = diff23 + shortest;
+//                tailHeight2 = diff23 + shortest;
+//                tailHeight3 = shortest;
+//            } else if (diff23 > 0) {
+//                tailHeight3 = tailHeight3 - diff23;
+//            } else if (diff23 < -2) {
+//                tailHeight1 = shortest;
+//                tailHeight2 = shortest;
+//                tailHeight3 = diff23 + shortest;
+//            } else if (diff23 < 0) {
+//                tailHeight1 = tailHeight1 + diff23;
+//                tailHeight2 = tailHeight2 + diff23;
+//            }
+//        } else if (diff23 == 0) {
+//            if (diff12 > 2) {
+//                tailHeight1 = diff12 + shortest;
+//                tailHeight2 = shortest;
+//                tailHeight3 = shortest;
+//            } else if (diff12 > 0) {
+//                tailHeight2 = tailHeight2 - diff12;
+//                tailHeight3 = tailHeight3 - diff12;
+//            } else if (diff12 < -2) {
+//                tailHeight1 = shortest;
+//                tailHeight2 = diff12 + shortest;
+//                tailHeight3 = diff12 + shortest;
+//            } else if (diff12 < 0) {
+//                tailHeight1 = tailHeight1 + diff12;
+//            }
+//        } else if (diff12 > 0 && diff23 < 0) {
+//            if (diff12 <= 2 && diff23 >= -2) {
+//                if (diff13 == 0) {
+//                    tailHeight2 = tailHeight2 - diff12;
+//                } else if (diff12 > (-diff23)) {
+//                    tailHeight2 = tailHeight2 - diff12;
+//                    tailHeight3 = tailHeight3 - diff13;
+//                } else if (diff12 < (-diff23)) {
+//                    tailHeight1 = tailHeight1 - diff13;
+//                    tailHeight2 = tailHeight2 + diff23;
+//                }
+//            } else {
+//                if (diff13 == 0) {
+//                    tailHeight1 = diff12 + shortest;
+//                    tailHeight2 = shortest;
+//                    tailHeight3 = diff12 + shortest;
+//                } else if (diff12 > (-diff23)) {
+//                    tailHeight1 = diff12 + shortest;
+//                    tailHeight2 = shortest;
+//                    tailHeight3 = -diff23 + shortest;
+//                } else if (diff12 < (-diff23)) {
+//                    tailHeight1 = diff12 + shortest;
+//                    tailHeight2 = shortest;
+//                    tailHeight3 = -diff23 + shortest;
+//                }
+//            }
+//
+//
+//        } else if (diff12 < 0 && diff23 > 0) {
+//            if (diff12 <= 2 && diff23 >= -2) {
+//                if (diff13 == 0) {
+//                    tailHeight1 = tailHeight1 - diff23;
+//                    tailHeight3 = tailHeight2 - diff23;
+//                } else {
+//                    tailHeight1 = tailHeight1 + diff12;
+//                    tailHeight3 = tailHeight3 - diff23;
+//                }
+//            } else {
+//                if (diff13 == 0) {
+//                    tailHeight1 = shortest;
+//                    tailHeight2 = diff23 + shortest;
+//                    tailHeight3 = shortest;
+//                } else if (-diff12 > diff23) {
+//                    tailHeight1 = shortest;
+//                    tailHeight2 = -diff12 + shortest;
+//                    tailHeight3 = -diff13 + shortest;
+//                } else if (-diff12 < diff23) {
+//                    tailHeight1 = diff13 + shortest;
+//                    tailHeight2 = diff23 + shortest;
+//                    tailHeight3 = shortest;
+//                }
+//            }
+//        } else if (diff12 > 0 && diff23 > 0) {
+//            if (diff13 > 2) {
+//                tailHeight1 = diff13 + shortest - sideNote;
+//                tailHeight2 = diff23 + shortest - middleNote;
+//                tailHeight3 = shortest;
+//            } else {
+//                tailHeight2 = tailHeight2 - diff12 + middleNote;
+//                tailHeight3 = tailHeight3 - diff13 + sideNote;
+//            }
+//        } else if (diff12 < 0 && diff23 < 0) {
+//            if (diff13 < -2) {
+//                tailHeight1 = shortest;
+//                tailHeight2 = -diff12 + shortest - middleNote;
+//                tailHeight3 = -diff13 + shortest - sideNote;
+//            } else {
+//                tailHeight1 = tailHeight1 + diff13 + sideNote;
+//                tailHeight2 = tailHeight2 + diff23 + middleNote;
+//
+//            }
+//        }
+//
+//        Log.v("aaaaatailHeight",tailHeight1+","+tailHeight2+","+tailHeight3);
+//        this.note = note1;
+//        scaleNoteDrawFlat(6, tailHeight1);
+//
+//        //Draw the line connect 3 note
+//        if ((diff12 > 0 && diff23 > 0 && diff13 <= 2)) {
+//            if (upper) {
+//                canvas.drawLine(lineHeight / 1.5f - 1, -lineHeight * tailHeight1,
+//                        noteWidth / 1.5f + (lineHeight / 1.5f) + 1, -lineHeight * (tailHeight1 + 1), paintTail);
+//            } else {
+//                canvas.drawLine((lineHeight / 1.5f - 1) - lineHeight * 1.4f, lineHeight * tailHeight1,
+//                        (noteWidth / 1.5f + (lineHeight / 1.5f) + 1) - lineHeight * 1.4f, lineHeight * (tailHeight1 - 1), paintTail);
+//            }
+//        } else if ((diff12 < 0 && diff23 < 0 && diff13 >= -2)) {
+//            if (upper) {
+//                canvas.drawLine(lineHeight / 1.5f - 1, -lineHeight * tailHeight1,
+//                        noteWidth / 1.5f + (lineHeight / 1.5f) + 1, -lineHeight * (tailHeight1 - 1), paintTail);
+//            } else {
+//                canvas.drawLine((lineHeight / 1.5f - 1) - lineHeight * 1.4f, lineHeight * tailHeight1,
+//                        (noteWidth / 1.5f + (lineHeight / 1.5f) + 1) - lineHeight * 1.4f, lineHeight * (tailHeight1 + 1), paintTail);
+//            }
+//        } else {
+//
+//            if (upper) {
+//                canvas.drawLine(lineHeight / 1.5f - 1, -lineHeight * tailHeight1,
+//                        noteWidth / 1.5f + (lineHeight / 1.5f) + 1, -lineHeight * tailHeight1, paintTail);
+//            } else {
+//                canvas.drawLine((lineHeight / 1.5f - 1) - lineHeight * 1.4f, lineHeight * tailHeight1,
+//                        (noteWidth / 1.5f + (lineHeight / 1.5f) + 1) - lineHeight * 1.4f, lineHeight * tailHeight1, paintTail);
+//            }
+//        }
+//
+//
+//        canvas.translate(noteWidth / 3, -(yBase - dy));
+//
+//        this.note = note2;
+//        scaleNoteDrawFlat(6, tailHeight2);
+//        canvas.translate(noteWidth / 3, -(yBase - dy));
+//
+//        this.note = note3;
+//        scaleNoteDrawFlat(6, tailHeight3);
+//        canvas.translate(noteWidth / 3, -(yBase - dy));
+//
+//        return canvas;
+//    }
 
     public Canvas create8Note(float lineWidth, float lineHeight, float noteWidth, double note1, double note2, double hand, Canvas canvas) {
         this.note1 = note1;
@@ -398,7 +400,7 @@ public class Notes extends View {
 
         boolean upper = tailIsUpper(8);
 
-        Log.v("upper???", ""+upper);
+        Log.v("upper???", "" + upper);
 
         if (note1 > note2 || note1 == note2) {
             max = (float) note1;
@@ -448,7 +450,7 @@ public class Notes extends View {
         }
 
         this.note = note1;
-        scaleNoteDrawFlat(8, tailHeight1);
+        scaleNoteDrawFlat(8, tailHeight1, hand);
 
         if (max == note2) {
             if (upper)
@@ -469,7 +471,7 @@ public class Notes extends View {
         canvas.translate(noteWidth / 2, -(yBase - dy));
 
         this.note = note2;
-        scaleNoteDrawFlat(8, tailHeight2);
+        scaleNoteDrawFlat(8, tailHeight2, hand);
 
 
         // Translate canvas
@@ -488,7 +490,7 @@ public class Notes extends View {
     }
 
     //scale note head and draw flat sharp
-    public void scaleNoteDrawFlat(int noteType, float tailHeight) {
+    public void scaleNoteDrawFlat(int noteType, float tailHeight, double hand) {
 
 
         drawNoteHead(noteType);
@@ -504,7 +506,11 @@ public class Notes extends View {
 
         // Calculate transform for note
         xBase = lineWidth * 14;
-        yBase = lineHeight * 14;
+        if (hand == 0) {
+            yBase = lineHeight * 8;
+        }
+        else
+            yBase = lineHeight * 14;
         int intNote = (int) Math.ceil(this.note);
         int index = (intNote + OCTAVE) % OCTAVE;
         int octave = intNote / OCTAVE;
@@ -557,7 +563,6 @@ public class Notes extends View {
 
     //draw a note tail
     public void drawTail(float tailHeight, int noteType) {
-        Log.v("upperdrawTail", ""+tailIsUpper(noteType));
         if (tailIsUpper(noteType))
             canvas.drawLine(lineHeight / 1.5f, 0,
                     lineHeight / 1.5f, -lineHeight * tailHeight, paint);
@@ -646,9 +651,9 @@ public class Notes extends View {
 
         this.canvas = canvas;
 
-        canvas.translate(-noteWidth / 4, 0);
+        canvas.translate(-noteWidth / 5, 0);
         canvas.drawLine(0, -lineHeight, 0, -lineHeight - (lineHeight * 4), paint);
-        canvas.translate(noteWidth / 4, 0);
+        canvas.translate(noteWidth / 5, 0);
 
         return canvas;
     }

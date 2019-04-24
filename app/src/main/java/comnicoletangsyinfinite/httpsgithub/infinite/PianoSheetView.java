@@ -34,12 +34,12 @@ public class PianoSheetView extends View {
     private int width;
     private int height;
 
+    private int leftHand = 0;
+
     private float lineHeight;
     private float lineWidth;
 
     //[0][0]:bpm ; [0][1]:beat ; [1][0]:flat(0)/sharp(1) ; [1][1]:key(0-7) ;[2][0]:left hand(0)/right hand(1)
-    private double aallNotes[][] = {{60, 3}, {0, 1}, {1, 0}, {54, 6}, {52, 6}, {48, 6}, {64, 6}, {62, 6}, {60, 6}};
-    private double changeNotes[][] = {{0, 3}, {0, 0}, {52, 1}, {53, 4}, {48, 4}, {54, 4}};
     private ArrayList<ArrayList<Double>> theSheet = new ArrayList<>();
 
     //FIRST_NOTE is for calculate the green line starting position
@@ -129,7 +129,7 @@ public class PianoSheetView extends View {
         height = clipRect.bottom - clipRect.top;
         width = clipRect.right - clipRect.left;
 
-        lineHeight = height / 25f;
+        lineHeight = height / 28;
         lineWidth = width / 19f;
         margin = width / 32;
 
@@ -192,10 +192,13 @@ public class PianoSheetView extends View {
         String type = A_Music_Sheet_Type.getType();
         if (type.equals("Reading")) {
             theSheet = A_GENERATED_MUSIC_NOTES.getPianoSheet();
-        }
-        else
+            Log.v("bbbbbtheSheet",""+theSheet);
+        } else
             theSheet = A_GENERATED_MUSIC_NOTES.getPianoSheet();
 
+        if(theSheet.get(2).get(0) == 0){
+            leftHand = 1;
+        }
 
 
         // Set up paint
@@ -238,7 +241,13 @@ public class PianoSheetView extends View {
 
 
             // Draw treble and bass clef
-            canvas.drawPath(tclef, paint);
+            if (leftHand == 1) {
+                canvas.translate(-lineHeight/1.8f, -lineHeight*6);
+                canvas.drawPath(bclef, paint);
+                canvas.translate(lineHeight/1.8f, lineHeight*6);
+            }
+            else
+                canvas.drawPath(tclef, paint);
         }
 
         // Translate canvas from C4 position
@@ -248,15 +257,15 @@ public class PianoSheetView extends View {
         //draw key and tempo
         if (theSheet.get(1).get(0) == 0) {
             for (int m = 0; m < theSheet.get(1).get(1); m++) {
-                canvas.drawText(sharps[0], 30 * m, -lineHeight * flatKey[m], paint);
-                canvas.drawText(sharps[0], 30 * m, lineHeight * 7f - (lineHeight * flatKey[m]), paint);
-                canvas.drawText(sharps[0], 30 * m, lineHeight * 14.25f - (lineHeight * flatKey[m]), paint);
+                canvas.drawText(sharps[0], 30 * m, -lineHeight * (flatKey[m]-leftHand), paint);
+                canvas.drawText(sharps[0], 30 * m, lineHeight * 7f - (lineHeight *  (flatKey[m]-leftHand)), paint);
+                canvas.drawText(sharps[0], 30 * m, lineHeight * 14.25f - (lineHeight *  (flatKey[m]-leftHand)), paint);
             }
         } else {
-            for (int m = 0; m < theSheet.get(1).get(1) ; m++) {
-                canvas.drawText(sharps[1], 30 * m, -lineHeight * sharpKey[m], painttt);
-                canvas.drawText(sharps[1], 30 * m, lineHeight * 7f - (lineHeight * sharpKey[m]), painttt);
-                canvas.drawText(sharps[1], 30 * m, lineHeight * 14.25f - (lineHeight * sharpKey[m]), painttt);
+            for (int m = 0; m < theSheet.get(1).get(1); m++) {
+                canvas.drawText(sharps[1], 30 * m, -lineHeight * (sharpKey[m]-leftHand), painttt);
+                canvas.drawText(sharps[1], 30 * m, lineHeight * 7f - (lineHeight * (sharpKey[m]-leftHand)), painttt);
+                canvas.drawText(sharps[1], 30 * m, lineHeight * 14.25f - (lineHeight * (sharpKey[m]-leftHand)), painttt);
 
             }
         }
@@ -286,7 +295,7 @@ public class PianoSheetView extends View {
         }
 
         float noteArea = ((width * 31 / 32) - ((float) FIRST_NOTE.getX()));
-        float noteWidth = noteArea / (float)(theSheet.get(0).get(1)*2);
+        float noteWidth = noteArea / (float) (theSheet.get(0).get(1) * 2);
 
         int j = 0;
         float totalBeat = 0;
@@ -326,37 +335,37 @@ public class PianoSheetView extends View {
                 totalBeat++;
             }
 
-            //whether the note is 6note
-            else if (theSheet.get(i).get(1) == 6) {
-                notesArrayList.add(new Notes(this.getContext()));
-                canvas = notesArrayList.get(j).create6Note(lineWidth, lineHeight, noteWidth, theSheet.get(i).get(0),theSheet.get(i+1).get(0), theSheet.get(i+2).get(0),theSheet.get(2).get(0), canvas);
-                i = i + 2;
-                totalBeat++;
-            }
+//            //whether the note is 6note
+//            else if (theSheet.get(i).get(1) == 6) {
+//                notesArrayList.add(new Notes(this.getContext()));
+//                canvas = notesArrayList.get(j).create6Note(lineWidth, lineHeight, noteWidth, theSheet.get(i).get(0),theSheet.get(i+1).get(0), theSheet.get(i+2).get(0),theSheet.get(2).get(0), canvas);
+//                i = i + 2;
+//                totalBeat++;
+//            }
 
             //whether the note is 8note
             else if (theSheet.get(i).get(1) == 8) {
                 notesArrayList.add(new Notes(this.getContext()));
-                canvas = notesArrayList.get(j).create8Note(lineWidth, lineHeight, noteWidth,theSheet.get(i).get(0), theSheet.get(i+1).get(0), theSheet.get(2).get(0), canvas);
+                canvas = notesArrayList.get(j).create8Note(lineWidth, lineHeight, noteWidth, theSheet.get(i).get(0), theSheet.get(i + 1).get(0), theSheet.get(2).get(0), canvas);
                 i++;
                 totalBeat++;
             }
 
-            //whether the note is 16 note
-            else if (theSheet.get(i).get(1) == 16) {
-                notesArrayList.add(new Notes(this.getContext()));
-                canvas = notesArrayList.get(j).create16Note(lineWidth, lineHeight, noteWidth, theSheet.get(i).get(0), theSheet.get(i+1).get(0), theSheet.get(i+2).get(0), theSheet.get(i+3).get(0), theSheet.get(2).get(0), canvas);
-                totalBeat++;
-            }
+//            //whether the note is 16 note
+//            else if (theSheet.get(i).get(1) == 16) {
+//                notesArrayList.add(new Notes(this.getContext()));
+//                canvas = notesArrayList.get(j).create16Note(lineWidth, lineHeight, noteWidth, theSheet.get(i).get(0), theSheet.get(i+1).get(0), theSheet.get(i+2).get(0), theSheet.get(i+3).get(0), theSheet.get(2).get(0), canvas);
+//                totalBeat++;
+//            }
 
             //One column finished
-            if (totalBeat % (theSheet.get(0).get(1)) == 0 && totalBeat % (theSheet.get(0).get(1)*2) != 0) {
+            if (totalBeat % (theSheet.get(0).get(1)) == 0 && totalBeat % (theSheet.get(0).get(1) * 2) != 0) {
                 notesArrayList.add(new Notes(this.getContext()));
                 canvas = notesArrayList.get(j).createStroke(lineWidth, lineHeight, noteWidth, canvas);
             }
 
             //To next line
-            if (totalBeat % (theSheet.get(0).get(1)*2) == 0) {
+            if (totalBeat % (theSheet.get(0).get(1) * 2) == 0) {
                 canvas.translate(-noteArea, height / 3.5f);
             }
 

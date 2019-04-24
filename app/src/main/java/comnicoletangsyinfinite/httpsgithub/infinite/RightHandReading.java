@@ -13,7 +13,7 @@ import android.widget.TextView;
 
 public class RightHandReading extends AppCompatActivity {
     public static final MusicSheetType A_Music_Sheet_Type = new MusicSheetType();
-    public static final GeneratedMusicNotes A_GENERATED_MUSIC_NOTES = new GeneratedMusicNotes(1);
+    public static final GeneratedMusicNotes A_GENERATED_MUSIC_NOTES = new GeneratedMusicNotes(0);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

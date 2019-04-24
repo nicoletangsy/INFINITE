@@ -6,22 +6,18 @@ import java.util.ArrayList;
 
 public class GeneratedMusicNotes {
     private double tempo[] = {60, 80, 120}; //bpm
-    private double beat[] = {3, 4}; //拍子記號 44拍 or 34拍
-    private double[] noteIn4 = {8, 4, 3, 2, 1}; //44拍 choic
-    private double[] noteIn3 = {6, 4, 3, 2, 1}; //34拍 choice
-    private double[] noteIn;
-    private ArrayList<Double> note = new ArrayList<>();
+    private double[] noteIn4 = {8, 4, 3, 2, 1}; //44拍 choice
     private ArrayList<ArrayList<Double>> pianoSheet = new ArrayList<>();
-    private double theBeat;
-    private double countBar = 0;
-    private double hand;
     private int[] flat = {6, 2, 5, 1, 4, 0, 3};
     private int[] sharp = {3, 0, 4, 1, 5, 2, 6};
     private int[] flatOrSharp;
     private int[] howMany = {4, 2, 3, 1};
     private boolean flatSharp = false;
     private double previousNote = -1;
-    private double[] keys = {48, 50, 52, 53, 55, 57, 59, 60, 62, 64};
+    private double[] rightKeys = {48, 50, 52, 53, 55, 57, 59, 60, 62, 64};
+    private double[] leftKeys = {33, 35, 36, 38, 40, 41, 43, 45, 47, 48};
+    private double[] keys;
+    private double diff = 0;
 
     public double getTempo() {
         return pianoSheet.get(0).get(0);
@@ -43,17 +39,20 @@ public class GeneratedMusicNotes {
         return pianoSheet.get(2).get(0);
     }
 
+    public void setKeys(double hand) {
+        if (hand == 0) {
+            keys = leftKeys;
+            diff=1;
+        } else keys = rightKeys;
+    }
 
     public GeneratedMusicNotes(double hand) {
 
-        this.hand = hand;
-
-        theBeat = addBeat();
-        setNoteIn(theBeat);
+        setKeys(hand);
 
         pianoSheet.add(new ArrayList<Double>());
         pianoSheet.get(0).add(addTempo());
-        pianoSheet.get(0).add(theBeat);
+        pianoSheet.get(0).add((double) 4);
 
         pianoSheet.add(new ArrayList<Double>());
         pianoSheet.get(1).add(addFlatSharp());
@@ -66,18 +65,8 @@ public class GeneratedMusicNotes {
         genSheet();
     }
 
-    public void setNoteIn(double theBeat) {
-        if (theBeat == 3) {
-            noteIn = noteIn3;
-        } else noteIn = noteIn4;
-    }
-
     public double addTempo() {
         return tempo[(int) (Math.floor(Math.random() * 3))];
-    }
-
-    public double addBeat() {
-        return beat[(int) Math.round(Math.random())];
     }
 
     public double addFlatSharp() {
@@ -98,7 +87,7 @@ public class GeneratedMusicNotes {
         int noteNum = 3;
         double countBeat = 0;
         while (column < 6 * (pianoSheet.get(0).get(1))) {
-            noteTime = noteIn[(int) Math.floor(Math.random() * (pianoSheet.get(0).get(1) - countBeat))];
+            noteTime = noteIn4[(int) Math.floor(Math.random() * (pianoSheet.get(0).get(1) - countBeat))];
             if (noteTime <= 4) {
 
                 getNote(noteNum, noteTime);
@@ -109,17 +98,12 @@ public class GeneratedMusicNotes {
                 if (countBeat == pianoSheet.get(0).get(1))
                     countBeat = 0;
             } else {
-                if (noteTime == 6) {
-                    for (int i = 0; i < 3; i++) {
-                        getNote(noteNum, noteTime);
-                        noteNum++;
-                    }
-                } else {
-                    for (int i = 0; i < 2; i++) {
-                        getNote(noteNum, noteTime);
-                        noteNum++;
-                    }
+
+                for (int i = 0; i < 2; i++) {
+                    getNote(noteNum, noteTime);
+                    noteNum++;
                 }
+
                 column++;
                 countBeat++;
                 if (countBeat == pianoSheet.get(0).get(1))
@@ -171,8 +155,9 @@ public class GeneratedMusicNotes {
         }
 
         for (int i = 0; i < pianoSheet.get(1).get(1); i++) {
-            if ((aNote == (double) flatOrSharp[i]) || (aNote - 7 == (double) flatOrSharp[i]) || (aNote + 7 == (double) flatOrSharp[i])) {
+            if ((aNote -(diff*2) == (double) flatOrSharp[i]) || (aNote - 7 -(diff*2) == (double) flatOrSharp[i]) || (aNote + 7  -(diff*2)== (double) flatOrSharp[i])) {
                 flatSharp = true;
+                Log.v("bbbbbflatSharp",""+aNote+","+i);
             }
         }
         if (flatSharp == true) {
