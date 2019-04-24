@@ -33,6 +33,7 @@ import be.tarsos.dsp.pitch.PitchProcessor;
 
 import static comnicoletangsyinfinite.httpsgithub.infinite.RightHandReading.A_Music_Sheet_Type;
 import static comnicoletangsyinfinite.httpsgithub.infinite.PianoSheetView.FIRST_NOTE;
+import static comnicoletangsyinfinite.httpsgithub.infinite.RightHandReading.A_GENERATED_MUSIC_NOTES;
 
 public class RightHandPractice extends AppCompatActivity{
     public static final RecordedMusicNotes A_RECORDED_MUSIC_NOTES = new RecordedMusicNotes();
@@ -187,6 +188,7 @@ public class RightHandPractice extends AppCompatActivity{
         //mRecorder.release();
         //mRecorder = null;
         dispatcher.stop();
+
     }
 
     @Override

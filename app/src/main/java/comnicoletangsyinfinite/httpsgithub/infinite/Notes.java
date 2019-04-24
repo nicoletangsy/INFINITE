@@ -25,9 +25,12 @@ public class Notes extends View {
     private Paint sharpPiant;
     private Paint flatPiant;
     private Paint paint1;
+    private Paint paintwrong;
+    private Paint paint423wrong;
 
     private int speed;
     private int textColour;
+    private int wrongColour;
     private double hand;
     private double note;
     private double note1;
@@ -83,8 +86,9 @@ public class Notes extends View {
         super(context);
         resources = getResources();
         textColour = context.getResources().getColor(R.color.black);
-        paint = new Paint();
+        wrongColour = context.getResources().getColor(R.color.red);
 
+        paint = new Paint();
         paint.setStrokeWidth(4);
         paint.setColor(textColour);
         paint.setStyle(Paint.Style.FILL);
@@ -97,6 +101,21 @@ public class Notes extends View {
         paint423.setStyle(Paint.Style.STROKE);
         paint423.setTextSize(lineHeight * 4);
         paint423.setTextAlign(Paint.Align.LEFT);
+
+        paintwrong = new Paint();
+        paintwrong.setStrokeWidth(4);
+        paintwrong.setColor(wrongColour);
+        paintwrong.setStyle(Paint.Style.FILL);
+        paintwrong.setTextSize(lineHeight * 4);
+        paintwrong.setTextAlign(Paint.Align.LEFT);
+
+        paint423wrong = new Paint();
+        paint423wrong = new Paint();
+        paint423wrong.setStrokeWidth(4);
+        paint423wrong.setColor(wrongColour);
+        paint423wrong.setStyle(Paint.Style.STROKE);
+        paint423wrong.setTextSize(lineHeight * 4);
+        paint423wrong.setTextAlign(Paint.Align.LEFT);
 
         paintTail = new Paint();
         paintTail.setStrokeWidth(20);
@@ -128,15 +147,18 @@ public class Notes extends View {
 
     }
 
-    public Canvas create1Note(float lineWidth, float lineHeight, double note, double hand, Canvas canvas) {
+    public Canvas create1Note(float lineWidth, float lineHeight, ArrayList<Double> note, double hand, Canvas canvas) {
 
-        this.note = note;
+        this.note = note.get(0);
         this.hand = hand;
         this.canvas = canvas;
         this.lineHeight = lineHeight;
         this.lineWidth = lineWidth;
+        if (note.size() == 2) {
+            scaleNoteDrawFlat(1, 0,0, hand);
+        } else
+            scaleNoteDrawFlat(1, 0,1, hand);
 
-        scaleNoteDrawFlat(1, 0, hand);
 
         return canvas;
     }
@@ -146,15 +168,17 @@ public class Notes extends View {
         return canvas;
     }
 
-    public Canvas create2Note(float lineWidth, float lineHeight, float noteWidth, double note, double hand, Canvas canvas) {
-        this.note = note;
+    public Canvas create2Note(float lineWidth, float lineHeight, float noteWidth, ArrayList<Double> note, double hand, Canvas canvas) {
+        this.note = note.get(0);
         this.hand = hand;
         this.canvas = canvas;
         this.lineHeight = lineHeight;
         this.lineWidth = lineWidth;
 
-
-        scaleNoteDrawFlat(2, 3.5f, hand);
+        if (note.size() == 2) {
+            scaleNoteDrawFlat(2, 3.5f,0, hand);
+        } else
+            scaleNoteDrawFlat(2, 3.5f,1, hand);
 
         // Translate canvas
         canvas.translate(noteWidth * 2, -(yBase - dy));
@@ -163,15 +187,17 @@ public class Notes extends View {
 
     }
 
-    public Canvas create3Note(float lineWidth, float lineHeight, float noteWidth, double note, double hand, Canvas canvas) {
-        this.note = note;
+    public Canvas create3Note(float lineWidth, float lineHeight, float noteWidth, ArrayList<Double> note, double hand, Canvas canvas) {
+        this.note = note.get(0);
         this.hand = hand;
         this.canvas = canvas;
         this.lineHeight = lineHeight;
         this.lineWidth = lineWidth;
 
-
-        scaleNoteDrawFlat(3, 3.5f, hand);
+        if (note.size() == 2) {
+            scaleNoteDrawFlat(3, 3.5f,0, hand);
+        } else
+            scaleNoteDrawFlat(3, 3.5f,1, hand);
 
         // Translate canvas
         canvas.translate(noteWidth * 3, -(yBase - dy));
@@ -188,15 +214,18 @@ public class Notes extends View {
         return yBase - dy;
     }
 
-    public Canvas create4Note(float lineWidth, float lineHeight, float noteWidth, double note, double hand, Canvas canvas) {
-        this.note = note;
+    public Canvas create4Note(float lineWidth, float lineHeight, float noteWidth, ArrayList<Double> note, double hand, Canvas canvas) {
+        this.note = note.get(0);
         this.hand = hand;
         this.canvas = canvas;
         this.lineHeight = lineHeight;
         this.lineWidth = lineWidth;
 
+        if (note.size() == 2) {
+            scaleNoteDrawFlat(4, 3.5f,0, hand);
+        } else
+            scaleNoteDrawFlat(4, 3.5f,1, hand);
 
-        scaleNoteDrawFlat(4, 3.5f, hand);
 
         Log.v("noteWidth2", noteWidth + "," + dy);
         // Translate canvas
@@ -205,7 +234,298 @@ public class Notes extends View {
         return canvas;
     }
 
-//    public Canvas create6Note(float lineWidth, float lineHeight, float noteWidth, double note1, double note2, double note3, double hand, Canvas canvas) {
+
+    public Canvas create8Note(float lineWidth, float lineHeight, float noteWidth, ArrayList<Double> note1, ArrayList<Double> note2, double hand, Canvas canvas) {
+        this.note1 = note1.get(0);
+        this.note2 = note2.get(0);
+        this.hand = hand;
+        this.canvas = canvas;
+        this.lineHeight = lineHeight;
+        this.lineWidth = lineWidth;
+        float min;
+        float max;
+        float theLine;
+
+        float tailHeight1 = 3.5f;
+        float tailHeight2 = 3.5f;
+
+        boolean upper = tailIsUpper(8);
+
+        Log.v("upper???", "" + upper);
+
+        if (note1.get(0) > note2.get(0) || note1 == note2) {
+            max = note1.get(0).floatValue();
+            min = note2.get(0).floatValue();
+        } else {
+            min = note1.get(0).floatValue();
+            max = note2.get(0).floatValue();
+        }
+
+        float noteDiff = noteDiff(min, max);
+        noteDiff = noteDiff / 2;
+
+        if (noteDiff < 1) {
+            theLine = noteDiff;
+        } else if (noteDiff < 2.5) {
+            theLine = 1;
+            if (max == note1.get(0)) {
+                if (upper)
+                    tailHeight1 = tailHeight1 - (noteDiff - 1);
+                else
+                    tailHeight2 = tailHeight2 - (noteDiff - 1);
+            } else {
+                if (upper)
+                    tailHeight2 = tailHeight2 - (noteDiff - 1);
+                else
+                    tailHeight1 = tailHeight1 - (noteDiff - 1);
+            }
+        } else {
+            theLine = 1;
+            if (max == note1.get(0)) {
+                if (upper) {
+                    tailHeight2 = tailHeight2 + (noteDiff - 2);
+                    tailHeight1 = 2;
+                } else {
+                    tailHeight1 = tailHeight1 + (noteDiff - 2);
+                    tailHeight2 = 2;
+                }
+            } else {
+                if (upper) {
+                    tailHeight1 = tailHeight1 + (noteDiff - 2);
+                    tailHeight2 = 2;
+                } else {
+                    tailHeight2 = tailHeight2 + (noteDiff - 2);
+                    tailHeight1 = 2;
+                }
+            }
+        }
+
+        this.note = note1.get(0);
+        if (note1.size() == 2) {
+            scaleNoteDrawFlat(8, tailHeight1,0, hand);
+        } else
+            scaleNoteDrawFlat(8, tailHeight1,1, hand);
+
+
+        if (max == note2.get(0)) {
+            if (upper)
+                canvas.drawLine(lineHeight / 1.5f - 1, -lineHeight * tailHeight1,
+                        noteWidth / 2 + (lineHeight / 1.5f) + 1, -lineHeight * (tailHeight1 + theLine), paintTail);
+            else
+                canvas.drawLine((lineHeight / 1.5f - 1) - lineHeight * 1.4f, lineHeight * tailHeight1,
+                        (noteWidth / 2 + (lineHeight / 1.5f) + 1) - lineHeight * 1.4f, lineHeight * (tailHeight1 - theLine), paintTail);
+        } else {
+            if (upper)
+                canvas.drawLine(lineHeight / 1.5f - 1, -lineHeight * tailHeight1,
+                        noteWidth / 2 + (lineHeight / 1.5f) + 1, -lineHeight * (tailHeight1 - theLine), paintTail);
+            else
+                canvas.drawLine((lineHeight / 1.5f - 1) - lineHeight * 1.4f, lineHeight * tailHeight1,
+                        (noteWidth / 2 + (lineHeight / 1.5f) + 1) - lineHeight * 1.4f, lineHeight * (tailHeight1 + theLine), paintTail);
+        }
+        // Translate canvas
+        canvas.translate(noteWidth / 2, -(yBase - dy));
+
+        this.note = note2.get(0);
+        if (note2.size() == 2) {
+            scaleNoteDrawFlat(8, tailHeight2,0, hand);
+        } else
+            scaleNoteDrawFlat(8, tailHeight2,1, hand);
+
+
+        // Translate canvas
+        canvas.translate(noteWidth / 2, -(yBase - dy));
+
+        return canvas;
+    }
+
+    //scale note head and draw flat sharp
+    public void scaleNoteDrawFlat(int noteType, float tailHeight,double wrong, double hand) {
+
+        drawNoteHead(noteType);
+
+        RectF bounds = new RectF();
+        // Scale note head
+        notepath.computeBounds(bounds, false);
+        float scale = (lineHeight * 1.4f) / (bounds.top - bounds.bottom);
+        Matrix matrix = new Matrix();
+        matrix.setScale(-scale, scale);
+        notepath.transform(matrix);
+
+        // Calculate transform for note
+        xBase = lineWidth * 14;
+        if (hand == 0) {
+            yBase = lineHeight * 8;
+        } else
+            yBase = lineHeight * 14;
+        int intNote = (int) Math.ceil(this.note);
+        int index = (intNote + OCTAVE) % OCTAVE;
+        int octave = intNote / OCTAVE;
+
+        dx = (octave * lineWidth * 3.5f) + (offset[index] * (lineWidth / 2));
+        dy = (octave * lineHeight * 3.5f) + (offset[index] * (lineHeight / 2));
+
+        // Translate canvas y position
+        canvas.translate(0, yBase - dy);
+
+        //middle C's line
+        if (note <= 49 && note > 47) {
+            drawLeger(noteType, note);
+        }
+
+        if (noteType > 3){
+            if(wrong == 1)
+                canvas.drawPath(notepath, paintwrong);
+            else
+            canvas.drawPath(notepath, paint);
+        }
+
+        else if (noteType == 2 || noteType == 3) {
+            if(wrong == 1)
+                canvas.drawPath(notepath, paint423wrong);
+            else
+                canvas.drawPath(notepath, paint);
+
+        }
+        //////////////////////////
+        //Draw accidental(sharp)//
+        //dont know why not work//
+        //////////////////////////
+        if (note % OCTAVE == 1 || note % OCTAVE == 3 || note % OCTAVE == 6 || note % OCTAVE == 8 || note % OCTAVE == 10) {
+            canvas.drawText(sharps[0], -lineHeight, 0, paint);
+        }
+        //Draw accidental(flat)
+        else if ((note - Math.floor(note)) == 0.5) {
+            canvas.drawText(sharps[1], -lineHeight, 0, paint);
+        }
+
+        if (tailHeight > 0)
+            drawTail(tailHeight, noteType);
+
+    }
+
+    //Calculate note difference
+    public float noteDiff(float min, float max) {
+        int minN = (int) Math.ceil(min);
+        int maxN = (int) Math.ceil(max);
+        int notedimax = noteDiff[maxN % 12];
+        int notedimin = noteDiff[minN % 12];
+        int maxFloor = (maxN / 12) * 7;
+        int minFloor = (minN / 12) * 7;
+        return notedimax + maxFloor - notedimin - minFloor;
+    }
+
+    //draw a note tail
+    public void drawTail(float tailHeight, int noteType) {
+        if (tailIsUpper(noteType))
+            canvas.drawLine(lineHeight / 1.5f, 0,
+                    lineHeight / 1.5f, -lineHeight * tailHeight, paint);
+        else
+            canvas.drawLine(-lineHeight / 1.5f, 0,
+                    -lineHeight / 1.5f, lineHeight * tailHeight, paint);
+
+    }
+
+    //whether tail is upper
+    public boolean tailIsUpper(int noteType) {
+        boolean upper = true;
+
+        if (noteType > 4) {
+            if (noteType == 6) {
+                if (hand == 0) {
+                    upper = false;
+                    if (note1 <= 36 && note2 <= 36 && note3 <= 36) {
+                        upper = true;
+                    }
+                } else if ((note1 > 58 && note2 > 58) || (note1 > 58 && note3 > 58) || (note2 > 58 && note3 > 58)) {
+                    upper = false;
+                }
+
+            } else if (noteType == 8) {
+                if (hand == 0) {
+                    upper = false;
+                    if (note1 <= 36 && note2 <= 36) {
+                        upper = true;
+                    }
+                } else if (note1 > 58 && note2 > 58) {
+                    upper = false;
+                }
+
+            }
+//              else if (noteType == 16) {
+//                if (hand == 0) {
+//                    upper = false;
+//                    if (note1 <= 36 && note2 <= 36 && note3 <= 36) {
+//                        upper = true;
+//                    }
+//                } else if (note1 > 58 && note2 > 58 && note3 > 58) {
+//                    upper = false;
+//                }
+//
+//            }
+        } else {
+            if (hand == 0) {
+                if (note > 36)
+                    upper = false;
+            } else {
+                if (note >= 59) {
+                    upper = false;
+                }
+            }
+
+        }
+
+
+        return upper;
+    }
+
+
+    //draw note head
+    public void drawNoteHead(int noteType) {
+
+        // Note head
+        notepath = new Path();
+
+
+        notepath.moveTo(hd[0][0], hd[0][1]);
+
+        if (noteType > 1) {
+            for (int i = 1; i < hd.length; i += 3) {
+                notepath.cubicTo(hd[i][0], hd[i][1],
+                        hd[i + 1][0], hd[i + 1][1],
+                        hd[i + 2][0], hd[i + 2][1]);
+            }
+        }
+
+    }
+
+
+    //Stroke for a bar
+    public Canvas createStroke(float lineWidth, float lineHeight, float noteWidth, Canvas canvas) {
+
+        this.canvas = canvas;
+
+        canvas.translate(-noteWidth / 5, 0);
+        canvas.drawLine(0, -lineHeight, 0, -lineHeight - (lineHeight * 4), paint);
+        canvas.translate(noteWidth / 5, 0);
+
+        return canvas;
+    }
+
+    //for C only
+    //miss left hand
+    protected void drawLeger(int noteType, Double note) {
+        if (noteType > 1)
+            canvas.drawLine(-lineHeight, 0, lineHeight, 0, paint);
+
+    }
+
+    // On draw
+    @Override
+    protected void onDraw(Canvas canvas) {
+        super.onDraw(canvas);
+    }
+
+    //    public Canvas create6Note(float lineWidth, float lineHeight, float noteWidth, double note1, double note2, double note3, double hand, Canvas canvas) {
 //        this.note1 = note1;
 //        this.note2 = note2;
 //        this.note3 = note3;
@@ -384,292 +704,13 @@ public class Notes extends View {
 //        return canvas;
 //    }
 
-    public Canvas create8Note(float lineWidth, float lineHeight, float noteWidth, double note1, double note2, double hand, Canvas canvas) {
-        this.note1 = note1;
-        this.note2 = note2;
-        this.hand = hand;
-        this.canvas = canvas;
-        this.lineHeight = lineHeight;
-        this.lineWidth = lineWidth;
-        float min;
-        float max;
-        float theLine;
-
-        float tailHeight1 = 3.5f;
-        float tailHeight2 = 3.5f;
-
-        boolean upper = tailIsUpper(8);
-
-        Log.v("upper???", "" + upper);
-
-        if (note1 > note2 || note1 == note2) {
-            max = (float) note1;
-            min = (float) note2;
-        } else {
-            min = (float) note1;
-            max = (float) note2;
-        }
-
-        float noteDiff = noteDiff(min, max);
-        noteDiff = noteDiff / 2;
-
-        if (noteDiff < 1) {
-            theLine = noteDiff;
-        } else if (noteDiff < 2.5) {
-            theLine = 1;
-            if (max == note1) {
-                if (upper)
-                    tailHeight1 = tailHeight1 - (noteDiff - 1);
-                else
-                    tailHeight2 = tailHeight2 - (noteDiff - 1);
-            } else {
-                if (upper)
-                    tailHeight2 = tailHeight2 - (noteDiff - 1);
-                else
-                    tailHeight1 = tailHeight1 - (noteDiff - 1);
-            }
-        } else {
-            theLine = 1;
-            if (max == note1) {
-                if (upper) {
-                    tailHeight2 = tailHeight2 + (noteDiff - 2);
-                    tailHeight1 = 2;
-                } else {
-                    tailHeight1 = tailHeight1 + (noteDiff - 2);
-                    tailHeight2 = 2;
-                }
-            } else {
-                if (upper) {
-                    tailHeight1 = tailHeight1 + (noteDiff - 2);
-                    tailHeight2 = 2;
-                } else {
-                    tailHeight2 = tailHeight2 + (noteDiff - 2);
-                    tailHeight1 = 2;
-                }
-            }
-        }
-
-        this.note = note1;
-        scaleNoteDrawFlat(8, tailHeight1, hand);
-
-        if (max == note2) {
-            if (upper)
-                canvas.drawLine(lineHeight / 1.5f - 1, -lineHeight * tailHeight1,
-                        noteWidth / 2 + (lineHeight / 1.5f) + 1, -lineHeight * (tailHeight1 + theLine), paintTail);
-            else
-                canvas.drawLine((lineHeight / 1.5f - 1) - lineHeight * 1.4f, lineHeight * tailHeight1,
-                        (noteWidth / 2 + (lineHeight / 1.5f) + 1) - lineHeight * 1.4f, lineHeight * (tailHeight1 - theLine), paintTail);
-        } else {
-            if (upper)
-                canvas.drawLine(lineHeight / 1.5f - 1, -lineHeight * tailHeight1,
-                        noteWidth / 2 + (lineHeight / 1.5f) + 1, -lineHeight * (tailHeight1 - theLine), paintTail);
-            else
-                canvas.drawLine((lineHeight / 1.5f - 1) - lineHeight * 1.4f, lineHeight * tailHeight1,
-                        (noteWidth / 2 + (lineHeight / 1.5f) + 1) - lineHeight * 1.4f, lineHeight * (tailHeight1 + theLine), paintTail);
-        }
-        // Translate canvas
-        canvas.translate(noteWidth / 2, -(yBase - dy));
-
-        this.note = note2;
-        scaleNoteDrawFlat(8, tailHeight2, hand);
-
-
-        // Translate canvas
-        canvas.translate(noteWidth / 2, -(yBase - dy));
-
-        return canvas;
-    }
-
-    public Canvas create16Note(float lineWidth, float lineHeight, float noteWidth, double note1, double note2, double note3, double note4, double hand, Canvas canvas) {
-        this.note1 = note1;
-        this.note2 = note2;
-        this.note3 = note3;
-        this.note4 = note4;
-        this.hand = hand;
-        return canvas;
-    }
-
-    //scale note head and draw flat sharp
-    public void scaleNoteDrawFlat(int noteType, float tailHeight, double hand) {
-
-
-        drawNoteHead(noteType);
-
-        RectF bounds = new RectF();
-        // Scale note head
-        notepath.computeBounds(bounds, false);
-        float scale = (lineHeight * 1.4f) / (bounds.top - bounds.bottom);
-        Matrix matrix = new Matrix();
-        matrix.setScale(-scale, scale);
-        notepath.transform(matrix);
-
-
-        // Calculate transform for note
-        xBase = lineWidth * 14;
-        if (hand == 0) {
-            yBase = lineHeight * 8;
-        }
-        else
-            yBase = lineHeight * 14;
-        int intNote = (int) Math.ceil(this.note);
-        int index = (intNote + OCTAVE) % OCTAVE;
-        int octave = intNote / OCTAVE;
-
-        dx = (octave * lineWidth * 3.5f) + (offset[index] * (lineWidth / 2));
-        dy = (octave * lineHeight * 3.5f) + (offset[index] * (lineHeight / 2));
-
-        // Translate canvas y position
-        canvas.translate(0, yBase - dy);
-
-        //middle C's line
-        if (note <= 49 && note > 47) {
-            drawLeger(noteType, note);
-        }
-
-        if (noteType > 3)
-            canvas.drawPath(notepath, paint);
-
-        else if (noteType == 2 || noteType == 3) {
-            canvas.drawPath(notepath, paint423);
-
-        }
-        //////////////////////////
-        //Draw accidental(sharp)//
-        //dont know why not work//
-        //////////////////////////
-        if (note % OCTAVE == 1 || note % OCTAVE == 3 || note % OCTAVE == 6 || note % OCTAVE == 8 || note % OCTAVE == 10) {
-            canvas.drawText(sharps[0], -lineHeight, 0, paint);
-        }
-        //Draw accidental(flat)
-        else if ((note - Math.floor(note)) == 0.5) {
-            canvas.drawText(sharps[1], -lineHeight, 0, paint);
-        }
-
-        if (tailHeight > 0)
-            drawTail(tailHeight, noteType);
-
-    }
-
-    //Calculate note difference
-    public float noteDiff(float min, float max) {
-        int minN = (int) Math.ceil(min);
-        int maxN = (int) Math.ceil(max);
-        int notedimax = noteDiff[maxN % 12];
-        int notedimin = noteDiff[minN % 12];
-        int maxFloor = (maxN / 12) * 7;
-        int minFloor = (minN / 12) * 7;
-        return notedimax + maxFloor - notedimin - minFloor;
-    }
-
-    //draw a note tail
-    public void drawTail(float tailHeight, int noteType) {
-        if (tailIsUpper(noteType))
-            canvas.drawLine(lineHeight / 1.5f, 0,
-                    lineHeight / 1.5f, -lineHeight * tailHeight, paint);
-        else
-            canvas.drawLine(-lineHeight / 1.5f, 0,
-                    -lineHeight / 1.5f, lineHeight * tailHeight, paint);
-
-    }
-
-    //whether tail is upper
-    public boolean tailIsUpper(int noteType) {
-        boolean upper = true;
-
-        if (noteType > 4) {
-            if (noteType == 6) {
-                if (hand == 0) {
-                    upper = false;
-                    if (note1 <= 36 && note2 <= 36 && note3 <= 36) {
-                        upper = true;
-                    }
-                } else if ((note1 > 58 && note2 > 58) || (note1 > 58 && note3 > 58) || (note2 > 58 && note3 > 58)) {
-                    upper = false;
-                }
-
-            } else if (noteType == 8) {
-                if (hand == 0) {
-                    upper = false;
-                    if (note1 <= 36 && note2 <= 36) {
-                        upper = true;
-                    }
-                } else if (note1 > 58 && note2 > 58) {
-                    upper = false;
-                }
-
-            }
-//              else if (noteType == 16) {
-//                if (hand == 0) {
-//                    upper = false;
-//                    if (note1 <= 36 && note2 <= 36 && note3 <= 36) {
-//                        upper = true;
-//                    }
-//                } else if (note1 > 58 && note2 > 58 && note3 > 58) {
-//                    upper = false;
-//                }
-//
-//            }
-        } else {
-            if (hand == 0) {
-                if (note > 36)
-                    upper = false;
-            } else {
-                if (note >= 59) {
-                    upper = false;
-                }
-            }
-
-        }
-
-
-        return upper;
-    }
-
-
-    //draw note head
-    public void drawNoteHead(int noteType) {
-
-        // Note head
-        notepath = new Path();
-
-
-        notepath.moveTo(hd[0][0], hd[0][1]);
-
-        if (noteType > 1) {
-            for (int i = 1; i < hd.length; i += 3) {
-                notepath.cubicTo(hd[i][0], hd[i][1],
-                        hd[i + 1][0], hd[i + 1][1],
-                        hd[i + 2][0], hd[i + 2][1]);
-            }
-        }
-
-    }
-
-
-    //Stroke for a bar
-    public Canvas createStroke(float lineWidth, float lineHeight, float noteWidth, Canvas canvas) {
-
-        this.canvas = canvas;
-
-        canvas.translate(-noteWidth / 5, 0);
-        canvas.drawLine(0, -lineHeight, 0, -lineHeight - (lineHeight * 4), paint);
-        canvas.translate(noteWidth / 5, 0);
-
-        return canvas;
-    }
-
-    //for C only
-    //miss left hand
-    protected void drawLeger(int noteType, Double note) {
-        if (noteType > 1)
-            canvas.drawLine(-lineHeight, 0, lineHeight, 0, paint);
-
-    }
-
-    // On draw
-    @Override
-    protected void onDraw(Canvas canvas) {
-        super.onDraw(canvas);
-    }
+//    public Canvas create16Note(float lineWidth, float lineHeight, float noteWidth, double note1, double note2, double note3, double note4, double hand, Canvas canvas) {
+//        this.note1 = note1;
+//        this.note2 = note2;
+//        this.note3 = note3;
+//        this.note4 = note4;
+//        this.hand = hand;
+//        return canvas;
+//    }
 }
 
