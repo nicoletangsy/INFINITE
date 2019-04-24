@@ -36,4 +36,8 @@ public class aNote {
         this.note = note;
         this.noteDuration = noteDuration;
     }
+
+    public aNote(double note) {
+        this.note = note;
+    }
 }

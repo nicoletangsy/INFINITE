@@ -80,7 +80,7 @@ public class RightHandPractice extends AppCompatActivity{
             //startRecording();
             startDetecting();
         } else {
-            //stopRecording();
+            stopRecording();
             playRecordButton.setVisibility(View.VISIBLE);
             A_Music_Sheet_Type.changedToUserPlay();
         }
@@ -142,7 +142,7 @@ public class RightHandPractice extends AppCompatActivity{
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            text.setText("");//added
+                            text.setText(""); //added
                         }
                     });
                 }
@@ -172,16 +172,17 @@ public class RightHandPractice extends AppCompatActivity{
         greenLineView3.startAnimation(greenLineAnim3);
         greenLineView3.setVisibility(View.INVISIBLE);
 
-        AudioProcessor p = new PitchProcessor(PitchProcessor.PitchEstimationAlgorithm.AMDF, 22050, 2048, pdh);
+        AudioProcessor p = new PitchProcessor(PitchProcessor.PitchEstimationAlgorithm.AMDF, 22050, 1024, pdh);
         dispatcher.addAudioProcessor(p);
         new Thread(dispatcher,"Audio Dispatcher").start();
     }
 
     private void stopRecording() {
+        A_RECORDED_MUSIC_NOTES.ProcessNote();
         dispatcher.stop();
-        mRecorder.stop();
+        /*mRecorder.stop();
         mRecorder.release();
-        mRecorder = null;
+        mRecorder = null;*/
     }
 
     @Override

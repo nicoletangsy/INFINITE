@@ -236,5 +236,5 @@ public class GeneratedMusicNotes {
         flatSharp = false;
         return convertedNote;
     }
-    
+
 }

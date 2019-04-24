@@ -2,7 +2,6 @@ package comnicoletangsyinfinite.httpsgithub.infinite;
 
 import java.util.ArrayList;
 
-import static comnicoletangsyinfinite.httpsgithub.infinite.PianoSheetView.GENERATED_MUSIC_NOTES;
 
 public class RecordedMusicNotes {
     private ArrayList<aNote> Notes = new ArrayList<aNote>();
@@ -16,6 +15,7 @@ public class RecordedMusicNotes {
 
     public String getAllNotes() {
         String list = "Notes: ";
+        list = list + Notes.size()+ ", ";
         for (int i=0; i<Notes.size(); i++) {
             String dBSPL = String.format("%.1f", Notes.get(i).getDbSPL());
             String time = String.format("%.2f", Notes.get(i).getTimeStamp());
@@ -44,55 +44,61 @@ public class RecordedMusicNotes {
     }
 
     public void ProcessNote() {
-        Notes.add(new aNote(0.0, 0));
-        double curNote, curdB, endTime;
-        double prepdB = Notes.get(0).getDbSPL();
-        double prepNote = Notes.get(0).getNote();
-        double startTime = Notes.get(0).getTimeStamp();
-        for (int i=1; i<Notes.size(); i++) {
-            curdB = Notes.get(i).getDbSPL();
-            curNote = Notes.get(i).getNote();
-            if (prepNote!=curNote) {
-                endTime = Notes.get(i-1).getTimeStamp();
-                double duration = endTime-startTime;
-                int noteDuration = calculateNoteDuration(duration);
-                if (noteDuration>0) {
-                    aNote newNote = new aNote(prepNote, noteDuration);
-                    newNote.setDbSPL(prepdB);
-                    newNote.setTimeStamp(duration);
-                    ProcessedNotes.add(newNote);
+        double curNote, curdB, endTime, prepdB, prepNote, startTime;
+        boolean isFirst = true;
+        int count = 0;
+        prepdB = Notes.get(0).getDbSPL();
+        prepNote = Notes.get(0).getNote();
+        startTime = Notes.get(0).getTimeStamp();
+        for (int i=0; i<Notes.size(); i++) {
+            if (isFirst) {
+                aNote newNote = new aNote(prepNote);
+                newNote.setDbSPL(prepdB);
+                ProcessedNotes.add(newNote);
+                isFirst = false;
+            } else {
+                curdB = Notes.get(i).getDbSPL();
+                curNote = Notes.get(i).getNote();
+                if (prepNote!=curNote) {
+                    endTime = Notes.get(i).getTimeStamp();
+                    double duration = endTime-startTime;
+                    int noteDuration = calculateNoteDuration(duration);
+                    if (noteDuration>0) {
+                        ProcessedNotes.get(count).setNoteDuration(noteDuration);
+                        startTime = Notes.get(i).getTimeStamp();
+                        prepNote = curNote;
+                        prepdB = curdB;
+                        aNote newNote = new aNote(prepNote, prepdB, startTime);
+                        ProcessedNotes.add(newNote);
+                        count++;
+                    }
                 }
-                startTime = Notes.get(i).getTimeStamp();
-            }
-            if (prepNote==curNote && prepdB<curdB) {
-                endTime = Notes.get(i-1).getTimeStamp();
-                double duration = endTime-startTime;
-                int noteDuration = calculateNoteDuration(duration);
-                if (noteDuration>0) {
-                    aNote newNote = new aNote(prepNote, noteDuration);
-                    newNote.setDbSPL(prepdB);
-                    newNote.setTimeStamp(duration);
-                    ProcessedNotes.add(newNote);
+                if (prepNote==curNote && prepdB<curdB) {
+                    endTime = Notes.get(i).getTimeStamp();
+                    double duration = endTime-startTime;
+                    int noteDuration = calculateNoteDuration(duration);
+                    if (noteDuration>0) {
+                        ProcessedNotes.get(count).setNoteDuration(noteDuration);
+                        startTime = Notes.get(i).getTimeStamp();
+                        prepNote = curNote;
+                        prepdB = curdB;
+                        aNote newNote = new aNote(prepNote, prepdB, startTime);
+                        ProcessedNotes.add(newNote);
+                        count++;
+                    }
                 }
-                startTime = Notes.get(i).getTimeStamp();
             }
-            prepNote = curNote;
-            prepdB = curdB;
         }
     }
 
     public int calculateNoteDuration (double duration) {
         double oneNoteDuration = 60 / tempo * timeSignature_note;
-        double NotesDuration[] = new double[6];
+        double NotesDuration[] = new double[5];
         NotesDuration[0] = oneNoteDuration / 1.0; //one Whole note time
         NotesDuration[1] = oneNoteDuration / 2.0; //one Half note time
         NotesDuration[2] = oneNoteDuration / 4.0; //one Quarter note time
         NotesDuration[3] = oneNoteDuration / 8.0; //one Eighth note time
         NotesDuration[4] = oneNoteDuration / 16.0; //one 16th note time
-        NotesDuration[5] = oneNoteDuration / 32.0; //one 32th note time
-        if (duration>=NotesDuration[5] && duration<=NotesDuration[4]) {
-            return 16;
-        }
         if (duration>NotesDuration[4] && duration<=NotesDuration[3]) {
             return 8;
         }
