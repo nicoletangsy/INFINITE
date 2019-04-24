@@ -342,50 +342,6 @@ public class Notes extends View {
             }
         }
 
-//        if (diff12 > 0 && diff13 > 0) {
-//
-//        } else if (diff12 < 0 && diff13 < 0) {
-//
-//        } else if(diff12==0||diff13==0||diff12+diff13==0){
-//            if(diff12>=0){
-//                tailHeight2 = tailHeight2-diff12/2;
-//            }
-//            if(diff13>=0){
-//                tailHeight3 = tailHeight3-diff12/2;
-//            }
-//            if(diff12>=0){
-//                tailHeight2 = tailHeight2-diff12/2;
-//            }
-//        }
-//        // 1 > 2 > 3 ; 1 = 2 = 3 ; 1 > 2 = 3 ; 1 = 2 > 3
-//        if (note1 > note2 && note2 > note3) {
-//            diff13 = noteDiff((float) note3, (float) note1);
-//            diff12 = noteDiff((float) note2, (float) note1);
-//        }
-//        // 1 = 1 < 2 ; 1 < 2 = 2 ; 1 < 2 < 3
-//        else if (note1 < note2 && note2 < note3) {
-//            noteDiff((float) note1, (float) note3);
-//            noteDiff((float) note2, (float) note3);
-//        }
-//        // 1 < 2 > 3 && 1 <= 3
-//        else if (note1 < note2 && note2 > note3 && note1 <= note3) {
-//            min = (float) note1;
-//            max = (float) note2;
-//        }
-//        // 1 > 2 < 3 && 1 > = 3
-//        else if (note1 > note2 && note3 > note2 && note1 >= note3) {
-//            min = (float) note2;
-//            max = (float) note1;
-//        }
-//        // 1 > 2 < 3 && 1 < 3
-//        else if (note1 > note2 && note3 > note2 && note1 < note3) {
-//            min = (float) note2;
-//            max = (float) note3;
-//        } else {
-//            min = (float) note3;
-//            max = (float) note2;
-//        }
-
         this.note = note1;
         scaleNoteDrawFlat(6, tailHeight1);
 
@@ -629,7 +585,7 @@ public class Notes extends View {
                     if (note1 <= 36 && note2 <= 36 && note3 <= 36) {
                         upper = true;
                     }
-                } else if (note1 >= 60 && note2 >= 60 && note3 >= 60) {
+                } else if (note1 >= 59 && note2 >= 59 && note3 >= 59) {
                     upper = false;
                 }
 

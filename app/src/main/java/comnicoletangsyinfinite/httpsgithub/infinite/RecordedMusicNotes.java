@@ -5,6 +5,8 @@ import java.util.ArrayList;
 public class RecordedMusicNotes {
     private ArrayList<aNote> Notes = new ArrayList<aNote>();
     private ArrayList<aNote> ProcessedNotes = new ArrayList<aNote>();
+    private ArrayList<ArrayList<Double>> pianoSheet = new ArrayList<>();
+
     private int tempo = 60; //GENERATED_MUSIC_NOTES.getTempo();
     private int timeSignature_note = 4; //GENERATED_MUSIC_NOTES.getTimeSignature()[1];
 
@@ -29,14 +31,13 @@ public class RecordedMusicNotes {
         Notes.add(aNote);
     }
 
-    public double[][] getPianoSheetView(){
-        double[][] convertedList = null;
+    public ArrayList<ArrayList<Double>> getPianoSheetView(){
         for (int i=0; i<Notes.size(); i++) {
-            convertedList[i][0] = Notes.get(i).getNote();
-            convertedList[i][1] = Notes.get(i).getNoteDuration();
+            pianoSheet.get(3+i).add(ProcessedNotes.get(i).getNote());
+            pianoSheet.get(3+i).add((double)ProcessedNotes.get(i).getNoteDuration());
 
         }
-        return convertedList;
+        return pianoSheet;
     }
 
     public void ProcessNote() {

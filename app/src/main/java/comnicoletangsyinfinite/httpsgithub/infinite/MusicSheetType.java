@@ -4,15 +4,15 @@ public class MusicSheetType {
     private String sheetType;
 
     public MusicSheetType(){
-        sheetType = "original";
+        sheetType = "Reading";
     }
 
     public void changedToUserPlay(){
-        sheetType = "userPlay";
+        sheetType = "Feedback";
     }
 
     public void changedToOriginal(){
-        sheetType = "original";
+        sheetType = "Reading";
     }
 
     public String getType(){

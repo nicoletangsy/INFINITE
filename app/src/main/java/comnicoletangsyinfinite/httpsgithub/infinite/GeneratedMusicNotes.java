@@ -23,6 +23,27 @@ public class GeneratedMusicNotes {
     private double previousNote = -1;
     private double[] keys = {48, 50, 52, 53, 55, 57, 59, 60, 62, 64};
 
+    public double getTempo(){
+       return pianoSheet.get(0).get(0);
+    }
+
+    public double getBeat(){
+        return pianoSheet.get(0).get(1);
+    }
+
+    public double getSharpFlat(){
+        return pianoSheet.get(1).get(0);
+    }
+
+    public double getKey(){
+        return pianoSheet.get(1).get(1);
+    }
+
+    public double getHand(){
+        return pianoSheet.get(2).get(0);
+    }
+
+
     public GeneratedMusicNotes(double hand) {
 
         this.hand = hand;
@@ -40,7 +61,7 @@ public class GeneratedMusicNotes {
 
         pianoSheet.add(new ArrayList<Double>());
         pianoSheet.get(2).add(hand);
-        pianoSheet.get(2).add((double) 0);
+        pianoSheet.get(2).add((double) 0);//not yet need this column
 
         genSheet();
     }
