@@ -26,7 +26,7 @@ public class RightHandFeedback extends AppCompatActivity {
         Button nextPageButton = findViewById(R.id.nextPageButton);
         TextView pageNubmer = findViewById(R.id.pageNumber);
         //TextView original = findViewById(R.id.original2);
-        String oNotes = "E4 D4 C4 D4 E4 G4 A4 F4 C5 B4 A4 G4 F4 E4 D4 C4 ";
+        String oNotes = "";
         //original.setText("" + oNotes);
         TextView result = findViewById(R.id.result2);
         A_RECORDED_MUSIC_NOTES.ProcessNote();
@@ -37,14 +37,6 @@ public class RightHandFeedback extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-//        TextView feedback = findViewById(R.id.feedback);
-//        String str = "";
-//        if (oNotes.equals(A_RECORDED_MUSIC_NOTES.getAllNotes())) {
-//            str = "Well Done! You're perfectly right!";
-//        } else {
-//            str = "Opps... Some notes play wrongly!";
-//        }
-//        feedback.setText(str);
     }
 
     @Override

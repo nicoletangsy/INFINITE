@@ -97,20 +97,7 @@ public class RightHandPractice extends AppCompatActivity {
     }
 
     private void startRecording() {
-        /*mRecorder = new MediaRecorder();
-        mRecorder.setAudioSource(MediaRecorder.AudioSource.MIC);
-        mRecorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
-        mRecorder.setOutputFile(mFileName);
-        mRecorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
-
-        try {
-            mRecorder.prepare();
-        } catch (IOException e) {
-            Log.e(LOG_TAG, "prepare() failed");
-        }*/
-
         startDetecting();
-        //mRecorder.start();
     }
 
     private void startDetecting() {
@@ -145,9 +132,6 @@ public class RightHandPractice extends AppCompatActivity {
     }
 
     private void stopRecording() {
-        //  mRecorder.stop();
-        //mRecorder.release();
-        //mRecorder = null;
         dispatcher.stop();
     }
 
@@ -160,7 +144,6 @@ public class RightHandPractice extends AppCompatActivity {
         final Button playRecordButton = (Button)findViewById(R.id.playRecordButton);
         Button analyzeButton = (Button)findViewById(R.id.analyzeButton);
         final TextView text2 = (TextView) findViewById(R.id.textView2);
-        //text2.setText("Piano sheet animation");
 
         Toolbar toolbar = (Toolbar)findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);

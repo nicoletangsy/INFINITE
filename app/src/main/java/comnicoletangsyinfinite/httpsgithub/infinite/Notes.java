@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import java.lang.Math;
 
+//Notes View
 public class Notes extends View {
     private double note;
     private int speed;

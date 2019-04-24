@@ -11,7 +11,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 public class MainActivity extends AppCompatActivity {
-//homepage
+//index for KeySight
     /* 
         @inproceedings{six2014tarsosdsp,
             author      = {Joren Six and Olmo Cornelis and Marc Leman},
@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void openSettingPage(){
         //edit to test page
-        Intent intent = new Intent(this, PianoSheet.class);
+        Intent intent = new Intent(this, SettingActivity.class);
         startActivity(intent);
     }
 

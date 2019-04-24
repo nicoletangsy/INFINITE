@@ -18,28 +18,5 @@ public class testActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test);
-
-        String pipe = "";
-        AudioDispatcher dispatcher = AudioDispatcherFactory.fromDefaultMicrophone(22050,1024, 0);
-        PitchDetectionHandler pdh = new PitchDetectionHandler() {
-            @Override
-            public void handlePitch(PitchDetectionResult result, AudioEvent e) {
-                final float pitchInHz = result.getPitch();
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        TextView text = (TextView) findViewById(R.id.textView1);
-                        text.setText("" + pitchInHz);
-                        TextView text2 = (TextView) findViewById(R.id.textView2);
-                        text2.setText("");
-                    }
-                });
-            }
-        };
-        AudioProcessor p = new PitchProcessor(PitchProcessor.PitchEstimationAlgorithm.FFT_YIN, 22050, 1024, pdh);
-        dispatcher.addAudioProcessor(p);
-        new Thread(dispatcher,"Audio Dispatcher").start();
     }
-
-
 }

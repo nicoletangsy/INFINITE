@@ -3,7 +3,7 @@ package comnicoletangsyinfinite.httpsgithub.infinite;
 public class Pitch {
     String pitch = "";  //value: C0~B8
     double note;        //value: 0~107
-    int noteDuration;   //value:[1, 2, 4, 8, 16, 32, 64]
+    int noteDuration;   //value:[1, 2, 4, 8, 16]
 
     public Pitch(float pitchInHz) {
         pitchConverted(pitchInHz);

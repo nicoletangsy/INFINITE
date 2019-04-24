@@ -9,33 +9,36 @@ public class GeneratedMusicNotes {
     private int total = 2; //the total number of notes;
     private int totalNotes[] = new int[bar]; //the no of notes in each bar
     private int[] noteDuration = {1, 2, 4, 8, 16};
-    private float[] maxNotes; //max. of notes added in a bar
     private ArrayList<aNote> allNotes = new ArrayList<aNote>();
-    //ArrayList<Notes> notesArrayList = new ArrayList<>();
-    //private double allNotes[][]={{48.5,4},{60,4}};
+
+    public void addNote(aNote aNote) {
+        allNotes.add(aNote);
+    }
 
     public int getTempo() { return this.tempo; }
     public int[] getTimeSignature() { return timeSignature; }
     public int getBar() { return bar; }
     public int getTotal() { return total; }
     public int[] getTotalNotes() { return totalNotes; }
-
     public aNote getNote(int i) {
         return allNotes.get(i);
     }
     public ArrayList<aNote> getNotesArrayList() {
-        /*for (int i = 0; i <allNotes.length; i++) {
-            notesArrayList.add(new Notes(this.getContext()));
-            canvas = notesArrayList.get(i).createNote(lineWidth, lineHeight, margin, allNotes[i][0], 4, canvas, paint);
-
-        }*/
         return this.allNotes;
+    }
+    public int[] getAllNotesDuration () {
+        int list[] = new int[allNotes.size()];
+        for (int i=0; i<allNotes.size(); i++) {
+            list[i] = allNotes.get(i).getNoteDuration();
+        }
+        return list;
     }
 
     public GeneratedMusicNotes () {
         randomGenerated();
     }
 
+    //Constructor for testing
     public GeneratedMusicNotes(int tempo, int timeSignature_count, int timeSignature_note) {
         this.tempo = tempo;
         this.timeSignature[0] = timeSignature_count;
@@ -53,23 +56,6 @@ public class GeneratedMusicNotes {
         addNote(new aNote(52,8));
         addNote(new aNote(55,8));
         addNote(new aNote(55,4));
-        //aNote newNote = new aNote(48.5, 4);
-        //aNote newNote2 = new aNote(60, 4);
-        //addNote(newNote);
-        //addNote(newNote2);
-        //randomGenerated();
-    }
-
-    public void addNote(aNote aNote) {
-        allNotes.add(aNote);
-    }
-
-    public int[] getAllNotesDuration () {
-        int list[] = new int[allNotes.size()];
-        for (int i=0; i<allNotes.size(); i++) {
-            list[i] = allNotes.get(i).getNoteDuration();
-        }
-        return list;
     }
 
     private void randomGenerated() {
@@ -79,7 +65,7 @@ public class GeneratedMusicNotes {
         do {
             double newNote = randomNote();
             int duration = randomNoteDuration();
-            while (duration>totalNotes) {
+            while (timeSignature[1]/duration>totalNotes) {
                 duration = randomNoteDuration();
             }
             addNote(new aNote(newNote, duration));
