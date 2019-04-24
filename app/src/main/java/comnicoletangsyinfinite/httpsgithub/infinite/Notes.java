@@ -155,9 +155,9 @@ public class Notes extends View {
         this.lineHeight = lineHeight;
         this.lineWidth = lineWidth;
         if (note.size() == 2) {
-            scaleNoteDrawFlat(1, 0,0, hand);
+            scaleNoteDrawFlat(1, 0, 0, hand);
         } else
-            scaleNoteDrawFlat(1, 0,1, hand);
+            scaleNoteDrawFlat(1, 0, 1, hand);
 
 
         return canvas;
@@ -176,9 +176,9 @@ public class Notes extends View {
         this.lineWidth = lineWidth;
 
         if (note.size() == 2) {
-            scaleNoteDrawFlat(2, 3.5f,0, hand);
+            scaleNoteDrawFlat(2, 3.5f, 0, hand);
         } else
-            scaleNoteDrawFlat(2, 3.5f,1, hand);
+            scaleNoteDrawFlat(2, 3.5f, 1, hand);
 
         // Translate canvas
         canvas.translate(noteWidth * 2, -(yBase - dy));
@@ -195,9 +195,9 @@ public class Notes extends View {
         this.lineWidth = lineWidth;
 
         if (note.size() == 2) {
-            scaleNoteDrawFlat(3, 3.5f,0, hand);
+            scaleNoteDrawFlat(3, 3.5f, 0, hand);
         } else
-            scaleNoteDrawFlat(3, 3.5f,1, hand);
+            scaleNoteDrawFlat(3, 3.5f, 1, hand);
 
         // Translate canvas
         canvas.translate(noteWidth * 3, -(yBase - dy));
@@ -222,9 +222,9 @@ public class Notes extends View {
         this.lineWidth = lineWidth;
 
         if (note.size() == 2) {
-            scaleNoteDrawFlat(4, 3.5f,0, hand);
+            scaleNoteDrawFlat(4, 3.5f, 0, hand);
         } else
-            scaleNoteDrawFlat(4, 3.5f,1, hand);
+            scaleNoteDrawFlat(4, 3.5f, 1, hand);
 
 
         Log.v("noteWidth2", noteWidth + "," + dy);
@@ -302,9 +302,9 @@ public class Notes extends View {
 
         this.note = note1.get(0);
         if (note1.size() == 2) {
-            scaleNoteDrawFlat(8, tailHeight1,0, hand);
+            scaleNoteDrawFlat(8, tailHeight1, 0, hand);
         } else
-            scaleNoteDrawFlat(8, tailHeight1,1, hand);
+            scaleNoteDrawFlat(8, tailHeight1, 1, hand);
 
 
         if (max == note2.get(0)) {
@@ -327,9 +327,9 @@ public class Notes extends View {
 
         this.note = note2.get(0);
         if (note2.size() == 2) {
-            scaleNoteDrawFlat(8, tailHeight2,0, hand);
+            scaleNoteDrawFlat(8, tailHeight2, 0, hand);
         } else
-            scaleNoteDrawFlat(8, tailHeight2,1, hand);
+            scaleNoteDrawFlat(8, tailHeight2, 1, hand);
 
 
         // Translate canvas
@@ -339,7 +339,7 @@ public class Notes extends View {
     }
 
     //scale note head and draw flat sharp
-    public void scaleNoteDrawFlat(int noteType, float tailHeight,double wrong, double hand) {
+    public void scaleNoteDrawFlat(int noteType, float tailHeight, double wrong, double hand) {
 
         drawNoteHead(noteType);
 
@@ -369,18 +369,16 @@ public class Notes extends View {
 
         //middle C's line
         if (note <= 49 && note > 47) {
-            drawLeger(noteType, note);
+            drawLeger(noteType, note, wrong);
         }
 
-        if (noteType > 3){
-            if(wrong == 1)
+        if (noteType > 3) {
+            if (wrong == 1)
                 canvas.drawPath(notepath, paintwrong);
             else
-            canvas.drawPath(notepath, paint);
-        }
-
-        else if (noteType == 2 || noteType == 3) {
-            if(wrong == 1)
+                canvas.drawPath(notepath, paint);
+        } else if (noteType == 2 || noteType == 3) {
+            if (wrong == 1)
                 canvas.drawPath(notepath, paint423wrong);
             else
                 canvas.drawPath(notepath, paint);
@@ -399,7 +397,7 @@ public class Notes extends View {
         }
 
         if (tailHeight > 0)
-            drawTail(tailHeight, noteType);
+            drawTail(tailHeight, noteType, wrong);
 
     }
 
@@ -415,14 +413,22 @@ public class Notes extends View {
     }
 
     //draw a note tail
-    public void drawTail(float tailHeight, int noteType) {
-        if (tailIsUpper(noteType))
-            canvas.drawLine(lineHeight / 1.5f, 0,
-                    lineHeight / 1.5f, -lineHeight * tailHeight, paint);
-        else
-            canvas.drawLine(-lineHeight / 1.5f, 0,
-                    -lineHeight / 1.5f, lineHeight * tailHeight, paint);
-
+    public void drawTail(float tailHeight, int noteType, double wrong) {
+        if (wrong == 1) {
+            if (tailIsUpper(noteType))
+                canvas.drawLine(lineHeight / 1.5f, 0,
+                        lineHeight / 1.5f, -lineHeight * tailHeight, paintwrong);
+            else
+                canvas.drawLine(-lineHeight / 1.5f, 0,
+                        -lineHeight / 1.5f, lineHeight * tailHeight, paintwrong);
+        } else {
+            if (tailIsUpper(noteType))
+                canvas.drawLine(lineHeight / 1.5f, 0,
+                        lineHeight / 1.5f, -lineHeight * tailHeight, paint);
+            else
+                canvas.drawLine(-lineHeight / 1.5f, 0,
+                        -lineHeight / 1.5f, lineHeight * tailHeight, paint);
+        }
     }
 
     //whether tail is upper
@@ -513,10 +519,18 @@ public class Notes extends View {
 
     //for C only
     //miss left hand
-    protected void drawLeger(int noteType, Double note) {
-        if (noteType > 1)
-            canvas.drawLine(-lineHeight, 0, lineHeight, 0, paint);
-
+    protected void drawLeger(int noteType, double note, double wrong) {
+        if (wrong == 1) {
+            if (noteType > 1)
+                canvas.drawLine(-lineHeight, 0, lineHeight, 0, paintwrong);
+            else
+                canvas.drawLine(-lineHeight * 1.5f, 0, lineHeight * 1.5f, 0, paintwrong);
+        } else {
+            if (noteType > 1)
+                canvas.drawLine(-lineHeight, 0, lineHeight, 0, paint);
+            else
+                canvas.drawLine(-lineHeight * 1.5f, 0, lineHeight * 1.5f, 0, paint);
+        }
     }
 
     // On draw
