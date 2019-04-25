@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LeftHandFeedback">
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:weightSum="6"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+        <include
+            android:id="@+id/app_bar"
+            layout="@layout/app_bar"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.75"></include>
+
+        <comnicoletangsyinfinite.httpsgithub.infinite.PianoSheetView
+            android:id="@+id/staff"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="4.5" />
+        <!--<TextView-->
+        <!--android:id="@+id/original"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="0dp"-->
+        <!--android:layout_weight="0.5"-->
+        <!--android:gravity="center_horizontal"-->
+        <!--android:text="Original Music Sheet: "-->
+        <!--android:textSize="20dp" />-->
+
+
+        <!--<TextView-->
+        <!--android:id="@+id/result"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="0dp"-->
+        <!--android:layout_weight="0.5"-->
+        <!--android:text="Your Result: "-->
+        <!--android:textSize="20dp"-->
+        <!--android:gravity="center"/>-->
+
+        <!--<TextView-->
+        <!--android:id="@+id/original2"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="0dp"-->
+        <!--android:layout_weight="0.4"-->
+        <!--android:gravity="center"-->
+        <!--android:text=""-->
+        <!--android:textSize="10dp" />-->
+
+        <TextView
+            android:id="@+id/result2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textSize="10dp"
+            android:gravity="center"/>
+
+        <!--<TextView-->
+        <!--android:id="@+id/feedback"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="0dp"-->
+        <!--android:layout_weight="0.4"-->
+        <!--android:text=""-->
+        <!--android:textSize="20dp"-->
+        <!--android:gravity="center"/>-->
+
+
+
+
+
+
+
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

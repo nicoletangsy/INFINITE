@@ -9,43 +9,38 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
+import android.widget.TextView;
 
-public class SightReadingMenuActivity extends AppCompatActivity {
+public class LeftHandReading extends AppCompatActivity {
+    public static final MusicSheetType A_Music_Sheet_Type = new MusicSheetType();
+    public static final GeneratedMusicNotes A_GENERATED_MUSIC_NOTES = new GeneratedMusicNotes(0);
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sight_reading_menu);
+        setContentView(R.layout.activity_left_hand_reading);
 
-        Button lButton = findViewById(R.id.leftHandPracticeButton);
-        Button rButton = findViewById(R.id.rightHandPracticeButton);
+        Button startButton = findViewById(R.id.StartPractiseButton);
+        Button previousPageButton = findViewById(R.id.previousPageButton);
+        Button nextPageButton = findViewById(R.id.nextPageButton);
+        TextView pageNubmer = findViewById(R.id.pageNumber);
 
         Toolbar toolbar = (Toolbar)findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        lButton.setOnClickListener(new View.OnClickListener(){
+        startButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                openleftHandPracticePage();
+                startSightReading();
             }
         });
 
-        rButton.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                openrightHandPracticePage();
-            }  });
-
-    }
-    public void openleftHandPracticePage() {
-        Intent intent = new Intent(this, LeftHandReading.class);
-        startActivity(intent);
     }
 
-    public void openrightHandPracticePage() {
-        Intent intent = new Intent(this, RightHandReading.class);
+    public void startSightReading() {
+        Intent intent = new Intent(this, LeftHandPractice.class);
         startActivity(intent);
     }
 
@@ -59,11 +54,10 @@ public class SightReadingMenuActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem menuItem) {
         if (menuItem.getItemId() == android.R.id.home) {
-            Intent intent = new Intent(SightReadingMenuActivity.this, MainActivity.class);
+            Intent intent = new Intent(LeftHandReading.this, LeftHandPractice.class);
             startActivity(intent);
             finish();
         }
         return super.onOptionsItemSelected(menuItem);
     }
-
 }
