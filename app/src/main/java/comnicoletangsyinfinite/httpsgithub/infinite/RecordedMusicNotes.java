@@ -16,17 +16,17 @@ public class RecordedMusicNotes {
 
     //This getter is used for test & debug
     public String getAllNotes() {
-        String list = "Test: [" + calculateNoteDuration(0.25) + ", " + calculateNoteDuration(0.5) + ", " + calculateNoteDuration(1) + ", "
+        String list =""; /*= "Test: [" + calculateNoteDuration(0.25) + ", " + calculateNoteDuration(0.5) + ", " + calculateNoteDuration(1) + ", "
                 + calculateNoteDuration(2) + ", " + calculateNoteDuration(4) + ", " + calculateNoteDuration(8) + ", "
                 + calculateNoteDuration(0.26) + ", " + calculateNoteDuration(0.51) + ", " + calculateNoteDuration(1.01) + ", "
                 + calculateNoteDuration(2.01) + ", " + calculateNoteDuration(4.01) + "]" ;
         list = list + "Notes: " + Notes.size()+ ", ";
-        /*for (int i=0; i<Notes.size(); i++) {
+        for (int i=0; i<Notes.size(); i++) {
             String dBSPL = String.format("%.1f", Notes.get(i).getDbSPL());
             String time = String.format("%.2f", Notes.get(i).getTimeStamp());
             list = list + "[" + Notes.get(i).getNote() + ", " + dBSPL + ", " + time + "] ";
         }*/
-        list = list + "\n ProcessedNotes: ";
+        list = list + "ProcessedNotes: ";
         for (int i=0; i<ProcessedNotes.size(); i++) {
             String dBSPL = String.format("%.1f", ProcessedNotes.get(i).getDbSPL());
             String duration = String.format("%.2f", ProcessedNotes.get(i).getTimeStamp());

@@ -7,6 +7,7 @@ import android.media.AudioFormat;
 import android.media.MediaPlayer;
 import android.media.MediaRecorder;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -17,6 +18,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.Animation;
+import android.view.animation.LinearInterpolator;
 import android.view.animation.TranslateAnimation;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -56,6 +58,7 @@ public class RightHandPractice extends AppCompatActivity{
     private Animation greenLineAnim2;
     private ImageView greenLineView3;
     private Animation greenLineAnim3;
+    private TextView countDown;
     public double prevPitch = 0.0;
     public double curPitch = 0.0;
 
@@ -84,7 +87,7 @@ public class RightHandPractice extends AppCompatActivity{
             startDetecting();
         } else {
             stopRecording();
-            playRecordButton.setVisibility(View.VISIBLE);
+            //playRecordButton.setVisibility(View.VISIBLE);
             A_Music_Sheet_Type.changedToUserPlay();
         }
     }
@@ -125,6 +128,21 @@ public class RightHandPractice extends AppCompatActivity{
     }
 
     private void startDetecting() {
+
+
+        int time=(int)(FIRST_NOTE.getSpeed()-1000)/2;
+
+        final CountDownTimer myCountDownTimer=new CountDownTimer(time, 1000) {
+
+            public void onTick(long millisUntilFinished) {
+                countDown.setText("Count Down " + millisUntilFinished / 1000);
+            }
+
+            public void onFinish() {
+               countDown.setVisibility(View.INVISIBLE);
+            }
+        }.start();
+
         A_RECORDED_MUSIC_NOTES.removeAllRecords();
         dispatcher = AudioDispatcherFactory.fromDefaultMicrophone(22050,1024,0);
         PitchDetectionHandler pdh = new PitchDetectionHandler() {
@@ -150,29 +168,36 @@ public class RightHandPractice extends AppCompatActivity{
                 }
             }
         };
+
         float width = ((View) greenLineView.getParent()).getWidth();
+
         greenLineAnim = new TranslateAnimation(0,width-width/32-(float)FIRST_NOTE.getX(),0,0);
+        greenLineAnim.setInterpolator(new LinearInterpolator());
         greenLineAnim.setDuration((int)FIRST_NOTE.getSpeed());
+        greenLineAnim.setStartOffset(((int)FIRST_NOTE.getSpeed()-1000)/2);
 
         greenLineView.setVisibility(View.VISIBLE);
         greenLineView.startAnimation(greenLineAnim);
         greenLineView.setVisibility(View.INVISIBLE);
 
         greenLineAnim2 = new TranslateAnimation(0,width-width/32-(float)FIRST_NOTE.getX(),0,0);
+        greenLineAnim2.setInterpolator(new LinearInterpolator());
         greenLineAnim2.setDuration((int)FIRST_NOTE.getSpeed());
-        greenLineAnim2.setStartOffset((int)FIRST_NOTE.getSpeed());
+        greenLineAnim2.setStartOffset((int)(((FIRST_NOTE.getSpeed()-1000)/2)+FIRST_NOTE.getSpeed()));
 
         greenLineView2.setVisibility(View.VISIBLE);
         greenLineView2.startAnimation(greenLineAnim2);
         greenLineView2.setVisibility(View.INVISIBLE);
 
         greenLineAnim3 = new TranslateAnimation(0,width-width/32-(float)FIRST_NOTE.getX(),0,0);
+        greenLineAnim3.setInterpolator(new LinearInterpolator());
         greenLineAnim3.setDuration((int)FIRST_NOTE.getSpeed());
-        greenLineAnim3.setStartOffset((int)FIRST_NOTE.getSpeed()*2);
+        greenLineAnim3.setStartOffset((int)(((FIRST_NOTE.getSpeed()-1000)/2)+FIRST_NOTE.getSpeed()*2));
 
         greenLineView3.setVisibility(View.VISIBLE);
         greenLineView3.startAnimation(greenLineAnim3);
         greenLineView3.setVisibility(View.INVISIBLE);
+
 
         AudioProcessor p = new PitchProcessor(PitchProcessor.PitchEstimationAlgorithm.AMDF, 22050, 1024, pdh);
         dispatcher.addAudioProcessor(p);
@@ -225,6 +250,9 @@ public class RightHandPractice extends AppCompatActivity{
         greenLineView3.setX((float)FIRST_NOTE.getX());
         greenLineView3.setY((float)FIRST_NOTE.getLine3());
         greenLineView3.getLayoutParams().height = (int)FIRST_NOTE.getHeight();
+
+        countDown= (TextView) findViewById(R.id.countDown);
+        countDown.setY((float)FIRST_NOTE.getY()/2);
 
         recordButton.setOnClickListener(new View.OnClickListener(){
             @Override
