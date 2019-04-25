@@ -1,5 +1,6 @@
 package comnicoletangsyinfinite.httpsgithub.infinite;
 
+import static comnicoletangsyinfinite.httpsgithub.infinite.RightHandReading.A_GENERATED_MUSIC_NOTES;
 import java.util.ArrayList;
 
 
@@ -38,10 +39,11 @@ public class RecordedMusicNotes {
         Notes.add(aNote);
     }
 
-    public ArrayList<ArrayList<Double>> getPianoSheetView(){
-        for (int i=0; i<Notes.size(); i++) {
-            pianoSheet.get(3+i).add(ProcessedNotes.get(i).getNote());
-            pianoSheet.get(3+i).add((double)ProcessedNotes.get(i).getNoteDuration());
+    //return user record as piano sheet
+    public ArrayList<ArrayList<Double>> getPianoSheet(){
+        for (int i=0; i<ProcessedNotes.size(); i++) {
+            pianoSheet.get(i).add(ProcessedNotes.get(i).getNote());
+            pianoSheet.get(i).add((double)ProcessedNotes.get(i).getNoteDuration());
 
         }
         return pianoSheet;

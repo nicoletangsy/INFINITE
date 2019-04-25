@@ -29,21 +29,12 @@
             android:layout_height="0dp"
             android:layout_weight="0.75"></include>
 
-        <android.support.v4.widget.Space
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.2" />
-
         <comnicoletangsyinfinite.httpsgithub.infinite.PianoSheetView
             android:id="@+id/staff"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="4" />
+            android:layout_weight="4.4" />
 
-        <android.support.v4.widget.Space
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.2" />
 
         <TextView
             android:id="@+id/textView2"

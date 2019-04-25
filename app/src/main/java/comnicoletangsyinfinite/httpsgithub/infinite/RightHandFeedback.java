@@ -13,6 +13,7 @@ import android.widget.TextView;
 import static comnicoletangsyinfinite.httpsgithub.infinite.RightHandPractice.A_RECORDED_MUSIC_NOTES;
 //import static comnicoletangsyinfinite.httpsgithub.infinite.Analyzer.A_RECORDED_MUSIC_NOTES;
 import static comnicoletangsyinfinite.httpsgithub.infinite.RightHandReading.A_Music_Sheet_Type;
+import static comnicoletangsyinfinite.httpsgithub.infinite.RightHandReading.A_GENERATED_MUSIC_NOTES;
 
 public class RightHandFeedback extends AppCompatActivity {
 
@@ -36,6 +37,14 @@ public class RightHandFeedback extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
+//        TextView feedback = findViewById(R.id.feedback);
+//        String str = "";
+//        if (oNotes.equals(A_RECORDED_MUSIC_NOTES.getAllNotes())) {
+//            str = "Well Done! You're perfectly right!";
+//        } else {
+//            str = "Opps... Some notes play wrongly!";
+//        }
+//        feedback.setText(str);
     }
 
     @Override
