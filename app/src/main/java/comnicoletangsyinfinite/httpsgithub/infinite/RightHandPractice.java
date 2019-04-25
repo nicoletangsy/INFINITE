@@ -59,6 +59,7 @@ public class RightHandPractice extends AppCompatActivity{
     private ImageView greenLineView3;
     private Animation greenLineAnim3;
     private TextView countDown;
+    private TextView tempo;
     public double prevPitch = 0.0;
     public double curPitch = 0.0;
 
@@ -130,9 +131,9 @@ public class RightHandPractice extends AppCompatActivity{
     private void startDetecting() {
 
 
-        int time=(int)(FIRST_NOTE.getSpeed()-1000)/2;
+        int time=(int)(60000/A_GENERATED_MUSIC_NOTES.getPianoSheet().get(0).get(0).intValue());
 
-        final CountDownTimer myCountDownTimer=new CountDownTimer(time, 1000) {
+        final CountDownTimer myCountDownTimer=new CountDownTimer(4000, time) {
 
             public void onTick(long millisUntilFinished) {
                 countDown.setText("Count Down " + millisUntilFinished / 1000);
@@ -174,7 +175,7 @@ public class RightHandPractice extends AppCompatActivity{
         greenLineAnim = new TranslateAnimation(0,width-width/32-(float)FIRST_NOTE.getX(),0,0);
         greenLineAnim.setInterpolator(new LinearInterpolator());
         greenLineAnim.setDuration((int)FIRST_NOTE.getSpeed());
-        greenLineAnim.setStartOffset(((int)FIRST_NOTE.getSpeed()-1000)/2);
+        greenLineAnim.setStartOffset(4000);
 
         greenLineView.setVisibility(View.VISIBLE);
         greenLineView.startAnimation(greenLineAnim);
@@ -183,7 +184,7 @@ public class RightHandPractice extends AppCompatActivity{
         greenLineAnim2 = new TranslateAnimation(0,width-width/32-(float)FIRST_NOTE.getX(),0,0);
         greenLineAnim2.setInterpolator(new LinearInterpolator());
         greenLineAnim2.setDuration((int)FIRST_NOTE.getSpeed());
-        greenLineAnim2.setStartOffset((int)(((FIRST_NOTE.getSpeed()-1000)/2)+FIRST_NOTE.getSpeed()));
+        greenLineAnim2.setStartOffset((int)(4000+FIRST_NOTE.getSpeed()));
 
         greenLineView2.setVisibility(View.VISIBLE);
         greenLineView2.startAnimation(greenLineAnim2);
@@ -192,7 +193,7 @@ public class RightHandPractice extends AppCompatActivity{
         greenLineAnim3 = new TranslateAnimation(0,width-width/32-(float)FIRST_NOTE.getX(),0,0);
         greenLineAnim3.setInterpolator(new LinearInterpolator());
         greenLineAnim3.setDuration((int)FIRST_NOTE.getSpeed());
-        greenLineAnim3.setStartOffset((int)(((FIRST_NOTE.getSpeed()-1000)/2)+FIRST_NOTE.getSpeed()*2));
+        greenLineAnim3.setStartOffset((int)(4000+FIRST_NOTE.getSpeed()*2));
 
         greenLineView3.setVisibility(View.VISIBLE);
         greenLineView3.startAnimation(greenLineAnim3);
@@ -251,8 +252,14 @@ public class RightHandPractice extends AppCompatActivity{
         greenLineView3.setY((float)FIRST_NOTE.getLine3());
         greenLineView3.getLayoutParams().height = (int)FIRST_NOTE.getHeight();
 
+        tempo =  (TextView) findViewById(R.id.tempo);
+        tempo.setText("bpm:"+A_GENERATED_MUSIC_NOTES.getPianoSheet().get(0).get(0));
+
         countDown= (TextView) findViewById(R.id.countDown);
         countDown.setY((float)FIRST_NOTE.getY()/2);
+
+        greenLineView.setX((float)FIRST_NOTE.getX()+countDown.getWidth());
+        greenLineView.setY((float)FIRST_NOTE.getY());
 
         recordButton.setOnClickListener(new View.OnClickListener(){
             @Override

@@ -373,7 +373,7 @@ public class Notes extends View {
             drawLeger(noteType, note, wrong);
         }
 
-        if (noteType > 3) {
+        if (noteType >3) {
             if (wrong == 1)
                 canvas.drawPath(notepath, paintwrong);
             else
@@ -382,7 +382,7 @@ public class Notes extends View {
             if (wrong == 1)
                 canvas.drawPath(notepath, paint423wrong);
             else
-                canvas.drawPath(notepath, paint);
+                canvas.drawPath(notepath, paint423);
 
         }
         //////////////////////////

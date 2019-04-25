@@ -261,14 +261,14 @@ public class PianoSheetView extends View {
         if (theSheet.get(1).get(0) == 0) {
             for (int m = 0; m < theSheet.get(1).get(1); m++) {
                 canvas.drawText(sharps[0], 30 * m, -lineHeight * (flatKey[m]-leftHand), paint);
-                canvas.drawText(sharps[0], 30 * m, lineHeight * 7f - (lineHeight *  (flatKey[m]-leftHand)), paint);
-                canvas.drawText(sharps[0], 30 * m, lineHeight * 14.25f - (lineHeight *  (flatKey[m]-leftHand)), paint);
+                canvas.drawText(sharps[0], 30 * m, lineHeight * 8.25f - (lineHeight *  (flatKey[m]-leftHand)), paint);
+                canvas.drawText(sharps[0], 30 * m, lineHeight * 16.5f - (lineHeight *  (flatKey[m]-leftHand)), paint);
             }
         } else {
             for (int m = 0; m < theSheet.get(1).get(1); m++) {
                 canvas.drawText(sharps[1], 30 * m, -lineHeight * (sharpKey[m]-leftHand), painttt);
-                canvas.drawText(sharps[1], 30 * m, lineHeight * 7f - (lineHeight * (sharpKey[m]-leftHand)), painttt);
-                canvas.drawText(sharps[1], 30 * m, lineHeight * 14.25f - (lineHeight * (sharpKey[m]-leftHand)), painttt);
+                canvas.drawText(sharps[1], 30 * m, lineHeight * 8.25f - (lineHeight * (sharpKey[m]-leftHand)), painttt);
+                canvas.drawText(sharps[1], 30 * m, lineHeight * 16.5f - (lineHeight * (sharpKey[m]-leftHand)), painttt);
 
             }
         }

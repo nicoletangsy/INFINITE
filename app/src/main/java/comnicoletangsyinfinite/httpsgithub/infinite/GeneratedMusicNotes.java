@@ -54,7 +54,7 @@ public class GeneratedMusicNotes {
 
     //public GeneratedMusicNotes () { randomGenerated(); }
 
-    //Constructor for testing
+    /*Constructor for testing
     public GeneratedMusicNotes(int timeSignature_count, int timeSignature_note) {
         this.timeSignature[0] = timeSignature_count;
         this.timeSignature[1] = timeSignature_note;
@@ -71,7 +71,7 @@ public class GeneratedMusicNotes {
         addNote(new aNote(52,8));
         addNote(new aNote(55,8));
         addNote(new aNote(55,4));
-    }
+    }*/
 
     /*private void randomGenerated() {
         tempo = (int)(Math.random() * 120 + 60); // 60~180 bpm
