@@ -12,8 +12,8 @@
         layout="@layout/app_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="161dp"
-        app:layout_constraintBottom_toTopOf="@+id/C4key"
+        android:layout_marginBottom="5dp"
+        app:layout_constraintBottom_toTopOf="@+id/correctCount"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -26,8 +26,8 @@
         android:id="@+id/endButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="0dp"
         android:background="@drawable/button"
         android:text="@string/endButton"
         app:layout_constraintStart_toStartOf="parent"
@@ -36,19 +36,19 @@
 
 
 
-         <HorizontalScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:layout_editor_absoluteX="0dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:overScrollMode="never">
+    <HorizontalScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteX="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:overScrollMode="never">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
 
-             <!--4 Set of white keys -->
+            <!--4 Set of white keys -->
 
 
 
@@ -395,298 +395,21 @@
 
 
 
-            </LinearLayout>
- </HorizontalScrollView>
+        </LinearLayout>
+    </HorizontalScrollView>
 
 
 
 
 
-<<<<<<< HEAD
-    <Button
-        android:id="@+id/Aakey"
-        android:layout_width="28dp"
-        android:layout_height="52dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginEnd="1dp"
-        android:layout_marginBottom="60dp"
-        android:background="@drawable/blackkey"
-        app:layout_constraintBottom_toBottomOf="@+id/Akey"
-        app:layout_constraintEnd_toStartOf="@+id/Bkey"
-        app:layout_constraintStart_toEndOf="@+id/Akey" />
 
-    <Button
-        android:id="@+id/Ggkey"
-        android:layout_width="28dp"
-        android:layout_height="52dp"
-        android:layout_marginBottom="48dp"
-        android:background="@drawable/blackkey"
-        app:layout_constraintBottom_toBottomOf="@+id/Gkey"
-        app:layout_constraintEnd_toStartOf="@+id/Akey"
-        app:layout_constraintHorizontal_bias="0.527"
-        app:layout_constraintStart_toEndOf="@+id/Gkey" />
-
-    <Button
-        android:id="@+id/Ffkey"
-        android:layout_width="28dp"
-        android:layout_height="52dp"
-        android:layout_marginBottom="48dp"
-        android:background="@drawable/blackkey"
-        app:layout_constraintBottom_toBottomOf="@+id/Fkey"
-        app:layout_constraintEnd_toStartOf="@+id/Gkey"
-        app:layout_constraintHorizontal_bias="0.527"
-        app:layout_constraintStart_toEndOf="@+id/Fkey" />
-
-    <Button
-        android:id="@+id/Ddkey"
-        android:layout_width="28dp"
-        android:layout_height="52dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginBottom="48dp"
-        android:background="@drawable/blackkey"
-        app:layout_constraintBottom_toBottomOf="@+id/Dkey"
-        app:layout_constraintEnd_toStartOf="@+id/Ekey"
-        app:layout_constraintStart_toEndOf="@+id/Cckey" />
-
-    <Button
-        android:id="@+id/Cckey"
-        android:layout_width="28dp"
-        android:layout_height="52dp"
-        android:layout_marginStart="22dp"
-        android:layout_marginBottom="48dp"
-        android:background="@drawable/blackkey"
-        app:layout_constraintBottom_toBottomOf="@+id/Ckey"
-        app:layout_constraintStart_toStartOf="@+id/Ckey" />
-
-    <Button
-        android:id="@+id/Ckey1"
-        android:layout_width="37dp"
-        android:layout_height="100dp"
-        android:background="@drawable/whitekey"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/Bkey" />
-
-    <Button
-        android:id="@+id/Bkey1"
-        android:layout_width="37dp"
-        android:layout_height="100dp"
-        android:background="@drawable/whitekey"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/Akey1" />
-
-    <Button
-        android:id="@+id/Akey1"
-        android:layout_width="37dp"
-        android:layout_height="100dp"
-        android:background="@drawable/whitekey"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/Gkey1" />
-
-    <Button
-        android:id="@+id/Gkey1"
-        android:layout_width="37dp"
-        android:layout_height="100dp"
-        android:background="@drawable/whitekey"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/Fkey1" />
-
-    <Button
-        android:id="@+id/Fkey1"
-        android:layout_width="37dp"
-        android:layout_height="100dp"
-        android:background="@drawable/whitekey"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/Ekey1" />
-
-    <Button
-        android:id="@+id/Ekey1"
-        android:layout_width="37dp"
-        android:layout_height="100dp"
-        android:background="@drawable/whitekey"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/Dkey1" />
-
-    <Button
-        android:id="@+id/Dkey1"
-        android:layout_width="37dp"
-        android:layout_height="100dp"
-        android:background="@drawable/whitekey"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/Ckey1" />
-    <Button
-        android:id="@+id/Aakey1"
-        android:layout_width="28dp"
-        android:layout_height="52dp"
-        android:layout_marginBottom="48dp"
-        android:background="@drawable/blackkey"
-        app:layout_constraintBottom_toBottomOf="@+id/Akey1"
-        app:layout_constraintEnd_toStartOf="@+id/Bkey1"
-        app:layout_constraintStart_toEndOf="@+id/Akey1" />
-
-    <Button
-        android:id="@+id/Ggkey1"
-        android:layout_width="28dp"
-        android:layout_height="52dp"
-        android:layout_marginBottom="48dp"
-        android:background="@drawable/blackkey"
-        app:layout_constraintBottom_toBottomOf="@+id/Gkey1"
-        app:layout_constraintEnd_toStartOf="@+id/Akey1"
-        app:layout_constraintStart_toEndOf="@+id/Gkey1" />
-    <Button
-        android:id="@+id/Ffkey1"
-        android:layout_width="28dp"
-        android:layout_height="52dp"
-        android:layout_marginBottom="48dp"
-        android:background="@drawable/blackkey"
-        app:layout_constraintBottom_toBottomOf="@+id/Fkey1"
-        app:layout_constraintEnd_toStartOf="@+id/Gkey1"
-        app:layout_constraintHorizontal_bias="0.527"
-        app:layout_constraintStart_toEndOf="@+id/Fkey1" />
-
-    <Button
-        android:id="@+id/Ddkey1"
-        android:layout_width="28dp"
-        android:layout_height="52dp"
-        android:layout_marginBottom="48dp"
-        android:background="@drawable/blackkey"
-        app:layout_constraintBottom_toBottomOf="@+id/Dkey1"
-        app:layout_constraintEnd_toStartOf="@+id/Ekey1"
-        app:layout_constraintStart_toEndOf="@+id/Dkey1" />
-
-    <Button
-        android:id="@+id/Cckey1"
-        android:layout_width="28dp"
-        android:layout_height="52dp"
-        android:layout_marginBottom="48dp"
-        android:background="@drawable/blackkey"
-        app:layout_constraintBottom_toBottomOf="@+id/Ckey1"
-        app:layout_constraintEnd_toStartOf="@+id/Dkey1"
-        app:layout_constraintStart_toEndOf="@+id/Ckey1" />
-=======
->>>>>>> origin/gary
-
-
-
-    <Button
-        android:id="@+id/B4key"
-        android:layout_width="45dp"
-        android:layout_height="150dp"
-        android:layout_marginEnd="111dp"
-        android:background="@drawable/whitekey"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/A4key" />
-
-    <Button
-        android:id="@+id/A4key"
-        android:layout_width="45dp"
-        android:layout_height="150dp"
-        android:background="@drawable/whitekey"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/G4key" />
-
-    <Button
-        android:id="@+id/G4key"
-        android:layout_width="45dp"
-        android:layout_height="150dp"
-        android:background="@drawable/whitekey"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/F4key" />
-
-    <Button
-        android:id="@+id/F4key"
-        android:layout_width="45dp"
-        android:layout_height="150dp"
-        android:background="@drawable/whitekey"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/E4key" />
-
-    <Button
-        android:id="@+id/E4key"
-        android:layout_width="45dp"
-        android:layout_height="150dp"
-        android:background="@drawable/whitekey"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/D4key" />
-
-    <Button
-        android:id="@+id/D4key"
-        android:layout_width="45dp"
-        android:layout_height="150dp"
-        android:background="@drawable/whitekey"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/C4key" />
-
-    <Button
-        android:id="@+id/C4key"
-        android:layout_width="45dp"
-        android:layout_height="150dp"
-        android:background="@drawable/whitekey"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/Bkey" />
-
-    <Button
-        android:id="@+id/Aa4key"
-        android:layout_width="36dp"
-        android:layout_height="90dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginEnd="1dp"
-        android:layout_marginBottom="60dp"
-        android:background="@drawable/blackkey"
-        app:layout_constraintBottom_toBottomOf="@+id/A4key"
-        app:layout_constraintEnd_toStartOf="@+id/B4key"
-        app:layout_constraintStart_toEndOf="@+id/A4key" />
-
-    <Button
-        android:id="@+id/Gg4key"
-        android:layout_width="36dp"
-        android:layout_height="90dp"
-        android:layout_marginBottom="60dp"
-        android:background="@drawable/blackkey"
-        app:layout_constraintBottom_toBottomOf="@+id/G4key"
-        app:layout_constraintEnd_toStartOf="@+id/A4key"
-        app:layout_constraintHorizontal_bias="0.527"
-        app:layout_constraintStart_toEndOf="@+id/G4key" />
-
-    <Button
-        android:id="@+id/Ff4key"
-        android:layout_width="36dp"
-        android:layout_height="90dp"
-        android:layout_marginBottom="60dp"
-        android:background="@drawable/blackkey"
-        app:layout_constraintBottom_toBottomOf="@+id/F4key"
-        app:layout_constraintEnd_toStartOf="@+id/G4key"
-        app:layout_constraintHorizontal_bias="0.527"
-        app:layout_constraintStart_toEndOf="@+id/F4key" />
-
-    <Button
-        android:id="@+id/Dd4key"
-        android:layout_width="35dp"
-        android:layout_height="90dp"
-        android:layout_marginStart="25dp"
-        android:layout_marginBottom="60dp"
-        android:background="@drawable/blackkey"
-        app:layout_constraintBottom_toBottomOf="@+id/Dkey"
-        app:layout_constraintEnd_toStartOf="@+id/E4key"
-        app:layout_constraintStart_toEndOf="@+id/Cc4key" />
-
-    <Button
-        android:id="@+id/Cc4key"
-        android:layout_width="36dp"
-        android:layout_height="90dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginBottom="60dp"
-        android:background="@drawable/blackkey"
-        app:layout_constraintBottom_toBottomOf="@+id/C4key"
-        app:layout_constraintStart_toStartOf="@+id/C4key" />
 
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="350dp"
-        android:layout_height="118dp"
-        android:layout_marginStart="64dp"
+        android:layout_height="120dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:src="@drawable/image"
         app:layout_constraintStart_toEndOf="@+id/endButton"
@@ -696,8 +419,8 @@
         android:id="@+id/question"
         android:layout_width="130dp"
         android:layout_height="21dp"
-        android:layout_marginStart="188dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginStart="130dp"
+        android:layout_marginTop="0dp"
         android:text="Which note is it?"
         android:textSize="16dp"
         app:layout_constraintStart_toEndOf="@+id/endButton"
@@ -707,8 +430,8 @@
         android:id="@+id/correctCount"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
-        android:layout_marginTop="64dp"
-        android:layout_marginEnd="36dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="0dp"
         android:text="Correct: 0/15"
         android:textSize="15dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -718,8 +441,8 @@
         android:id="@+id/time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="36dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="0dp"
         android:text="TextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/correctCount" />
