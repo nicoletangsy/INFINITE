@@ -27,7 +27,6 @@ public class MainActivity extends AppCompatActivity {
 
         Button exerciseButton = findViewById(R.id.exerciseButton);
         Button readingButton = findViewById(R.id.readingButton);
-        Button settingButton = findViewById(R.id.aboutButton);
         ImageView imageView = findViewById(R.id.imageView3);
 
         Toolbar toolbar = (Toolbar)findViewById(R.id.app_bar);
@@ -48,13 +47,6 @@ public class MainActivity extends AppCompatActivity {
                 openSightReadingMenuPage();
             }  });
 
-        settingButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openAboutPage();
-            }
-        });
-
         imageView.setImageResource(R.drawable.image);
 
 
@@ -66,11 +58,6 @@ public class MainActivity extends AppCompatActivity {
 
     public void openSightReadingMenuPage() {
         Intent intent = new Intent(this, SightReadingMenuActivity.class);
-        startActivity(intent);
-    }
-
-    public void openAboutPage(){
-        Intent intent = new Intent(this, AboutActivity.class);
         startActivity(intent);
     }
 

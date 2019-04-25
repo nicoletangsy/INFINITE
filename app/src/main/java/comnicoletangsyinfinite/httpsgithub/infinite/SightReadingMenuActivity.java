@@ -19,7 +19,6 @@ public class SightReadingMenuActivity extends AppCompatActivity {
 
         Button lButton = findViewById(R.id.leftHandPracticeButton);
         Button rButton = findViewById(R.id.rightHandPracticeButton);
-        Button bButton = findViewById(R.id.bothHandsPracticeButton);
 
         Toolbar toolbar = (Toolbar)findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);
@@ -39,13 +38,6 @@ public class SightReadingMenuActivity extends AppCompatActivity {
                 openrightHandPracticePage();
             }  });
 
-        bButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openbothHandsPracticePage();
-            }
-        });
-
     }
     public void openleftHandPracticePage() {
         //Intent intent = new Intent(this, PracticeActivity.class);
@@ -55,11 +47,6 @@ public class SightReadingMenuActivity extends AppCompatActivity {
     public void openrightHandPracticePage() {
         Intent intent = new Intent(this, RightHandReading.class);
         startActivity(intent);
-    }
-
-    public void openbothHandsPracticePage(){
-        //Intent intent = new Intent(this, SettingActivity.class);
-        //startActivity(intent);
     }
 
     @Override
