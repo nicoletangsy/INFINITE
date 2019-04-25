@@ -201,7 +201,7 @@ public class PracticeActivity extends AppCompatActivity {
         correctCount.setText("Question:1/15");
         time = (TextView)findViewById(R.id.time);
 
-        final CountDownTimer myCountDownTimer = new CountDownTimer(5000, 1000) {
+        final CountDownTimer myCountDownTimer=new CountDownTimer(50000, 1000) {
 
             public void onTick(long millisUntilFinished) {
                 time.setText("seconds remaining: " + millisUntilFinished / 1000);
@@ -806,7 +806,6 @@ public class PracticeActivity extends AppCompatActivity {
         });
 
     }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
         MenuInflater inflater = getMenuInflater();
