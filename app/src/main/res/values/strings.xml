@@ -2,7 +2,7 @@
     <string name="app_name">KeySight</string>
     <string name="exerciseButton">Exercise</string>
     <string name="readingButton">Sight Reading</string>
-    <string name="settingButton">Setting</string>
+    <string name="aboutButton">About Us</string>
     <string name="homeButton">Home</string>
     <string name="restartButton">Restart</string>
     <string name="endButton">End game</string>
@@ -11,4 +11,6 @@
     <string name="leftHandPracticeButton">Left Hand Practice</string>
     <string name="rightHandPracticeButton">Right Hand Practice</string>
     <string name="bothHandsPracticeButton">Both Hands Practice</string>
+    <string name="aboutUs">About Us</string>
+    <string name="aboutSightReading">About Sight Readinge</string>
 </resources>

@@ -10,9 +10,5 @@
         android:id="@+id/restartButton"
         android:title="@string/restartButton">
     </item>
-    <item
-        android:id="@+id/settingButton"
-        android:title="@string/settingButton">
-    </item>
 
 </menu>

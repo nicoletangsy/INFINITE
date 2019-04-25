@@ -39,15 +39,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <!--<Button-->
-    <!--android:id="@+id/aboutButton"-->
-    <!--android:layout_width="150dp"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:background="@drawable/button"-->
-    <!--android:text="@string/settingButton"-->
-    <!--tools:layout_editor_absoluteX="221dp"-->
-    <!--tools:layout_editor_absoluteY="283dp" />-->
-
+    <Button
+        android:id="@+id/aboutButton"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="18dp"
+        android:background="@drawable/button"
+        android:text="@string/aboutButton"
+        app:layout_constraintBottom_toTopOf="@+id/readingButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
         android:id="@+id/imageView3"
