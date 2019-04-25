@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/backgroundColor"
-    tools:context=".MainActivity">
+    tools:context=".SightReadingMenuActivity"
+    tools:layout_editor_absoluteY="25dp">
 
     <include
         android:id="@+id/app_bar"
@@ -19,49 +19,36 @@
         app:layout_constraintTop_toTopOf="parent"></include>
 
     <Button
-        android:id="@+id/exerciseButton"
+        android:id="@+id/leftHandPracticeButton"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="28dp"
         android:background="@drawable/button"
-        android:text="@string/exerciseButton"
-        app:layout_constraintBottom_toTopOf="@+id/readingButton"
+        android:text="@string/leftHandPracticeButton"
+        app:layout_constraintBottom_toTopOf="@+id/rightHandPracticeButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/readingButton"
+        android:id="@+id/rightHandPracticeButton"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="28dp"
         android:background="@drawable/button"
-        android:text="@string/readingButton"
-        app:layout_constraintBottom_toTopOf="@+id/settingButton"
+        android:text="@string/rightHandPracticeButton"
+        app:layout_constraintBottom_toTopOf="@+id/bothHandsPracticeButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/aboutButton"
+        android:id="@+id/bothHandsPracticeButton"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="28dp"
         android:background="@drawable/button"
-        android:text="@string/settingButton"
+        android:text="@string/bothHandsPracticeButton"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
-
-
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="167dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="281dp"
-        android:contentDescription="@string/app_name"
-        android:src="@drawable/appicon"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/app_bar" />
 
 </android.support.constraint.ConstraintLayout>
