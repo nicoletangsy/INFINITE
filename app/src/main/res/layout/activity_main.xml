@@ -8,56 +8,110 @@
     tools:context=".MainActivity"
     tools:layout_editor_absoluteY="25dp">
 
-    <include
-        android:id="@+id/app_bar"
-        layout="@layout/app_bar"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageView3"></include>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:weightSum="6">
 
-    <Button
-        android:id="@+id/exerciseButton"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:background="@drawable/button"
-        android:text="@string/exerciseButton"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        <include
+            android:id="@+id/app_bar"
+            layout="@layout/app_bar"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.7"></include>
 
-    <Button
-        android:id="@+id/readingButton"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="11dp"
-        android:background="@drawable/button"
-        android:text="@string/readingButton"
-        app:layout_constraintBottom_toTopOf="@+id/exerciseButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="5.3"
+            android:orientation="horizontal"
+            android:weightSum="5">
 
-    <Button
-        android:id="@+id/aboutButton"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="18dp"
-        android:background="@drawable/button"
-        android:text="@string/aboutButton"
-        app:layout_constraintBottom_toTopOf="@+id/readingButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+                <ImageView
+                    android:id="@+id/iconView"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="75dp"
+                    android:contentDescription="@string/app_name"
+                    android:src="@drawable/appicon" />
 
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="167dp"
-        android:layout_height="1dp"
-        android:contentDescription="@string/app_name"
-        android:src="@drawable/appicon"
-        app:layout_constraintBottom_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/app_bar"
-        app:layout_constraintTop_toTopOf="parent" />
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="4"
+                    android:layout_gravity="center_horizontal"
+                    android:orientation="vertical"
+                    android:weightSum="7.5">
+
+
+                    <android.widget.Space
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"></android.widget.Space>
+
+                    <Button
+                        android:id="@+id/aboutButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:textSize="15dp"
+                        android:layout_gravity="center_horizontal"
+                        android:background="@drawable/button"
+                        android:text="@string/aboutButton" />
+
+                    <android.widget.Space
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_weight="0.5"></android.widget.Space>
+
+                    <Button
+                        android:id="@+id/practiceButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:textSize="15dp"
+                        android:layout_gravity="center_horizontal"
+                        android:background="@drawable/button"
+                        android:text="@string/practiceButton" />
+
+                    <android.widget.Space
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_weight="0.5"></android.widget.Space>
+
+                    <Button
+                        android:id="@+id/sightReadingButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:textSize="15dp"
+                        android:layout_gravity="center_horizontal"
+                        android:background="@drawable/button"
+                        android:text="@string/sightReadingButton" />
+
+                    <android.widget.Space
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="0.5"></android.widget.Space>
+
+                    <Button
+                        android:id="@+id/listenPracticeButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:textSize="15dp"
+                        android:layout_gravity="center_horizontal"
+                        android:background="@drawable/button"
+                        android:text="@string/listenPracticeButton" />
+
+                    <android.widget.Space
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"></android.widget.Space>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

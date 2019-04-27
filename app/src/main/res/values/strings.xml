@@ -1,8 +1,16 @@
 <resources>
     <string name="app_name">KeySight</string>
-    <string name="exerciseButton">Exercise</string>
-    <string name="readingButton">Sight Reading</string>
-    <string name="aboutButton">About Us</string>
+
+    //about us page
+    <string name="aboutUs">About Us</string>
+    <string name="aboutSightReading">About Sight Readinge</string>
+
+    //Main page button
+    <string name="aboutButton">\u0020About Us\u0020 </string>
+    <string name="practiceButton">\u0020\u0020\u0020 Sight Practise \u0020\u0020\u0020 </string>
+    <string name="listenPracticeButton">\u0020\u0020\u0020 Listening Practice \u0020\u0020\u0020</string>
+    <string name="sightReadingButton">\u0020\u0020\u0020 Sight Reading \u0020\u0020\u0020</string>
+
     <string name="homeButton">Home</string>
     <string name="restartButton">Restart</string>
     <string name="endButton">End game</string>
@@ -11,6 +19,5 @@
     <string name="leftHandPracticeButton">Left Hand Practice</string>
     <string name="rightHandPracticeButton">Right Hand Practice</string>
     <string name="bothHandsPracticeButton">Both Hands Practice</string>
-    <string name="aboutUs">About Us</string>
-    <string name="aboutSightReading">About Sight Readinge</string>
+
 </resources>

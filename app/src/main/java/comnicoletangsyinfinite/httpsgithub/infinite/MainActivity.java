@@ -25,22 +25,16 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button exerciseButton = findViewById(R.id.exerciseButton);
-        Button readingButton = findViewById(R.id.readingButton);
         Button aboutButton = findViewById(R.id.aboutButton);
-        ImageView imageView = findViewById(R.id.imageView3);
+        Button practiceButton = findViewById(R.id.practiceButton);
+        Button listenPracticeButton = findViewById(R.id.listenPracticeButton);
+        Button sightReadingButton = findViewById(R.id.sightReadingButton);
+
+        ImageView iconView = findViewById(R.id.iconView);
 
         Toolbar toolbar = (Toolbar)findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);
 
-
-
-        exerciseButton.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                openExercisePage();
-            }
-        });
 
         aboutButton.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -49,13 +43,29 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        readingButton.setOnClickListener(new View.OnClickListener(){
+        practiceButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                openExercisePage();
+            }
+        });
+
+        //Not yet finished
+        listenPracticeButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                openAboutUsPage();
+            }
+        });
+
+
+        sightReadingButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
                 openSightReadingMenuPage();
             }  });
 
-        imageView.setImageResource(R.drawable.image);
+
 
 
     }
