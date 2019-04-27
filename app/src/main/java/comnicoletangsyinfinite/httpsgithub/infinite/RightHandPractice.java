@@ -275,9 +275,9 @@ public class RightHandPractice extends AppCompatActivity{
             public void onClick(View v){
                 onRecord(mStartRecording, playRecordButton);
                 if (mStartRecording) {
-                    recordButton.setBackgroundResource(R.drawable.stopbutton);
+                    recordButton.setText("Stop");
                 } else {
-                    recordButton.setBackgroundResource(R.drawable.recordbutton);
+                    recordButton.setText("Start");
                 }
                 mStartRecording = !mStartRecording;
             }

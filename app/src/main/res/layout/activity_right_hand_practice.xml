@@ -27,7 +27,7 @@
             layout="@layout/app_bar"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="0.75"></include>
+            android:layout_weight="0.7"></include>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -79,39 +79,37 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginRight="20dp"
-            android:layout_weight="1.1"
+            android:layout_weight="0.7"
             android:layoutDirection="rtl"
             android:orientation="horizontal">
 
             <Button
                 android:id="@+id/recordButton"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_gravity="end"
-                android:background="@drawable/recordbutton"
-                android:text="" />
+                android:background="@drawable/button"
+                android:text="start"
+                android:layout_marginLeft="30dp"
+                />
 
-            <android.support.v4.widget.Space
-                android:layout_width="10dp"
-                android:layout_height="0dp" />
 
             <Button
                 android:id="@+id/playRecordButton"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:background="@drawable/playbutton"
-                android:text="" />
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="@drawable/button"
+                android:text="play"
+                android:layout_marginLeft="30dp"/>
 
-            <android.support.v4.widget.Space
-                android:layout_width="10dp"
-                android:layout_height="0dp" />
 
             <Button
                 android:id="@+id/analyzeButton"
-                android:layout_width="100dp"
-                android:layout_height="50dp"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
                 android:background="@drawable/button"
-                android:text="Analyze" />
+                android:text="Analyze"
+                android:layout_marginLeft="30dp"/>
 
         </LinearLayout>
     </LinearLayout>

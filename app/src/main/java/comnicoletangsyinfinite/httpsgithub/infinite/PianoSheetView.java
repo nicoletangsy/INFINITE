@@ -130,7 +130,7 @@ public class PianoSheetView extends View {
         height = clipRect.bottom - clipRect.top;
         width = clipRect.right - clipRect.left;
 
-        lineHeight = height / 28;
+        lineHeight = height / 32;
         lineWidth = width / 19f;
         margin = width / 32;
 
@@ -216,7 +216,7 @@ public class PianoSheetView extends View {
             // Draw staff
             if (n == 0) {
                 canvas.translate(0, height / 3.5f);
-                FIRST_NOTE.setXandY(0, height / 3.5f);
+                FIRST_NOTE.setXandY(0, height);
                 FIRST_NOTE.setHeight(lineHeight * 4);
             } else {
                 canvas.translate(0, height / 3.5f);
