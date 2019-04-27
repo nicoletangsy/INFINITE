@@ -17,10 +17,10 @@ import java.util.ArrayList;
 public class SightReadingMenuActivity extends AppCompatActivity {
     ArrayList<Button> buttons = new ArrayList<>();
     ArrayList<Integer> buttonUp = new ArrayList<>();
-    int bpm;
-    int hand;
-    int key;
-    int flat;
+    int bpm= -1;
+    int hand= -1;
+    int key = -1;
+    int flat = -1;
     int[] bpms = {60, 80, 120, -1};
     int[] hands = {0, 1, -1};
     int[] no = {0, 4, 7, 23, 40};
@@ -73,6 +73,8 @@ public class SightReadingMenuActivity extends AppCompatActivity {
         Button DDminorButton = findViewById(R.id.DDminorButton);
         Button AAminorButton = findViewById(R.id.AAminorButton);
         Button Random = findViewById(R.id.random);
+
+        Button nextButton = findViewById(R.id.nextButton);
 
         buttons.add(bpm60);
         buttons.add(bpm80);
@@ -145,6 +147,13 @@ public class SightReadingMenuActivity extends AppCompatActivity {
                 }
             });
         }
+
+        nextButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openSightReadingPage();
+            }
+        });
 
 
     }
@@ -220,15 +229,23 @@ public class SightReadingMenuActivity extends AppCompatActivity {
             key = k-29;
             flat = 1;
         }
-        Log.v("ififif",""+flat+":"+key);
+        else{
+            key = -1;
+            flat = -1;
+        }
     }
     public void buttonReset(int k) {
         buttons.get(k).setBackgroundResource(R.drawable.button);
         buttonUp.set(k, 0);
     }
 
-    public void openleftHandPracticePage() {
-        Intent intent = new Intent(this, LeftHandReading.class);
+    public void openSightReadingPage() {
+        Intent intent = new Intent(this, RightHandReading.class);
+        intent.putExtra("bpm",bpm);
+        intent.putExtra("hand",hand);
+        intent.putExtra("flatSharp",flat);
+        intent.putExtra("key",key);
+        Log.v("allallallall",""+bpm+","+hand+","+flat+","+key);
         startActivity(intent);
     }
 

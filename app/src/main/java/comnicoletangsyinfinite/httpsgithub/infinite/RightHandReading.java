@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -21,23 +22,34 @@ public class RightHandReading extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_right_hand_reading);
 
-        Button startButton = findViewById(R.id.StartPractiseButton);
-        TextView bpmIcon= findViewById(R.id.bpmIcon);
-        TextView bpm= findViewById(R.id.bpm);
-        bpm.setTextColor(Color.BLACK);
-        bpmIcon.setTextColor(Color.BLACK);
-        bpmIcon.setTextSize(25);
-        bpmIcon.setText("\u2669");
-        bpm.setText(" = "+A_GENERATED_MUSIC_NOTES.getTempo());
+        Intent intent = getIntent();
+        int tempo = intent.getIntExtra("bpm",-1);
+        int hand = intent.getIntExtra("hand",-1);
+        int flatSharp = intent.getIntExtra("flatSharp",-1);
+        int key = intent.getIntExtra("key",-1);
+        Log.v("allallallallget",""+tempo+","+hand+","+flatSharp+","+key);
+        A_GENERATED_MUSIC_NOTES.generateSheet((double)tempo,(double)hand,(double)flatSharp,(double)key);
 
-        Toolbar toolbar = (Toolbar)findViewById(R.id.app_bar);
+        Button startButton = findViewById(R.id.StartPractiseButton);
+//        TextView bpmIcon = findViewById(R.id.bpmIcon);
+//        TextView bpm = findViewById(R.id.bpm);
+//        bpm.setTextColor(Color.BLACK);
+//        bpmIcon.setTextColor(Color.BLACK);
+//        bpmIcon.setTextSize(25);
+//        bpmIcon.setText("\u2669");
+//        bpm.setText(" = " + A_GENERATED_MUSIC_NOTES.getTempo());
+
+
+
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        startButton.setOnClickListener(new View.OnClickListener(){
+        startButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
+            public void onClick(View v) {
                 startSightReading();
             }
         });

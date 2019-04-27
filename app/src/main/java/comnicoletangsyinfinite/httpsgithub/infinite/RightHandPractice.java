@@ -156,7 +156,7 @@ public class RightHandPractice extends AppCompatActivity{
                     final double db = e.getdBSPL();
                     final double timeStamp = e.getTimeStamp();
                     final aNote newNote = new aNote(pitch.getNote(), db, timeStamp);
-                    final TextView text = (TextView) findViewById(R.id.textView2);
+//                    final TextView text = (TextView) findViewById(R.id.textView2);
                     String dBSPL = String.format("%.1f", db);
                     String time = String.format("%.2f", timeStamp);
                     added = added + "[" + dBSPL + ", " + time + ", " + pitchInHz + ", " + pitch.getPitch() + "] ";
@@ -164,7 +164,7 @@ public class RightHandPractice extends AppCompatActivity{
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            text.setText(""); //added
+//                            text.setText(""); //added
                         }
                     });
                 }
@@ -232,16 +232,16 @@ public class RightHandPractice extends AppCompatActivity{
         greenLineView3 = (ImageView)findViewById(R.id.greenLineView3);
 
         Button startButton = findViewById(R.id.StartPractiseButton);
-        TextView bpmIcon= findViewById(R.id.bpmIcon);
-        TextView bpm= findViewById(R.id.bpm);
-
-        bpm.setTextColor(Color.BLACK);
-        bpm.setText(" = "+A_GENERATED_MUSIC_NOTES.getPianoSheet().get(0).get(0));
-
-        bpmIcon.setTextColor(Color.BLACK);
-        bpmIcon.setTextSize(25);
-        bpmIcon.setText("\u2669");
-
+//        TextView bpmIcon= findViewById(R.id.bpmIcon);
+//        TextView bpm= findViewById(R.id.bpm);
+//
+//        bpm.setTextColor(Color.BLACK);
+//        bpm.setText(" = "+A_GENERATED_MUSIC_NOTES.getPianoSheet().get(0).get(0));
+//
+//        bpmIcon.setTextColor(Color.BLACK);
+//        bpmIcon.setTextSize(25);
+//        bpmIcon.setText("\u2669");
+//
         countDown= (TextView) findViewById(R.id.countDown);
         countDown.setY((float)FIRST_NOTE.getY()/2);
 
