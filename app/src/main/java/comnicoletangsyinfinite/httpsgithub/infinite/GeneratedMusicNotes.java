@@ -32,7 +32,7 @@ public class GeneratedMusicNotes {
     public double getSharpFlat(){ return pianoSheet.get(1).get(0); }
     public double getKey(){ return pianoSheet.get(1).get(1); }
     public double getHand(){ return pianoSheet.get(2).get(0); }
-    
+
     public void setKeys(double hand) {
         if (hand == 0) {
             keys = leftKeys;

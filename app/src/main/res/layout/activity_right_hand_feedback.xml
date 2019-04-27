@@ -26,11 +26,23 @@
             android:layout_height="0dp"
             android:layout_weight="0.75"></include>
 
-        <comnicoletangsyinfinite.httpsgithub.infinite.PianoSheetView
-            android:id="@+id/staff"
+        <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="4.5" />
+            android:layout_weight="4">
+
+            <comnicoletangsyinfinite.httpsgithub.infinite.PianoSheetView
+                android:id="@+id/staff1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <comnicoletangsyinfinite.httpsgithub.infinite.UserSheetView
+                android:id="@+id/staff2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+
+        </FrameLayout>
         <!--<TextView-->
         <!--android:id="@+id/original"-->
         <!--android:layout_width="match_parent"-->
@@ -51,21 +63,21 @@
         <!--android:gravity="center"/>-->
 
         <!--<TextView-->
-            <!--android:id="@+id/original2"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="0dp"-->
-            <!--android:layout_weight="0.4"-->
-            <!--android:gravity="center"-->
-            <!--android:text=""-->
-            <!--android:textSize="10dp" />-->
+        <!--android:id="@+id/original2"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="0dp"-->
+        <!--android:layout_weight="0.4"-->
+        <!--android:gravity="center"-->
+        <!--android:text=""-->
+        <!--android:textSize="10dp" />-->
 
         <TextView
             android:id="@+id/result2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:text=""
-            android:textSize="10dp"
-            android:gravity="center"/>
+            android:textSize="10dp" />
 
         <!--<TextView-->
         <!--android:id="@+id/feedback"-->
@@ -75,12 +87,6 @@
         <!--android:text=""-->
         <!--android:textSize="20dp"-->
         <!--android:gravity="center"/>-->
-
-
-
-
-
-
 
 
     </LinearLayout>

@@ -6,7 +6,8 @@ import java.util.ArrayList;
 
 public class CompareMusicSheet {
     ArrayList<ArrayList<Double>> generatedMusicSheet;
-    ArrayList<ArrayList<Double>> recordedMusicNotes;
+    ArrayList<ArrayList<Double>> recordedMusicSheet;
+    ArrayList<ArrayList<Double>> userMusicSheet;
 
     public CompareMusicSheet() {
     }
@@ -15,18 +16,21 @@ public class CompareMusicSheet {
         this.generatedMusicSheet = generatedMusicSheet;
     }
 
-    public void setRecordedMusicNotes(ArrayList<ArrayList<Double>> recordedMusicNotes) {
-        this.recordedMusicNotes = recordedMusicNotes;
+    public void setRecordedMusicNotes(ArrayList<ArrayList<Double>> recordedMusicSheet) {
+        this.recordedMusicSheet = recordedMusicSheet;
     }
 
     public void compareTwoSheet() {
         for (int i = 0; i < generatedMusicSheet.size()-3; i++) {
-            Log.v("helphelp",recordedMusicNotes.size()+","+i);
-            if (recordedMusicNotes.size() > i) {
-                if (generatedMusicSheet.get(3 + i).get(0) != recordedMusicNotes.get(i).get(0)) {
-                    generatedMusicSheet.get(3 + i).add((double) 1);
+            if (recordedMusicSheet.size() > i) {
+                userMusicSheet.add(new ArrayList<Double>());
+                userMusicSheet.get(i).add(recordedMusicSheet.get(i).get(0));
+                userMusicSheet.get(i).add(recordedMusicSheet.get(i).get(1));
+                if (generatedMusicSheet.get(3 + i).get(0) != recordedMusicSheet.get(i).get(0)) {
+                    userMusicSheet.get(i).add((double) 1);
                 }
-            }else generatedMusicSheet.get(3 + i).add((double) 1);
+                else userMusicSheet.get(i).add((double) 0);
+            }
         }
 
     }
