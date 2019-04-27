@@ -3,11 +3,13 @@ package comnicoletangsyinfinite.httpsgithub.infinite;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.media.AudioFormat;
+import android.content.res.AssetFileDescriptor;
 import android.media.MediaPlayer;
 import android.media.MediaRecorder;
+import android.media.SoundPool;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -24,8 +26,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.io.ByteArrayInputStream;
-import java.io.File;
 import java.io.IOException;
 
 import be.tarsos.dsp.AudioDispatcher;
@@ -47,6 +47,7 @@ public class RightHandPractice extends AppCompatActivity{
     private AudioDispatcher dispatcher;
     private boolean mStartRecording = true;
     private boolean mStartPlaying = true;
+    private boolean mStartPlayingNote = true;
     private static final int REQUEST_RECORD_AUDIO_PERMISSION = 200;
     private static String mFileName = null;
     private static final int sampleRate = 22050;
@@ -60,12 +61,15 @@ public class RightHandPractice extends AppCompatActivity{
     private Animation greenLineAnim3;
     private TextView countDown;
     private TextView tempo;
-    public double prevPitch = 0.0;
-    public double curPitch = 0.0;
-
     String added = "";
     private MediaRecorder mRecorder = null;
     private MediaPlayer mPlayer = null;
+    private MediaPlayer NotePlayer;
+    private boolean isNotePlaying = false;
+    private SoundPool soundPool = new SoundPool.Builder().setMaxStreams(2).build();
+    private int[][][] sounds = new int[3][5][108]; //sounds[tempo][noteDuration][Notes];
+    Handler handler = new Handler();
+    private static final String TAG = "Resource: ";
 
     // Requesting permission to RECORD_AUDIO
     private boolean permissionToRecordAccepted = false;
@@ -115,6 +119,49 @@ public class RightHandPractice extends AppCompatActivity{
         mPlayer = null;
     }
 
+    private void onPlayNote(boolean start) {
+        if (start) {
+            startPlayingNotes();
+        } else {
+            stopPlayingNotes();
+        }
+    }
+
+    private void startPlayingNotes() {
+        initSoundPool();
+        final int tempo = (int) A_GENERATED_MUSIC_NOTES.getTempo();
+        final int delay = (tempo)*1000/60;
+        final Handler handler = new Handler();
+        handler.post(new Runnable() {
+            int i = 3;
+            int temp = mapTempo(tempo);
+            int note = ((int) Math.floor(A_GENERATED_MUSIC_NOTES.getPianoSheet().get(i).get(0)));
+            int noteDuration = (int) Math.round(A_GENERATED_MUSIC_NOTES.getPianoSheet().get(i).get(1));
+            int duration = mapDuration(noteDuration);
+            @Override
+            public void run() {
+                if (sounds[temp][duration][note]!=-1) {
+                    soundPool.play(sounds[temp][duration][note], 1, 1, 0, 0, 1);
+                } else {
+                    Log.i(TAG, "No this note: sounds[" + temp + "][" + duration + "][" + note + "]");
+                }
+                handler.postDelayed(this, delay);
+                if (i<A_GENERATED_MUSIC_NOTES.getPianoSheet().size()-1) {
+                    i++;
+                    temp = mapTempo(tempo);
+                    note = ((int) Math.floor(A_GENERATED_MUSIC_NOTES.getPianoSheet().get(i).get(0)));
+                    noteDuration = (int) Math.round(A_GENERATED_MUSIC_NOTES.getPianoSheet().get(i).get(1));
+                    duration = mapDuration(noteDuration);
+                } else {
+                    handler.removeCallbacks(this);
+                }
+            }
+        });
+    }
+
+    private void stopPlayingNotes() {
+    }
+
     private void startRecording() {
         mRecorder = new MediaRecorder();
         mRecorder.setAudioSource(MediaRecorder.AudioSource.MIC);
@@ -129,7 +176,6 @@ public class RightHandPractice extends AppCompatActivity{
     }
 
     private void startDetecting() {
-
 
         int time=(int)(60000/A_GENERATED_MUSIC_NOTES.getPianoSheet().get(0).get(0).intValue());
 
@@ -223,6 +269,7 @@ public class RightHandPractice extends AppCompatActivity{
 
         final Button recordButton = (Button)findViewById(R.id.recordButton);
         final Button playRecordButton = (Button)findViewById(R.id.playRecordButton);
+        final Button playNoteButton = (Button)findViewById(R.id.playNoteButton);
         playRecordButton.setVisibility(View.GONE);
         final Button analyzeButton = (Button)findViewById(R.id.analyzeButton);
         final TextView text2 = (TextView) findViewById(R.id.textView2);
@@ -287,6 +334,19 @@ public class RightHandPractice extends AppCompatActivity{
             }
         });
 
+        playNoteButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                onPlayNote(mStartPlayingNote);
+                if (mStartPlayingNote) {
+                    playRecordButton.setText("Stop");
+                } else {
+                    playRecordButton.setText("Hint");
+                }
+                mStartPlayingNote = !mStartPlayingNote;
+            }
+        });
+
         analyzeButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
@@ -330,4 +390,51 @@ public class RightHandPractice extends AppCompatActivity{
         }
         return super.onOptionsItemSelected(menuItem);
     }
+
+    public int mapTempo (int tempo) {
+        if (tempo==60) {
+            return 0;
+        } else if (tempo==80) {
+            return 1;
+        } else if (tempo==120) {
+            return 2;
+        } else {
+            return 0;
+        }
+    }
+
+    public int mapDuration (int noteDuration) {
+        if (noteDuration==1) {
+            return 0;
+        } else if (noteDuration==3) {
+            return 1;
+        } else if (noteDuration==2) {
+            return 2;
+        } else if (noteDuration==4) {
+            return 3;
+        } else if (noteDuration==8) {
+            return 4;
+        } else {
+            return 0;
+        }
+    }
+
+    public void initSoundPool() {
+        for (int i=0; i<3; i++) {
+            for (int j=0; j<5; j++) {
+                for (int k=0; k<108; k++) {
+                    String source = "raw/n" + i + "_" + j + "_" + k;
+                    Log.i(TAG, "Resource: " + source);
+                    int resID = getResources().getIdentifier(source, null, getPackageName());
+                    if (resID!=0) {
+                        Log.i(TAG, "Success!");
+                        sounds[i][j][k] = soundPool.load(this, resID, 1);
+                    } else {
+                        sounds[i][j][k] = -1;
+                    }
+                }
+            }
+        }
+    }
 }
+

@@ -25,73 +25,14 @@ public class GeneratedMusicNotes {
     private double[] keys;
     private double diff = 0;
 
-    public void addNote(aNote aNote) {
-        allNotes.add(aNote);
-    }
-
-    public int[] getTimeSignature() { return timeSignature; }
     public int getBar() { return bar; }
     public int getTotal() { return total; }
-    public int[] getTotalNotes() { return totalNotes; }
-    public aNote getNote(int i) {
-        return allNotes.get(i);
-    }
-    public ArrayList<aNote> getNotesArrayList() {
-        return this.allNotes;
-    }
-    public int[] getAllNotesDuration () {
-        int list[] = new int[allNotes.size()];
-        for (int i=0; i<allNotes.size(); i++) {
-            list[i] = allNotes.get(i).getNoteDuration();
-        }
-        return list;
-    }
     public double getTempo(){ return pianoSheet.get(0).get(0);}
     public double getBeat(){ return pianoSheet.get(0).get(1); }
     public double getSharpFlat(){ return pianoSheet.get(1).get(0); }
     public double getKey(){ return pianoSheet.get(1).get(1); }
     public double getHand(){ return pianoSheet.get(2).get(0); }
-
-    //public GeneratedMusicNotes () { randomGenerated(); }
-
-    /*Constructor for testing
-    public GeneratedMusicNotes(int timeSignature_count, int timeSignature_note) {
-        this.timeSignature[0] = timeSignature_count;
-        this.timeSignature[1] = timeSignature_note;
-        addNote(new aNote(52,8));
-        addNote(new aNote(50,8));
-        addNote(new aNote(48,8));
-        addNote(new aNote(50,8));
-        addNote(new aNote(52,8));
-        addNote(new aNote(52,8));
-        addNote(new aNote(52,4));
-        addNote(new aNote(50,8));
-        addNote(new aNote(50,8));
-        addNote(new aNote(50,4));
-        addNote(new aNote(52,8));
-        addNote(new aNote(55,8));
-        addNote(new aNote(55,4));
-    }*/
-
-    /*private void randomGenerated() {
-        tempo = (int)(Math.random() * 120 + 60); // 60~180 bpm
-        bar = (int)(Math.random() * 4 + 1); // 1~4 bars
-        double totalNotes = bar * timeSignature[0];
-        do {
-            double newNote = randomNote();
-            int duration = randomNoteDuration();
-            while (timeSignature[1]/duration>totalNotes) {
-                duration = randomNoteDuration();
-            }
-            addNote(new aNote(newNote, duration));
-            totalNotes -= duration;
-        } while (totalNotes>0);
-    }
-
-    private int randomNoteDuration () {
-        int duration = (int) Math.random() * 5;
-        return noteDuration[duration];
-    }*/
+    
     public void setKeys(double hand) {
         if (hand == 0) {
             keys = leftKeys;
