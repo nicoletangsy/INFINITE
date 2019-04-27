@@ -21,12 +21,12 @@ public class Notes extends View {
     private Path notepath;
 
     private Paint paint;
-    private Paint thePaint;
-    private Paint paint423;
+    private Paint thePaint;//for fit in require paint
+    private Paint paint23;//paint of note type 2,3
     private Paint paintwrong;
-    private Paint paint423wrong;
+    private Paint paint23wrong;
     private Paint paintcorrect;
-    private Paint paint423correct;
+    private Paint paint23correct;
     private Paint paintTail;
     private Paint sharpPiant;
     private Paint flatPiant;
@@ -39,13 +39,10 @@ public class Notes extends View {
     private double note;
     private double note1;
     private double note2;
-    private double note3;
-    private double note4;
 
 
     private float lineHeight;
     private float lineWidth;
-    //the width of a 4th note
     private float dy;
     private float dx;
     private float yBase;
@@ -101,12 +98,12 @@ public class Notes extends View {
         paint.setTextSize(lineHeight * 4);
         paint.setTextAlign(Paint.Align.LEFT);
 
-        paint423 = new Paint();
-        paint423.setStrokeWidth(5);
-        paint423.setColor(textColour);
-        paint423.setStyle(Paint.Style.STROKE);
-        paint423.setTextSize(lineHeight * 4);
-        paint423.setTextAlign(Paint.Align.LEFT);
+        paint23 = new Paint();
+        paint23.setStrokeWidth(5);
+        paint23.setColor(textColour);
+        paint23.setStyle(Paint.Style.STROKE);
+        paint23.setTextSize(lineHeight * 4);
+        paint23.setTextAlign(Paint.Align.LEFT);
 
         paintwrong = new Paint();
         paintwrong.setStrokeWidth(4);
@@ -115,13 +112,13 @@ public class Notes extends View {
         paintwrong.setTextSize(lineHeight * 4);
         paintwrong.setTextAlign(Paint.Align.LEFT);
 
-        paint423wrong = new Paint();
-        paint423wrong = new Paint();
-        paint423wrong.setStrokeWidth(4);
-        paint423wrong.setColor(wrongColour);
-        paint423wrong.setStyle(Paint.Style.STROKE);
-        paint423wrong.setTextSize(lineHeight * 4);
-        paint423wrong.setTextAlign(Paint.Align.LEFT);
+        paint23wrong = new Paint();
+        paint23wrong = new Paint();
+        paint23wrong.setStrokeWidth(4);
+        paint23wrong.setColor(wrongColour);
+        paint23wrong.setStyle(Paint.Style.STROKE);
+        paint23wrong.setTextSize(lineHeight * 4);
+        paint23wrong.setTextAlign(Paint.Align.LEFT);
 
         paintcorrect = new Paint();
         paintcorrect.setStrokeWidth(4);
@@ -130,13 +127,13 @@ public class Notes extends View {
         paintcorrect.setTextSize(lineHeight * 4);
         paintcorrect.setTextAlign(Paint.Align.LEFT);
 
-        paint423correct = new Paint();
-        paint423correct = new Paint();
-        paint423correct.setStrokeWidth(4);
-        paint423correct.setColor(correctColour);
-        paint423correct.setStyle(Paint.Style.STROKE);
-        paint423correct.setTextSize(lineHeight * 4);
-        paint423correct.setTextAlign(Paint.Align.LEFT);
+        paint23correct = new Paint();
+        paint23correct = new Paint();
+        paint23correct.setStrokeWidth(4);
+        paint23correct.setColor(correctColour);
+        paint23correct.setStyle(Paint.Style.STROKE);
+        paint23correct.setTextSize(lineHeight * 4);
+        paint23correct.setTextAlign(Paint.Align.LEFT);
 
         paintTail = new Paint();
         paintTail.setStrokeWidth(20);
@@ -406,11 +403,11 @@ public class Notes extends View {
                 thePaint = paint;
         } else if (noteType == 2 || noteType == 3) {
             if (wrong == 1)
-                thePaint = paint423wrong;
+                thePaint = paint23wrong;
             else if (wrong == 0)
-                thePaint = paint423correct;
+                thePaint = paint23correct;
             else
-                thePaint = paint423;
+                thePaint = paint23;
 
         }
 
@@ -482,17 +479,7 @@ public class Notes extends View {
         boolean upper = true;
 
         if (noteType > 4) {
-            if (noteType == 6) {
-                if (hand == 0) {
-                    upper = false;
-                    if (note1 <= 36 && note2 <= 36 && note3 <= 36) {
-                        upper = true;
-                    }
-                } else if ((note1 > 58 && note2 > 58) || (note1 > 58 && note3 > 58) || (note2 > 58 && note3 > 58)) {
-                    upper = false;
-                }
-
-            } else if (noteType == 8) {
+             if (noteType == 8) {
                 if (hand == 0) {
                     upper = false;
                     if (note1 <= 36 && note2 <= 36) {

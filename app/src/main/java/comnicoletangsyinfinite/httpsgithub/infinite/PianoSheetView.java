@@ -216,7 +216,7 @@ public class PianoSheetView extends View {
             // Draw staff
             if (n == 0) {
                 canvas.translate(0, height / 3.5f);
-                FIRST_NOTE.setXandY(0, height / 4.1f);
+                FIRST_NOTE.setXandY(0, height / 3.5f);
                 FIRST_NOTE.setHeight(lineHeight * 4);
             } else {
                 canvas.translate(0, height / 3.5f);

@@ -1,6 +1,7 @@
 package comnicoletangsyinfinite.httpsgithub.infinite;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -21,9 +22,13 @@ public class RightHandReading extends AppCompatActivity {
         setContentView(R.layout.activity_right_hand_reading);
 
         Button startButton = findViewById(R.id.StartPractiseButton);
-        Button previousPageButton = findViewById(R.id.previousPageButton);
-        Button nextPageButton = findViewById(R.id.nextPageButton);
-        TextView pageNubmer = findViewById(R.id.pageNumber);
+        TextView bpmIcon= findViewById(R.id.bpmIcon);
+        TextView bpm= findViewById(R.id.bpm);
+        bpm.setTextColor(Color.BLACK);
+        bpmIcon.setTextColor(Color.BLACK);
+        bpmIcon.setTextSize(25);
+        bpmIcon.setText("\u2669");
+        bpm.setText(" = "+A_GENERATED_MUSIC_NOTES.getTempo());
 
         Toolbar toolbar = (Toolbar)findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);

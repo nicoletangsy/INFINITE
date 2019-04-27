@@ -3,6 +3,7 @@ package comnicoletangsyinfinite.httpsgithub.infinite;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.media.AudioFormat;
 import android.media.MediaPlayer;
 import android.media.MediaRecorder;
@@ -140,7 +141,7 @@ public class RightHandPractice extends AppCompatActivity{
             }
 
             public void onFinish() {
-               countDown.setVisibility(View.INVISIBLE);
+//               countDown.setVisibility(View.INVISIBLE);
             }
         }.start();
 
@@ -230,6 +231,20 @@ public class RightHandPractice extends AppCompatActivity{
         greenLineView2 = (ImageView)findViewById(R.id.greenLineView2);
         greenLineView3 = (ImageView)findViewById(R.id.greenLineView3);
 
+        Button startButton = findViewById(R.id.StartPractiseButton);
+        TextView bpmIcon= findViewById(R.id.bpmIcon);
+        TextView bpm= findViewById(R.id.bpm);
+
+        bpm.setTextColor(Color.BLACK);
+        bpm.setText(" = "+A_GENERATED_MUSIC_NOTES.getPianoSheet().get(0).get(0));
+
+        bpmIcon.setTextColor(Color.BLACK);
+        bpmIcon.setTextSize(25);
+        bpmIcon.setText("\u2669");
+
+        countDown= (TextView) findViewById(R.id.countDown);
+        countDown.setY((float)FIRST_NOTE.getY()/2);
+
         Toolbar toolbar = (Toolbar)findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -251,12 +266,6 @@ public class RightHandPractice extends AppCompatActivity{
         greenLineView3.setX((float)FIRST_NOTE.getX());
         greenLineView3.setY((float)FIRST_NOTE.getLine3());
         greenLineView3.getLayoutParams().height = (int)FIRST_NOTE.getHeight();
-
-        tempo =  (TextView) findViewById(R.id.tempo);
-        tempo.setText("bpm:"+A_GENERATED_MUSIC_NOTES.getPianoSheet().get(0).get(0));
-
-        countDown= (TextView) findViewById(R.id.countDown);
-        countDown.setY((float)FIRST_NOTE.getY()/2);
 
         greenLineView.setX((float)FIRST_NOTE.getX()+countDown.getWidth());
         greenLineView.setY((float)FIRST_NOTE.getY());
