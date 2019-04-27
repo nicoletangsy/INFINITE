@@ -130,7 +130,6 @@ public class RightHandPractice extends AppCompatActivity{
     private void startPlayingNotes() {
         initSoundPool();
         final int tempo = (int) A_GENERATED_MUSIC_NOTES.getTempo();
-        final int delay = (tempo)*1000/60;
         final Handler handler = new Handler();
         handler.post(new Runnable() {
             int i = 3;
@@ -138,6 +137,7 @@ public class RightHandPractice extends AppCompatActivity{
             int note = ((int) Math.floor(A_GENERATED_MUSIC_NOTES.getPianoSheet().get(i).get(0)));
             int noteDuration = (int) Math.round(A_GENERATED_MUSIC_NOTES.getPianoSheet().get(i).get(1));
             int duration = mapDuration(noteDuration);
+            int delay = (tempo)*1000/60*4/noteDuration;
             @Override
             public void run() {
                 if (sounds[temp][duration][note]!=-1) {
@@ -152,6 +152,7 @@ public class RightHandPractice extends AppCompatActivity{
                     note = ((int) Math.floor(A_GENERATED_MUSIC_NOTES.getPianoSheet().get(i).get(0)));
                     noteDuration = (int) Math.round(A_GENERATED_MUSIC_NOTES.getPianoSheet().get(i).get(1));
                     duration = mapDuration(noteDuration);
+                    delay = (tempo)*1000/60*4/noteDuration;
                 } else {
                     handler.removeCallbacks(this);
                 }
