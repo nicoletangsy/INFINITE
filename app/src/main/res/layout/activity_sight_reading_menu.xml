@@ -10,105 +10,574 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:weightSum="6"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:weightSum="6">
 
-    <include
-        android:id="@+id/app_bar"
-        layout="@layout/app_bar"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.75"></include>
+        <include
+            android:id="@+id/app_bar"
+            layout="@layout/app_bar"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.75"></include>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:orientation="horizontal"
-        android:weightSum="3"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="126dp">
+        <android.widget.Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.3"></android.widget.Space>
 
-        <Button
-            android:id="@+id/bpm60"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@drawable/button"
-            android:text="60" />
+        <!--for bpm and hand-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_gravity="start"
+            android:layout_weight="0.65"
+            android:orientation="horizontal"
+            android:weightSum="6">
 
-        <Button
-            android:id="@+id/bpm80"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@drawable/button"
-            android:text="80" />
+            <android.widget.Space
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.3"></android.widget.Space>
 
-        <Button
-            android:id="@+id/bpm120"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@drawable/button"
-            android:text="120" />
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:text="@string/bpmText"
+                android:textColor="@color/black"
+                android:textSize="20dp" />
+
+            <Button
+                android:id="@+id/bpm60"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.35"
+                android:background="@drawable/button"
+                android:text="60" />
+
+            <android.widget.Space
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.07"></android.widget.Space>
+
+            <Button
+                android:id="@+id/bpm80"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.35"
+                android:background="@drawable/button"
+                android:text="80" />
+
+            <android.widget.Space
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.07"></android.widget.Space>
+
+            <Button
+                android:id="@+id/bpm120"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.4"
+                android:background="@drawable/button"
+                android:text="120" />
+
+            <android.widget.Space
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.07"></android.widget.Space>
+
+            <Button
+                android:id="@+id/bpmRandom"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.75"
+                android:background="@drawable/button"
+                android:text="@string/random" />
+
+            <android.widget.Space
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.2"></android.widget.Space>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+
+                android:text="@string/handText"
+                android:textColor="@color/black"
+                android:textSize="20dp" />
+
+            <android.widget.Space
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"></android.widget.Space>
+
+            <Button
+                android:id="@+id/leftHandButton"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:background="@drawable/button"
+                android:text="@string/leftHandPracticeButton" />
+
+            <android.widget.Space
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"></android.widget.Space>
+
+            <Button
+                android:id="@+id/rightHandButton"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:background="@drawable/button"
+                android:text="@string/rightHandPracticeButton" />
+
+            <android.widget.Space
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.07"></android.widget.Space>
+
+            <Button
+                android:id="@+id/handRandom"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.75"
+                android:background="@drawable/button"
+                android:text="@string/random"
+                android:textSize="15dp" />
+
+        </LinearLayout>
+
+        <android.widget.Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.3"></android.widget.Space>
+
+
+        <!--for major part 1-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.65"
+            android:orientation="horizontal"
+            android:weightSum="6">
+
+
+            <android.widget.Space
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"></android.widget.Space>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/majorText"
+                android:textColor="@color/black"
+                android:textSize="20dp" />
+
+            <Button
+                android:id="@+id/CcMajorButton"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginRight="3dp"
+                android:layout_weight="0.4"
+                android:background="@drawable/button"
+                android:text="@string/CcButton" />
+
+
+            <Button
+                android:id="@+id/GgMajorButton"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginRight="3dp"
+                android:layout_weight="0.4"
+                android:background="@drawable/button"
+                android:text="@string/GgButton" />
+
+            <Button
+                android:id="@+id/DdMajorButton"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginRight="3dp"
+                android:layout_weight="0.4"
+                android:background="@drawable/button"
+                android:text="@string/DdButton" />
+
+
+            <Button
+                android:id="@+id/AaMajorButton"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginRight="3dp"
+                android:layout_weight="0.4"
+                android:background="@drawable/button"
+                android:text="@string/AaButton" />
+
+            <Button
+                android:id="@+id/EeMajorButton"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginRight="3dp"
+                android:layout_weight="0.4"
+                android:background="@drawable/button"
+                android:text="@string/EeButton" />
+
+
+            <Button
+                android:id="@+id/BbMajorButton"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginRight="3dp"
+                android:layout_weight="0.4"
+                android:background="@drawable/button"
+                android:text="@string/BbButton" />
+
+            <Button
+                android:id="@+id/FMajorButton"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginRight="3dp"
+                android:layout_weight="0.4"
+                android:background="@drawable/button"
+                android:text="@string/FButton" />
+
+
+            <Button
+                android:id="@+id/CMajorButton"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginRight="3dp"
+                android:layout_weight="0.4"
+                android:background="@drawable/button"
+                android:text="@string/CButton" />
+
+
+        </LinearLayout>
+
+
+        <android.widget.Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.15"></android.widget.Space>
+
+        <!--for major part 2-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.65"
+            android:orientation="horizontal"
+            android:weightSum="6">
+
+            <android.widget.Space
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1.5"></android.widget.Space>
+
+            <Button
+                android:id="@+id/GMajorButton"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginRight="3dp"
+                android:layout_weight="0.4"
+                android:background="@drawable/button"
+                android:text="@string/GButton" />
+
+
+            <Button
+                android:id="@+id/DMajorButton"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginRight="3dp"
+                android:layout_weight="0.4"
+                android:background="@drawable/button"
+                android:text="@string/DButton" />
+
+            <Button
+                android:id="@+id/AMajorButton"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginRight="3dp"
+                android:layout_weight="0.4"
+                android:background="@drawable/button"
+                android:text="@string/AButton" />
+
+
+            <Button
+                android:id="@+id/EMajorButton"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginRight="3dp"
+                android:layout_weight="0.4"
+                android:background="@drawable/button"
+                android:text="@string/EButton" />
+
+            <Button
+                android:id="@+id/BMajorButton"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginRight="3dp"
+                android:layout_weight="0.4"
+                android:background="@drawable/button"
+                android:text="@string/BButton" />
+
+
+            <Button
+                android:id="@+id/FFMajorButton"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginRight="3dp"
+                android:layout_weight="0.4"
+                android:background="@drawable/button"
+                android:text="@string/FFButton" />
+
+            <Button
+                android:id="@+id/CCMajorButton"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginRight="3dp"
+                android:layout_weight="0.4"
+                android:background="@drawable/button"
+                android:text="@string/CCButton" />
+
+
+
+        </LinearLayout>
+
+
+        <android.widget.Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.15"></android.widget.Space>
+
+        <!--for minor part  1-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.65"
+            android:orientation="horizontal"
+            android:weightSum="6">
+
+            <android.widget.Space
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"></android.widget.Space>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="left"
+                android:layout_weight="1"
+                android:text="@string/minerText"
+                android:textColor="@color/black"
+                android:textSize="20dp" />
+
+            <Button
+                android:id="@+id/AaminorButton"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginRight="3dp"
+                android:layout_weight="0.4"
+                android:background="@drawable/button"
+                android:text="@string/AaButton" />
+
+
+            <Button
+                android:id="@+id/EeminorButton"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginRight="3dp"
+                android:layout_weight="0.4"
+                android:background="@drawable/button"
+                android:text="@string/EeButton" />
+
+            <Button
+                android:id="@+id/BbminorButton"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginRight="3dp"
+                android:layout_weight="0.4"
+                android:background="@drawable/button"
+                android:text="@string/BbButton" />
+
+
+            <Button
+                android:id="@+id/FminorButton"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginRight="3dp"
+                android:layout_weight="0.4"
+                android:background="@drawable/button"
+                android:text="@string/FButton" />
+
+            <Button
+                android:id="@+id/CminorButton"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginRight="3dp"
+                android:layout_weight="0.4"
+                android:background="@drawable/button"
+                android:text="@string/CButton" />
+
+
+            <Button
+                android:id="@+id/GminorButton"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginRight="3dp"
+                android:layout_weight="0.4"
+                android:background="@drawable/button"
+                android:text="@string/GButton" />
+
+            <Button
+                android:id="@+id/DminorButton"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginRight="3dp"
+                android:layout_weight="0.4"
+                android:background="@drawable/button"
+                android:text="@string/DButton" />
+
+            <Button
+                android:id="@+id/AminorButton"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginRight="3dp"
+                android:layout_weight="0.4"
+                android:background="@drawable/button"
+                android:text="@string/AButton" />
+
+        </LinearLayout>
+
+        <android.widget.Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.15"></android.widget.Space>
+
+
+        <!--for minor part 2-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.65"
+            android:orientation="horizontal"
+            android:weightSum="6">
+
+            <android.widget.Space
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1.5"></android.widget.Space>
+
+
+            <Button
+                android:id="@+id/EminorButton"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginRight="3dp"
+                android:layout_weight="0.4"
+                android:background="@drawable/button"
+                android:text="@string/EButton" />
+
+
+            <Button
+                android:id="@+id/BminorButton"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginRight="3dp"
+                android:layout_weight="0.4"
+                android:background="@drawable/button"
+                android:text="@string/BButton" />
+
+            <Button
+                android:id="@+id/FFminorButton"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginRight="3dp"
+                android:layout_weight="0.4"
+                android:background="@drawable/button"
+                android:text="@string/FFButton" />
+
+
+            <Button
+                android:id="@+id/CCminorButton"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginRight="3dp"
+                android:layout_weight="0.4"
+                android:background="@drawable/button"
+                android:text="@string/CCButton" />
+
+            <Button
+                android:id="@+id/GGminorButton"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginRight="3dp"
+                android:layout_weight="0.4"
+                android:background="@drawable/button"
+                android:text="@string/GGButton" />
+
+
+            <Button
+                android:id="@+id/DDminorButton"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginRight="3dp"
+                android:layout_weight="0.4"
+                android:background="@drawable/button"
+                android:text="@string/DDButton" />
+
+            <Button
+                android:id="@+id/AAminorButton"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginRight="3dp"
+                android:layout_weight="0.4"
+                android:background="@drawable/button"
+                android:text="@string/AAButton" />
+
+            <Button
+                android:id="@+id/random"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.75"
+                android:background="@drawable/button"
+                android:text="@string/random" />
+
+
+        </LinearLayout>
+
+        <android.widget.Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.2"></android.widget.Space>
+        <!--for next button-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.65"
+            android:layoutDirection="rtl"
+            android:orientation="horizontal"
+            android:weightSum="3">
+
+            <Button
+                android:id="@+id/nextButton"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginRight="20dp"
+                android:layout_weight="0.01"
+                android:background="@drawable/button"
+                android:text="Next" />
+        </LinearLayout>
+
+        <android.widget.Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.3"></android.widget.Space>
+
 
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:orientation="horizontal"
-        android:weightSum="3"
-        tools:layout_editor_absoluteX="134dp"
-        tools:layout_editor_absoluteY="331dp">
-
-        <Button
-            android:id="@+id/leftHandPracticeButton"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="28dp"
-            android:background="@drawable/button"
-            android:text="@string/leftHandPracticeButton" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:orientation="horizontal"
-        android:weightSum="3"
-        tools:layout_editor_absoluteX="150dp"
-        tools:layout_editor_absoluteY="98dp">
-
-        <Button
-            android:id="@+id/rightHandPracticeButton"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="28dp"
-            android:background="@drawable/button"
-            android:text="@string/leftHandPracticeButton" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.7"
-        android:weightSum="3"
-        android:orientation="horizontal"
-        tools:layout_editor_absoluteX="37dp"
-        tools:layout_editor_absoluteY="225dp">
-
-        <Button
-            android:id="@+id/nextButton"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="28dp"
-            android:layout_weight="1"
-            android:background="@drawable/button"
-            android:text="Next" />
-    </LinearLayout>
-    </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#FFb805</color>
-    <color name="colorPrimaryDark">#FFA505</color>
+    <color name="colorPrimary">#FEAB05</color>
+    <color name="colorPrimaryDark">#FEAB05</color>
     <color name="buttonborder">#724517</color>
-    <color name="buttoncolor">#FFb805</color>
-    <color name="menuColor">#FFE505</color>
+    <color name="buttoncolor">#FEAB05</color>
+    <color name="menuColor">#FEF27C</color>
     <color name="backgroundColor">#22FED532</color>
     <color name="black">#000000</color>
     <color name="colorAccent">#FF4081</color>
