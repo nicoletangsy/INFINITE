@@ -22,16 +22,18 @@ public class Notes extends View {
 
     private Paint paint;
     private Paint paint423;
+    private Paint paintwrong;
+    private Paint paint423wrong;
+    private Paint paintcorrect;
+    private Paint paint423correct;
     private Paint paintTail;
     private Paint sharpPiant;
     private Paint flatPiant;
     private Paint paint1;
-    private Paint paintwrong;
-    private Paint paint423wrong;
 
-    private int speed;
     private int textColour;
     private int wrongColour;
+    private int correctColour;
     private double hand;
     private double note;
     private double note1;
@@ -89,6 +91,8 @@ public class Notes extends View {
         textColour = context.getResources().getColor(R.color.black);
         wrongColour = context.getResources().getColor(R.color.red);
 
+        correctColour = context.getResources().getColor(R.color.green);
+
         paint = new Paint();
         paint.setStrokeWidth(4);
         paint.setColor(textColour);
@@ -117,6 +121,21 @@ public class Notes extends View {
         paint423wrong.setStyle(Paint.Style.STROKE);
         paint423wrong.setTextSize(lineHeight * 4);
         paint423wrong.setTextAlign(Paint.Align.LEFT);
+
+        paintcorrect = new Paint();
+        paintcorrect.setStrokeWidth(4);
+        paintcorrect.setColor(correctColour);
+        paintcorrect.setStyle(Paint.Style.FILL);
+        paintcorrect.setTextSize(lineHeight * 4);
+        paintcorrect.setTextAlign(Paint.Align.LEFT);
+
+        paint423correct = new Paint();
+        paint423correct = new Paint();
+        paint423correct.setStrokeWidth(4);
+        paint423correct.setColor(correctColour);
+        paint423correct.setStyle(Paint.Style.STROKE);
+        paint423correct.setTextSize(lineHeight * 4);
+        paint423correct.setTextAlign(Paint.Align.LEFT);
 
         paintTail = new Paint();
         paintTail.setStrokeWidth(20);
@@ -156,9 +175,9 @@ public class Notes extends View {
         this.lineHeight = lineHeight;
         this.lineWidth = lineWidth;
         if (note.size() == 2) {
-            scaleNoteDrawFlat(1, 0, 0, hand);
+            scaleNoteDrawFlat(1, 0, -1, hand);
         } else
-            scaleNoteDrawFlat(1, 0, 1, hand);
+            scaleNoteDrawFlat(1, 0, note.get(2), hand);
 
 
         return canvas;
@@ -177,9 +196,9 @@ public class Notes extends View {
         this.lineWidth = lineWidth;
 
         if (note.size() == 2) {
-            scaleNoteDrawFlat(2, 3.5f, 0, hand);
+            scaleNoteDrawFlat(2, 3.5f, -1, hand);
         } else
-            scaleNoteDrawFlat(2, 3.5f, 1, hand);
+            scaleNoteDrawFlat(2, 3.5f, note.get(2), hand);
 
         // Translate canvas
         canvas.translate(noteWidth * 2, -(yBase - dy));
@@ -196,9 +215,9 @@ public class Notes extends View {
         this.lineWidth = lineWidth;
 
         if (note.size() == 2) {
-            scaleNoteDrawFlat(3, 3.5f, 0, hand);
+            scaleNoteDrawFlat(3, 3.5f, -1, hand);
         } else
-            scaleNoteDrawFlat(3, 3.5f, 1, hand);
+            scaleNoteDrawFlat(3, 3.5f, note.get(2), hand);
 
         // Translate canvas
         canvas.translate(noteWidth * 3, -(yBase - dy));
@@ -223,9 +242,9 @@ public class Notes extends View {
         this.lineWidth = lineWidth;
 
         if (note.size() == 2) {
-            scaleNoteDrawFlat(4, 3.5f, 0, hand);
+            scaleNoteDrawFlat(4, 3.5f, -1, hand);
         } else
-            scaleNoteDrawFlat(4, 3.5f, 1, hand);
+            scaleNoteDrawFlat(4, 3.5f, note.get(2), hand);
 
 
         Log.v("noteWidth2", noteWidth + "," + dy);
@@ -303,9 +322,9 @@ public class Notes extends View {
 
         this.note = note1.get(0);
         if (note1.size() == 2) {
-            scaleNoteDrawFlat(8, tailHeight1, 0, hand);
+            scaleNoteDrawFlat(8, tailHeight1, -1, hand);
         } else
-            scaleNoteDrawFlat(8, tailHeight1, 1, hand);
+            scaleNoteDrawFlat(8, tailHeight1, note1.get(2), hand);
 
 
         if (max == note2.get(0)) {
@@ -328,9 +347,9 @@ public class Notes extends View {
 
         this.note = note2.get(0);
         if (note2.size() == 2) {
-            scaleNoteDrawFlat(8, tailHeight2, 0, hand);
+            scaleNoteDrawFlat(8, tailHeight2, -1, hand);
         } else
-            scaleNoteDrawFlat(8, tailHeight2, 1, hand);
+            scaleNoteDrawFlat(8, tailHeight2, note2.get(2), hand);
 
 
         // Translate canvas
@@ -373,14 +392,18 @@ public class Notes extends View {
             drawLeger(noteType, note, wrong);
         }
 
-        if (noteType >3) {
+        if (noteType > 3) {
             if (wrong == 1)
                 canvas.drawPath(notepath, paintwrong);
+            else if (wrong == 0)
+                canvas.drawPath(notepath, paintcorrect);
             else
                 canvas.drawPath(notepath, paint);
         } else if (noteType == 2 || noteType == 3) {
             if (wrong == 1)
                 canvas.drawPath(notepath, paint423wrong);
+            else if (wrong == 0)
+                canvas.drawPath(notepath, paint423correct);
             else
                 canvas.drawPath(notepath, paint423);
 
@@ -422,6 +445,13 @@ public class Notes extends View {
             else
                 canvas.drawLine(-lineHeight / 1.5f, 0,
                         -lineHeight / 1.5f, lineHeight * tailHeight, paintwrong);
+        } else if (wrong == 0) {
+            if (tailIsUpper(noteType))
+                canvas.drawLine(lineHeight / 1.5f, 0,
+                        lineHeight / 1.5f, -lineHeight * tailHeight, paintcorrect);
+            else
+                canvas.drawLine(-lineHeight / 1.5f, 0,
+                        -lineHeight / 1.5f, lineHeight * tailHeight, paintcorrect);
         } else {
             if (tailIsUpper(noteType))
                 canvas.drawLine(lineHeight / 1.5f, 0,
@@ -526,6 +556,11 @@ public class Notes extends View {
                 canvas.drawLine(-lineHeight, 0, lineHeight, 0, paintwrong);
             else
                 canvas.drawLine(-lineHeight * 1.5f, 0, lineHeight * 1.5f, 0, paintwrong);
+        } else if (wrong == 0) {
+            if (noteType > 1)
+                canvas.drawLine(-lineHeight, 0, lineHeight, 0, paintcorrect);
+            else
+                canvas.drawLine(-lineHeight * 1.5f, 0, lineHeight * 1.5f, 0, paintcorrect);
         } else {
             if (noteType > 1)
                 canvas.drawLine(-lineHeight, 0, lineHeight, 0, paint);
