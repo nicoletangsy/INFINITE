@@ -74,8 +74,11 @@ public class UserSheetView extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 
-        theSheet = A_COMPARE_MUSIC_SHEET.getSheet();
+        theSheet = A_COMPARE_MUSIC_SHEET.gethard();
 
+
+
+        Log.v("kakakakakakacom",""+theSheet);
 
         if (theSheet.get(2).get(0) == 0) {
             leftHand = 1;
@@ -144,20 +147,14 @@ public class UserSheetView extends View {
 
             //whether the note is 8note
             else if (theSheet.get(i).get(1) == 8) {
-                notesArrayList.add(new Notes(this.getContext()));
-                canvas = notesArrayList.get(j).create8Note(lineWidth, lineHeight, noteWidth, theSheet.get(i), theSheet.get(i + 1), theSheet.get(2).get(0), canvas);
-                i++;
-                totalBeat++;
-            }
-
-            //One column finished
-            if (totalBeat % (theSheet.get(0).get(1)) == 0 && totalBeat % (theSheet.get(0).get(1) * 2) != 0) {
-                notesArrayList.add(new Notes(this.getContext()));
-                canvas = notesArrayList.get(j).createStroke(lineWidth, lineHeight, noteWidth, canvas);
+                    notesArrayList.add(new Notes(this.getContext()));
+                    canvas = notesArrayList.get(j).create8Note(lineWidth, lineHeight, noteWidth, theSheet.get(i), theSheet.get(i + 1), theSheet.get(2).get(0), canvas);
+                    i++;
+                    totalBeat++;
             }
 
             //To next line
-            if (totalBeat % (theSheet.get(0).get(1) * 2) == 0) {
+            if (totalBeat % 8 == 0) {
                 canvas.translate(-noteArea, height / 3.975f);
             }
 

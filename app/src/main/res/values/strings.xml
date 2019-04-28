@@ -49,6 +49,12 @@
     <!--Tutorial Page-->
     <string name="tutorialInstructiontext">Tap a piano key</string>
 
+
+    <!--Pactice Menu Page-->
+    <string name="withFakePianoButton">Practice With Virtual Piano Button</string>
+    <string name="withRealPianoButton">Practice With Real Piano</string>
+    <string name="practiceInstructionText">Which Type of Practice would you want?</string>
+
     <string name="homeButton">Home</string>
     <string name="restartButton">Restart</string>
     <string name="endButton">End game</string>

@@ -357,6 +357,24 @@ public class Notes extends View {
         return canvas;
     }
 
+//    public Canvas create3Note(float lineWidth, float lineHeight, float noteWidth, ArrayList<Double> note, double hand, Canvas canvas) {
+//        this.note = note.get(0);
+//        this.hand = hand;
+//        this.canvas = canvas;
+//        this.lineHeight = lineHeight;
+//        this.lineWidth = lineWidth;
+//
+//        if (note.size() == 2) {
+//            scaleNoteDrawFlat(3, 3.5f, -1, hand);
+//        } else
+//            scaleNoteDrawFlat(3, 3.5f, note.get(2), hand);
+//
+//        // Translate canvas
+//        canvas.translate(noteWidth * 3, -(yBase - dy));
+//
+//        return canvas;
+//    }
+
     //scale note head and draw flat sharp
     public void scaleNoteDrawFlat(int noteType, float tailHeight, double wrong, double hand) {
 

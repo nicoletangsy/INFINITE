@@ -35,101 +35,91 @@
             android:layout_height="0dp"
             android:layout_weight="4.6" />
 
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginRight="20dp"
-            android:layout_weight="0.7"
-            android:layoutDirection="rtl"
+            android:layout_weight="0.65"
             android:orientation="horizontal"
-            android:layout_marginBottom="10dp">
+            android:weightSum="3">
 
-            <Button
-                android:id="@+id/playNoteButton"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_gravity="end"
-                android:layout_marginLeft="30dp"
-                android:background="@drawable/button"
-                android:text="@string/play" />
+                android:layout_marginRight="20dp"
+                android:layout_weight="1">
 
-            <Button
-                android:id="@+id/recordButton"
-                android:layout_width="wrap_content"
+                <TextView
+                    android:id="@+id/bpmIcon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="left"
+                    android:layout_marginLeft="30dp"
+                    android:gravity="bottom"
+                    android:textColor="@color/black"
+                    android:text="111" />
+
+                <TextView
+                    android:id="@+id/bpm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="left"
+                    android:gravity="center"
+                    android:textColor="@color/black"
+                    android:text="222" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_gravity="end"
-                android:layout_marginLeft="30dp"
-                android:background="@drawable/button"
-                android:text="@string/start" />
+                android:layout_weight="2"
+                android:layoutDirection="rtl"
+                android:orientation="horizontal"
+                android:layout_marginRight="10dp">
+
+                <Button
+                    android:id="@+id/playNoteButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="end"
+                    android:layout_marginLeft="20dp"
+                    android:background="@drawable/button"
+                    android:text="@string/play" />
+
+                <Button
+                    android:id="@+id/recordButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="end"
+                    android:layout_marginLeft="20dp"
+                    android:background="@drawable/button"
+                    android:text="@string/start" />
 
 
-            <Button
-                android:id="@+id/playRecordButton"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="30dp"
-                android:background="@drawable/button"
-                android:text="@string/play" />
+                <Button
+                    android:id="@+id/playRecordButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="20dp"
+                    android:background="@drawable/button"
+                    android:text="@string/play" />
 
 
-            <Button
-                android:id="@+id/analyzeButton"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="30dp"
-                android:background="@drawable/button"
-                android:text="@string/analyze" />
+                <Button
+                    android:id="@+id/analyzeButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="20dp"
+                    android:background="@drawable/button"
+                    android:text="@string/analyze" />
 
+            </LinearLayout>
         </LinearLayout>
 
     </LinearLayout>
 
-    <ImageView
-        android:id="@+id/greenLineView"
-        android:layout_width="1dp"
-        android:layout_height="35dp"
-        android:background="@drawable/green_line"
-        app:layout_constraintTop_toTopOf="@+id/linearLayout" />
 
-    <ImageView
-        android:id="@+id/greenLineView2"
-        android:layout_width="1dp"
-        android:layout_height="35dp"
-        android:background="@drawable/green_line"
-        app:layout_constraintTop_toTopOf="@+id/linearLayout" />
 
-    <ImageView
-        android:id="@+id/greenLineView3"
-        android:layout_width="1dp"
-        android:layout_height="35dp"
-        android:background="@drawable/green_line"
-        app:layout_constraintTop_toTopOf="@+id/linearLayout" />
 
-    <TextView
-        android:id="@+id/bpmIcon"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_gravity="left"
-        android:layout_marginLeft="30dp"
-        android:gravity="bottom"
-        android:text="111" />
-
-    <TextView
-        android:id="@+id/bpm"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_gravity="left"
-        android:gravity="center"
-        android:text="222" />
-
-    <TextView
-        android:id="@+id/countDown"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_gravity="left"
-        android:layout_marginLeft="10dp"
-        android:gravity="center"
-        android:text="333" />
 
 </android.support.constraint.ConstraintLayout>

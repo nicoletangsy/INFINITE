@@ -21,8 +21,7 @@ import static comnicoletangsyinfinite.httpsgithub.infinite.MainActivity.sounds;
 public class TutorialActivity extends AppCompatActivity implements View.OnClickListener {
     public static int note = 48;
     private String noteText;
-
-    @Override
+    
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tutorial);
