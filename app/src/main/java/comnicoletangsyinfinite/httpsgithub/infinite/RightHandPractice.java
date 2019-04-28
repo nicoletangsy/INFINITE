@@ -41,7 +41,7 @@ import static comnicoletangsyinfinite.httpsgithub.infinite.RightHandReading.A_Mu
 import static comnicoletangsyinfinite.httpsgithub.infinite.PianoSheetView.FIRST_NOTE;
 import static comnicoletangsyinfinite.httpsgithub.infinite.RightHandReading.A_GENERATED_MUSIC_NOTES;
 
-public class RightHandPractice extends AppCompatActivity{
+public class RightHandPractice extends AppCompatActivity {
     public static final RecordedMusicNotes A_RECORDED_MUSIC_NOTES = new RecordedMusicNotes();
     public static final CompareMusicSheet A_COMPARE_MUSIC_SHEET = new CompareMusicSheet();
 
@@ -54,13 +54,7 @@ public class RightHandPractice extends AppCompatActivity{
     private static final int sampleRate = 22050;
     private static final int byteBuffer = 1024;
 
-    private ImageView greenLineView;
-    private Animation greenLineAnim;
-    private ImageView greenLineView2;
-    private Animation greenLineAnim2;
-    private ImageView greenLineView3;
-    private Animation greenLineAnim3;
-    private TextView countDown;
+
     private TextView tempo;
     String added = "";
     private MediaRecorder mRecorder = null;
@@ -74,13 +68,14 @@ public class RightHandPractice extends AppCompatActivity{
 
     // Requesting permission to RECORD_AUDIO
     private boolean permissionToRecordAccepted = false;
-    private String [] permissions = {Manifest.permission.RECORD_AUDIO};
+    private String[] permissions = {Manifest.permission.RECORD_AUDIO};
+
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        switch (requestCode){
+        switch (requestCode) {
             case REQUEST_RECORD_AUDIO_PERMISSION:
-                permissionToRecordAccepted  = grantResults[0] == PackageManager.PERMISSION_GRANTED;
+                permissionToRecordAccepted = grantResults[0] == PackageManager.PERMISSION_GRANTED;
                 break;
         }
         if (!permissionToRecordAccepted) finish();
@@ -97,6 +92,7 @@ public class RightHandPractice extends AppCompatActivity{
             A_Music_Sheet_Type.changedToUserPlay();
         }
     }
+
     private void onPlay(boolean start) {
         if (start) {
             startPlaying();
@@ -137,23 +133,24 @@ public class RightHandPractice extends AppCompatActivity{
             int note = ((int) Math.floor(A_GENERATED_MUSIC_NOTES.getPianoSheet().get(i).get(0)));
             int noteDuration = (int) Math.round(A_GENERATED_MUSIC_NOTES.getPianoSheet().get(i).get(1));
             int duration = mapDuration(noteDuration);
-            int delay = (tempo)*1000/60*4/noteDuration;
+            int delay = (tempo) * 1000 / 60 * 4 / noteDuration;
+
             @Override
             public void run() {
-                if (sounds[temp][duration][note]!=-1) {
+                if (sounds[temp][duration][note] != -1) {
                     soundPool.play(sounds[temp][duration][note], 1, 1, 0, 0, 1);
                     Log.i(TAG, "Sound Play: [" + temp + "][" + duration + "][" + note + "]");
                 } else {
                     Log.i(TAG, "No this note: sounds[" + temp + "][" + duration + "][" + note + "]");
                 }
                 handler.postDelayed(this, delay);
-                if (i<A_GENERATED_MUSIC_NOTES.getPianoSheet().size()-1) {
+                if (i < A_GENERATED_MUSIC_NOTES.getPianoSheet().size() - 1) {
                     i++;
                     temp = mapTempo(tempo);
                     note = ((int) Math.floor(A_GENERATED_MUSIC_NOTES.getPianoSheet().get(i).get(0)));
                     noteDuration = (int) Math.round(A_GENERATED_MUSIC_NOTES.getPianoSheet().get(i).get(1));
                     duration = mapDuration(noteDuration);
-                    delay = (tempo)*1000/60*4/noteDuration;
+                    delay = (tempo) * 1000 / 60 * 4 / noteDuration;
                 } else {
                     handler.removeCallbacks(this);
                 }
@@ -178,27 +175,13 @@ public class RightHandPractice extends AppCompatActivity{
     }
 
     private void startDetecting() {
-
-        int time=(int)(60000/A_GENERATED_MUSIC_NOTES.getPianoSheet().get(0).get(0).intValue());
-
-        final CountDownTimer myCountDownTimer=new CountDownTimer(4000, time) {
-
-            public void onTick(long millisUntilFinished) {
-                countDown.setText("Count Down " + millisUntilFinished / 1000);
-            }
-
-            public void onFinish() {
-//               countDown.setVisibility(View.INVISIBLE);
-            }
-        }.start();
-
         A_RECORDED_MUSIC_NOTES.removeAllRecords();
-        dispatcher = AudioDispatcherFactory.fromDefaultMicrophone(22050,1024,0);
+        dispatcher = AudioDispatcherFactory.fromDefaultMicrophone(22050, 1024, 0);
         PitchDetectionHandler pdh = new PitchDetectionHandler() {
             @Override
             public void handlePitch(PitchDetectionResult result, AudioEvent e) {
                 final float pitchInHz = result.getPitch();
-                if (pitchInHz>254 && pitchInHz<680) {
+                if (pitchInHz > 254 && pitchInHz < 680) {
                     final Pitch pitch = new Pitch(pitchInHz);
                     final double db = e.getdBSPL();
                     final double timeStamp = e.getTimeStamp();
@@ -218,40 +201,9 @@ public class RightHandPractice extends AppCompatActivity{
                 }
             }
         };
-
-        float width = ((View) greenLineView.getParent()).getWidth();
-
-        greenLineAnim = new TranslateAnimation(0,width-width/32-(float)FIRST_NOTE.getX(),0,0);
-        greenLineAnim.setInterpolator(new LinearInterpolator());
-        greenLineAnim.setDuration((int)FIRST_NOTE.getSpeed());
-        greenLineAnim.setStartOffset(4000);
-
-        greenLineView.setVisibility(View.VISIBLE);
-        greenLineView.startAnimation(greenLineAnim);
-        greenLineView.setVisibility(View.INVISIBLE);
-
-        greenLineAnim2 = new TranslateAnimation(0,width-width/32-(float)FIRST_NOTE.getX(),0,0);
-        greenLineAnim2.setInterpolator(new LinearInterpolator());
-        greenLineAnim2.setDuration((int)FIRST_NOTE.getSpeed());
-        greenLineAnim2.setStartOffset((int)(4000+FIRST_NOTE.getSpeed()));
-
-        greenLineView2.setVisibility(View.VISIBLE);
-        greenLineView2.startAnimation(greenLineAnim2);
-        greenLineView2.setVisibility(View.INVISIBLE);
-
-        greenLineAnim3 = new TranslateAnimation(0,width-width/32-(float)FIRST_NOTE.getX(),0,0);
-        greenLineAnim3.setInterpolator(new LinearInterpolator());
-        greenLineAnim3.setDuration((int)FIRST_NOTE.getSpeed());
-        greenLineAnim3.setStartOffset((int)(4000+FIRST_NOTE.getSpeed()*2));
-
-        greenLineView3.setVisibility(View.VISIBLE);
-        greenLineView3.startAnimation(greenLineAnim3);
-        greenLineView3.setVisibility(View.INVISIBLE);
-
-
         AudioProcessor p = new PitchProcessor(PitchProcessor.PitchEstimationAlgorithm.AMDF, 22050, 1024, pdh);
         dispatcher.addAudioProcessor(p);
-        new Thread(dispatcher,"Audio Dispatcher").start();
+        new Thread(dispatcher, "Audio Dispatcher").start();
     }
 
     private void stopRecording() {
@@ -272,31 +224,25 @@ public class RightHandPractice extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_right_hand_practice);
 
-        final Button recordButton = (Button)findViewById(R.id.recordButton);
-        final Button playRecordButton = (Button)findViewById(R.id.playRecordButton);
-        final Button playNoteButton = (Button)findViewById(R.id.playNoteButton);
+        final Button recordButton = (Button) findViewById(R.id.recordButton);
+        final Button playRecordButton = (Button) findViewById(R.id.playRecordButton);
+        final Button playNoteButton = (Button) findViewById(R.id.playNoteButton);
         playRecordButton.setVisibility(View.GONE);
-        final Button analyzeButton = (Button)findViewById(R.id.analyzeButton);
+        final Button analyzeButton = (Button) findViewById(R.id.analyzeButton);
         final TextView text2 = (TextView) findViewById(R.id.textView2);
-        greenLineView = (ImageView)findViewById(R.id.greenLineView);
-        greenLineView2 = (ImageView)findViewById(R.id.greenLineView2);
-        greenLineView3 = (ImageView)findViewById(R.id.greenLineView3);
 
         Button startButton = findViewById(R.id.StartPractiseButton);
-//        TextView bpmIcon= findViewById(R.id.bpmIcon);
-//        TextView bpm= findViewById(R.id.bpm);
-//
-//        bpm.setTextColor(Color.BLACK);
-//        bpm.setText(" = "+A_GENERATED_MUSIC_NOTES.getPianoSheet().get(0).get(0));
-//
-//        bpmIcon.setTextColor(Color.BLACK);
-//        bpmIcon.setTextSize(25);
-//        bpmIcon.setText("\u2669");
-//
-        countDown= (TextView) findViewById(R.id.countDown);
-        countDown.setY((float)FIRST_NOTE.getY()/2);
 
-        Toolbar toolbar = (Toolbar)findViewById(R.id.app_bar);
+        TextView bpmIcon = findViewById(R.id.bpmIcon);
+        TextView bpm = findViewById(R.id.bpm);
+
+        bpm.setText(" = " + A_GENERATED_MUSIC_NOTES.getPianoSheet().get(0).get(0));
+
+        bpmIcon.setTextSize(25);
+        bpmIcon.setText("\u2669");
+//
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
@@ -306,37 +252,24 @@ public class RightHandPractice extends AppCompatActivity{
         mFileName += "/audiorecordtest.aac";
         ActivityCompat.requestPermissions(this, permissions, REQUEST_RECORD_AUDIO_PERMISSION);
 
-        greenLineView.setX((float)FIRST_NOTE.getX());
-        greenLineView.setY((float)FIRST_NOTE.getY());
-        greenLineView.getLayoutParams().height = (int)FIRST_NOTE.getHeight();
-
-        greenLineView2.setX((float)FIRST_NOTE.getX());
-        greenLineView2.setY((float)FIRST_NOTE.getLine2());
-        greenLineView2.getLayoutParams().height = (int)FIRST_NOTE.getHeight();
-
-        greenLineView3.setX((float)FIRST_NOTE.getX());
-        greenLineView3.setY((float)FIRST_NOTE.getLine3());
-        greenLineView3.getLayoutParams().height = (int)FIRST_NOTE.getHeight();
-
-        greenLineView.setX((float)FIRST_NOTE.getX()+countDown.getWidth());
-        greenLineView.setY((float)FIRST_NOTE.getY());
-
-        recordButton.setOnClickListener(new View.OnClickListener(){
+        recordButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
+            public void onClick(View v) {
                 onRecord(mStartRecording, playRecordButton);
                 if (mStartRecording) {
                     recordButton.setText("Stop");
+                    recordButton.setBackgroundResource(R.drawable.button_clicked);
                 } else {
                     recordButton.setText("Start");
+                    recordButton.setBackgroundResource(R.drawable.button);
                 }
                 mStartRecording = !mStartRecording;
             }
         });
 
-        playRecordButton.setOnClickListener(new View.OnClickListener(){
+        playRecordButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
+            public void onClick(View v) {
                 onPlay(mStartPlaying);
                 if (mStartPlaying) {
                     playRecordButton.setBackgroundResource(R.drawable.stopbutton);
@@ -347,9 +280,9 @@ public class RightHandPractice extends AppCompatActivity{
             }
         });
 
-        playNoteButton.setOnClickListener(new View.OnClickListener(){
+        playNoteButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
+            public void onClick(View v) {
                 onPlayNote(mStartPlayingNote);
                 if (mStartPlayingNote) {
                     playRecordButton.setText("Stop");
@@ -360,15 +293,15 @@ public class RightHandPractice extends AppCompatActivity{
             }
         });
 
-        analyzeButton.setOnClickListener(new View.OnClickListener(){
+        analyzeButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
+            public void onClick(View v) {
                 startAnalyze();
             }
         });
     }
 
-    public void startAnalyze(){
+    public void startAnalyze() {
         Intent intent = new Intent(this, RightHandFeedback.class);
         startActivity(intent);
     }
@@ -404,28 +337,28 @@ public class RightHandPractice extends AppCompatActivity{
         return super.onOptionsItemSelected(menuItem);
     }
 
-    public int mapTempo (int tempo) {
-        if (tempo==60) {
+    public int mapTempo(int tempo) {
+        if (tempo == 60) {
             return 0;
-        } else if (tempo==80) {
+        } else if (tempo == 80) {
             return 1;
-        } else if (tempo==120) {
+        } else if (tempo == 120) {
             return 2;
         } else {
             return 0;
         }
     }
 
-    public int mapDuration (int noteDuration) {
-        if (noteDuration==1) {
+    public int mapDuration(int noteDuration) {
+        if (noteDuration == 1) {
             return 0;
-        } else if (noteDuration==3) {
+        } else if (noteDuration == 3) {
             return 1;
-        } else if (noteDuration==2) {
+        } else if (noteDuration == 2) {
             return 2;
-        } else if (noteDuration==4) {
+        } else if (noteDuration == 4) {
             return 3;
-        } else if (noteDuration==8) {
+        } else if (noteDuration == 8) {
             return 4;
         } else {
             return 0;

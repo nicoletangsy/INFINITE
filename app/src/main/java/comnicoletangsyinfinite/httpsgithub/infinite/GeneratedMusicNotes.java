@@ -50,7 +50,99 @@ public class GeneratedMusicNotes {
     public GeneratedMusicNotes(double hand) {
     }
 
-    public void generateSheet(double tempo, double hand, double sharpFlat, double key){
+    public void hardCodeSheet(double tempo, double hand, double sharpFlat, double key) {
+        pianoSheet.add(new ArrayList<Double>());
+        pianoSheet.get(0).add(this.bpm);
+        pianoSheet.get(0).add((double) 4);
+
+        pianoSheet.add(new ArrayList<Double>());
+        pianoSheet.get(1).add(this.sharpFlat);
+        pianoSheet.get(1).add(this.key);
+
+        pianoSheet.add(new ArrayList<Double>());
+        pianoSheet.get(2).add(this.hand);
+        pianoSheet.get(2).add((double) 0);
+
+        pianoSheet.add(new ArrayList<Double>());
+        pianoSheet.get(3).add(this.hand);
+        pianoSheet.get(3).add((double) 0);
+
+        pianoSheet.add(new ArrayList<Double>());
+        pianoSheet.get(4).add(this.hand);
+        pianoSheet.get(4).add((double) 0);
+
+        pianoSheet.add(new ArrayList<Double>());
+        pianoSheet.get(5).add(this.hand);
+        pianoSheet.get(5).add((double) 0);
+
+        pianoSheet.add(new ArrayList<Double>());
+        pianoSheet.get(6).add(this.hand);
+        pianoSheet.get(6).add((double) 0);
+
+        pianoSheet.add(new ArrayList<Double>());
+        pianoSheet.get(7).add(this.hand);
+        pianoSheet.get(7).add((double) 0);
+
+        pianoSheet.add(new ArrayList<Double>());
+        pianoSheet.get(8).add(this.hand);
+        pianoSheet.get(8).add((double) 0);
+
+        pianoSheet.add(new ArrayList<Double>());
+        pianoSheet.get(9).add(this.hand);
+        pianoSheet.get(9).add((double) 0);
+
+        pianoSheet.add(new ArrayList<Double>());
+        pianoSheet.get(10).add(this.hand);
+        pianoSheet.get(10).add((double) 0);
+
+        pianoSheet.add(new ArrayList<Double>());
+        pianoSheet.get(11).add(this.hand);
+        pianoSheet.get(1).add((double) 0);
+
+        pianoSheet.add(new ArrayList<Double>());
+        pianoSheet.get(12).add(this.hand);
+        pianoSheet.get(12).add((double) 0);
+
+        pianoSheet.add(new ArrayList<Double>());
+        pianoSheet.get(13).add(this.hand);
+        pianoSheet.get(13).add((double) 0);
+
+        pianoSheet.add(new ArrayList<Double>());
+        pianoSheet.get(14).add(this.hand);
+        pianoSheet.get(14).add((double) 0);
+
+        pianoSheet.add(new ArrayList<Double>());
+        pianoSheet.get(15).add(this.hand);
+        pianoSheet.get(15).add((double) 0);
+
+        pianoSheet.add(new ArrayList<Double>());
+        pianoSheet.get(16).add(this.hand);
+        pianoSheet.get(16).add((double) 0);
+
+        pianoSheet.add(new ArrayList<Double>());
+        pianoSheet.get(17).add(this.hand);
+        pianoSheet.get(17).add((double) 0);
+
+        pianoSheet.add(new ArrayList<Double>());
+        pianoSheet.get(18).add(this.hand);
+        pianoSheet.get(18).add((double) 0);
+
+        pianoSheet.add(new ArrayList<Double>());
+        pianoSheet.get(19).add(this.hand);
+        pianoSheet.get(19).add((double) 0);
+
+        pianoSheet.add(new ArrayList<Double>());
+        pianoSheet.get(20).add(this.hand);
+        pianoSheet.get(20).add((double) 0);
+
+        pianoSheet.add(new ArrayList<Double>());
+        pianoSheet.get(21).add(this.hand);
+        pianoSheet.get(21).add((double) 0);
+
+
+    }
+
+        public void generateSheet(double tempo, double hand, double sharpFlat, double key){
 
         if(tempo ==-1){
             this.bpm = addTempo();

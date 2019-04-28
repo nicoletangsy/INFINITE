@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".TutorialActivity">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -21,17 +22,17 @@
         <android.widget.Space
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="0.3"></android.widget.Space>
+            android:layout_weight="0.9"></android.widget.Space>
 
         <TextView
             android:id="@+id/instructiontext"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="0.4"
             android:layout_gravity="top"
-            android:text="@string/tutorialInstructiontext"
+            android:layout_weight="1"
             android:gravity="center"
-            android:textColor="@color/black"/>
+            android:text="@string/tutorialInstructiontext"
+            android:textColor="@color/black" />
 
         <HorizontalScrollView xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="wrap_content"
@@ -188,8 +189,8 @@
                     android:layout_height="100dp"
                     android:background="@drawable/whitekey"
                     android:gravity="bottom|center"
-                    android:textSize="25dp"
                     android:text="C4"
+                    android:textSize="25dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/Bkey3" />
 
@@ -254,8 +255,8 @@
                     android:layout_height="100dp"
                     android:background="@drawable/whitekey"
                     android:gravity="bottom|center"
-                    android:textSize="25dp"
                     android:text="C5"
+                    android:textSize="25dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/Bkey" />
 
@@ -490,7 +491,7 @@
                     android:layout_height="52dp"
                     android:layout_marginStart="22dp"
                     android:background="@drawable/blackkey"
-                    app:layout_constraintStart_toStartOf="@+id/Akey3"/>
+                    app:layout_constraintStart_toStartOf="@+id/Akey3" />
 
             </android.support.constraint.ConstraintLayout>
         </HorizontalScrollView>
@@ -498,38 +499,41 @@
         <android.widget.Space
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="0.2"></android.widget.Space>
+            android:layout_weight="0.6"></android.widget.Space>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1.7"
-            android:weightSum="6"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:weightSum="6">
 
             <android.widget.Space
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="0.5"></android.widget.Space>
+
             <TextView
                 android:id="@+id/NoteText"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="0.7"
                 android:layout_gravity="top"
-                android:text="middle C C4"
+                android:layout_weight="0.7"
                 android:gravity="center"
-                android:textColor="@color/black"/>
+                android:text="middle C C4"
+                android:textColor="@color/black" />
 
             <android.widget.Space
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="0.75"></android.widget.Space>
 
-            <ImageView
+            <comnicoletangsyinfinite.httpsgithub.infinite.DrawANoteView
+                android:id="@+id/staff"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1.7"
-                android:background="@drawable/lf21"/>
+                android:layout_weight="1.7" />
+
             <android.widget.Space
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -541,8 +545,9 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_weight="1"
-                android:text="@string/play"
-                android:background="@drawable/button"/>
+                android:background="@drawable/button"
+                android:text="@string/play" />
+
             <android.widget.Space
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
