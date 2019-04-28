@@ -94,6 +94,7 @@ public class GeneratedMusicNotes {
         pianoSheet.get(2).add(this.hand);
         pianoSheet.get(2).add((double) 0);//not yet need this column
 
+
         genSheet();
     }
 
@@ -102,7 +103,7 @@ public class GeneratedMusicNotes {
     }
 
     public double addHand(){
-        return tempo[(int) (Math.floor(Math.random() * 2))];
+        return (Math.floor(Math.random() * 2));
     }
 
     public double addFlatSharp() {

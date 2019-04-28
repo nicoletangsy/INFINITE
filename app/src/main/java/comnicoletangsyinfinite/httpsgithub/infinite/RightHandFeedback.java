@@ -23,9 +23,7 @@ public class RightHandFeedback extends AppCompatActivity {
         setContentView(R.layout.activity_right_hand_feedback);
 
         //Button playButton = findViewById(R.id.playButton);
-        Button previousPageButton = findViewById(R.id.previousPageButton);
-        Button nextPageButton = findViewById(R.id.nextPageButton);
-        TextView pageNubmer = findViewById(R.id.pageNumber);
+
         //TextView original = findViewById(R.id.original2);
         String oNotes = "";
         //original.setText("" + oNotes);

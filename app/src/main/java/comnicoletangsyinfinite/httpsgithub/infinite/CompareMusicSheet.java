@@ -23,19 +23,25 @@ public class CompareMusicSheet {
     }
 
     public void compareTwoSheet() {
+        userMusicSheet.add(new ArrayList<Double>());
+        userMusicSheet.get(0).add(generatedMusicSheet.get(0).get(0));
+        userMusicSheet.get(0).add(generatedMusicSheet.get(0).get(1));
+        userMusicSheet.add(new ArrayList<Double>());
+        userMusicSheet.get(1).add(generatedMusicSheet.get(1).get(0));
+        userMusicSheet.get(1).add(generatedMusicSheet.get(1).get(1));
+        userMusicSheet.add(new ArrayList<Double>());
+        userMusicSheet.get(2).add(generatedMusicSheet.get(2).get(0));
+        userMusicSheet.get(2).add(generatedMusicSheet.get(2).get(1));
+
         for (int i = 0; i < generatedMusicSheet.size()-3; i++) {
-            Log.v("abababababi","" +  i);
-            Log.v("abababababsize","" +  recordedMusicSheet.size());
             if (recordedMusicSheet.size() > i) {
                 userMusicSheet.add(new ArrayList<Double>());
-                userMusicSheet.get(i).add(recordedMusicSheet.get(i).get(0));
-                userMusicSheet.get(i).add(recordedMusicSheet.get(i).get(1));
-                if (generatedMusicSheet.get(3 + i).get(0) != recordedMusicSheet.get(i).get(0)) {
-                    userMusicSheet.get(i).add((double) 1);
-                    Log.v("abababababgeti","" +  userMusicSheet.get(i));
+                userMusicSheet.get(i+3).add(recordedMusicSheet.get(i).get(0));
+                userMusicSheet.get(i+3).add(recordedMusicSheet.get(i).get(1));
+                if (Math.floor(generatedMusicSheet.get(3 + i).get(0)) != recordedMusicSheet.get(i).get(0)) {
+                    userMusicSheet.get(i+3).add((double) 1);
                 } else {
-                    userMusicSheet.get(i).add((double) 0);
-                    Log.v("abababababgeti","" +  userMusicSheet.get(i));
+                    userMusicSheet.get(i+3).add((double) 0);
                 }
             }
         }
@@ -43,7 +49,6 @@ public class CompareMusicSheet {
     }
 
     public ArrayList<ArrayList<Double>> getSheet() {
-        Log.v("abababababsizesheet","" + userMusicSheet);
         return userMusicSheet;
     }
 }

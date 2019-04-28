@@ -190,7 +190,7 @@ public class PianoSheetView extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         theSheet = A_GENERATED_MUSIC_NOTES.getPianoSheet();
-
+        Log.v("kakakakakakagen",""+theSheet);
         if (theSheet.get(2).get(0) == 0) {
             leftHand = 1;
         }
