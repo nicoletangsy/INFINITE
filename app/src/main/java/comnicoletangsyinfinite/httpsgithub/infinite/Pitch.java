@@ -19,8 +19,43 @@ public class Pitch {
         noteDuration = x;
     }
 
-    //frequency table
     public void pitchConverted (float frequencey) {
+        if (frequencey > 254.5) {
+            if (frequencey < 277.7) {
+                pitch = "C4";
+                note = 48;
+            } else if (frequencey < 311.6) {
+                pitch = "D4";
+                note = 50;
+            } else if (frequencey < 339.5) {
+                pitch = "E4";
+                note = 52;
+            }else if (frequencey < 370.0) {
+                pitch = "F4";
+                note = 53;
+            } else if (frequencey < 416) {
+                pitch = "G4";
+                note = 55;
+            } else if (frequencey < 466.0) {
+                pitch = "A4";
+                note = 57;
+            } else if (frequencey < 508.5) {
+                pitch = "B4";
+                note = 59;
+            } else if (frequencey < 555.0) {
+                pitch = "C5";
+                note = 60;
+            } else if (frequencey < 623.5) {
+                    pitch = "D5";
+                    note = 62;
+            } else if (frequencey < 679) {
+                    pitch = "E5";
+                    note = 64;
+            }
+    }
+
+    //frequency table
+    /*public void pitchConverted (float frequencey) {
         if (frequencey > 16) {
             if (frequencey < 16.5) {
                 pitch = "C0";
@@ -347,7 +382,7 @@ public class Pitch {
                 pitch = "B8";
                 note = 107;
             }
-            /*
+
             if (frequencey < 278) {
                 pitch = "C4";
             } else if (frequencey < 294) {
@@ -376,6 +411,5 @@ public class Pitch {
                 pitch = "C5";
             }
             */
-        }
     }
 }

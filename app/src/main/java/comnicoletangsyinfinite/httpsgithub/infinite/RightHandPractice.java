@@ -70,6 +70,7 @@ public class RightHandPractice extends AppCompatActivity{
 
     Handler handler = new Handler();
     private static final String TAG = "Resource: ";
+    private static final String TAG2 = "Recorded Note: ";
 
     // Requesting permission to RECORD_AUDIO
     private boolean permissionToRecordAccepted = false;
@@ -207,6 +208,7 @@ public class RightHandPractice extends AppCompatActivity{
                     String time = String.format("%.2f", timeStamp);
                     added = added + "[" + dBSPL + ", " + time + ", " + pitchInHz + ", " + pitch.getPitch() + "] ";
                     A_RECORDED_MUSIC_NOTES.addNotes(newNote);
+                    Log.i(TAG2, added);
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
@@ -254,6 +256,8 @@ public class RightHandPractice extends AppCompatActivity{
 
     private void stopRecording() {
         A_RECORDED_MUSIC_NOTES.ProcessNote();
+        String recorded = A_RECORDED_MUSIC_NOTES.getAllNotes();
+        Log.i(TAG2, recorded);
         dispatcher.stop();
         A_COMPARE_MUSIC_SHEET.setGeneratedMusicSheet(A_GENERATED_MUSIC_NOTES.getPianoSheet());
         A_COMPARE_MUSIC_SHEET.setRecordedMusicNotes(A_RECORDED_MUSIC_NOTES.getPianoSheet());
