@@ -66,7 +66,8 @@
             android:screenOrientation="landscape" />
         <activity
             android:name=".TutorialActivity"
-            android:screenOrientation="landscape"/>
+            android:screenOrientation="landscape" />
+        <activity android:name=".PracitceMenu"></activity>
     </application>
 
 </manifest>

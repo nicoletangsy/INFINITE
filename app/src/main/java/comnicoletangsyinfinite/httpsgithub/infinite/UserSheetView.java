@@ -150,12 +150,6 @@ public class UserSheetView extends View {
                 totalBeat++;
             }
 
-            //One column finished
-            if (totalBeat % (theSheet.get(0).get(1)) == 0 && totalBeat % (theSheet.get(0).get(1) * 2) != 0) {
-                notesArrayList.add(new Notes(this.getContext()));
-                canvas = notesArrayList.get(j).createStroke(lineWidth, lineHeight, noteWidth, canvas);
-            }
-
             //To next line
             if (totalBeat % (theSheet.get(0).get(1) * 2) == 0) {
                 canvas.translate(-noteArea, height / 3.975f);
