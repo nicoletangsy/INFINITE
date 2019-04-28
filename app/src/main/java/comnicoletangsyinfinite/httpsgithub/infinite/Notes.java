@@ -92,14 +92,14 @@ public class Notes extends View {
         correctColour = context.getResources().getColor(R.color.green);
 
         paint = new Paint();
-        paint.setStrokeWidth(5);
+        paint.setStrokeWidth(4);
         paint.setColor(textColour);
         paint.setStyle(Paint.Style.FILL);
         paint.setTextSize(lineHeight * 4);
         paint.setTextAlign(Paint.Align.LEFT);
 
         paint23 = new Paint();
-        paint23.setStrokeWidth(5);
+        paint23.setStrokeWidth(4);
         paint23.setColor(textColour);
         paint23.setStyle(Paint.Style.STROKE);
         paint23.setTextSize(lineHeight * 4);
@@ -368,7 +368,7 @@ public class Notes extends View {
         float scale = (lineHeight * 1.4f) / (bounds.top - bounds.bottom);
 
         Matrix matrix = new Matrix();
-        matrix.postScale(2.8f, 2.2f);
+        matrix.postScale(scale, scale*0.78f);
         matrix.postRotate(-33.75f);
 
         notepath.transform(matrix);

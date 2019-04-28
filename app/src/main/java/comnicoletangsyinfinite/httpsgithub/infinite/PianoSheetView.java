@@ -130,9 +130,9 @@ public class PianoSheetView extends View {
         height = clipRect.bottom - clipRect.top;
         width = clipRect.right - clipRect.left;
 
-        lineHeight = height / 32;
+        lineHeight = height / 36;
         lineWidth = width / 19f;
-        margin = width / 32;
+        margin = width / 38;
 
         // Treble clef
         tclef = new Path();
@@ -211,16 +211,16 @@ public class PianoSheetView extends View {
 
         //String aList = A_RECORDED_MUSIC_NOTES.getAllNotes();
 
-        for (int n = 0; n < 3; n++) {
+        for (int n = 0; n < 4; n++) {
 
             // Draw staff
             if (n == 0) {
-                canvas.translate(0, height / 3.5f);
+                canvas.translate(0, height / 4.5f);
                 FIRST_NOTE.setXandY(0, height);
-                FIRST_NOTE.setHeight(lineHeight * 4);
+                FIRST_NOTE.setHeight(lineHeight * 4.5f);
             } else {
-                canvas.translate(0, height / 3.5f);
-                FIRST_NOTE.addXandY(0, height / 3.5f);
+                canvas.translate(0, height / 4f);
+                FIRST_NOTE.addXandY(0, height / 4f);
             }
 
             for (int i = 1; i < 6; i++) {
@@ -244,29 +244,31 @@ public class PianoSheetView extends View {
         }
 
         // Translate canvas from C4 position
-        canvas.translate(lineWidth * 1.6f, -height / 1.75f);
-        FIRST_NOTE.addXandY(lineWidth * 1.6f, -height / 1.75f);
+        canvas.translate(lineWidth * 1.3f, -height/1.33f);
+        FIRST_NOTE.addXandY(lineWidth * 1.3f, -height / 1.33f);
 
         //draw key and tempo
         if (theSheet.get(1).get(0) == 0) {
             for (int m = 0; m < theSheet.get(1).get(1); m++) {
-                canvas.drawText(sharps[0], 30 * m, -lineHeight * (flatKey[m] - leftHand), paint);
-                canvas.drawText(sharps[0], 30 * m, lineHeight * 8.25f - (lineHeight * (flatKey[m] - leftHand)), paint);
-                canvas.drawText(sharps[0], 30 * m, lineHeight * 16.5f - (lineHeight * (flatKey[m] - leftHand)), paint);
+                canvas.drawText(sharps[0], 25 * m, -lineHeight * (flatKey[m] - leftHand), paint);
+                canvas.drawText(sharps[0], 25 * m, lineHeight * 9.25f - (lineHeight * (flatKey[m] - leftHand)), paint);
+                canvas.drawText(sharps[0], 25 * m, lineHeight * 18.25f - (lineHeight * (flatKey[m] - leftHand)), paint);
+                canvas.drawText(sharps[0], 25 * m, lineHeight * 27.5f - (lineHeight * (flatKey[m] - leftHand)), paint);
             }
         } else {
             for (int m = 0; m < theSheet.get(1).get(1); m++) {
-                canvas.drawText(sharps[1], 30 * m, -lineHeight * (sharpKey[m] - leftHand), painttt);
-                canvas.drawText(sharps[1], 30 * m, lineHeight * 8.25f - (lineHeight * (sharpKey[m] - leftHand)), painttt);
-                canvas.drawText(sharps[1], 30 * m, lineHeight * 16.5f - (lineHeight * (sharpKey[m] - leftHand)), painttt);
+                canvas.drawText(sharps[1], 25 * m, -lineHeight * (sharpKey[m] - leftHand), painttt);
+                canvas.drawText(sharps[1], 25 * m, lineHeight * 9.25f - (lineHeight * (sharpKey[m] - leftHand)), painttt);
+                canvas.drawText(sharps[1], 25 * m, lineHeight * 18.25f - (lineHeight * (sharpKey[m] - leftHand)), painttt);
+                canvas.drawText(sharps[1], 25 * m, lineHeight * 27.5f - (lineHeight * (sharpKey[m] - leftHand)), painttt);
 
             }
         }
 
-        canvas.translate((float) (theSheet.get(1).get(1) * 35), 0);
-        FIRST_NOTE.addXandY((float) (theSheet.get(1).get(1) * 35), 0);
-        FIRST_NOTE.setLine2(lineHeight * 7.5f);
-        FIRST_NOTE.setLine3(lineHeight * 15);
+        canvas.translate((float) (theSheet.get(1).get(1) * 28), 0);
+        FIRST_NOTE.addXandY((float) (theSheet.get(1).get(1) * 28), 0);
+        FIRST_NOTE.setLine2(lineHeight * 9.25f);
+        FIRST_NOTE.setLine3(lineHeight * 18.25f);
 
         FIRST_NOTE.setHeight(lineHeight * 4);
         FIRST_NOTE.setSpeed(((480 / theSheet.get(0).get(0)) + 1) * 1000);
@@ -283,7 +285,7 @@ public class PianoSheetView extends View {
             FIRST_NOTE.addXandY(-lineHeight / 2, 0);
         }
 
-        float noteArea = ((width * 31 / 32) - ((float) FIRST_NOTE.getX()));
+        float noteArea = ((width * 37 / 38) - ((float) FIRST_NOTE.getX()));
         float noteWidth = noteArea / (float) (theSheet.get(0).get(1) * 2);
 
         int j = 0;
@@ -340,7 +342,7 @@ public class PianoSheetView extends View {
 
             //To next line
             if (totalBeat % (theSheet.get(0).get(1) * 2) == 0) {
-                canvas.translate(-noteArea, height / 3.5f);
+                canvas.translate(-noteArea, height / 3.975f);
             }
 
             j++;

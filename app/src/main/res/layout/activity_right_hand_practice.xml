@@ -27,53 +27,14 @@
             layout="@layout/app_bar"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="0.7"></include>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.4"
-            android:layoutDirection="ltr"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/bpmIcon"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_gravity="left"
-                android:layout_marginLeft="30dp"
-                android:gravity="bottom"
-                android:text="111" />
-            <TextView
-                android:id="@+id/bpm"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_gravity="left"
-                android:gravity="center"
-                android:text="222" />
-
-            <TextView
-                android:id="@+id/countDown"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_gravity="left"
-                android:layout_marginLeft="10dp"
-                android:gravity="center"
-                android:text="333" />
-
-        </LinearLayout>
+            android:layout_weight="0.65"></include>
 
         <comnicoletangsyinfinite.httpsgithub.infinite.PianoSheetView
             android:id="@+id/staff"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="4" />
+            android:layout_weight="4.6" />
 
-
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -81,7 +42,8 @@
             android:layout_marginRight="20dp"
             android:layout_weight="0.7"
             android:layoutDirection="rtl"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_marginBottom="10dp">
 
             <Button
                 android:id="@+id/playNoteButton"
@@ -94,30 +56,30 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_gravity="end"
-                android:background="@drawable/button"
-                android:text="start"
                 android:layout_marginLeft="30dp"
-                />
+                android:background="@drawable/button"
+                android:text="@string/start" />
 
 
             <Button
                 android:id="@+id/playRecordButton"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:layout_marginLeft="30dp"
                 android:background="@drawable/button"
-                android:text="play"
-                android:layout_marginLeft="30dp"/>
+                android:text="@string/play" />
 
 
             <Button
                 android:id="@+id/analyzeButton"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:layout_marginLeft="30dp"
                 android:background="@drawable/button"
-                android:text="Analyze"
-                android:layout_marginLeft="30dp"/>
+                android:text="@string/analyze" />
 
         </LinearLayout>
+
     </LinearLayout>
 
     <ImageView
@@ -141,6 +103,30 @@
         android:background="@drawable/green_line"
         app:layout_constraintTop_toTopOf="@+id/linearLayout" />
 
+    <TextView
+        android:id="@+id/bpmIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="left"
+        android:layout_marginLeft="30dp"
+        android:gravity="bottom"
+        android:text="111" />
 
+    <TextView
+        android:id="@+id/bpm"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="left"
+        android:gravity="center"
+        android:text="222" />
+
+    <TextView
+        android:id="@+id/countDown"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="left"
+        android:layout_marginLeft="10dp"
+        android:gravity="center"
+        android:text="333" />
 
 </android.support.constraint.ConstraintLayout>

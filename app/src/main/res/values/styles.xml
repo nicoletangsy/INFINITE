@@ -6,13 +6,13 @@
 
     <!-- Action bar menu theme. -->
     <style name="actionBarStyle" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="android:background">@color/colorPrimary</item>
+        <item name="android:background">@drawable/app_bar</item>
     </style>
 
     <!-- Menu Item theme. -->
     <style name="menuItemStyle" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
-        <item name="android:background">@color/menuColor</item>
+        <item name="android:background">@drawable/app_bar</item>
         <item name="android:overlapAnchor">false</item>
         <item name="android:dropDownVerticalOffset">-4dp</item>
     </style>

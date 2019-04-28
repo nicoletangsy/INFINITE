@@ -1,23 +1,56 @@
 <resources>
     <string name="app_name">KeySight</string>
 
-    //about us page
+    <!--about us page-->
     <string name="aboutUs">About Us</string>
     <string name="aboutSightReading">About Sight Readinge</string>
 
-    //Main page button
+    <!--Main page button-->
     <string name="aboutButton">\u0020About Us\u0020 </string>
     <string name="practiceButton">\u0020\u0020\u0020 Sight Practise \u0020\u0020\u0020 </string>
     <string name="listenPracticeButton">\u0020\u0020\u0020 Listening Practice \u0020\u0020\u0020</string>
     <string name="sightReadingButton">\u0020\u0020\u0020 Sight Reading \u0020\u0020\u0020</string>
+
+    <!--Sight Reading Menu page-->
+    <!--Text-->
+    <string name="bpmText">bpm: </string>
+    <string name="handText">hand: </string>
+    <string name="majorText">Major: </string>
+    <string name="minerText">miner: </string>
+    <!--Button-->
+    <string name="random">Random</string>
+    <string name="leftHandPracticeButton">Left</string>
+    <string name="rightHandPracticeButton">Right</string>
+    <!--Major and Minor-->
+    <string name="CButton">C</string>
+    <string name="DButton">D</string>
+    <string name="EButton">E</string>
+    <string name="FButton">F</string>
+    <string name="GButton">G</string>
+    <string name="AButton">A</string>
+    <string name="BButton">B</string>
+    <string name="CCButton">C\u266F</string>
+    <string name="DDButton">D\u266F</string>
+    <string name="FFButton">F\u266F</string>
+    <string name="GGButton">G\u266F</string>
+    <string name="AAButton">A\u266F</string>
+    <string name="AaButton">A\u266D</string>
+    <string name="BbButton">B\u266D</string>
+    <string name="CcButton">C\u266D</string>
+    <string name="DdButton">D\u266D</string>
+    <string name="EeButton">E\u266D</string>
+    <string name="GgButton">G\u266D</string>
+
+    <!--Sight Reading Pracitce Page-->
+    <string name="analyze">analyze</string>
+    <string name="play">play</string>
+    <string name="start">start</string>
+
 
     <string name="homeButton">Home</string>
     <string name="restartButton">Restart</string>
     <string name="endButton">End game</string>
     <string name="recordButton">Start Recording</string>
     <string name="playRecordButton">Start Playing Record</string>
-    <string name="leftHandPracticeButton">Left Hand Practice</string>
-    <string name="rightHandPracticeButton">Right Hand Practice</string>
-    <string name="bothHandsPracticeButton">Both Hands Practice</string>
 
 </resources>

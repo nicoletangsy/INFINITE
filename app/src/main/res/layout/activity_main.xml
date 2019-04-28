@@ -53,7 +53,7 @@
 
                     <Button
                         android:id="@+id/aboutButton"
-                        android:layout_width="wrap_content"
+                        android:layout_width="270dp"
                         android:layout_height="0dp"
                         android:layout_weight="1"
                         android:textSize="15dp"
@@ -68,7 +68,7 @@
 
                     <Button
                         android:id="@+id/practiceButton"
-                        android:layout_width="wrap_content"
+                        android:layout_width="270dp"
                         android:layout_height="0dp"
                         android:layout_weight="1"
                         android:textSize="15dp"
@@ -83,7 +83,7 @@
 
                     <Button
                         android:id="@+id/sightReadingButton"
-                        android:layout_width="wrap_content"
+                        android:layout_width="270dp"
                         android:layout_height="0dp"
                         android:layout_weight="1"
                         android:textSize="15dp"
@@ -98,7 +98,7 @@
 
                     <Button
                         android:id="@+id/listenPracticeButton"
-                        android:layout_width="wrap_content"
+                        android:layout_width="270dp"
                         android:layout_height="0dp"
                         android:layout_weight="1"
                         android:textSize="15dp"

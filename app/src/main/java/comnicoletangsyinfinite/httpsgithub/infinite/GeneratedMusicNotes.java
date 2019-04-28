@@ -24,6 +24,10 @@ public class GeneratedMusicNotes {
     private double[] leftKeys = {33, 35, 36, 38, 40, 41, 43, 45, 47, 48};
     private double[] keys;
     private double diff = 0;
+    private double bpm;
+    private double hand;
+    private double sharpFlat;
+    private double key;
 
     public int getBar() { return bar; }
     public int getTotal() { return total; }
@@ -41,18 +45,50 @@ public class GeneratedMusicNotes {
     }
 
     public GeneratedMusicNotes(double hand) {
-        setKeys(hand);
+    }
+
+    public void generateSheet(double tempo, double hand, double sharpFlat, double key){
+
+        if(tempo ==-1){
+            this.bpm = addTempo();
+        }
+        else{
+            this.bpm = tempo;
+        }
+
+        if(hand ==-1){
+            this.hand = addHand();
+        }
+        else{
+            this.hand = hand;
+        }
+
+        if(sharpFlat ==-1){
+            this.sharpFlat = addFlatSharp();
+        }
+        else{
+            this.sharpFlat = sharpFlat;
+        }
+
+        if(key ==-1){
+            this.key = addKey();
+        }
+        else{
+            this.key = key;
+        }
+
+        setKeys(this.hand);
 
         pianoSheet.add(new ArrayList<Double>());
-        pianoSheet.get(0).add(addTempo());
+        pianoSheet.get(0).add(this.bpm);
         pianoSheet.get(0).add((double) 4);
 
         pianoSheet.add(new ArrayList<Double>());
-        pianoSheet.get(1).add(addFlatSharp());
-        pianoSheet.get(1).add(addKey());
+        pianoSheet.get(1).add(this.sharpFlat);
+        pianoSheet.get(1).add(this.key);
 
         pianoSheet.add(new ArrayList<Double>());
-        pianoSheet.get(2).add(hand);
+        pianoSheet.get(2).add(this.hand);
         pianoSheet.get(2).add((double) 0);//not yet need this column
 
         genSheet();
@@ -60,6 +96,10 @@ public class GeneratedMusicNotes {
 
     public double addTempo() {
         return tempo[(int) (Math.floor(Math.random() * 3))];
+    }
+
+    public double addHand(){
+        return tempo[(int) (Math.floor(Math.random() * 2))];
     }
 
     public double addFlatSharp() {
@@ -79,7 +119,7 @@ public class GeneratedMusicNotes {
         int column = 0;
         int noteNum = 3;
         double countBeat = 0;
-        while (column < 6 * (pianoSheet.get(0).get(1))) {
+        while (column < 8 * (pianoSheet.get(0).get(1))) {
             noteTime = noteIn4[(int) Math.floor(Math.random() * (pianoSheet.get(0).get(1) - countBeat))];
             if (noteTime <= 4) {
 
@@ -131,6 +171,7 @@ public class GeneratedMusicNotes {
             }
             aNote = preNote + random - 3;
         }
+
         previousNote = aNote;
         return convertNote(aNote);
     }

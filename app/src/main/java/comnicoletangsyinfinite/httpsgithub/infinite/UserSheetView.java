@@ -63,9 +63,9 @@ public class UserSheetView extends View {
         height = clipRect.bottom - clipRect.top;
         width = clipRect.right - clipRect.left;
 
-        lineHeight = height / 28;
+        lineHeight = height / 36;
         lineWidth = width / 19f;
-        margin = width / 32;
+        margin = width / 38;
 
     }
 
@@ -95,12 +95,13 @@ public class UserSheetView extends View {
         painttt.setTextSize(lineHeight * 2.5f);
         painttt.setTextAlign(Paint.Align.LEFT);
 
-        canvas.translate(0, (height / 3.5f) * 3);
-        canvas.translate(lineWidth * 1.6f, -height / 1.75f);
-        canvas.translate((float) (theSheet.get(1).get(1) * 35), 0);
+        canvas.translate(0, height / 4.5f);
+        canvas.translate(0, (height / 4) * 3);
+        canvas.translate(lineWidth * 1.3f, -height / 1.33f);
+        canvas.translate((float) (theSheet.get(1).get(1) * 28), 0);
         canvas.translate(100, 0);
 
-        float noteArea = ((width * 31 / 32) - ((float) FIRST_NOTE.getX()));
+        float noteArea = ((width * 37 / 38) - ((float) FIRST_NOTE.getX()));
         float noteWidth = noteArea / (float) (theSheet.get(0).get(1) * 2);
 
         int j = 0;
@@ -157,7 +158,7 @@ public class UserSheetView extends View {
 
             //To next line
             if (totalBeat % (theSheet.get(0).get(1) * 2) == 0) {
-                canvas.translate(-noteArea, height / 3.5f);
+                canvas.translate(-noteArea, height / 3.975f);
             }
 
             j++;
