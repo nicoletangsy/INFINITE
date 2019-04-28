@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
         practiceButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                openPracticePage();
+                openPracticeMenuPage();
             }
         });
 
@@ -83,8 +83,8 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void openPracticePage() {
-        Intent intent = new Intent(this, PracticeActivity.class);
+    public void openPracticeMenuPage() {
+        Intent intent = new Intent(this, PracticeMenu.class);
         startActivity(intent);
     }
 

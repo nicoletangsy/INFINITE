@@ -67,7 +67,10 @@
         <activity
             android:name=".TutorialActivity"
             android:screenOrientation="landscape" />
-        <activity android:name=".PracitceMenu"></activity>
+        <activity android:name=".PracticeMenu"
+            android:screenOrientation="landscape" />
+        <activity android:name=".PracticeWithPianoActivity"
+            android:screenOrientation="landscape" ></activity>
     </application>
 
 </manifest>
