@@ -7,7 +7,7 @@ import java.util.ArrayList;
 public class CompareMusicSheet {
     ArrayList<ArrayList<Double>> generatedMusicSheet;
     ArrayList<ArrayList<Double>> recordedMusicSheet;
-    ArrayList<ArrayList<Double>> userMusicSheet;
+    ArrayList<ArrayList<Double>> userMusicSheet = new ArrayList<>();
 
     public CompareMusicSheet() {
     }
