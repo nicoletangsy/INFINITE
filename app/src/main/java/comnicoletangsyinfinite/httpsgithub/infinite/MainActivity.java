@@ -34,8 +34,8 @@ public class MainActivity extends AppCompatActivity {
         initSoundPool();
 
         Button aboutButton = findViewById(R.id.aboutButton);
+        Button tutorialButton = findViewById(R.id.tutorialButton);
         Button practiceButton = findViewById(R.id.practiceButton);
-        Button listenPracticeButton = findViewById(R.id.listenPracticeButton);
         Button sightReadingButton = findViewById(R.id.sightReadingButton);
 
         ImageView iconView = findViewById(R.id.iconView);
@@ -51,33 +51,39 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        tutorialButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                openTutorialPage();
+            }
+        });
+
         practiceButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                openExercisePage();
+                openPracticePage();
             }
         });
-
-        //Not yet finished
-        listenPracticeButton.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                openAboutUsPage();
-            }
-        });
-
 
         sightReadingButton.setOnClickListener(new View.OnClickListener(){
             @Override
-            public void onClick(View v) {
+            public void onClick(View v){
                 openSightReadingMenuPage();
-            }  });
-
-
-
-
+            }
+        });
     }
-    public void openExercisePage() {
+
+    public void openAboutUsPage() {
+        Intent intent = new Intent(this, AboutActivity.class);
+        startActivity(intent);
+    }
+
+    public void openTutorialPage() {
+        Intent intent = new Intent(this, TutorialActivity.class);
+        startActivity(intent);
+    }
+
+    public void openPracticePage() {
         Intent intent = new Intent(this, PracticeActivity.class);
         startActivity(intent);
     }
@@ -87,10 +93,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void openAboutUsPage() {
-        Intent intent = new Intent(this, AboutActivity.class);
-        startActivity(intent);
-    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
