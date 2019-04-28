@@ -52,7 +52,7 @@
                 tools:layout_editor_absoluteX="1dp">
 
                 <Button
-                    android:id="@+id/Ckey2"
+                    android:id="@+id/C2key"
                     android:layout_width="37dp"
                     android:layout_height="100dp"
                     android:layout_marginStart="1dp"
@@ -64,7 +64,7 @@
                     app:layout_constraintStart_toStartOf="parent" />
 
                 <Button
-                    android:id="@+id/Dkey2"
+                    android:id="@+id/D2key"
                     android:layout_width="37dp"
                     android:layout_height="100dp"
                     android:layout_marginStart="0dp"
@@ -73,7 +73,7 @@
                     app:layout_constraintStart_toEndOf="@+id/Ckey2" />
 
                 <Button
-                    android:id="@+id/Ekey2"
+                    android:id="@+id/E2key"
                     android:layout_width="37dp"
                     android:layout_height="100dp"
                     android:layout_marginStart="0dp"
@@ -82,7 +82,7 @@
                     app:layout_constraintStart_toEndOf="@+id/Dkey2" />
 
                 <Button
-                    android:id="@+id/Fkey2"
+                    android:id="@+id/F2key"
                     android:layout_width="37dp"
                     android:layout_height="100dp"
                     android:layout_marginStart="0dp"
@@ -91,7 +91,7 @@
                     app:layout_constraintStart_toEndOf="@+id/Ekey2" />
 
                 <Button
-                    android:id="@+id/Gkey2"
+                    android:id="@+id/G2key"
                     android:layout_width="37dp"
                     android:layout_height="100dp"
                     android:layout_marginStart="0dp"
@@ -100,7 +100,7 @@
                     app:layout_constraintStart_toEndOf="@+id/Fkey2" />
 
                 <Button
-                    android:id="@+id/Akey2"
+                    android:id="@+id/A2key"
                     android:layout_width="37dp"
                     android:layout_height="100dp"
                     android:layout_marginStart="0dp"
@@ -109,7 +109,7 @@
                     app:layout_constraintStart_toEndOf="@+id/Gkey2" />
 
                 <Button
-                    android:id="@+id/Bkey2"
+                    android:id="@+id/B2key"
                     android:layout_width="37dp"
                     android:layout_height="100dp"
                     android:layout_marginStart="0dp"
@@ -118,7 +118,7 @@
                     app:layout_constraintStart_toEndOf="@+id/Akey2" />
 
                 <Button
-                    android:id="@+id/Ckey3"
+                    android:id="@+id/C3key"
                     android:layout_width="37dp"
                     android:layout_height="100dp"
                     android:background="@drawable/whitekey"
@@ -129,7 +129,7 @@
                     app:layout_constraintStart_toEndOf="@+id/Bkey2" />
 
                 <Button
-                    android:id="@+id/Dkey3"
+                    android:id="@+id/D3key"
                     android:layout_width="37dp"
                     android:layout_height="100dp"
                     android:layout_marginStart="0dp"
@@ -138,7 +138,7 @@
                     app:layout_constraintStart_toEndOf="@+id/Ckey3" />
 
                 <Button
-                    android:id="@+id/Ekey3"
+                    android:id="@+id/E3key"
                     android:layout_width="37dp"
                     android:layout_height="100dp"
                     android:layout_marginStart="0dp"
@@ -147,7 +147,7 @@
                     app:layout_constraintStart_toEndOf="@+id/Dkey3" />
 
                 <Button
-                    android:id="@+id/Fkey3"
+                    android:id="@+id/F3key"
                     android:layout_width="37dp"
                     android:layout_height="100dp"
                     android:layout_marginStart="0dp"
@@ -156,7 +156,7 @@
                     app:layout_constraintStart_toEndOf="@+id/Ekey3" />
 
                 <Button
-                    android:id="@+id/Gkey3"
+                    android:id="@+id/G3key"
                     android:layout_width="37dp"
                     android:layout_height="100dp"
                     android:layout_marginStart="0dp"
@@ -165,7 +165,7 @@
                     app:layout_constraintStart_toEndOf="@+id/Fkey3" />
 
                 <Button
-                    android:id="@+id/Akey3"
+                    android:id="@+id/A3key"
                     android:layout_width="37dp"
                     android:layout_height="100dp"
                     android:layout_marginStart="0dp"
@@ -174,7 +174,7 @@
                     app:layout_constraintStart_toEndOf="@+id/Gkey3" />
 
                 <Button
-                    android:id="@+id/Bkey3"
+                    android:id="@+id/B3key"
                     android:layout_width="37dp"
                     android:layout_height="100dp"
                     android:layout_marginStart="0dp"
@@ -249,7 +249,7 @@
                     app:layout_constraintStart_toEndOf="@+id/Akey" />
 
                 <Button
-                    android:id="@+id/Ckey1"
+                    android:id="@+id/C1key"
                     android:layout_width="37dp"
                     android:layout_height="100dp"
                     android:background="@drawable/whitekey"
@@ -260,7 +260,7 @@
                     app:layout_constraintStart_toEndOf="@+id/Bkey" />
 
                 <Button
-                    android:id="@+id/Dkey1"
+                    android:id="@+id/D1key"
                     android:layout_width="37dp"
                     android:layout_height="100dp"
                     android:layout_marginStart="0dp"
@@ -269,7 +269,7 @@
                     app:layout_constraintStart_toEndOf="@+id/Ckey1" />
 
                 <Button
-                    android:id="@+id/Ekey1"
+                    android:id="@+id/E1key"
                     android:layout_width="37dp"
                     android:layout_height="100dp"
                     android:layout_marginStart="0dp"
@@ -278,7 +278,7 @@
                     app:layout_constraintStart_toEndOf="@+id/Dkey1" />
 
                 <Button
-                    android:id="@+id/Fkey1"
+                    android:id="@+id/F1key"
                     android:layout_width="37dp"
                     android:layout_height="100dp"
                     android:layout_marginStart="0dp"
@@ -287,7 +287,7 @@
                     app:layout_constraintStart_toEndOf="@+id/Ekey1" />
 
                 <Button
-                    android:id="@+id/Gkey1"
+                    android:id="@+id/G1key"
                     android:layout_width="37dp"
                     android:layout_height="100dp"
                     android:layout_marginStart="0dp"
@@ -296,7 +296,7 @@
                     app:layout_constraintStart_toEndOf="@+id/Fkey1" />
 
                 <Button
-                    android:id="@+id/Akey1"
+                    android:id="@+id/A1key"
                     android:layout_width="37dp"
                     android:layout_height="100dp"
                     android:layout_marginStart="0dp"
@@ -305,7 +305,7 @@
                     app:layout_constraintStart_toEndOf="@+id/Gkey1" />
 
                 <Button
-                    android:id="@+id/Bkey1"
+                    android:id="@+id/B1key"
                     android:layout_width="37dp"
                     android:layout_height="100dp"
                     android:layout_marginStart="0dp"
@@ -359,7 +359,7 @@
                     tools:layout_editor_absoluteY="0dp" />
 
                 <Button
-                    android:id="@+id/Cckey1"
+                    android:id="@+id/Cc1key"
                     android:layout_width="28dp"
                     android:layout_height="52dp"
                     android:layout_marginStart="22dp"
@@ -368,7 +368,7 @@
                     tools:layout_editor_absoluteY="0dp" />
 
                 <Button
-                    android:id="@+id/Ddkey1"
+                    android:id="@+id/Dd1key"
                     android:layout_width="28dp"
                     android:layout_height="52dp"
                     android:layout_marginStart="22dp"
@@ -377,7 +377,7 @@
                     tools:layout_editor_absoluteY="0dp" />
 
                 <Button
-                    android:id="@+id/Ffkey1"
+                    android:id="@+id/Ff1key"
                     android:layout_width="28dp"
                     android:layout_height="52dp"
                     android:layout_marginStart="22dp"
@@ -386,7 +386,7 @@
                     tools:layout_editor_absoluteY="0dp" />
 
                 <Button
-                    android:id="@+id/Ggkey1"
+                    android:id="@+id/Gg1key"
                     android:layout_width="28dp"
                     android:layout_height="52dp"
                     android:layout_marginStart="22dp"
@@ -395,7 +395,7 @@
                     tools:layout_editor_absoluteY="0dp" />
 
                 <Button
-                    android:id="@+id/Aakey1"
+                    android:id="@+id/Aa1key"
                     android:layout_width="28dp"
                     android:layout_height="52dp"
                     android:layout_marginStart="22dp"
@@ -404,7 +404,7 @@
                     tools:layout_editor_absoluteY="0dp" />
 
                 <Button
-                    android:id="@+id/Cckey2"
+                    android:id="@+id/Cc2key"
                     android:layout_width="28dp"
                     android:layout_height="52dp"
                     android:layout_marginStart="22dp"
@@ -413,7 +413,7 @@
                     tools:layout_editor_absoluteY="0dp" />
 
                 <Button
-                    android:id="@+id/Ddkey2"
+                    android:id="@+id/Dd2key"
                     android:layout_width="28dp"
                     android:layout_height="52dp"
                     android:layout_marginStart="22dp"
@@ -422,7 +422,7 @@
                     tools:layout_editor_absoluteY="0dp" />
 
                 <Button
-                    android:id="@+id/Ffkey2"
+                    android:id="@+id/Ff2key"
                     android:layout_width="28dp"
                     android:layout_height="52dp"
                     android:layout_marginStart="22dp"
@@ -431,7 +431,7 @@
                     tools:layout_editor_absoluteY="0dp" />
 
                 <Button
-                    android:id="@+id/Ggkey2"
+                    android:id="@+id/Gg2key"
                     android:layout_width="28dp"
                     android:layout_height="52dp"
                     android:layout_marginStart="22dp"
@@ -440,7 +440,7 @@
                     tools:layout_editor_absoluteY="0dp" />
 
                 <Button
-                    android:id="@+id/Aakey2"
+                    android:id="@+id/Aa2key"
                     android:layout_width="28dp"
                     android:layout_height="52dp"
                     android:layout_marginStart="22dp"
@@ -449,7 +449,7 @@
                     tools:layout_editor_absoluteY="0dp" />
 
                 <Button
-                    android:id="@+id/Cckey3"
+                    android:id="@+id/Cc3key"
                     android:layout_width="28dp"
                     android:layout_height="52dp"
                     android:layout_marginStart="22dp"
@@ -458,7 +458,7 @@
                     tools:layout_editor_absoluteY="0dp" />
 
                 <Button
-                    android:id="@+id/Ddkey3"
+                    android:id="@+id/Dd3key"
                     android:layout_width="28dp"
                     android:layout_height="52dp"
                     android:layout_marginStart="22dp"
@@ -467,7 +467,7 @@
                     tools:layout_editor_absoluteY="0dp" />
 
                 <Button
-                    android:id="@+id/Ffkey3"
+                    android:id="@+id/Ff3key"
                     android:layout_width="28dp"
                     android:layout_height="52dp"
                     android:layout_marginStart="22dp"
@@ -476,7 +476,7 @@
                     tools:layout_editor_absoluteY="0dp" />
 
                 <Button
-                    android:id="@+id/Ggkey3"
+                    android:id="@+id/Gg3key"
                     android:layout_width="28dp"
                     android:layout_height="52dp"
                     android:layout_marginStart="22dp"
@@ -485,7 +485,7 @@
                     tools:layout_editor_absoluteY="0dp" />
 
                 <Button
-                    android:id="@+id/Aakey3"
+                    android:id="@+id/Aa3key"
                     android:layout_width="28dp"
                     android:layout_height="52dp"
                     android:layout_marginStart="22dp"
@@ -526,10 +526,12 @@
                 android:layout_weight="0.75"></android.widget.Space>
 
             <ImageView
+                android:id="@+id/NoteImage"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1.7"
                 android:background="@drawable/lf21"/>
+
             <android.widget.Space
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -543,6 +545,7 @@
                 android:layout_weight="1"
                 android:text="@string/play"
                 android:background="@drawable/button"/>
+
             <android.widget.Space
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
