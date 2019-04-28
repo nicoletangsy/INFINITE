@@ -102,9 +102,10 @@ public class RecordedMusicNotes {
                     }
                 }
             }
-            int last = A_GENERATED_MUSIC_NOTES.getPianoSheet().size()-1;
-            Log.d("RecordedMusicNotes:",  "last = " + last);
-            ProcessedNotes.get(count).setNoteDuration((int)A_GENERATED_MUSIC_NOTES.getANoteDuration(last));
+            /*int last = A_GENERATED_MUSIC_NOTES.getPianoSheet().size()-1;
+            Log.d("RecordedMusicNotes:",  "last = " + last);*/
+            //(int)A_GENERATED_MUSIC_NOTES.getANoteDuration(last)
+            ProcessedNotes.get(count).setNoteDuration(4);
         }
     }
 

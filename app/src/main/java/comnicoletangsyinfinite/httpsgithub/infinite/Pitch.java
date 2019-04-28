@@ -48,7 +48,7 @@ public class Pitch {
             } else if (frequencey < 623.5) {
                     pitch = "D5";
                     note = 62;
-            } else if (frequencey < 679) {
+            } else if (frequencey < 680) {
                     pitch = "E5";
                     note = 64;
             }
