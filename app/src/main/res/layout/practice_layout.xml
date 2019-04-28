@@ -59,6 +59,7 @@
                 android:background="@drawable/whitekey"
                 android:gravity="bottom|center"
                 android:text="C2"
+                android:textSize="25dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
 
@@ -120,8 +121,10 @@
                 android:id="@+id/Ckey3"
                 android:layout_width="37dp"
                 android:layout_height="100dp"
-                android:layout_marginStart="0dp"
                 android:background="@drawable/whitekey"
+                android:gravity="bottom|center"
+                android:text="C3"
+                android:textSize="25dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/Bkey2" />
 
@@ -183,8 +186,10 @@
                 android:id="@+id/Ckey"
                 android:layout_width="37dp"
                 android:layout_height="100dp"
-                android:layout_marginStart="0dp"
                 android:background="@drawable/whitekey"
+                android:gravity="bottom|center"
+                android:textSize="25dp"
+                android:text="C4"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/Bkey3" />
 
@@ -247,8 +252,10 @@
                 android:id="@+id/Ckey1"
                 android:layout_width="37dp"
                 android:layout_height="100dp"
-                android:layout_marginStart="0dp"
                 android:background="@drawable/whitekey"
+                android:gravity="bottom|center"
+                android:textSize="25dp"
+                android:text="C5"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/Bkey" />
 
