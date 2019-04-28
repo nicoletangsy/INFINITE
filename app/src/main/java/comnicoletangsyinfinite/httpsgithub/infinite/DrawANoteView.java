@@ -24,6 +24,8 @@ public class DrawANoteView extends View {
     private Paint paint;
     private Resources resources;
 
+
+
     private Rect clipRect;
     private RectF outlineRect;
 
@@ -161,6 +163,7 @@ public class DrawANoteView extends View {
         paint.setTextSize(lineHeight * 4);
         paint.setTextAlign(Paint.Align.LEFT);
 
+        double note = TutorialActivity.note;
 
         for (int n = 0; n < 4; n++) {
 
@@ -187,9 +190,8 @@ public class DrawANoteView extends View {
         canvas.translate(0, 0);
         canvas.drawPath(bclef, paint);
 
-        float y = lineHeight*2;
 
-       canvas.drawText(noteShape,0,y,paint);
+       canvas.drawText(noteShape,0,0,paint);
     }
 
 

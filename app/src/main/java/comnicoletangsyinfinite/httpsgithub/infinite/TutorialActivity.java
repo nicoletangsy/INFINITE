@@ -21,7 +21,6 @@ import static comnicoletangsyinfinite.httpsgithub.infinite.MainActivity.sounds;
 public class TutorialActivity extends AppCompatActivity {
     private TextView NoteText = (TextView) findViewById(R.id.NoteText);
     private Button button = (Button) findViewById(R.id.button);
-    private ImageView image = (ImageView) findViewById(R.id.NoteImage);
     private Map<String, Button> buttonMap = new HashMap<>();
     private String[] buttonKey = {"C", "D", "E", "F", "G", "A", "B", "Cc", "Dd", "Ff", "Gg", "Aa",
             "C1", "D1", "E1", "F1", "G1", "A1", "B1", "Cc1", "Dd1", "Ff1", "Gg1", "Aa1",
@@ -30,8 +29,8 @@ public class TutorialActivity extends AppCompatActivity {
     };
     private Button C = (Button) findViewById(R.id.Ckey);
     private Button Ff = (Button) findViewById(R.id.Ffkey);
-    private int note = 48;
-    private String noteText;
+    public static int note = 48;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

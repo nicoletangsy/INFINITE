@@ -15,7 +15,7 @@ import android.widget.TextView;
 
 public class RightHandReading extends AppCompatActivity {
     public static final MusicSheetType A_Music_Sheet_Type = new MusicSheetType();
-    public static final GeneratedMusicNotes A_GENERATED_MUSIC_NOTES = new GeneratedMusicNotes(1);
+    public static final GeneratedMusicNotes A_GENERATED_MUSIC_NOTES = new GeneratedMusicNotes();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +28,22 @@ public class RightHandReading extends AppCompatActivity {
         int flatSharp = intent.getIntExtra("flatSharp",-1);
         int key = intent.getIntExtra("key",-1);
         Log.v("allallallallget",""+tempo+","+hand+","+flatSharp+","+key);
-        A_GENERATED_MUSIC_NOTES.generateSheet((double)tempo,(double)hand,(double)flatSharp,(double)key);
+
+
+
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//        if(tempo == -1){
+//            A_GENERATED_MUSIC_NOTES.hardCodeSheet();
+//        }
+//
+//        else{
+//
+//        }A_GENERATED_MUSIC_NOTES.hardCodeSheet2();
+
+
+//        A_GENERATED_MUSIC_NOTES.generateSheet((double)tempo,(double)hand,(double)flatSharp,(double)key);
+
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         Button startButton = findViewById(R.id.StartPractiseButton);
 //        TextView bpmIcon = findViewById(R.id.bpmIcon);
