@@ -1,5 +1,7 @@
 package comnicoletangsyinfinite.httpsgithub.infinite;
 
+import android.util.Log;
+
 import static comnicoletangsyinfinite.httpsgithub.infinite.RightHandReading.A_GENERATED_MUSIC_NOTES;
 import java.util.ArrayList;
 
@@ -100,7 +102,9 @@ public class RecordedMusicNotes {
                     }
                 }
             }
-            ProcessedNotes.get(count).setNoteDuration(4);
+            int last = A_GENERATED_MUSIC_NOTES.getPianoSheet().size()-1;
+            Log.d("RecordedMusicNotes:",  "last = " + last);
+            ProcessedNotes.get(count).setNoteDuration((int)A_GENERATED_MUSIC_NOTES.getANoteDuration(last));
         }
     }
 
