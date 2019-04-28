@@ -35,6 +35,8 @@ import be.tarsos.dsp.pitch.PitchDetectionHandler;
 import be.tarsos.dsp.pitch.PitchDetectionResult;
 import be.tarsos.dsp.pitch.PitchProcessor;
 
+import static comnicoletangsyinfinite.httpsgithub.infinite.MainActivity.soundPool;
+import static comnicoletangsyinfinite.httpsgithub.infinite.MainActivity.sounds;
 import static comnicoletangsyinfinite.httpsgithub.infinite.RightHandReading.A_Music_Sheet_Type;
 import static comnicoletangsyinfinite.httpsgithub.infinite.PianoSheetView.FIRST_NOTE;
 import static comnicoletangsyinfinite.httpsgithub.infinite.RightHandReading.A_GENERATED_MUSIC_NOTES;
@@ -65,8 +67,7 @@ public class RightHandPractice extends AppCompatActivity{
     private MediaPlayer mPlayer = null;
     private MediaPlayer NotePlayer;
     private boolean isNotePlaying = false;
-    private SoundPool soundPool = new SoundPool.Builder().setMaxStreams(2).build();
-    private int[][][] sounds = new int[1][5][108]; //sounds[tempo][noteDuration][Notes];
+
     Handler handler = new Handler();
     private static final String TAG = "Resource: ";
 
@@ -266,7 +267,6 @@ public class RightHandPractice extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_right_hand_practice);
-        initSoundPool();
 
         final Button recordButton = (Button)findViewById(R.id.recordButton);
         final Button playRecordButton = (Button)findViewById(R.id.playRecordButton);
@@ -428,19 +428,4 @@ public class RightHandPractice extends AppCompatActivity{
         }
     }
 
-    public void initSoundPool() {
-        for (int i=0; i<5; i++) {
-            for (int j=33; j<65; j++) {
-                    String source = "raw/n" + 0 + "_" + i + "_" + j;
-                    Log.i(TAG, "Resource: " + source);
-                    int resID = getResources().getIdentifier(source, null, getPackageName());
-                    if (resID!=0) {
-                        Log.i(TAG, "Success!");
-                        sounds[0][i][j] = soundPool.load(this, resID, 1);
-                    } else {
-                        sounds[0][i][j] = -1;
-                    }
-            }
-        }
-    }
 }

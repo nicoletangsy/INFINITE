@@ -1,9 +1,11 @@
 package comnicoletangsyinfinite.httpsgithub.infinite;
 
 import android.content.Intent;
+import android.media.SoundPool;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
@@ -20,10 +22,16 @@ public class MainActivity extends AppCompatActivity {
             year        =  2014
         }
         */
+
+    public static SoundPool soundPool = new SoundPool.Builder().setMaxStreams(2).build();
+    public static int[][][] sounds = new int[1][5][108]; //sounds[tempo][noteDuration][Notes];
+    private static final String TAG = "Resource: ";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        initSoundPool();
 
         Button aboutButton = findViewById(R.id.aboutButton);
         Button practiceButton = findViewById(R.id.practiceButton);
@@ -91,5 +99,19 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
-
+    public void initSoundPool() {
+        for (int i=0; i<5; i++) {
+            for (int j=33; j<65; j++) {
+                String source = "raw/n" + 0 + "_" + i + "_" + j;
+                Log.i(TAG, "Resource: " + source);
+                int resID = getResources().getIdentifier(source, null, getPackageName());
+                if (resID!=0) {
+                    Log.i(TAG, "Success!");
+                    sounds[0][i][j] = soundPool.load(this, resID, 1);
+                } else {
+                    sounds[0][i][j] = -1;
+                }
+            }
+        }
+    }
 }
