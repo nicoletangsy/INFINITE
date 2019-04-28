@@ -18,25 +18,26 @@ import java.util.Map;
 import static comnicoletangsyinfinite.httpsgithub.infinite.MainActivity.soundPool;
 import static comnicoletangsyinfinite.httpsgithub.infinite.MainActivity.sounds;
 
-public class TutorialActivity extends AppCompatActivity {
-    private TextView NoteText = (TextView) findViewById(R.id.NoteText);
-    private Button button = (Button) findViewById(R.id.button);
-    private ImageView image = (ImageView) findViewById(R.id.NoteImage);
-    private Map<String, Button> buttonMap = new HashMap<>();
-    private String[] buttonKey = {"C", "D", "E", "F", "G", "A", "B", "Cc", "Dd", "Ff", "Gg", "Aa",
-            "C1", "D1", "E1", "F1", "G1", "A1", "B1", "Cc1", "Dd1", "Ff1", "Gg1", "Aa1",
-            "C2", "D2", "E2", "F2", "G2", "A2", "B2", "Cc2", "Dd2", "Ff2", "Gg2", "Aa2",
-            "C3", "D3", "E3", "F3", "G3", "A3", "B3", "Cc3", "Dd3", "Ff3", "Gg3", "Aa3",
-    };
-    private Button C = (Button) findViewById(R.id.Ckey);
-    private Button Ff = (Button) findViewById(R.id.Ffkey);
-    private int note = 48;
+public class TutorialActivity extends AppCompatActivity implements View.OnClickListener {
+    public static int note = 48;
     private String noteText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tutorial);
+        final TextView NoteText = (TextView) findViewById(R.id.NoteText);
+        final Button button = (Button) findViewById(R.id.button);
+        final ImageView image = (ImageView) findViewById(R.id.NoteImage);
+        final Map<String, Button> buttonMap = new HashMap<>();
+        final String[] buttonKey = {"D", "E", "F", "G", "A", "B", "Cc", "Dd", "Gg", "Aa",
+                "C1", "D1", "E1", "F1", "G1", "A1", "B1", "Cc1", "Dd1", "Ff1", "Gg1", "Aa1",
+                "C2", "D2", "E2", "F2", "G2", "A2", "B2", "Cc2", "Dd2", "Ff2", "Gg2", "Aa2",
+                "C3", "D3", "E3", "F3", "G3", "A3", "B3", "Cc3", "Dd3", "Ff3", "Gg3", "Aa3",
+        };
+        final Button C = (Button) findViewById(R.id.Ckey);
+        final Button Ff = (Button) findViewById(R.id.Ffkey);
+
         C.setBackgroundColor(Color.GREEN);
         C.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -45,6 +46,7 @@ public class TutorialActivity extends AppCompatActivity {
                 Ff.setBackgroundColor(Color.BLACK);
                 note = 48;
                 NoteText.setText("middle C C4");
+                Log.i("Note Changed", "" + note);
                 //Change C4 View
             }
         });
@@ -52,28 +54,35 @@ public class TutorialActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Ff.setBackgroundColor(Color.GREEN);
-                C.setBackgroundColor(Color.WHITE);
+                C.setBackgroundResource(R.drawable.whitekey);
                 note = 54;
                 NoteText.setText("F sharp F#4");
+                Log.i("Note Changed", "" + note);
                 //Change F#4 View
             }
         });
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.i("Play Sounds: ", "sound pool: sound[0][3][" + note + "]");
                 soundPool.play(sounds[0][3][note], 1, 1, 0, 0, 1);
             }
         });
 
 
-        /*for (int i=0; i<buttonKey.length; i++) {
+        for (int i=0; i<buttonKey.length; i++) {
             String source = buttonKey[i] + "key";
             Log.i("buttonKeyRID: ", "" + source);
             int resID = getResources().getIdentifier(source, "id", getPackageName());
             Button newButton = (Button) findViewById(resID);
             newButton.setOnClickListener(this);
             buttonMap.put(buttonKey[i], newButton);
-        }*/
+        }
+    }
+
+    @Override
+    public void onClick(View v) {
+
     }
 
     /*@Override

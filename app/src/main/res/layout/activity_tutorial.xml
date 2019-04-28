@@ -70,7 +70,7 @@
                     android:layout_marginStart="0dp"
                     android:background="@drawable/whitekey"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/Ckey2" />
+                    app:layout_constraintStart_toEndOf="@+id/C2key" />
 
                 <Button
                     android:id="@+id/E2key"
@@ -79,7 +79,7 @@
                     android:layout_marginStart="0dp"
                     android:background="@drawable/whitekey"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/Dkey2" />
+                    app:layout_constraintStart_toEndOf="@+id/D2key" />
 
                 <Button
                     android:id="@+id/F2key"
@@ -88,7 +88,7 @@
                     android:layout_marginStart="0dp"
                     android:background="@drawable/whitekey"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/Ekey2" />
+                    app:layout_constraintStart_toEndOf="@+id/E2key" />
 
                 <Button
                     android:id="@+id/G2key"
@@ -97,7 +97,7 @@
                     android:layout_marginStart="0dp"
                     android:background="@drawable/whitekey"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/Fkey2" />
+                    app:layout_constraintStart_toEndOf="@+id/F2key" />
 
                 <Button
                     android:id="@+id/A2key"
@@ -106,7 +106,7 @@
                     android:layout_marginStart="0dp"
                     android:background="@drawable/whitekey"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/Gkey2" />
+                    app:layout_constraintStart_toEndOf="@+id/G2key" />
 
                 <Button
                     android:id="@+id/B2key"
@@ -115,7 +115,7 @@
                     android:layout_marginStart="0dp"
                     android:background="@drawable/whitekey"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/Akey2" />
+                    app:layout_constraintStart_toEndOf="@+id/A2key" />
 
                 <Button
                     android:id="@+id/C3key"
@@ -126,7 +126,7 @@
                     android:text="C3"
                     android:textSize="25dp"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/Bkey2" />
+                    app:layout_constraintStart_toEndOf="@+id/B2key" />
 
                 <Button
                     android:id="@+id/D3key"
@@ -135,7 +135,7 @@
                     android:layout_marginStart="0dp"
                     android:background="@drawable/whitekey"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/Ckey3" />
+                    app:layout_constraintStart_toEndOf="@+id/C3key" />
 
                 <Button
                     android:id="@+id/E3key"
@@ -144,7 +144,7 @@
                     android:layout_marginStart="0dp"
                     android:background="@drawable/whitekey"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/Dkey3" />
+                    app:layout_constraintStart_toEndOf="@+id/D3key" />
 
                 <Button
                     android:id="@+id/F3key"
@@ -153,7 +153,7 @@
                     android:layout_marginStart="0dp"
                     android:background="@drawable/whitekey"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/Ekey3" />
+                    app:layout_constraintStart_toEndOf="@+id/E3key" />
 
                 <Button
                     android:id="@+id/G3key"
@@ -162,7 +162,7 @@
                     android:layout_marginStart="0dp"
                     android:background="@drawable/whitekey"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/Fkey3" />
+                    app:layout_constraintStart_toEndOf="@+id/F3key" />
 
                 <Button
                     android:id="@+id/A3key"
@@ -171,7 +171,7 @@
                     android:layout_marginStart="0dp"
                     android:background="@drawable/whitekey"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/Gkey3" />
+                    app:layout_constraintStart_toEndOf="@+id/G3key" />
 
                 <Button
                     android:id="@+id/B3key"
@@ -180,7 +180,7 @@
                     android:layout_marginStart="0dp"
                     android:background="@drawable/whitekey"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/Akey3" />
+                    app:layout_constraintStart_toEndOf="@+id/A3key" />
 
                 <Button
                     android:id="@+id/Ckey"
@@ -191,7 +191,7 @@
                     android:textSize="25dp"
                     android:text="C4"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/Bkey3" />
+                    app:layout_constraintStart_toEndOf="@+id/B3key" />
 
 
                 <Button
@@ -266,7 +266,7 @@
                     android:layout_marginStart="0dp"
                     android:background="@drawable/whitekey"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/Ckey1" />
+                    app:layout_constraintStart_toEndOf="@+id/C1key" />
 
                 <Button
                     android:id="@+id/E1key"
@@ -275,7 +275,7 @@
                     android:layout_marginStart="0dp"
                     android:background="@drawable/whitekey"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/Dkey1" />
+                    app:layout_constraintStart_toEndOf="@+id/D1key" />
 
                 <Button
                     android:id="@+id/F1key"
@@ -284,7 +284,7 @@
                     android:layout_marginStart="0dp"
                     android:background="@drawable/whitekey"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/Ekey1" />
+                    app:layout_constraintStart_toEndOf="@+id/E1key" />
 
                 <Button
                     android:id="@+id/G1key"
@@ -293,7 +293,7 @@
                     android:layout_marginStart="0dp"
                     android:background="@drawable/whitekey"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/Fkey1" />
+                    app:layout_constraintStart_toEndOf="@+id/F1key" />
 
                 <Button
                     android:id="@+id/A1key"
@@ -302,7 +302,7 @@
                     android:layout_marginStart="0dp"
                     android:background="@drawable/whitekey"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/Gkey1" />
+                    app:layout_constraintStart_toEndOf="@+id/G1key" />
 
                 <Button
                     android:id="@+id/B1key"
@@ -311,7 +311,7 @@
                     android:layout_marginStart="0dp"
                     android:background="@drawable/whitekey"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/Akey1" />
+                    app:layout_constraintStart_toEndOf="@+id/A1key" />
 
                 <Button
                     android:id="@+id/Cckey"
@@ -364,7 +364,7 @@
                     android:layout_height="52dp"
                     android:layout_marginStart="22dp"
                     android:background="@drawable/blackkey"
-                    app:layout_constraintStart_toStartOf="@+id/Ckey1"
+                    app:layout_constraintStart_toStartOf="@+id/C1key"
                     tools:layout_editor_absoluteY="0dp" />
 
                 <Button
@@ -373,7 +373,7 @@
                     android:layout_height="52dp"
                     android:layout_marginStart="22dp"
                     android:background="@drawable/blackkey"
-                    app:layout_constraintStart_toStartOf="@+id/Dkey1"
+                    app:layout_constraintStart_toStartOf="@+id/D1key"
                     tools:layout_editor_absoluteY="0dp" />
 
                 <Button
@@ -382,7 +382,7 @@
                     android:layout_height="52dp"
                     android:layout_marginStart="22dp"
                     android:background="@drawable/blackkey"
-                    app:layout_constraintStart_toStartOf="@+id/Fkey1"
+                    app:layout_constraintStart_toStartOf="@+id/F1key"
                     tools:layout_editor_absoluteY="0dp" />
 
                 <Button
@@ -391,7 +391,7 @@
                     android:layout_height="52dp"
                     android:layout_marginStart="22dp"
                     android:background="@drawable/blackkey"
-                    app:layout_constraintStart_toStartOf="@+id/Gkey1"
+                    app:layout_constraintStart_toStartOf="@+id/G1key"
                     tools:layout_editor_absoluteY="0dp" />
 
                 <Button
@@ -400,7 +400,7 @@
                     android:layout_height="52dp"
                     android:layout_marginStart="22dp"
                     android:background="@drawable/blackkey"
-                    app:layout_constraintStart_toStartOf="@+id/Akey1"
+                    app:layout_constraintStart_toStartOf="@+id/A1key"
                     tools:layout_editor_absoluteY="0dp" />
 
                 <Button
@@ -409,7 +409,7 @@
                     android:layout_height="52dp"
                     android:layout_marginStart="22dp"
                     android:background="@drawable/blackkey"
-                    app:layout_constraintStart_toStartOf="@+id/Ckey2"
+                    app:layout_constraintStart_toStartOf="@+id/C2key"
                     tools:layout_editor_absoluteY="0dp" />
 
                 <Button
@@ -418,7 +418,7 @@
                     android:layout_height="52dp"
                     android:layout_marginStart="22dp"
                     android:background="@drawable/blackkey"
-                    app:layout_constraintStart_toStartOf="@+id/Dkey2"
+                    app:layout_constraintStart_toStartOf="@+id/D2key"
                     tools:layout_editor_absoluteY="0dp" />
 
                 <Button
@@ -427,7 +427,7 @@
                     android:layout_height="52dp"
                     android:layout_marginStart="22dp"
                     android:background="@drawable/blackkey"
-                    app:layout_constraintStart_toStartOf="@+id/Fkey2"
+                    app:layout_constraintStart_toStartOf="@+id/F2key"
                     tools:layout_editor_absoluteY="0dp" />
 
                 <Button
@@ -436,7 +436,7 @@
                     android:layout_height="52dp"
                     android:layout_marginStart="22dp"
                     android:background="@drawable/blackkey"
-                    app:layout_constraintStart_toStartOf="@+id/Gkey2"
+                    app:layout_constraintStart_toStartOf="@+id/G2key"
                     tools:layout_editor_absoluteY="0dp" />
 
                 <Button
@@ -445,7 +445,7 @@
                     android:layout_height="52dp"
                     android:layout_marginStart="22dp"
                     android:background="@drawable/blackkey"
-                    app:layout_constraintStart_toStartOf="@+id/Akey2"
+                    app:layout_constraintStart_toStartOf="@+id/A2key"
                     tools:layout_editor_absoluteY="0dp" />
 
                 <Button
@@ -454,7 +454,7 @@
                     android:layout_height="52dp"
                     android:layout_marginStart="22dp"
                     android:background="@drawable/blackkey"
-                    app:layout_constraintStart_toStartOf="@+id/Ckey3"
+                    app:layout_constraintStart_toStartOf="@+id/C3key"
                     tools:layout_editor_absoluteY="0dp" />
 
                 <Button
@@ -463,7 +463,7 @@
                     android:layout_height="52dp"
                     android:layout_marginStart="22dp"
                     android:background="@drawable/blackkey"
-                    app:layout_constraintStart_toStartOf="@+id/Dkey3"
+                    app:layout_constraintStart_toStartOf="@+id/D3key"
                     tools:layout_editor_absoluteY="0dp" />
 
                 <Button
@@ -472,7 +472,7 @@
                     android:layout_height="52dp"
                     android:layout_marginStart="22dp"
                     android:background="@drawable/blackkey"
-                    app:layout_constraintStart_toStartOf="@+id/Fkey3"
+                    app:layout_constraintStart_toStartOf="@+id/F3key"
                     tools:layout_editor_absoluteY="0dp" />
 
                 <Button
@@ -481,7 +481,7 @@
                     android:layout_height="52dp"
                     android:layout_marginStart="22dp"
                     android:background="@drawable/blackkey"
-                    app:layout_constraintStart_toStartOf="@+id/Gkey3"
+                    app:layout_constraintStart_toStartOf="@+id/G3key"
                     tools:layout_editor_absoluteY="0dp" />
 
                 <Button
@@ -490,7 +490,7 @@
                     android:layout_height="52dp"
                     android:layout_marginStart="22dp"
                     android:background="@drawable/blackkey"
-                    app:layout_constraintStart_toStartOf="@+id/Akey3"/>
+                    app:layout_constraintStart_toStartOf="@+id/A3key"/>
 
             </android.support.constraint.ConstraintLayout>
         </HorizontalScrollView>
