@@ -3,7 +3,6 @@ package comnicoletangsyinfinite.httpsgithub.infinite;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.media.MediaRecorder;
 import android.media.SoundPool;
@@ -67,7 +66,7 @@ public class RightHandPractice extends AppCompatActivity{
     private MediaPlayer NotePlayer;
     private boolean isNotePlaying = false;
     private SoundPool soundPool = new SoundPool.Builder().setMaxStreams(2).build();
-    private int[][][] sounds = new int[3][5][108]; //sounds[tempo][noteDuration][Notes];
+    private int[][][] sounds = new int[1][5][108]; //sounds[tempo][noteDuration][Notes];
     Handler handler = new Handler();
     private static final String TAG = "Resource: ";
 
@@ -128,7 +127,6 @@ public class RightHandPractice extends AppCompatActivity{
     }
 
     private void startPlayingNotes() {
-        initSoundPool();
         final int tempo = (int) A_GENERATED_MUSIC_NOTES.getTempo();
         final Handler handler = new Handler();
         handler.post(new Runnable() {
@@ -142,6 +140,7 @@ public class RightHandPractice extends AppCompatActivity{
             public void run() {
                 if (sounds[temp][duration][note]!=-1) {
                     soundPool.play(sounds[temp][duration][note], 1, 1, 0, 0, 1);
+                    Log.i(TAG, "Sound Play: [" + temp + "][" + duration + "][" + note + "]");
                 } else {
                     Log.i(TAG, "No this note: sounds[" + temp + "][" + duration + "][" + note + "]");
                 }
@@ -267,6 +266,7 @@ public class RightHandPractice extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_right_hand_practice);
+        initSoundPool();
 
         final Button recordButton = (Button)findViewById(R.id.recordButton);
         final Button playRecordButton = (Button)findViewById(R.id.playRecordButton);
@@ -429,21 +429,18 @@ public class RightHandPractice extends AppCompatActivity{
     }
 
     public void initSoundPool() {
-        for (int i=0; i<3; i++) {
-            for (int j=0; j<5; j++) {
-                for (int k=0; k<108; k++) {
-                    String source = "raw/n" + i + "_" + j + "_" + k;
+        for (int i=0; i<5; i++) {
+            for (int j=33; j<65; j++) {
+                    String source = "raw/n" + 0 + "_" + i + "_" + j;
                     Log.i(TAG, "Resource: " + source);
                     int resID = getResources().getIdentifier(source, null, getPackageName());
                     if (resID!=0) {
                         Log.i(TAG, "Success!");
-                        sounds[i][j][k] = soundPool.load(this, resID, 1);
+                        sounds[0][i][j] = soundPool.load(this, resID, 1);
                     } else {
-                        sounds[i][j][k] = -1;
+                        sounds[0][i][j] = -1;
                     }
-                }
             }
         }
     }
 }
-
