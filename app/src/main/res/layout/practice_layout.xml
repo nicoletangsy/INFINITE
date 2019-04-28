@@ -56,9 +56,19 @@
                 android:id="@+id/Ckey2"
                 android:layout_width="37dp"
                 android:layout_height="100dp"
+<<<<<<< HEAD
                 android:layout_marginStart="0dp"
                 android:background="@drawable/whitekey" />
 
+=======
+                android:layout_marginStart="1dp"
+                android:background="@drawable/whitekey"
+                android:gravity="bottom|center"
+                android:text="C2"
+                android:textSize="25dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+>>>>>>> origin/gary
 
             <Button
                 android:id="@+id/Dkey2"
@@ -100,7 +110,16 @@
                 android:id="@+id/Ckey3"
                 android:layout_width="37dp"
                 android:layout_height="100dp"
+<<<<<<< HEAD
                 android:background="@drawable/whitekey" />
+=======
+                android:background="@drawable/whitekey"
+                android:gravity="bottom|center"
+                android:text="C3"
+                android:textSize="25dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/Bkey2" />
+>>>>>>> origin/gary
 
             <Button
                 android:id="@+id/Dkey3"
@@ -143,8 +162,17 @@
                 android:id="@+id/Ckey"
                 android:layout_width="37dp"
                 android:layout_height="100dp"
+<<<<<<< HEAD
                 android:layout_marginStart="0dp"
                 android:background="@drawable/whitekey" />
+=======
+                android:background="@drawable/whitekey"
+                android:gravity="bottom|center"
+                android:textSize="25dp"
+                android:text="C4"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/Bkey3" />
+>>>>>>> origin/gary
 
 
             <Button
@@ -187,7 +215,16 @@
                 android:id="@+id/Ckey1"
                 android:layout_width="37dp"
                 android:layout_height="100dp"
+<<<<<<< HEAD
                 android:background="@drawable/whitekey" />
+=======
+                android:background="@drawable/whitekey"
+                android:gravity="bottom|center"
+                android:textSize="25dp"
+                android:text="C5"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/Bkey" />
+>>>>>>> origin/gary
 
             <Button
                 android:id="@+id/Dkey1"
