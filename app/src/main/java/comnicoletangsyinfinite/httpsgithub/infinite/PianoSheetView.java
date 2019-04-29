@@ -292,7 +292,8 @@ public class PianoSheetView extends View {
         ArrayList<Notes> notesArrayList = new ArrayList<>();
 
         for (int i = 3; i < theSheet.size(); i++) {
-
+Log.v("theSheettheSheettheSheet",""+theSheet);
+            Log.v("theSheettheSheettheSheet1",""+theSheet.get(i).get(1));
             //whether the note is 1 note
             if (theSheet.get(i).get(1) == 1) {
                 notesArrayList.add(new Notes(this.getContext()));

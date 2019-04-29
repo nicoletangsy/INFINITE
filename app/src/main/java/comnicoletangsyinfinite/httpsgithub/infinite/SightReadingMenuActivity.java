@@ -14,6 +14,8 @@ import android.widget.ImageView;
 
 import java.util.ArrayList;
 
+import static comnicoletangsyinfinite.httpsgithub.infinite.RightHandReading.A_GENERATED_MUSIC_NOTES;
+
 public class SightReadingMenuActivity extends AppCompatActivity {
     ArrayList<Button> buttons = new ArrayList<>();
     ArrayList<Integer> buttonUp = new ArrayList<>();
@@ -75,6 +77,7 @@ public class SightReadingMenuActivity extends AppCompatActivity {
         Button Random = findViewById(R.id.random);
 
         Button nextButton = findViewById(R.id.nextButton);
+
 
         buttons.add(bpm60);
         buttons.add(bpm80);
