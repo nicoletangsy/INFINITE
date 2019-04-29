@@ -18,12 +18,12 @@
             layout="@layout/app_bar"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="0.75"></include>
+            android:layout_weight="0.65"></include>
 
         <android.widget.Space
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="0.3"></android.widget.Space>
+            android:layout_weight="0.35"></android.widget.Space>
 
         <!--for bpm and hand-->
         <LinearLayout

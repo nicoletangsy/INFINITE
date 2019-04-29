@@ -3,13 +3,18 @@
 
     <!--about us page-->
     <string name="aboutUs">About Us</string>
-    <string name="aboutSightReading">About Sight Readinge</string>
+    <string name="aboutSightReading">About Sight Reading</string>
 
     <!--Main page button-->
-    <string name="aboutButton">\u0020About Us\u0020 </string>
-    <string name="tutorialButton">\u0020\u0020\u0020 Tutorial \u0020\u0020\u0020 </string>
-    <string name="practiceButton">\u0020\u0020\u0020 Practice \u0020\u0020\u0020</string>
-    <string name="sightReadingButton">\u0020\u0020\u0020 Sight Reading \u0020\u0020\u0020</string>
+    <string name="aboutButton">About Us</string>
+    <string name="tutorialButton">Tutorial</string>
+    <string name="practiceButton">Practice </string>
+    <string name="sightReadingButton">Sight Reading</string>
+
+    <!--Practice page-->
+    <string name="question">Which note is it?</string>
+
+
 
     <!--Sight Reading Menu page-->
     <!--Text-->
@@ -41,16 +46,19 @@
     <string name="EeButton">E\u266D</string>
     <string name="GgButton">G\u266D</string>
 
-    <!--Sight Reading Pracitce Page-->
+    <string name="startSightReading">start</string>
+    <string name="otherSheet">Other Sheet</string>
+
+    <!--Sight Reading Pracitce page-->
     <string name="analyze">analyze</string>
     <string name="play">play</string>
-    <string name="start">start</string>
+    <string name="startRecording">start</string>
 
-    <!--Tutorial Page-->
+    <!--Tutorial page-->
     <string name="tutorialInstructiontext">Tap a piano key</string>
 
 
-    <!--Pactice Menu Page-->
+    <!--Pactice Menu page-->
     <string name="withFakePianoButton">Practice With Virtual Piano Button</string>
     <string name="withRealPianoButton">Practice With Real Piano</string>
     <string name="practiceInstructionText">Which Type of Practice would you want?</string>
