@@ -213,8 +213,9 @@ public class RightHandPractice extends AppCompatActivity {
         dispatcher.stop();
         A_COMPARE_MUSIC_SHEET.setGeneratedMusicSheet(A_GENERATED_MUSIC_NOTES.getPianoSheet());
         A_COMPARE_MUSIC_SHEET.setRecordedMusicNotes(A_RECORDED_MUSIC_NOTES.getPianoSheet());
-        A_COMPARE_MUSIC_SHEET.hardCodeCompare();
         A_COMPARE_MUSIC_SHEET.compareTwoSheet();
+//        A_COMPARE_MUSIC_SHEET.compareTwoSheet1();
+//        A_COMPARE_MUSIC_SHEET.compareTwoSheet2();
         /*mRecorder.stop();
         mRecorder.release();
         mRecorder = null;*/

@@ -74,7 +74,7 @@ public class UserSheetView extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 
-        theSheet = A_COMPARE_MUSIC_SHEET.gethard();
+        theSheet = A_COMPARE_MUSIC_SHEET.getSheet();
 
 
 

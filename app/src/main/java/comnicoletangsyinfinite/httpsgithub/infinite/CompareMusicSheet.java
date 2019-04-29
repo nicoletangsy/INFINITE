@@ -22,162 +22,158 @@ public class CompareMusicSheet {
     public void setRecordedMusicNotes(ArrayList<ArrayList<Double>> recordedMusicSheet) {
         this.recordedMusicSheet = recordedMusicSheet;
     }
+    //correct
+//    public void compareTwoSheet1() {
+//        this.hardCodeSheet = this.generatedMusicSheet;
+//        for (int i = 3; i < generatedMusicSheet.size(); i++) {
+//            hardCodeSheet.get(i).add((double) 0);
+//        }
+//    }
 
-    public void hardCodeCompare2() {
-        this.hardCodeSheet = this.generatedMusicSheet;
-        for (int i = 3; i < generatedMusicSheet.size(); i++) {
-            hardCodeSheet.get(i).add((double) 0);
-        }
-    }
-
-    public void hardCodeCompare() {
-        hardCodeSheet = new ArrayList<ArrayList<Double>>();
-        hardCodeSheet.add(new ArrayList<Double>());
-        hardCodeSheet.get(0).add((double) 60);
-        hardCodeSheet.get(0).add((double) 4);
-
-        hardCodeSheet.add(new ArrayList<Double>());
-        hardCodeSheet.get(1).add((double) 0);
-        hardCodeSheet.get(1).add((double) 0);
-        hardCodeSheet.get(1).add((double) 0);
-
-        hardCodeSheet.add(new ArrayList<Double>());
-        hardCodeSheet.get(2).add((double) 1);
-        hardCodeSheet.get(2).add((double) 0);
-        hardCodeSheet.get(2).add((double) 0);
-
-        hardCodeSheet.add(new ArrayList<Double>());
-        hardCodeSheet.get(3).add((double) 52);
-        hardCodeSheet.get(3).add((double) 8);
-        hardCodeSheet.get(3).add((double) 1);
-
-        hardCodeSheet.add(new ArrayList<Double>());
-        hardCodeSheet.get(4).add((double) 50);
-        hardCodeSheet.get(4).add((double) 8);
-        hardCodeSheet.get(4).add((double) 1);
-
-        hardCodeSheet.add(new ArrayList<Double>());
-        hardCodeSheet.get(5).add((double) 48);
-        hardCodeSheet.get(5).add((double) 8);
-        hardCodeSheet.get(5).add((double) 1);
-
-        hardCodeSheet.add(new ArrayList<Double>());
-        hardCodeSheet.get(6).add((double) 50);
-        hardCodeSheet.get(6).add((double) 8);
-        hardCodeSheet.get(6).add((double) 1);
-
-        hardCodeSheet.add(new ArrayList<Double>());
-        hardCodeSheet.get(7).add((double) 52);
-        hardCodeSheet.get(7).add((double) 8);
-        hardCodeSheet.get(7).add((double) 1);
-
-        hardCodeSheet.add(new ArrayList<Double>());
-        hardCodeSheet.get(8).add((double) 52);
-        hardCodeSheet.get(8).add((double) 8);
-        hardCodeSheet.get(8).add((double) 1);
-
-        hardCodeSheet.add(new ArrayList<Double>());
-        hardCodeSheet.get(9).add((double) 52);
-        hardCodeSheet.get(9).add((double) 4);
-        hardCodeSheet.get(9).add((double) 1);
-
-        hardCodeSheet.add(new ArrayList<Double>());
-        hardCodeSheet.get(10).add((double) 50);
-        hardCodeSheet.get(10).add((double) 8);
-        hardCodeSheet.get(10).add((double) 1);
-
-        hardCodeSheet.add(new ArrayList<Double>());
-        hardCodeSheet.get(11).add((double) 50);
-        hardCodeSheet.get(11).add((double) 8);
-        hardCodeSheet.get(11).add((double) 0);
-
-        hardCodeSheet.add(new ArrayList<Double>());
-        hardCodeSheet.get(12).add((double) 50);
-        hardCodeSheet.get(12).add((double) 4);
-        hardCodeSheet.get(12).add((double) 0);
-
-        hardCodeSheet.add(new ArrayList<Double>());
-        hardCodeSheet.get(13).add((double) 52);
-        hardCodeSheet.get(13).add((double) 8);
-        hardCodeSheet.get(13).add((double) 1);
-
-        hardCodeSheet.add(new ArrayList<Double>());
-        hardCodeSheet.get(14).add((double) 52);
-        hardCodeSheet.get(14).add((double) 8);
-        hardCodeSheet.get(14).add((double) 1);
-
-        hardCodeSheet.add(new ArrayList<Double>());
-        hardCodeSheet.get(15).add((double) 52);
-        hardCodeSheet.get(15).add((double) 4);
-        hardCodeSheet.get(15).add((double) 1);
-
-        hardCodeSheet.add(new ArrayList<Double>());
-        hardCodeSheet.get(16).add((double) 52);
-        hardCodeSheet.get(16).add((double) 8);
-        hardCodeSheet.get(16).add((double) 1);
-
-        hardCodeSheet.add(new ArrayList<Double>());
-        hardCodeSheet.get(17).add((double) 50);
-        hardCodeSheet.get(17).add((double) 8);
-        hardCodeSheet.get(17).add((double) 1);
-
-        hardCodeSheet.add(new ArrayList<Double>());
-        hardCodeSheet.get(18).add((double) 48);
-        hardCodeSheet.get(18).add((double) 8);
-        hardCodeSheet.get(18).add((double) 1);
-
-        hardCodeSheet.add(new ArrayList<Double>());
-        hardCodeSheet.get(19).add((double) 50);
-        hardCodeSheet.get(19).add((double) 8);
-        hardCodeSheet.get(19).add((double) 1);
-
-        hardCodeSheet.add(new ArrayList<Double>());
-        hardCodeSheet.get(20).add((double) 52);
-        hardCodeSheet.get(20).add((double) 8);
-        hardCodeSheet.get(20).add((double) 1);
-
-        hardCodeSheet.add(new ArrayList<Double>());
-        hardCodeSheet.get(21).add((double) 52);
-        hardCodeSheet.get(21).add((double) 8);
-        hardCodeSheet.get(21).add((double) 1);
-
-        hardCodeSheet.add(new ArrayList<Double>());
-        hardCodeSheet.get(22).add((double) 52);
-        hardCodeSheet.get(22).add((double) 4);
-        hardCodeSheet.get(2).add((double) 1);
-
-        hardCodeSheet.add(new ArrayList<Double>());
-        hardCodeSheet.get(23).add((double) 50);
-        hardCodeSheet.get(23).add((double) 8);
-        hardCodeSheet.get(23).add((double) 1);
-
-        hardCodeSheet.add(new ArrayList<Double>());
-        hardCodeSheet.get(24).add((double) 50);
-        hardCodeSheet.get(24).add((double) 8);
-        hardCodeSheet.get(24).add((double) 1);
-
-        hardCodeSheet.add(new ArrayList<Double>());
-        hardCodeSheet.get(25).add((double) 52);
-        hardCodeSheet.get(25).add((double) 8);
-        hardCodeSheet.get(25).add((double) 1);
-
-        hardCodeSheet.add(new ArrayList<Double>());
-        hardCodeSheet.get(26).add((double) 50);
-        hardCodeSheet.get(26).add((double) 8);
-        hardCodeSheet.get(26).add((double) 1);
-
-        hardCodeSheet.add(new ArrayList<Double>());
-        hardCodeSheet.get(27).add((double) 48);
-        hardCodeSheet.get(27).add((double) 4);
-        hardCodeSheet.get(27).add((double) 1);
-
-
-    }
-
-    public ArrayList<ArrayList<Double>> gethard() {
-        return this.hardCodeSheet;
-    }
-
+    //wrong
+//    public void compareTwoSheet2() {
+//        hardCodeSheet = new ArrayList<ArrayList<Double>>();
+//        hardCodeSheet.add(new ArrayList<Double>());
+//        hardCodeSheet.get(0).add((double) 60);
+//        hardCodeSheet.get(0).add((double) 4);
+//
+//        hardCodeSheet.add(new ArrayList<Double>());
+//        hardCodeSheet.get(1).add((double) 0);
+//        hardCodeSheet.get(1).add((double) 0);
+//        hardCodeSheet.get(1).add((double) 0);
+//
+//        hardCodeSheet.add(new ArrayList<Double>());
+//        hardCodeSheet.get(2).add((double) 1);
+//        hardCodeSheet.get(2).add((double) 0);
+//        hardCodeSheet.get(2).add((double) 0);
+//
+//        hardCodeSheet.add(new ArrayList<Double>());
+//        hardCodeSheet.get(3).add((double) 52);
+//        hardCodeSheet.get(3).add((double) 8);
+//        hardCodeSheet.get(3).add((double) 1);
+//
+//        hardCodeSheet.add(new ArrayList<Double>());
+//        hardCodeSheet.get(4).add((double) 50);
+//        hardCodeSheet.get(4).add((double) 8);
+//        hardCodeSheet.get(4).add((double) 1);
+//
+//        hardCodeSheet.add(new ArrayList<Double>());
+//        hardCodeSheet.get(5).add((double) 48);
+//        hardCodeSheet.get(5).add((double) 8);
+//        hardCodeSheet.get(5).add((double) 1);
+//
+//        hardCodeSheet.add(new ArrayList<Double>());
+//        hardCodeSheet.get(6).add((double) 50);
+//        hardCodeSheet.get(6).add((double) 8);
+//        hardCodeSheet.get(6).add((double) 1);
+//
+//        hardCodeSheet.add(new ArrayList<Double>());
+//        hardCodeSheet.get(7).add((double) 52);
+//        hardCodeSheet.get(7).add((double) 8);
+//        hardCodeSheet.get(7).add((double) 1);
+//
+//        hardCodeSheet.add(new ArrayList<Double>());
+//        hardCodeSheet.get(8).add((double) 52);
+//        hardCodeSheet.get(8).add((double) 8);
+//        hardCodeSheet.get(8).add((double) 1);
+//
+//        hardCodeSheet.add(new ArrayList<Double>());
+//        hardCodeSheet.get(9).add((double) 52);
+//        hardCodeSheet.get(9).add((double) 4);
+//        hardCodeSheet.get(9).add((double) 1);
+//
+//        hardCodeSheet.add(new ArrayList<Double>());
+//        hardCodeSheet.get(10).add((double) 50);
+//        hardCodeSheet.get(10).add((double) 8);
+//        hardCodeSheet.get(10).add((double) 1);
+//
+//        hardCodeSheet.add(new ArrayList<Double>());
+//        hardCodeSheet.get(11).add((double) 50);
+//        hardCodeSheet.get(11).add((double) 8);
+//        hardCodeSheet.get(11).add((double) 0);
+//
+//        hardCodeSheet.add(new ArrayList<Double>());
+//        hardCodeSheet.get(12).add((double) 50);
+//        hardCodeSheet.get(12).add((double) 4);
+//        hardCodeSheet.get(12).add((double) 0);
+//
+//        hardCodeSheet.add(new ArrayList<Double>());
+//        hardCodeSheet.get(13).add((double) 52);
+//        hardCodeSheet.get(13).add((double) 8);
+//        hardCodeSheet.get(13).add((double) 1);
+//
+//        hardCodeSheet.add(new ArrayList<Double>());
+//        hardCodeSheet.get(14).add((double) 52);
+//        hardCodeSheet.get(14).add((double) 8);
+//        hardCodeSheet.get(14).add((double) 1);
+//
+//        hardCodeSheet.add(new ArrayList<Double>());
+//        hardCodeSheet.get(15).add((double) 52);
+//        hardCodeSheet.get(15).add((double) 4);
+//        hardCodeSheet.get(15).add((double) 1);
+//
+//        hardCodeSheet.add(new ArrayList<Double>());
+//        hardCodeSheet.get(16).add((double) 52);
+//        hardCodeSheet.get(16).add((double) 8);
+//        hardCodeSheet.get(16).add((double) 1);
+//
+//        hardCodeSheet.add(new ArrayList<Double>());
+//        hardCodeSheet.get(17).add((double) 50);
+//        hardCodeSheet.get(17).add((double) 8);
+//        hardCodeSheet.get(17).add((double) 1);
+//
+//        hardCodeSheet.add(new ArrayList<Double>());
+//        hardCodeSheet.get(18).add((double) 48);
+//        hardCodeSheet.get(18).add((double) 8);
+//        hardCodeSheet.get(18).add((double) 1);
+//
+//        hardCodeSheet.add(new ArrayList<Double>());
+//        hardCodeSheet.get(19).add((double) 50);
+//        hardCodeSheet.get(19).add((double) 8);
+//        hardCodeSheet.get(19).add((double) 1);
+//
+//        hardCodeSheet.add(new ArrayList<Double>());
+//        hardCodeSheet.get(20).add((double) 52);
+//        hardCodeSheet.get(20).add((double) 8);
+//        hardCodeSheet.get(20).add((double) 1);
+//
+//        hardCodeSheet.add(new ArrayList<Double>());
+//        hardCodeSheet.get(21).add((double) 52);
+//        hardCodeSheet.get(21).add((double) 8);
+//        hardCodeSheet.get(21).add((double) 1);
+//
+//        hardCodeSheet.add(new ArrayList<Double>());
+//        hardCodeSheet.get(22).add((double) 52);
+//        hardCodeSheet.get(22).add((double) 4);
+//        hardCodeSheet.get(2).add((double) 1);
+//
+//        hardCodeSheet.add(new ArrayList<Double>());
+//        hardCodeSheet.get(23).add((double) 50);
+//        hardCodeSheet.get(23).add((double) 8);
+//        hardCodeSheet.get(23).add((double) 1);
+//
+//        hardCodeSheet.add(new ArrayList<Double>());
+//        hardCodeSheet.get(24).add((double) 50);
+//        hardCodeSheet.get(24).add((double) 8);
+//        hardCodeSheet.get(24).add((double) 1);
+//
+//        hardCodeSheet.add(new ArrayList<Double>());
+//        hardCodeSheet.get(25).add((double) 52);
+//        hardCodeSheet.get(25).add((double) 8);
+//        hardCodeSheet.get(25).add((double) 1);
+//
+//        hardCodeSheet.add(new ArrayList<Double>());
+//        hardCodeSheet.get(26).add((double) 50);
+//        hardCodeSheet.get(26).add((double) 8);
+//        hardCodeSheet.get(26).add((double) 1);
+//
+//        hardCodeSheet.add(new ArrayList<Double>());
+//        hardCodeSheet.get(27).add((double) 48);
+//        hardCodeSheet.get(27).add((double) 4);
+//        hardCodeSheet.get(27).add((double) 1);
+//
+//
+//    }
 
     public void compareTwoSheet() {
         userMusicSheet.add(new ArrayList<Double>());
@@ -207,5 +203,6 @@ public class CompareMusicSheet {
 
     public ArrayList<ArrayList<Double>> getSheet() {
         return userMusicSheet;
+//        return hardCodeSheet;
     }
 }
