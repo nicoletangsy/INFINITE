@@ -2,6 +2,7 @@ package comnicoletangsyinfinite.httpsgithub.infinite;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.media.Image;
 import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -26,6 +27,7 @@ public class TutorialActivity extends AppCompatActivity implements View.OnClickL
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tutorial);
         final TextView NoteText = (TextView) findViewById(R.id.NoteText);
+        final  ImageView view = (ImageView) findViewById(R.id.view);
         final Button button = (Button) findViewById(R.id.button);
         final Map<String, Button> buttonMap = new HashMap<>();
         final String[] buttonKey = {"D", "E", "F", "G", "A", "B", "Cc", "Dd", "Gg", "Aa",
@@ -35,7 +37,7 @@ public class TutorialActivity extends AppCompatActivity implements View.OnClickL
         };
         final Button C = (Button) findViewById(R.id.Ckey);
         final Button Ff = (Button) findViewById(R.id.Ffkey);
-        C.setBackgroundColor(Color.GREEN);
+
         C.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -44,6 +46,7 @@ public class TutorialActivity extends AppCompatActivity implements View.OnClickL
                 note = 48;
                 NoteText.setText("middle C C4");
                 Log.i("Note Changed", "" + note);
+                view.setImageResource(R.drawable.c2);
                 //Change C4 View
             }
         });
@@ -54,6 +57,7 @@ public class TutorialActivity extends AppCompatActivity implements View.OnClickL
                 C.setBackgroundResource(R.drawable.whitekey);
                 note = 54;
                 NoteText.setText("F sharp F#4");
+                view.setImageResource(R.drawable.fs1);
                 Log.i("Note Changed", "" + note);
                 //Change F#4 View
             }
@@ -63,6 +67,7 @@ public class TutorialActivity extends AppCompatActivity implements View.OnClickL
             public void onClick(View v) {
                 Log.i("Play Sounds: ", "sound pool: sound[0][3][" + note + "]");
                 soundPool.play(sounds[0][3][note], 1, 1, 0, 0, 1);
+
             }
         });
 
