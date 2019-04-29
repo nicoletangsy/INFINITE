@@ -27,21 +27,12 @@ public class RightHandReading extends AppCompatActivity {
         int hand = intent.getIntExtra("hand",-1);
         int flatSharp = intent.getIntExtra("flatSharp",-1);
         int key = intent.getIntExtra("key",-1);
-        Log.v("allallallallget",""+tempo+","+hand+","+flatSharp+","+key);
 
 
 
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//        if(tempo == -1){
-//            A_GENERATED_MUSIC_NOTES.hardCodeSheet();
-//        }
-//
-//        else{
-//
-//        }A_GENERATED_MUSIC_NOTES.hardCodeSheet2();
 
-
-//        A_GENERATED_MUSIC_NOTES.generateSheet((double)tempo,(double)hand,(double)flatSharp,(double)key);
+        A_GENERATED_MUSIC_NOTES.generateSheet((double)tempo,(double)hand,(double)flatSharp,(double)key);
 
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
