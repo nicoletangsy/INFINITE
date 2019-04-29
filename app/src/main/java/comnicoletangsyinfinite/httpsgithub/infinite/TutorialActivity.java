@@ -21,13 +21,12 @@ import static comnicoletangsyinfinite.httpsgithub.infinite.MainActivity.sounds;
 public class TutorialActivity extends AppCompatActivity implements View.OnClickListener {
     public static int note = 48;
     private String noteText;
-    
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tutorial);
         final TextView NoteText = (TextView) findViewById(R.id.NoteText);
         final Button button = (Button) findViewById(R.id.button);
-        final ImageView image = (ImageView) findViewById(R.id.NoteImage);
         final Map<String, Button> buttonMap = new HashMap<>();
         final String[] buttonKey = {"D", "E", "F", "G", "A", "B", "Cc", "Dd", "Gg", "Aa",
                 "C1", "D1", "E1", "F1", "G1", "A1", "B1", "Cc1", "Dd1", "Ff1", "Gg1", "Aa1",
