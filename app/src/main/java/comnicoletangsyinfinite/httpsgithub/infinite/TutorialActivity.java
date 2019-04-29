@@ -19,7 +19,7 @@ import static comnicoletangsyinfinite.httpsgithub.infinite.MainActivity.soundPoo
 import static comnicoletangsyinfinite.httpsgithub.infinite.MainActivity.sounds;
 
 public class TutorialActivity extends AppCompatActivity implements View.OnClickListener {
-    public static int note = 48;
+    public static int note;
     private String noteText;
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +35,6 @@ public class TutorialActivity extends AppCompatActivity implements View.OnClickL
         };
         final Button C = (Button) findViewById(R.id.Ckey);
         final Button Ff = (Button) findViewById(R.id.Ffkey);
-
         C.setBackgroundColor(Color.GREEN);
         C.setOnClickListener(new View.OnClickListener() {
             @Override
