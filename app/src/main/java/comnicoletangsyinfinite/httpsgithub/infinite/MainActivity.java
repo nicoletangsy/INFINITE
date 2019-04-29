@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
         */
 
     public static SoundPool soundPool = new SoundPool.Builder().setMaxStreams(2).build();
-    public static int[][][] sounds = new int[1][5][108]; //sounds[tempo][noteDuration][Notes];
+    public static int[][][] sounds = new int[3][5][108]; //sounds[tempo][noteDuration][Notes];
     private static final String TAG = "Resource: ";
 
     @Override
@@ -103,16 +103,18 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void initSoundPool() {
-        for (int i=0; i<5; i++) {
-            for (int j=33; j<65; j++) {
-                String source = "raw/n" + 0 + "_" + i + "_" + j;
-                Log.i(TAG, "Resource: " + source);
-                int resID = getResources().getIdentifier(source, null, getPackageName());
-                if (resID!=0) {
-                    Log.i(TAG, "Success!");
-                    sounds[0][i][j] = soundPool.load(this, resID, 1);
-                } else {
-                    sounds[0][i][j] = -1;
+        for (int k=0; k<3; k++) {
+            for (int i=0; i<5; i++) {
+                for (int j=33; j<65; j++) {
+                    String source = "raw/n" + k + "_" + i + "_" + j;
+                    Log.i(TAG, "Resource: " + source);
+                    int resID = getResources().getIdentifier(source, null, getPackageName());
+                    if (resID!=0) {
+                        Log.i(TAG, "Success!");
+                        sounds[k][i][j] = soundPool.load(this, resID, 1);
+                    } else {
+                        sounds[0][i][j] = -1;
+                    }
                 }
             }
         }
