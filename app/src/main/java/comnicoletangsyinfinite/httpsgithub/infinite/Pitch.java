@@ -5,6 +5,7 @@ public class Pitch {
     double note;        //value: 0~107
     int noteDuration;   //value:[1, 2, 4, 8, 16]
 
+    public Pitch() {}
     public Pitch(float pitchInHz) {
         pitchConverted(pitchInHz);
     }
@@ -17,6 +18,9 @@ public class Pitch {
 
     public void setNoteDuration (int x) {
         noteDuration = x;
+    }
+    public void setPitch(float pitch) {
+        pitchConverted(pitch);
     }
 
     //frequency table

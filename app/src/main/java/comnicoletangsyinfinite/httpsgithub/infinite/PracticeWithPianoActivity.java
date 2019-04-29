@@ -31,6 +31,7 @@ public class PracticeWithPianoActivity extends AppCompatActivity {
     private AudioDispatcher dispatcher;
     double randomNote;
     private TextView correctText;
+    private Pitch pitch = new Pitch();
 
     // Requesting permission to RECORD_AUDIO
     private static final int REQUEST_RECORD_AUDIO_PERMISSION = 200;
@@ -69,24 +70,25 @@ public class PracticeWithPianoActivity extends AppCompatActivity {
             public void handlePitch(PitchDetectionResult result, AudioEvent e) {
                 final float pitchInHz = result.getPitch();
                 if (pitchInHz > 254 && pitchInHz < 680) {
-                    final Pitch pitch = new Pitch(pitchInHz);
-                    if (pitch.getNote()==randomNote) {
-                        final Handler handler = new Handler();
-                        handler.postDelayed(new Runnable() {
-                            @Override
-                            public void run() {
-                                correctText.setText("Correct!");
-                            }
-                        }, 1000);
-                        setRandomNote();
-                    } else {
-                        final Handler handler = new Handler();
-                        handler.postDelayed(new Runnable() {
-                            @Override
-                            public void run() {
-                                correctText.setText("Wrong! Please Try Again!");
-                            }
-                        }, 1000);
+                    pitch.setPitch(pitchInHz);
+                    Log.i("PITCHHHHH", "freq: " + pitchInHz + "pitch detected: " + pitch.getNote() + "randomNote: " + randomNote);
+                    if (pitchInHz > 107 && pitchInHz < 719.5) {
+                        if (pitch.getNote()==randomNote) {
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    correctText.setText("Correct!");
+                                }
+                            });
+                            setRandomNote();
+                        } else {
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    correctText.setText("Wrong! Try Again!");
+                                }
+                            });
+                        }
                     }
                 }
             }
@@ -94,7 +96,6 @@ public class PracticeWithPianoActivity extends AppCompatActivity {
         AudioProcessor p = new PitchProcessor(PitchProcessor.PitchEstimationAlgorithm.AMDF, 22050, 1024, pdh);
         dispatcher.addAudioProcessor(p);
         new Thread(dispatcher, "Audio Dispatcher").start();
-
 
     }
 
@@ -118,12 +119,16 @@ public class PracticeWithPianoActivity extends AppCompatActivity {
     @Override
     protected void onStop() {
         super.onStop();
-        dispatcher.stop();
+        //dispatcher.stop();
     }
 
     public void setRandomNote() {
-        int random = (int) Math.random()*30 + 34;
+        int random = getRandomInt(33, 64);
         randomNote = (double) random;
         //implements draw note...
+    }
+
+    public static int getRandomInt(int min, int max) {
+        return (int) Math.floor(Math.random() * (max - min + 1)) + min;
     }
 }
