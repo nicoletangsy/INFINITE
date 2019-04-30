@@ -76,10 +76,11 @@
 
         </LinearLayout>
         <TextView
+            android:id="@+id/checkCorrectText"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:text="Correct: 8/10"
+            android:text=""
             android:gravity="bottom"
             android:layout_marginLeft="30dp"/>
     </LinearLayout>

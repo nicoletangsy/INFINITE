@@ -181,7 +181,7 @@ public class RightHandPractice extends AppCompatActivity {
             @Override
             public void handlePitch(PitchDetectionResult result, AudioEvent e) {
                 final float pitchInHz = result.getPitch();
-                if (pitchInHz > 254 && pitchInHz < 680) {
+                if (pitchInHz > 107 && pitchInHz < 719.5) {
                     final Pitch pitch = new Pitch(pitchInHz);
                     final double db = e.getdBSPL();
                     final double timeStamp = e.getTimeStamp();

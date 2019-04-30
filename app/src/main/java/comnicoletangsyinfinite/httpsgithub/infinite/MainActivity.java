@@ -2,6 +2,7 @@ package comnicoletangsyinfinite.httpsgithub.infinite;
 
 import android.content.Intent;
 import android.media.SoundPool;
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -11,6 +12,7 @@ import android.view.MenuInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 
 public class MainActivity extends AppCompatActivity {
 //index for KeySight
@@ -100,6 +102,31 @@ public class MainActivity extends AppCompatActivity {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu, menu);
         return true;
+    }
+    private void startAsyncTask (View v) {
+
+    }
+
+    private class DownloadSoundsTask extends AsyncTask<Integer, Integer, String> {
+        @Override
+        protected String doInBackground(Integer... integers) {
+            return "Finished!";
+        }
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected void onProgressUpdate(Integer... values) {
+            super.onProgressUpdate(values);
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+        }
     }
 
     public void initSoundPool() {
