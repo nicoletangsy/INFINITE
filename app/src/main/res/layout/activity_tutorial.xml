@@ -22,7 +22,7 @@
         <android.widget.Space
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="0.9"></android.widget.Space>
+            android:layout_weight="0.2"></android.widget.Space>
 
         <TextView
             android:id="@+id/instructiontext"
@@ -35,9 +35,10 @@
             android:textColor="@color/black" />
 
         <HorizontalScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
             android:layout_marginStart="0dp"
+            android:layout_weight="1.8"
             android:overScrollMode="never"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent">
@@ -491,19 +492,19 @@
                     android:layout_height="52dp"
                     android:layout_marginStart="22dp"
                     android:background="@drawable/blackkey"
-                    app:layout_constraintStart_toStartOf="@+id/A3key"/>
-</android.support.constraint.ConstraintLayout>
+                    app:layout_constraintStart_toStartOf="@+id/A3key" />
+            </android.support.constraint.ConstraintLayout>
         </HorizontalScrollView>
 
         <android.widget.Space
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="0.6"></android.widget.Space>
+            android:layout_weight="0.1"></android.widget.Space>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1.7"
+            android:layout_weight="2.5"
             android:orientation="horizontal"
             android:weightSum="6">
 
@@ -527,11 +528,11 @@
                 android:layout_height="match_parent"
                 android:layout_weight="0.75"></android.widget.Space>
 
-            <comnicoletangsyinfinite.httpsgithub.infinite.DrawANoteView
-                android:id="@+id/staff"
+            <ImageView
+                android:id="@+id/view"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1.7" />
+                android:layout_weight="1.5" />
 
             <android.widget.Space
                 android:layout_width="0dp"

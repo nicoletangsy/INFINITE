@@ -30,13 +30,34 @@ public class GeneratedMusicNotes {
     private double sharpFlat;
     private double key;
 
-    public int getBar() { return bar; }
-    public int getTotal() { return total; }
-    public double getTempo(){ return pianoSheet.get(0).get(0);}
-    public double getBeat(){ return pianoSheet.get(0).get(1); }
-    public double getSharpFlat(){ return pianoSheet.get(1).get(0); }
-    public double getKey(){ return pianoSheet.get(1).get(1); }
-    public double getHand(){ return pianoSheet.get(2).get(0); }
+    public int getBar() {
+        return bar;
+    }
+
+    public int getTotal() {
+        return total;
+    }
+
+    public double getTempo() {
+        return pianoSheet.get(0).get(0);
+    }
+
+    public double getBeat() {
+        return pianoSheet.get(0).get(1);
+    }
+
+    public double getSharpFlat() {
+        return pianoSheet.get(1).get(0);
+    }
+
+    public double getKey() {
+        return pianoSheet.get(1).get(1);
+    }
+
+    public double getHand() {
+        return pianoSheet.get(2).get(0);
+    }
+
     public double getANoteDuration(int i) {
         return pianoSheet.get(i).get(1);
     }
@@ -44,7 +65,7 @@ public class GeneratedMusicNotes {
     public void setKeys(double hand) {
         if (hand == 0) {
             keys = leftKeys;
-            diff=1;
+            diff = 1;
         } else keys = rightKeys;
     }
 
@@ -52,6 +73,7 @@ public class GeneratedMusicNotes {
     public GeneratedMusicNotes() {
 //        hardCodeSheet2();
     }
+
     //  correct
 //    public void generateSheet1() {
 //        pianoSheet.add(new ArrayList<Double>());
@@ -231,7 +253,7 @@ public class GeneratedMusicNotes {
 //        pianoSheet.get(43).add((double) 2);
 //
 //    }
-        //  wrong
+    //  wrong
 //    public void generateSheet2() {
 //        pianoSheet.add(new ArrayList<Double>());
 //        pianoSheet.get(0).add((double)60);
@@ -412,33 +434,29 @@ public class GeneratedMusicNotes {
 //
 //
 //    }
-        public void generateSheet(double tempo, double hand, double sharpFlat, double key){
+    public void generateSheet(double tempo, double hand, double sharpFlat, double key) {
 
-        if(tempo ==-1){
+        if (tempo == -1) {
             this.bpm = addTempo();
-        }
-        else{
+        } else {
             this.bpm = tempo;
         }
 
-        if(hand ==-1){
+        if (hand == -1) {
             this.hand = addHand();
-        }
-        else{
+        } else {
             this.hand = hand;
         }
 
-        if(sharpFlat ==-1){
+        if (sharpFlat == -1) {
             this.sharpFlat = addFlatSharp();
-        }
-        else{
+        } else {
             this.sharpFlat = sharpFlat;
         }
 
-        if(key ==-1){
+        if (key == -1) {
             this.key = addKey();
-        }
-        else{
+        } else {
             this.key = key;
         }
 
@@ -464,7 +482,7 @@ public class GeneratedMusicNotes {
         return tempo[(int) (Math.floor(Math.random() * 3))];
     }
 
-    public double addHand(){
+    public double addHand() {
         return (Math.floor(Math.random() * 2));
     }
 
@@ -485,8 +503,10 @@ public class GeneratedMusicNotes {
         int column = 0;
         int noteNum = 3;
         double countBeat = 0;
-        while (column < 8 * (pianoSheet.get(0).get(1))) {
+        while ((column < 8 * ((pianoSheet.get(0).get(1))) - 1)) {
+
             noteTime = noteIn4[(int) Math.floor(Math.random() * (pianoSheet.get(0).get(1) - countBeat))];
+            Log.v("noteTimenoteTime",""+noteTime);
             if (noteTime <= 4) {
 
                 getNote(noteNum, noteTime);
@@ -509,6 +529,35 @@ public class GeneratedMusicNotes {
                     countBeat = 0;
             }
         }
+        while (countBeat<3) {
+            noteTime = noteIn4[(int) Math.floor(Math.random() * (pianoSheet.get(0).get(1) - countBeat - 1))];
+
+            Log.v("noteTimenoteTime",""+noteTime);
+            if (noteTime <= 4) {
+
+                getNote(noteNum, noteTime);
+                column = column + howMany[(int) noteTime - 1];
+                noteNum++;
+                countBeat = countBeat + howMany[(int) noteTime - 1];
+
+                if (countBeat == pianoSheet.get(0).get(1))
+                    countBeat = 0;
+            } else {
+
+                for (int i = 0; i < 2; i++) {
+                    getNote(noteNum, noteTime);
+                    noteNum++;
+                }
+
+                column++;
+                countBeat++;
+                if (countBeat == pianoSheet.get(0).get(1))
+                    countBeat = 0;
+            }
+        }
+        getNote(noteNum, 4);
+        noteNum++;
+
     }
 
     //gen a note and insert into piano sheet
@@ -555,9 +604,8 @@ public class GeneratedMusicNotes {
         }
 
         for (int i = 0; i < pianoSheet.get(1).get(1); i++) {
-            if ((aNote -(diff*2) == (double) flatOrSharp[i]) || (aNote - 7 -(diff*2) == (double) flatOrSharp[i]) || (aNote + 7  -(diff*2)== (double) flatOrSharp[i])) {
+            if ((aNote - (diff * 2) == (double) flatOrSharp[i]) || (aNote - 7 - (diff * 2) == (double) flatOrSharp[i]) || (aNote + 7 - (diff * 2) == (double) flatOrSharp[i])) {
                 flatSharp = true;
-                Log.v("bbbbbflatSharp",""+aNote+","+i);
             }
         }
         if (flatSharp == true) {
@@ -570,4 +618,8 @@ public class GeneratedMusicNotes {
         return convertedNote;
     }
 
+    public void emptySheet(){
+        pianoSheet.clear();
+        Log.v("theSheettheSheetpiano", ""+pianoSheet);
+    }
 }

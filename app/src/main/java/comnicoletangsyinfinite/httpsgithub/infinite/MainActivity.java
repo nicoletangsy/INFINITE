@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        initSoundPool();
+//        initSoundPool();
 
         Button aboutButton = findViewById(R.id.aboutButton);
         Button tutorialButton = findViewById(R.id.tutorialButton);
