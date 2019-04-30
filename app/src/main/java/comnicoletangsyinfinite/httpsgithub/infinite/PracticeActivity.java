@@ -22,12 +22,76 @@ import android.os.CountDownTimer;
 
 import org.w3c.dom.Text;
 
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.widget.EditText;
+
+
 public class PracticeActivity extends AppCompatActivity {
     TextView question;
     TextView correctCount;
     TextView time;
     ImageView questionImg;
     Handler handler = new Handler();
+    final Context context = this;
+    long toLong;
+
+
+    CountDownTimer myCountDownTimer;
+    public void startCountDown(long duration) {
+
+        myCountDownTimer=new CountDownTimer(duration, 1000) {
+
+            public void onTick(long millisUntilFinished) {
+                time.setText("Time left:"+millisUntilFinished/1000);
+            }
+
+            public void onFinish() {
+                time.setText("Times up!!");
+                total++;
+                updateQ();
+                checkEnd();
+                currentQuestionNumber = r.nextInt(questions.length);
+                questionImg.setImageResource(questions[currentQuestionNumber]);
+                this.start();
+            }
+        }.start();
+    }
+
+    public void getLongFromUser(){
+
+        LayoutInflater li = LayoutInflater.from(context);
+        View promptsView = li.inflate(R.layout.alertdialog, null);
+
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+                context);
+
+        // set prompts.xml to alertdialog builder
+        alertDialogBuilder.setView(promptsView);
+
+        final EditText userInput = (EditText) promptsView
+                .findViewById(R.id.editTextDialogUserInput);
+
+        // set dialog message
+        alertDialogBuilder
+                .setCancelable(false)
+                .setPositiveButton("OK",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog,int id) {
+                                // get user input and set it to result
+                                // edit text
+                                String temp=userInput.getText().toString();
+                                toLong = Integer.parseInt(temp);
+                                toLong*=1000;
+                                startCountDown(toLong);
+                            }
+                        });
+        // create alert dialog
+        AlertDialog alertDialog = alertDialogBuilder.create();
+
+        // show it
+        alertDialog.show();
+    }
 
     Random r;
 
@@ -229,8 +293,17 @@ public class PracticeActivity extends AppCompatActivity {
     }
 
 
+
+
+
+
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        getLongFromUser();
+
         r = new Random();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.practice_layout);
@@ -254,22 +327,13 @@ public class PracticeActivity extends AppCompatActivity {
         correctCount.setText("Question:1/15");
         time= (TextView) findViewById(R.id.time);
 
-        final CountDownTimer myCountDownTimer=new CountDownTimer(50000, 1000) {
 
-            public void onTick(long millisUntilFinished) {
-                time.setText("seconds remaining: " + millisUntilFinished / 1000);
-            }
 
-            public void onFinish() {
-                time.setText("Times up!!");
-                total++;
-                updateQ();
-                checkEnd();
-                currentQuestionNumber=r.nextInt(questions.length);
-                questionImg.setImageResource(questions[currentQuestionNumber]);
-                this.start();
-            }
-        }.start();
+
+
+
+
+
 
         C3=(Button)findViewById(R.id.Ckey3);
         C3.setOnClickListener(new View.OnClickListener() {
@@ -299,6 +363,9 @@ public class PracticeActivity extends AppCompatActivity {
 
 
                 }
+
+
+
             }
         });
         Cc3=(Button)findViewById(R.id.Cckey3);
