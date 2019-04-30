@@ -76,9 +76,7 @@ public class UserSheetView extends View {
 
         theSheet = A_COMPARE_MUSIC_SHEET.getSheet();
 
-
-
-        Log.v("kakakakakakacom",""+theSheet);
+        Log.v("theSheettheSheetcom",""+theSheet);
 
         if (theSheet.get(2).get(0) == 0) {
             leftHand = 1;

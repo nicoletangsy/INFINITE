@@ -386,7 +386,7 @@ public class Notes extends View {
         float scale = (lineHeight * 1.4f) / (bounds.top - bounds.bottom);
 
         Matrix matrix = new Matrix();
-        matrix.postScale(scale, scale*0.78f);
+        matrix.postScale(scale, scale * 0.78f);
         matrix.postRotate(-33.75f);
 
         notepath.transform(matrix);
@@ -412,6 +412,7 @@ public class Notes extends View {
             drawLeger(noteType, note, wrong);
         }
 
+        if(noteType>1){
         if (noteType > 3) {
             if (wrong == 1)
                 thePaint = paintwrong;
@@ -427,9 +428,17 @@ public class Notes extends View {
             else
                 thePaint = paint23;
 
-        }
+        }else{
+            if (wrong == 1)
+                thePaint = paintwrong;
+            else if (wrong == 0)
+                thePaint = paintcorrect;
+            else
+                thePaint = paint;
 
-        canvas.drawPath(notepath, thePaint);
+    }
+
+        canvas.drawPath(notepath, thePaint);}
         //////////////////////////
         //Draw accidental(sharp)//
         //dont know why not work//
@@ -460,35 +469,22 @@ public class Notes extends View {
 
     //draw a note tail
     public void drawTail(float tailHeight, int noteType, double wrong) {
-        if (noteType > 3) {
-            if (wrong == 1) {
-                thePaint = paintwrong;
-            } else if (wrong == 0) {
-                thePaint = paintcorrect;
-            } else {
-                thePaint = paint;
-            }
+        if (noteType > 3 && wrong == -1) {
             if (tailIsUpper(noteType))
                 canvas.drawLine(lineHeight / 1.7f, -lineHeight / 4,
-                        lineHeight / 1.7f, -lineHeight * tailHeight, thePaint);
+                        lineHeight / 1.7f, -lineHeight * tailHeight, paint);
             else
                 canvas.drawLine(-lineHeight / 1.7f, lineHeight / 4,
-                        -lineHeight / 1.7f, lineHeight * tailHeight, thePaint);
-        } else {
-            if (wrong == 1) {
-                thePaint = paintwrong;
-            } else if (wrong == 0) {
-                thePaint = paintcorrect;
-            } else {
-                thePaint = paint;
-            }
+                        -lineHeight / 1.7f, lineHeight * tailHeight, paint);
+        } else if (noteType <= 3 && wrong == -1) {
+
 
             if (tailIsUpper(noteType))
                 canvas.drawLine(lineHeight / 1.6f, -lineHeight / 4,
-                        lineHeight / 1.6f, -lineHeight * tailHeight, thePaint);
+                        lineHeight / 1.6f, -lineHeight * tailHeight, paint);
             else
                 canvas.drawLine(-lineHeight / 1.6f, lineHeight / 4,
-                        -lineHeight / 1.6f, lineHeight * tailHeight, thePaint);
+                        -lineHeight / 1.6f, lineHeight * tailHeight, paint);
         }
     }
 
@@ -497,7 +493,7 @@ public class Notes extends View {
         boolean upper = true;
 
         if (noteType > 4) {
-             if (noteType == 8) {
+            if (noteType == 8) {
                 if (hand == 0) {
                     upper = false;
                     if (note1 <= 36 && note2 <= 36) {

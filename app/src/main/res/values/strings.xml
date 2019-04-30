@@ -63,6 +63,8 @@
     <string name="withRealPianoButton">Practice With Real Piano</string>
     <string name="practiceInstructionText">Which Type of Practice would you want?</string>
 
+    <string name="practiceWithPianoInstruction">Play the key on the piano.</string>
+
     <string name="homeButton">Home</string>
     <string name="restartButton">Restart</string>
     <string name="endButton">End game</string>

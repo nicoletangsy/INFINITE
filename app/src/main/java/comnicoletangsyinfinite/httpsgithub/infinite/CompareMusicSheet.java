@@ -9,7 +9,6 @@ public class CompareMusicSheet {
     ArrayList<ArrayList<Double>> generatedMusicSheet;
     ArrayList<ArrayList<Double>> recordedMusicSheet;
     ArrayList<ArrayList<Double>> userMusicSheet = new ArrayList<>();
-    ArrayList<ArrayList<Double>> hardCodeSheet;
     String Tag = "userMusicSheet";
 
     public CompareMusicSheet() {
@@ -22,11 +21,25 @@ public class CompareMusicSheet {
     public void setRecordedMusicNotes(ArrayList<ArrayList<Double>> recordedMusicSheet) {
         this.recordedMusicSheet = recordedMusicSheet;
     }
+
     //correct
-//    public void compareTwoSheet1() {
-//        this.hardCodeSheet = this.generatedMusicSheet;
+//    public void compareTwoSheet() {
+//        for (int i = 0; i < 3; i++) {
+//            userMusicSheet.add(new ArrayList<Double>());
+//            userMusicSheet.get(i).add(generatedMusicSheet.get(i).get(0));
+//            userMusicSheet.get(i).add(generatedMusicSheet.get(i).get(1));
+//        }
 //        for (int i = 3; i < generatedMusicSheet.size(); i++) {
-//            hardCodeSheet.get(i).add((double) 0);
+//            if(i!=17){
+//            userMusicSheet.add(new ArrayList<Double>());
+//            userMusicSheet.get(i).add(generatedMusicSheet.get(i).get(0));
+//            userMusicSheet.get(i).add(generatedMusicSheet.get(i).get(1));
+//            userMusicSheet.get(i).add((double)0);}
+//            else{
+//                userMusicSheet.add(new ArrayList<Double>());
+//                userMusicSheet.get(i).add((double)52);
+//                userMusicSheet.get(i).add((double)4);
+//                userMusicSheet.get(i).add((double)1);}
 //        }
 //    }
 
@@ -203,6 +216,6 @@ public class CompareMusicSheet {
 
     public ArrayList<ArrayList<Double>> getSheet() {
         return userMusicSheet;
-//        return hardCodeSheet;
+
     }
 }
