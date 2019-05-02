@@ -19,7 +19,7 @@
     <!--Sight Reading Menu page-->
     <!--Text-->
     <string name="bpmText">bpm: </string>
-    <string name="handText">hand: </string>
+    <string name="clefText">clef: </string>
     <string name="majorText">Major: </string>
     <string name="minorText">Minor: </string>
     <!--Button-->

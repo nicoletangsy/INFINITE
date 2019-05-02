@@ -73,145 +73,145 @@ public class GeneratedMusicNotes {
     }
 
     //  trying
-    public void generateSheet(double tempo, double hand, double sharpFlat, double key) {
-        int i = 1;
-        pianoSheet.add(new ArrayList<Double>());
-        pianoSheet.get(0).add((double) 60);
-        pianoSheet.get(0).add((double) 4);
-
-        pianoSheet.add(new ArrayList<Double>());
-        pianoSheet.get(1).add((double) 0);
-        pianoSheet.get(1).add((double) 0);
-
-        pianoSheet.add(new ArrayList<Double>());
-        pianoSheet.get(2).add((double) 1);
-        pianoSheet.get(2).add((double) 0);
-
-        pianoSheet.add(new ArrayList<Double>());
-        pianoSheet.get(3).add((double) 48);
-        pianoSheet.get(3).add((double) 8);
-
-        pianoSheet.add(new ArrayList<Double>());
-        pianoSheet.get(4).add((double) 50);
-        pianoSheet.get(4).add((double) 8);
-
-        pianoSheet.add(new ArrayList<Double>());
-        pianoSheet.get(5).add((double) 52);
-        pianoSheet.get(5).add((double) 4);
-
-        pianoSheet.add(new ArrayList<Double>());
-        pianoSheet.get(6).add((double) 55);
-        pianoSheet.get(6).add((double) 4);
-
-        pianoSheet.add(new ArrayList<Double>());
-        pianoSheet.get(7).add((double) 55);
-        pianoSheet.get(7).add((double) 4);
-
-        pianoSheet.add(new ArrayList<Double>());
-        pianoSheet.get(8).add((double) 52);
-        pianoSheet.get(8).add((double) 4);
-
-        pianoSheet.add(new ArrayList<Double>());
-        pianoSheet.get(9).add((double) 53);
-        pianoSheet.get(9).add((double) 4);
-
-        pianoSheet.add(new ArrayList<Double>());
-        pianoSheet.get(10).add((double) 53);
-        pianoSheet.get(10).add((double) 4);
-
-        pianoSheet.add(new ArrayList<Double>());
-        pianoSheet.get(11).add((double) 55);
-        pianoSheet.get(11).add((double) 4);
-
-        pianoSheet.add(new ArrayList<Double>());
-        pianoSheet.get(12).add((double) 53);
-        pianoSheet.get(12).add((double) 4);
-
-        pianoSheet.add(new ArrayList<Double>());
-        pianoSheet.get(13).add((double) 48);
-        pianoSheet.get(13).add((double) 4);
-
-        pianoSheet.add(new ArrayList<Double>());
-        pianoSheet.get(14).add((double) 50);
-        pianoSheet.get(14).add((double) 4);
-
-        pianoSheet.add(new ArrayList<Double>());
-        pianoSheet.get(15).add((double) 52);
-        pianoSheet.get(15).add((double) 4);
-
-        pianoSheet.add(new ArrayList<Double>());
-        pianoSheet.get(16).add((double) 50);
-        pianoSheet.get(16).add((double) 3);
-
-        pianoSheet.add(new ArrayList<Double>());
-        pianoSheet.get(16+i).add((double) 50);
-        pianoSheet.get(16+i).add((double) 4);
-
-        pianoSheet.add(new ArrayList<Double>());
-        pianoSheet.get(17+i).add((double) 55);
-        pianoSheet.get(17+i).add((double) 4);
-
-        pianoSheet.add(new ArrayList<Double>());
-        pianoSheet.get(18+i).add((double) 52);
-        pianoSheet.get(18+i).add((double) 4);
-
-
-        pianoSheet.add(new ArrayList<Double>());
-        pianoSheet.get(20).add((double) 50);
-        pianoSheet.get(20).add((double) 4);
-
-        pianoSheet.add(new ArrayList<Double>());
-        pianoSheet.get(21).add((double) 55);
-        pianoSheet.get(21).add((double) 4);
-
-        pianoSheet.add(new ArrayList<Double>());
-        pianoSheet.get(22).add((double) 50);
-        pianoSheet.get(22).add((double) 4);
-
-        pianoSheet.add(new ArrayList<Double>());
-        pianoSheet.get(23).add((double) 50);
-        pianoSheet.get(23).add((double) 8);
-
-        pianoSheet.add(new ArrayList<Double>());
-        pianoSheet.get(24).add((double) 52);
-        pianoSheet.get(24).add((double) 8);
-
-        pianoSheet.add(new ArrayList<Double>());
-        pianoSheet.get(25).add((double) 52);
-        pianoSheet.get(25).add((double) 4);
-
-        pianoSheet.add(new ArrayList<Double>());
-        pianoSheet.get(26).add((double) 55);
-        pianoSheet.get(26).add((double) 4);
-
-        pianoSheet.add(new ArrayList<Double>());
-        pianoSheet.get(27).add((double) 48);
-        pianoSheet.get(27).add((double) 4);
-
-        pianoSheet.add(new ArrayList<Double>());
-        pianoSheet.get(28).add((double) 50);
-        pianoSheet.get(28).add((double) 2);
-
-        pianoSheet.add(new ArrayList<Double>());
-        pianoSheet.get(29).add((double) 55);
-        pianoSheet.get(29).add((double) 4);
-
-        pianoSheet.add(new ArrayList<Double>());
-        pianoSheet.get(30).add((double) 50);
-        pianoSheet.get(30).add((double) 4);
-
-        pianoSheet.add(new ArrayList<Double>());
-        pianoSheet.get(31).add((double) 52);
-        pianoSheet.get(31).add((double) 4);
-
-        pianoSheet.add(new ArrayList<Double>());
-        pianoSheet.get(32).add((double) 50);
-        pianoSheet.get(32).add((double) 4);
-
-        pianoSheet.add(new ArrayList<Double>());
-        pianoSheet.get(33).add((double) 48);
-        pianoSheet.get(33).add((double) 4);
-    }
+//    public void generateSheet(double tempo, double hand, double sharpFlat, double key) {
+//        int i = 1;
+//        pianoSheet.add(new ArrayList<Double>());
+//        pianoSheet.get(0).add((double) 60);
+//        pianoSheet.get(0).add((double) 4);
+//
+//        pianoSheet.add(new ArrayList<Double>());
+//        pianoSheet.get(1).add((double) 0);
+//        pianoSheet.get(1).add((double) 0);
+//
+//        pianoSheet.add(new ArrayList<Double>());
+//        pianoSheet.get(2).add((double) 1);
+//        pianoSheet.get(2).add((double) 0);
+//
+//        pianoSheet.add(new ArrayList<Double>());
+//        pianoSheet.get(3).add((double) 48);
+//        pianoSheet.get(3).add((double) 8);
+//
+//        pianoSheet.add(new ArrayList<Double>());
+//        pianoSheet.get(4).add((double) 50);
+//        pianoSheet.get(4).add((double) 8);
+//
+//        pianoSheet.add(new ArrayList<Double>());
+//        pianoSheet.get(5).add((double) 52);
+//        pianoSheet.get(5).add((double) 4);
+//
+//        pianoSheet.add(new ArrayList<Double>());
+//        pianoSheet.get(6).add((double) 55);
+//        pianoSheet.get(6).add((double) 4);
+//
+//        pianoSheet.add(new ArrayList<Double>());
+//        pianoSheet.get(7).add((double) 55);
+//        pianoSheet.get(7).add((double) 4);
+//
+//        pianoSheet.add(new ArrayList<Double>());
+//        pianoSheet.get(8).add((double) 52);
+//        pianoSheet.get(8).add((double) 4);
+//
+//        pianoSheet.add(new ArrayList<Double>());
+//        pianoSheet.get(9).add((double) 53);
+//        pianoSheet.get(9).add((double) 4);
+//
+//        pianoSheet.add(new ArrayList<Double>());
+//        pianoSheet.get(10).add((double) 53);
+//        pianoSheet.get(10).add((double) 4);
+//
+//        pianoSheet.add(new ArrayList<Double>());
+//        pianoSheet.get(11).add((double) 55);
+//        pianoSheet.get(11).add((double) 4);
+//
+//        pianoSheet.add(new ArrayList<Double>());
+//        pianoSheet.get(12).add((double) 53);
+//        pianoSheet.get(12).add((double) 4);
+//
+//        pianoSheet.add(new ArrayList<Double>());
+//        pianoSheet.get(13).add((double) 48);
+//        pianoSheet.get(13).add((double) 4);
+//
+//        pianoSheet.add(new ArrayList<Double>());
+//        pianoSheet.get(14).add((double) 50);
+//        pianoSheet.get(14).add((double) 4);
+//
+//        pianoSheet.add(new ArrayList<Double>());
+//        pianoSheet.get(15).add((double) 52);
+//        pianoSheet.get(15).add((double) 4);
+//
+//        pianoSheet.add(new ArrayList<Double>());
+//        pianoSheet.get(16).add((double) 50);
+//        pianoSheet.get(16).add((double) 3);
+//
+//        pianoSheet.add(new ArrayList<Double>());
+//        pianoSheet.get(16+i).add((double) 50);
+//        pianoSheet.get(16+i).add((double) 4);
+//
+//        pianoSheet.add(new ArrayList<Double>());
+//        pianoSheet.get(17+i).add((double) 55);
+//        pianoSheet.get(17+i).add((double) 4);
+//
+//        pianoSheet.add(new ArrayList<Double>());
+//        pianoSheet.get(18+i).add((double) 52);
+//        pianoSheet.get(18+i).add((double) 4);
+//
+//
+//        pianoSheet.add(new ArrayList<Double>());
+//        pianoSheet.get(20).add((double) 50);
+//        pianoSheet.get(20).add((double) 4);
+//
+//        pianoSheet.add(new ArrayList<Double>());
+//        pianoSheet.get(21).add((double) 55);
+//        pianoSheet.get(21).add((double) 4);
+//
+//        pianoSheet.add(new ArrayList<Double>());
+//        pianoSheet.get(22).add((double) 50);
+//        pianoSheet.get(22).add((double) 4);
+//
+//        pianoSheet.add(new ArrayList<Double>());
+//        pianoSheet.get(23).add((double) 50);
+//        pianoSheet.get(23).add((double) 8);
+//
+//        pianoSheet.add(new ArrayList<Double>());
+//        pianoSheet.get(24).add((double) 52);
+//        pianoSheet.get(24).add((double) 8);
+//
+//        pianoSheet.add(new ArrayList<Double>());
+//        pianoSheet.get(25).add((double) 52);
+//        pianoSheet.get(25).add((double) 4);
+//
+//        pianoSheet.add(new ArrayList<Double>());
+//        pianoSheet.get(26).add((double) 55);
+//        pianoSheet.get(26).add((double) 4);
+//
+//        pianoSheet.add(new ArrayList<Double>());
+//        pianoSheet.get(27).add((double) 48);
+//        pianoSheet.get(27).add((double) 4);
+//
+//        pianoSheet.add(new ArrayList<Double>());
+//        pianoSheet.get(28).add((double) 50);
+//        pianoSheet.get(28).add((double) 2);
+//
+//        pianoSheet.add(new ArrayList<Double>());
+//        pianoSheet.get(29).add((double) 55);
+//        pianoSheet.get(29).add((double) 4);
+//
+//        pianoSheet.add(new ArrayList<Double>());
+//        pianoSheet.get(30).add((double) 50);
+//        pianoSheet.get(30).add((double) 4);
+//
+//        pianoSheet.add(new ArrayList<Double>());
+//        pianoSheet.get(31).add((double) 52);
+//        pianoSheet.get(31).add((double) 4);
+//
+//        pianoSheet.add(new ArrayList<Double>());
+//        pianoSheet.get(32).add((double) 50);
+//        pianoSheet.get(32).add((double) 4);
+//
+//        pianoSheet.add(new ArrayList<Double>());
+//        pianoSheet.get(33).add((double) 48);
+//        pianoSheet.get(33).add((double) 4);
+//    }
 //
 //        pianoSheet.add(new ArrayList<Double>());
 //        pianoSheet.get(33).add((double)48);
@@ -439,7 +439,7 @@ public class GeneratedMusicNotes {
 //
 //
 //    }
-    public void generateSheet1(double tempo, double hand, double sharpFlat, double key) {
+    public void generateSheet(double tempo, double hand, double sharpFlat, double key) {
 
         if (tempo == -1) {
             this.bpm = addTempo();
