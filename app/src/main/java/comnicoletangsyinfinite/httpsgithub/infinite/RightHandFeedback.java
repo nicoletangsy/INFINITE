@@ -54,6 +54,7 @@ public class RightHandFeedback extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem menuItem) {
         if (menuItem.getItemId() == android.R.id.home) {
             Intent intent = new Intent(RightHandFeedback.this, RightHandPractice.class);
+            A_GENERATED_MUSIC_NOTES.emptySheet();
             startActivity(intent);
             finish();
             A_Music_Sheet_Type.changedToOriginal();

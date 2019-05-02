@@ -336,7 +336,6 @@ public class RightHandPractice extends AppCompatActivity {
             Intent intent = new Intent(RightHandPractice.this, RightHandReading.class);
             startActivity(intent);
             finish();
-            A_Music_Sheet_Type.changedToOriginal();
         }
         return super.onOptionsItemSelected(menuItem);
     }
