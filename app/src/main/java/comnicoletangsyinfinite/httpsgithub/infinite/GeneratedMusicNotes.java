@@ -165,7 +165,7 @@ public class GeneratedMusicNotes {
         pianoSheet.get(21).add((double) 4);
 
         pianoSheet.add(new ArrayList<Double>());
-        pianoSheet.get(22).add((double) 48);
+        pianoSheet.get(22).add((double) 50);
         pianoSheet.get(22).add((double) 4);
 
         pianoSheet.add(new ArrayList<Double>());
@@ -185,7 +185,7 @@ public class GeneratedMusicNotes {
         pianoSheet.get(26).add((double) 4);
 
         pianoSheet.add(new ArrayList<Double>());
-        pianoSheet.get(27).add((double) 50);
+        pianoSheet.get(27).add((double) 48);
         pianoSheet.get(27).add((double) 4);
 
         pianoSheet.add(new ArrayList<Double>());

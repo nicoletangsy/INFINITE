@@ -30,12 +30,12 @@ public class CompareMusicSheet {
             userMusicSheet.get(i).add(generatedMusicSheet.get(i).get(1));
         }
         for (int i = 3; i < generatedMusicSheet.size() + 1; i++) {
-            if (i != 17 && i < 19 && i != 9 && i != 11) {
+            if (i != 17 && i < 19 && i != 9 && i != 11 && i != 22 && i != 27) {
                 userMusicSheet.add(new ArrayList<Double>());
                 userMusicSheet.get(i).add(generatedMusicSheet.get(i).get(0));
                 userMusicSheet.get(i).add(generatedMusicSheet.get(i).get(1));
                 userMusicSheet.get(i).add((double) 0);
-            } else if (i != 17 && i != 19 && i != 20 && i != 9 && i != 11) {
+            } else if (i != 17 && i != 19 && i != 20 && i != 9 && i != 11 && i != 22 && i != 27) {
                 userMusicSheet.add(new ArrayList<Double>());
                 userMusicSheet.get(i).add(generatedMusicSheet.get(i - 1).get(0));
                 userMusicSheet.get(i).add(generatedMusicSheet.get(i - 1).get(1));
@@ -63,6 +63,16 @@ public class CompareMusicSheet {
             } else if (i == 11) {
                 userMusicSheet.add(new ArrayList<Double>());
                 userMusicSheet.get(i).add((double) 53);
+                userMusicSheet.get(i).add((double) 4);
+                userMusicSheet.get(i).add((double) 1);
+            } else if (i == 22) {
+                userMusicSheet.add(new ArrayList<Double>());
+                userMusicSheet.get(i).add((double) 48);
+                userMusicSheet.get(i).add((double) 4);
+                userMusicSheet.get(i).add((double) 1);
+            } else if (i == 27) {
+                userMusicSheet.add(new ArrayList<Double>());
+                userMusicSheet.get(i).add((double) 50);
                 userMusicSheet.get(i).add((double) 4);
                 userMusicSheet.get(i).add((double) 1);
             }

@@ -21,11 +21,11 @@
     <string name="bpmText">bpm: </string>
     <string name="handText">hand: </string>
     <string name="majorText">Major: </string>
-    <string name="minerText">miner: </string>
+    <string name="minorText">Minor: </string>
     <!--Button-->
     <string name="random">Random</string>
-    <string name="leftHandPracticeButton">Left</string>
-    <string name="rightHandPracticeButton">Right</string>
+    <string name="leftHandPracticeButton">G-clef</string>
+    <string name="rightHandPracticeButton">F-clef</string>
     <!--Major and Minor-->
     <string name="CButton">C</string>
     <string name="DButton">D</string>
