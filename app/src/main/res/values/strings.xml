@@ -24,8 +24,8 @@
     <string name="minorText">Minor: </string>
     <!--Button-->
     <string name="random">Random</string>
-    <string name="leftHandPracticeButton">G-clef</string>
-    <string name="rightHandPracticeButton">F-clef</string>
+    <string name="leftHandPracticeButton">F-clef</string>
+    <string name="rightHandPracticeButton">G-clef</string>
     <!--Major and Minor-->
     <string name="CButton">C</string>
     <string name="DButton">D</string>
