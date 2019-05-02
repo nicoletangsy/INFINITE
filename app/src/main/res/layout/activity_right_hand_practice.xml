@@ -82,8 +82,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_gravity="end"
-                    android:layout_marginLeft="20dp"
+                    android:layout_marginLeft="10dp"
                     android:background="@drawable/button"
+                    android:layout_marginBottom="3dp"
                     android:text="@string/play" />
 
                 <Button
@@ -91,8 +92,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_gravity="end"
-                    android:layout_marginLeft="20dp"
+                    android:layout_marginLeft="10dp"
                     android:background="@drawable/button"
+                    android:layout_marginBottom="3dp"
                     android:text="@string/startRecording" />
 
 
@@ -100,8 +102,9 @@
                     android:id="@+id/playRecordButton"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="20dp"
+                    android:layout_marginLeft="10dp"
                     android:background="@drawable/button"
+                    android:layout_marginBottom="3dp"
                     android:text="@string/play" />
 
 
@@ -109,8 +112,9 @@
                     android:id="@+id/analyzeButton"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="20dp"
+                    android:layout_marginLeft="10dp"
                     android:background="@drawable/button"
+                    android:layout_marginBottom="3dp"
                     android:text="@string/analyze" />
 
             </LinearLayout>

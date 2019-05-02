@@ -238,11 +238,13 @@ public class RightHandPractice extends AppCompatActivity {
         TextView bpmIcon = findViewById(R.id.bpmIcon);
         TextView bpm = findViewById(R.id.bpm);
 
+
+        Log.v("aqaqaqaqaq",""+A_GENERATED_MUSIC_NOTES.getPianoSheet());
         bpm.setText(" = " + A_GENERATED_MUSIC_NOTES.getPianoSheet().get(0).get(0));
 
         bpmIcon.setTextSize(25);
         bpmIcon.setText("\u2669");
-//
+
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);

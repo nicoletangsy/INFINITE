@@ -10,7 +10,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:weightSum="6">
+        android:weightSum="6"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp">
 
         <include
             android:id="@+id/app_bar"
@@ -23,33 +25,34 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="0.5"></android.widget.Space>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:orientation="horizontal"
             android:layout_weight="1"
+            android:orientation="horizontal"
             android:weightSum="6">
 
             <Button
                 android:id="@+id/endButton"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
                 android:layout_marginLeft="20dp"
+                android:layout_weight="1.5"
                 android:background="@drawable/button"
                 android:text="@string/endButton" />
 
             <android.widget.Space
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1.5"></android.widget.Space>
+                android:layout_weight="1.4"></android.widget.Space>
 
             <TextView
                 android:id="@+id/textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="2"
                 android:layout_gravity="bottom"
+                android:layout_weight="2.3"
                 android:text="@string/practiceWithPianoInstruction" />
 
         </LinearLayout>
@@ -62,20 +65,20 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1.7"
+            android:layout_weight="2"
             android:orientation="horizontal"
             android:weightSum="6">
 
             <android.widget.Space
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1.9"></android.widget.Space>
+                android:layout_weight="2.2"></android.widget.Space>
 
             <ImageView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1.7"
-                android:background="@drawable/g21"/>
+                android:background="@drawable/d21" />
 
             <android.widget.Space
                 android:layout_width="0dp"
@@ -83,14 +86,37 @@
                 android:layout_weight="1.5"></android.widget.Space>
 
         </LinearLayout>
-        <TextView
-            android:id="@+id/checkCorrectText"
+        <android.widget.Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.5"></android.widget.Space>
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:text=""
-            android:gravity="bottom"
-            android:layout_marginLeft="30dp"/>
+            android:orientation="horizontal"
+            android:weightSum="3">
+
+        <TextView
+            android:id="@+id/checkCorrectText"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5"
+            android:text="Correct:1"
+            android:layout_marginLeft="10dp"/>
+
+            <android.widget.Space
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.7"></android.widget.Space>
+        <!--<TextView-->
+            <!--android:id="@+id/checkCorrectText2"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_weight="1"-->
+            <!--android:text="Wrong Answer, Try again"-->
+            <!--android:layout_marginRight="40dp"/>-->
+        </LinearLayout>
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>
