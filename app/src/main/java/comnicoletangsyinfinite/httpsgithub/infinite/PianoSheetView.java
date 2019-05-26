@@ -194,7 +194,7 @@ public class PianoSheetView extends View {
             leftHand = 1;
         }
 
-        Log.v("theSheettheSheetgen",""+theSheet);
+        Log.v("theSheettheSheetgen", "" + theSheet);
 
         // Set up paint
         paint.setStrokeWidth(2);
@@ -245,7 +245,7 @@ public class PianoSheetView extends View {
         }
 
         // Translate canvas from C4 position
-        canvas.translate(lineWidth * 1.3f, -height/1.33f);
+        canvas.translate(lineWidth * 1.3f, -height / 1.33f);
         FIRST_NOTE.addXandY(lineWidth * 1.3f, -height / 1.33f);
 
         //draw key and tempo
@@ -315,7 +315,10 @@ public class PianoSheetView extends View {
                 notesArrayList.add(new Notes(this.getContext()));
                 canvas = notesArrayList.get(j).create3Note(lineWidth, lineHeight, noteWidth, theSheet.get(i), theSheet.get(2).get(0), canvas);
                 float pos = notesArrayList.get(j).dot3note(lineWidth, lineHeight, theSheet.get(i).get(0));
-                canvas.drawText(".", -noteWidth * 2.85f, pos + lineHeight * 0.3f, painttt);
+                if (theSheet.get(2).get(0) == 0)
+                    canvas.drawText(".", -noteWidth * 2.85f, pos + lineHeight * 0.3f - lineHeight * 6, painttt);
+                else
+                    canvas.drawText(".", -noteWidth * 2.85f, pos + lineHeight * 0.3f, painttt);
                 totalBeat = totalBeat + 3;
             }
 
